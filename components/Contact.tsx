@@ -4,11 +4,14 @@ function Contact() {
   const password = 'swordfish';
   const [authorized, setAuthorized] = useState(false);
 
-  function handleSubmit(e) {
-    const enteredPassword = e.target.querySelector(
-      'input[type="password"]').value;
-    const auth = enteredPassword == password;
-    setAuthorized(auth)
+  function handleSubmit(e : React.FormEvent<HTMLFormElement>) {
+    const targ = e.target as HTMLElement;
+    const enteredPassword = targ.querySelector('input[type="password"]') as HTMLInputElement | null;
+    if (enteredPassword !== null){
+        const epasVal = enteredPassword.value;
+        const auth = epasVal == password;
+        setAuthorized(auth);
+    }
   }
 
   const login = (
