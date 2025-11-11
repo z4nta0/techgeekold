@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <div>
-        <NavBarCom />
+        <NavBarCom name="Tech Geek" />
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
