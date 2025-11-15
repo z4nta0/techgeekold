@@ -16,14 +16,21 @@ interface NavBarComProps {
 
 export const NavBarCom : React.FC<NavBarComProps> = (props) => {
 
-  const clickCountObj : Record<string, number> = {
+  interface ClickCountObj {
+
+    logoCount: number;
+    homeCount: number;
+
+  };
+
+  const clickCountObj : ClickCountObj = {
 
     logoCount: 0,
     homeCount: 0,
 
   };
 
-  const [ curCouObj, setCount1 ] = useState(clickCountObj);
+  const [ curCouObj, setCount1 ] = useState<ClickCountObj>(clickCountObj);
 
   const handleClick1 = ( { currentTarget } : React.MouseEvent<HTMLAnchorElement> ) => {
 
@@ -31,18 +38,16 @@ export const NavBarCom : React.FC<NavBarComProps> = (props) => {
 
       const clickname = currentTarget.getAttribute('data-clickname') as keyof typeof clickCountObj;
 
-      setCount1 (() => {
+      setCount1 ((prevState) => {
 
-        const prevCount : number = curCouObj[clickname];
+        const prevCount : number = prevState[clickname];
         const newCount : number = prevCount + 1;
 
-        return (
-          { ...curCouObj, [clickname]: newCount }
-        );
+        return { ...prevState, [clickname]: newCount };
 
       });
 
-      const linkName = currentTarget.getAttribute('data-linkname');
+      const linkName : string | null = currentTarget.getAttribute('data-linkname');
 
       alert(`You clicked on the ${linkName} link for the ${props.name} Home page ${curCouObj[clickname] + 1} times!`);
 
@@ -50,41 +55,38 @@ export const NavBarCom : React.FC<NavBarComProps> = (props) => {
 
   };
 
-  const clickCountArr : number[] = [ 0, 0 ];
+  type ClickCountArr = [number, number];
+  const clickCountArr : ClickCountArr = [ 0, 0 ];
 
-  const [ curCouArr, setCount ] = useState(clickCountArr);
+  const [ curCouArr, setCount ] = useState<ClickCountArr>(clickCountArr);
 
   const handleClick2 = ( { currentTarget } : React.MouseEvent<HTMLAnchorElement> ) => {
 
     if (currentTarget.hasAttribute('data-clickindex')) {
 
-      const clickIndexStr = currentTarget.getAttribute('data-clickindex') as string;
-      const clickIndexNum = Number(clickIndexStr);
+      const clickIndexStr : string = currentTarget.getAttribute('data-clickindex') as string;
+      const clickIndexNum : number = Number(clickIndexStr);
 
-      setCount (() => {
+      setCount ((prevState) => {
 
-        const prevCount : number = curCouArr[clickIndexNum];
+        const prevCount : number = prevState[clickIndexNum];
         const newCount : number = prevCount + 1;
 
         if (clickIndexNum === 0) {
 
-          return (
-            [ newCount, curCouArr[1] ]
-          );
+          return [ newCount, prevState[1] ];
 
         }
 
         else {
 
-          return (
-            [ curCouArr[0], newCount ]
-          );
+          return [ prevState[0], newCount ];
 
         };
 
       });
 
-      const linkName = currentTarget.getAttribute('data-linkname');
+      const linkName : string | null = currentTarget.getAttribute('data-linkname');
 
       alert(`You clicked on the navbar link for the ${props.name} ${linkName} page ${curCouArr[clickIndexNum] + 1} times!`);
 
@@ -102,8 +104,15 @@ export const NavBarCom : React.FC<NavBarComProps> = (props) => {
 
       try {
 
+        interface Response {
+
+          message: string;
+
+        };
+
         const response = await fetch('../../mock-backend/data.json');
-        const result = await response.json();
+        const result : Response = await response.json();
+
         setData(result.message);
 
       } catch (error) {
