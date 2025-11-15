@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import reactLogo from '../assets/react.svg';
 
 interface NavBarComProps {
@@ -92,6 +92,33 @@ export const NavBarCom : React.FC<NavBarComProps> = (props) => {
 
   };
 
+  const [ data, setData ] = useState<string>('Empty Data');
+
+  useEffect( () => {
+
+    alert('Fetching data from API...');
+
+    const fetchData = async () => {
+
+      try {
+
+        const response = await fetch('../../mock-backend/data.json');
+        const result = await response.json();
+        setData(result.message);
+
+      } catch (error) {
+
+        setData('Error fetching data');
+        console.error('Error fetching data:', error);
+
+      }
+
+    };
+
+    fetchData();
+
+  }, [] ); // Variables for dependency array (for fetching new or different data) can be added here
+
   return (
 
     <nav className='nav-bar-sty' style={{  display: 'flex', padding: '1rem', backgroundColor: '#282c34', color: 'white' }}>
@@ -104,6 +131,7 @@ export const NavBarCom : React.FC<NavBarComProps> = (props) => {
         <li><a onClick={handleClick2} data-linkname="About" data-clickindex="0" href="#about" style={{ color: 'white', textDecoration: 'none' }}>About</a></li>
         <li><a onClick={handleClick2} data-linkname="Contact" data-clickindex="1" href="#contact" style={{ color: 'white', textDecoration: 'none' }}>Contact</a></li>
       </ul>
+      <p>{data === undefined ? "Data should go here" : data}</p>
     </nav>
 
   );
