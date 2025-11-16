@@ -1,0 +1,39 @@
+.NavBarCom_nav {
+
+    display: flex;
+    padding: 1rem;
+    background-color: #282c34;
+    color: white;
+
+}
+
+.NavBarCom_logoCon {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.NavBarCom_logoTxt {
+
+    color: white;
+    text-decoration: none;
+    padding-left: 1rem;
+
+}
+
+.NavBarCom_ul {
+
+    list-style-type: none !important;
+    display: flex;
+    gap: 1rem;
+
+}
+
+.NavBarCom_anchor {
+
+    color: white;
+    text-decoration: none;
+
+}
