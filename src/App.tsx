@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
-import { NavBarCom } from './components/NavBarCom.tsx';
+import { NavBarComCon } from './components/NavBarComCon';
 
 function App() {
 
@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <div>
-        <NavBarCom name="Tech Geek" />
+        <NavBarComCon name="Tech Geek" />
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
