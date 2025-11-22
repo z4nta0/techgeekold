@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavBarCom } from './NavBarCom';
+import { store } from '../../store';
+import { navClickIncrement } from '../../store.tsx';
 
 interface NavBarComConProps {
 
@@ -7,15 +9,18 @@ interface NavBarComConProps {
 
 };
 
-// Leaving this for future reference
-/*type ClickCountObj = {
+/* Leaving this for future reference
+type ClickCountObj = {
 
   logoCount: number;
   homeCount: number;
 
-};*/
+};
+*/
 
 export function NavBarComCon ( props : NavBarComConProps ) : React.ReactElement {
+
+/* Leaving these old useState and handlers for future reference
 
   interface ClickCountObj {
 
@@ -94,6 +99,57 @@ export function NavBarComCon ( props : NavBarComConProps ) : React.ReactElement 
     };
 
   };
+*/
+
+
+
+  const handleLogoClick = () => {
+
+    store.dispatch(navClickIncrement( 'clickCountObj/logoCount' ));
+
+    const logoCount = store.getState().clickCountObj.logoCount;
+
+    alert(`You clicked on the logo link for the ${props.name} Home page ${logoCount} times!`);
+
+  };
+
+
+
+  const handleHomeClick = () => {
+
+    store.dispatch(navClickIncrement( 'clickCountObj/homeCount' ));
+
+    const homeCount = store.getState().clickCountObj.homeCount;
+
+    alert(`You clicked on the navbar link for the ${props.name} Home page ${homeCount} times!`);
+
+  };
+
+
+
+  const handleAboutClick = () => {
+
+    store.dispatch(navClickIncrement( 'clickCountArr/aboutCount' ));
+
+    const aboutCount = store.getState().clickCountArr[0];
+
+    alert(`You clicked on the navbar link for the ${props.name} About page ${aboutCount} times!`);
+
+  };
+
+
+
+  const handleContactClick = () => {
+
+    store.dispatch(navClickIncrement( 'clickCountArr/contactCount' ));
+
+    const contactCount = store.getState().clickCountArr[1];
+
+    alert(`You clicked on the navbar link for the ${props.name} Contact page ${contactCount} times!`);
+
+  };
+
+
 
   const [ data, setData ] = useState<string>('Empty Data');
 
@@ -133,7 +189,7 @@ export function NavBarComCon ( props : NavBarComConProps ) : React.ReactElement 
 
     <>
 
-      <NavBarCom name={props.name} bacEndDat={data} onAlertMsg1={handleClick1} onAlertMsg2={handleClick2} />
+      <NavBarCom name={props.name} bacEndDat={data} onLogoAlert={handleLogoClick} onHomeAlert={handleHomeClick} onAboutAlert={handleAboutClick} onContactAlert={handleContactClick} />
     
     </>
 
