@@ -3,17 +3,27 @@ import viteLogo from '/vite.svg';
 import './App.css';
 
 import { NavBarComCon } from './components/NavBar/NavBarComCon';
-import { counterIncrement, counterDecrement } from './store.tsx';
-import { useDispatch, useSelector } from 'react-redux';
+import { counterIncrement, counterDecrement } from './features/counterSlice.tsx';
+import { useSelector } from 'react-redux';
+import type { State } from './store.tsx';
 
-function App() : React.ReactElement {
 
-  const dispatch = useDispatch();
+
+interface AppProps {
+
+  state : State;
+  dispatch : Function;
+
+};
+
+function App( props : AppProps ) : React.ReactElement {
+
+  const { state, dispatch } = props;
 
   return (
     <>
       <div>
-        <NavBarComCon name="Tech Geek" />
+        <NavBarComCon name="Tech Geek" state={state} dispatch={dispatch} />
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>

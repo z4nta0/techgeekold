@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { NavBarCom } from './NavBarCom';
-import { store } from '../../store';
-import { navClickIncrement } from '../../store.tsx';
+import { clickCountArrIncrement } from './clickCountArrSlice.tsx';
+import { clickCountObjIncrement } from './clickCountObjSlice.tsx';
+import type { State } from '../../store.tsx';
 
 interface NavBarComConProps {
 
   name: string;
+
+  state: State;
+
+  dispatch: Function;
 
 };
 
@@ -19,6 +24,8 @@ type ClickCountObj = {
 */
 
 export function NavBarComCon ( props : NavBarComConProps ) : React.ReactElement {
+
+  const { name, state, dispatch } = props;
 
 /* Leaving these old useState and handlers for future reference
 
@@ -105,11 +112,11 @@ export function NavBarComCon ( props : NavBarComConProps ) : React.ReactElement 
 
   const handleLogoClick = () => {
 
-    store.dispatch(navClickIncrement( 'clickCountObj/logoCount' ));
+    dispatch(clickCountObjIncrement( 'clickCountObj/logoCount' ));
 
-    const logoCount = store.getState().clickCountObj.logoCount;
+    const logoCount = state.clickCountObj.logoCount;
 
-    alert(`You clicked on the logo link for the ${props.name} Home page ${logoCount} times!`);
+    alert(`You clicked on the logo link for the ${ name } Home page ${ logoCount } times!`);
 
   };
 
@@ -117,11 +124,11 @@ export function NavBarComCon ( props : NavBarComConProps ) : React.ReactElement 
 
   const handleHomeClick = () => {
 
-    store.dispatch(navClickIncrement( 'clickCountObj/homeCount' ));
+    dispatch(clickCountObjIncrement( 'clickCountObj/homeCount' ));
 
-    const homeCount = store.getState().clickCountObj.homeCount;
+    const homeCount = state.clickCountObj.homeCount;
 
-    alert(`You clicked on the navbar link for the ${props.name} Home page ${homeCount} times!`);
+    alert(`You clicked on the navbar link for the ${ name } Home page ${ homeCount } times!`);
 
   };
 
@@ -129,11 +136,11 @@ export function NavBarComCon ( props : NavBarComConProps ) : React.ReactElement 
 
   const handleAboutClick = () => {
 
-    store.dispatch(navClickIncrement( 'clickCountArr/aboutCount' ));
+    dispatch(clickCountArrIncrement( 'clickCountArr/aboutCount' ));
 
-    const aboutCount = store.getState().clickCountArr[0];
+    const aboutCount = state.clickCountArr[0];
 
-    alert(`You clicked on the navbar link for the ${props.name} About page ${aboutCount} times!`);
+    alert(`You clicked on the navbar link for the ${ name } About page ${ aboutCount } times!`);
 
   };
 
@@ -141,21 +148,21 @@ export function NavBarComCon ( props : NavBarComConProps ) : React.ReactElement 
 
   const handleContactClick = () => {
 
-    store.dispatch(navClickIncrement( 'clickCountArr/contactCount' ));
+    dispatch(clickCountArrIncrement( 'clickCountArr/contactCount' ));
 
-    const contactCount = store.getState().clickCountArr[1];
+    const contactCount = state.clickCountArr[1];
 
-    alert(`You clicked on the navbar link for the ${props.name} Contact page ${contactCount} times!`);
+    alert(`You clicked on the navbar link for the ${ name } Contact page ${ contactCount } times!`);
 
   };
 
 
 
-  const [ data, setData ] = useState<string>('Empty Data');
+  const [ data, setData ] = useState< string >( 'Empty Data' );
 
   useEffect( () => {
 
-    alert('Fetching data from API...');
+    alert( 'Fetching data from API...' );
 
     const fetchData = async () => {
 
@@ -170,12 +177,12 @@ export function NavBarComCon ( props : NavBarComConProps ) : React.ReactElement 
         const response = await fetch('../../mock-backend/data.json');
         const result : Response = await response.json();
 
-        setData(result.message);
+        setData( result.message );
 
-      } catch (error) {
+      } catch ( error ) {
 
-        setData('Error fetching data');
-        console.error('Error fetching data:', error);
+        setData( 'Error fetching data' );
+        console.error( 'Error fetching data:', error );
 
       }
 
@@ -189,8 +196,8 @@ export function NavBarComCon ( props : NavBarComConProps ) : React.ReactElement 
 
     <>
 
-      <NavBarCom name={props.name} bacEndDat={data} onLogoAlert={handleLogoClick} onHomeAlert={handleHomeClick} onAboutAlert={handleAboutClick} onContactAlert={handleContactClick} />
-    
+      <NavBarCom name={ name } state={ state } dispatch={ dispatch } bacEndDat={ data } onLogoAlert={ handleLogoClick } onHomeAlert={ handleHomeClick } onAboutAlert={ handleAboutClick } onContactAlert={ handleContactClick } />
+
     </>
 
   );

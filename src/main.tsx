@@ -11,8 +11,11 @@ const render = () => {
   
   root.render(
     <StrictMode>
-      <Provider store={store} >
-        <App />
+      <Provider store={ store } >
+        <App
+          state={ store.getState() }
+          dispatch={ store.dispatch }
+        />
       </Provider>
     </StrictMode>,
   );
