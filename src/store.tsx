@@ -1,44 +1,128 @@
 import { createStore } from 'redux';
 
 interface InitialState {
-    count: number;
+
+    counter : number;
+
+    clickCountObj : {
+
+        logoCount : number;
+        homeCount : number;
+
+    };
+
+    clickCountArr : [ number, number ];
+
 };
 
-const initialState : InitialState = { count: 0 };
+const initialState : InitialState = {
+    
+    counter : 0,
 
-export const increment = () : { type: string } => {
+    clickCountObj : {
+
+        logoCount : 0,
+        homeCount : 0,
+
+    },
+
+    clickCountArr : [ 0, 0 ],
+
+};
+
+interface DefaultAction {
+
+    type : string
+    payload? : number
+
+};
+
+
+const defaultAction : DefaultAction = {
+
+    type : ''
+
+};
+
+export const counterIncrement = ( payload : number ) : { type : string; payload : number } => {
 
     printCount();
 
-    if ( store.getState().count >= 10 ) {
+    if ( store.getState().counter >= 10 ) {
         alert("Count has reached 10, cannot increment further!");
         unsubscribe();
+        return { type : '', payload : 0 };
     }
 
-    return { type: 'increment' };
+    return { type: 'counter/increment', payload: payload };
 };
 
-export const decrement = () : { type: string } => {
+export const counterDecrement = ( payload : number ) : { type : string; payload : number } => {
 
     printCount();
 
-    if ( store.getState().count <= -10 ) {
+    if ( store.getState().counter <= -10 ) {
         alert("Count has reached -10, cannot increment further!");
         unsubscribe();
+        return { type : '', payload : 0 };
     }
 
-    return { type: 'decrement' };
+    return { type: 'counter/decrement', payload : payload };
 };
 
-const countReducer = ( state = initialState, action: { type: string } ) : InitialState => {
+export const navClickIncrement = ( type : string ) : { type : string } => {
+
+    return { type: type };
+
+};
+
+const countReducer = ( state : InitialState = initialState, action : DefaultAction = defaultAction ) : InitialState => {
+
+    const payload : number = action.payload === undefined ? 0 : action.payload;
 
     switch ( action.type ) {
 
-        case 'increment' :
-            return { count: state.count + 1 };
+        case 'counter/increment' :
+            return {
+                ...state,
+                counter: state.counter + payload
+            };
 
-        case 'decrement' :
-            return { count: state.count - 1 };
+        case 'counter/decrement' :
+            return {
+                ...state,
+                counter: state.counter - payload
+            };
+
+        case 'clickCountObj/logoCount' :
+            return {
+                ...state,
+                clickCountObj: {
+                    ...state.clickCountObj,
+                    logoCount: state.clickCountObj.logoCount + 1,
+                }
+            };
+
+        case 'clickCountObj/homeCount' :
+            return {
+                ...state,
+                clickCountObj: {
+                    ...state.clickCountObj,
+                    homeCount: state.clickCountObj.homeCount + 1,
+                }
+            };
+
+        case 'clickCountArr/aboutCount' :
+            return {
+                ...state,
+                clickCountArr: [ state.clickCountArr[0] + 1, state.clickCountArr[1] ]
+            };
+
+        case 'clickCountArr/contactCount' :
+            return {
+                ...state,
+                clickCountArr: [ state.clickCountArr[0], state.clickCountArr[1] + 1 ]
+            };
 
         default :
             return { ...state };
@@ -50,7 +134,7 @@ const countReducer = ( state = initialState, action: { type: string } ) : Initia
 export const store = createStore( countReducer );
 
 const printCount = () : void => {
-    console.log(`Current count is: ${store.getState().count}`);
+    console.log(`Current count is: ${store.getState().counter}`);
 };
 
 const unsubscribe = store.subscribe(printCount);

@@ -3,7 +3,7 @@ import viteLogo from '/vite.svg';
 import './App.css';
 
 import { NavBarComCon } from './components/NavBar/NavBarComCon';
-import { increment, decrement } from './store.tsx';
+import { counterIncrement, counterDecrement } from './store.tsx';
 import { useDispatch, useSelector } from 'react-redux';
 
 function App() : React.ReactElement {
@@ -23,11 +23,11 @@ function App() : React.ReactElement {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => { dispatch(increment()) }}>
-          count is {useSelector((state : { count : number }) => state.count)}
+        <button onClick={() => { dispatch(counterIncrement(2)) }}>
+          count is {useSelector((state : { counter : number }) => state.counter)}
         </button>
-        <button onClick={() => { dispatch(decrement())} }>
-          count is {useSelector((state : { count : number }) => state.count)}
+        <button onClick={() => { dispatch(counterDecrement(3))} }>
+          count is {useSelector((state : { counter : number }) => state.counter)}
         </button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
@@ -39,7 +39,10 @@ function App() : React.ReactElement {
     </>
   );
 
-  /*<
+
+
+/*
+  <
   const [count, setCount] = useState(0)
 
   return (
@@ -65,7 +68,10 @@ function App() : React.ReactElement {
         Click on the Vite and React logos to learn more
       </p>
     </>
-  )*/
+  )
+*/
+
+
 
 }
 
