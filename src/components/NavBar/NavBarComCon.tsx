@@ -3,6 +3,7 @@ import { NavBarCom } from './NavBarCom';
 import { clickCountArrIncrement } from './clickCountArrSlice.tsx';
 import { clickCountObjIncrement } from './clickCountObjSlice.tsx';
 import type { State } from '../../store.tsx';
+import { store } from '../../store.tsx';
 
 interface NavBarComConProps {
 
@@ -114,7 +115,8 @@ export function NavBarComCon ( props : NavBarComConProps ) : React.ReactElement 
 
     dispatch(clickCountObjIncrement( 'clickCountObj/logoCount' ));
 
-    const logoCount = state.clickCountObj.logoCount;
+    // These must use store.getState() instead of the state prop or it will use an outdated value
+    const logoCount = store.getState().clickCountObj.logoCount;
 
     alert(`You clicked on the logo link for the ${ name } Home page ${ logoCount } times!`);
 
@@ -126,7 +128,8 @@ export function NavBarComCon ( props : NavBarComConProps ) : React.ReactElement 
 
     dispatch(clickCountObjIncrement( 'clickCountObj/homeCount' ));
 
-    const homeCount = state.clickCountObj.homeCount;
+    // These must use store.getState() instead of the state prop or it will use an outdated value
+    const homeCount = store.getState().clickCountObj.homeCount;
 
     alert(`You clicked on the navbar link for the ${ name } Home page ${ homeCount } times!`);
 
@@ -138,7 +141,8 @@ export function NavBarComCon ( props : NavBarComConProps ) : React.ReactElement 
 
     dispatch(clickCountArrIncrement( 'clickCountArr/aboutCount' ));
 
-    const aboutCount = state.clickCountArr[0];
+    // These must use store.getState() instead of the state prop or it will use an outdated value
+    const aboutCount = store.getState().clickCountArr[0];
 
     alert(`You clicked on the navbar link for the ${ name } About page ${ aboutCount } times!`);
 
@@ -150,7 +154,8 @@ export function NavBarComCon ( props : NavBarComConProps ) : React.ReactElement 
 
     dispatch(clickCountArrIncrement( 'clickCountArr/contactCount' ));
 
-    const contactCount = state.clickCountArr[1];
+    // These must use store.getState() instead of the state prop or it will use an outdated value
+    const contactCount = store.getState().clickCountArr[1];
 
     alert(`You clicked on the navbar link for the ${ name } Contact page ${ contactCount } times!`);
 
