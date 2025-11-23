@@ -1,7 +1,7 @@
-import { combineReducers, createStore } from 'redux';
-import { clickCountArrReducer } from './components/NavBar/clickCountArrSlice.tsx';
-import { clickCountObjReducer } from './components/NavBar/clickCountObjSlice.tsx';
-import { counterReducer } from './features/counterSlice.tsx';
+import clickCountArrReducer from './components/NavBar/clickCountArrSlice.tsx';
+import clickCountObjReducer from './components/NavBar/clickCountObjSlice.tsx';
+import counterReducer from './features/counterSlice.tsx';
+import { configureStore } from '@reduxjs/toolkit';
 
 
 
@@ -22,12 +22,18 @@ export interface State {
 
 
 
-const reducers = {
+export const store = configureStore(
 
-    counter : counterReducer,
-    clickCountObj : clickCountObjReducer,
-    clickCountArr : clickCountArrReducer,
+    {
 
-};
+        reducer : {
 
-export const store = createStore( combineReducers( reducers ) );
+            counter : counterReducer,
+            clickCountObj: clickCountObjReducer,
+            clickCountArr: clickCountArrReducer,
+
+        },
+
+    }
+
+);

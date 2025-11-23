@@ -1,3 +1,8 @@
+import { createSlice } from '@reduxjs/toolkit';
+
+
+
+/* Leaving this for future reference
 interface ClickCountObj {
 
     logoCount : number;
@@ -52,3 +57,71 @@ export const clickCountObjReducer = ( clickCountObj : ClickCountObj = initialCli
     };
 
 };
+*/
+
+
+
+interface InitialState {
+
+    logoCount : number;
+    homeCount : number;
+
+};
+
+const initialState : InitialState = {
+
+    logoCount : 0,
+    homeCount : 0,
+
+};
+
+interface Options {
+
+    name         : string;
+
+    initialState : InitialState;
+
+    reducers     : {
+
+        logoCount : ( state : InitialState ) => InitialState;
+        homeCount : ( state : InitialState ) => InitialState;
+
+    };
+
+};
+
+const options : Options = {
+
+    name         : 'clickCountObj',
+
+    initialState : initialState,
+
+    reducers     : {
+
+        logoCount : ( state = initialState ) => {
+
+            return {
+                ...state,
+                logoCount : state.logoCount + 1,
+            };
+
+        },
+
+        homeCount : ( state = initialState ) => {
+
+            return {
+                ...state,
+                homeCount : state.homeCount + 1,
+            };
+
+        },
+
+    },
+
+};
+
+export const clickCountObjSlice = createSlice( options );
+
+export const { logoCount, homeCount } = clickCountObjSlice.actions;
+
+export default clickCountObjSlice.reducer;

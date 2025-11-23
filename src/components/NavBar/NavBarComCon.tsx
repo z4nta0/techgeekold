@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavBarCom } from './NavBarCom';
-import { clickCountArrIncrement } from './clickCountArrSlice.tsx';
-import { clickCountObjIncrement } from './clickCountObjSlice.tsx';
+import { aboutCount, contactCount } from './clickCountArrSlice.tsx';
+import { logoCount, homeCount } from './clickCountObjSlice.tsx';
 import type { State } from '../../store.tsx';
 import { store } from '../../store.tsx';
 
@@ -14,6 +14,8 @@ interface NavBarComConProps {
   dispatch: Function;
 
 };
+
+
 
 /* Leaving this for future reference
 type ClickCountObj = {
@@ -113,12 +115,12 @@ export function NavBarComCon ( props : NavBarComConProps ) : React.ReactElement 
 
   const handleLogoClick = () => {
 
-    dispatch(clickCountObjIncrement( 'clickCountObj/logoCount' ));
+    dispatch(logoCount());
 
     // These must use store.getState() instead of the state prop or it will use an outdated value
-    const logoCount = store.getState().clickCountObj.logoCount;
+    const logoCountNum = store.getState().clickCountObj.logoCount;
 
-    alert(`You clicked on the logo link for the ${ name } Home page ${ logoCount } times!`);
+    alert(`You clicked on the logo link for the ${ name } Home page ${ logoCountNum } times!`);
 
   };
 
@@ -126,12 +128,12 @@ export function NavBarComCon ( props : NavBarComConProps ) : React.ReactElement 
 
   const handleHomeClick = () => {
 
-    dispatch(clickCountObjIncrement( 'clickCountObj/homeCount' ));
+    dispatch(homeCount());
 
     // These must use store.getState() instead of the state prop or it will use an outdated value
-    const homeCount = store.getState().clickCountObj.homeCount;
+    const homeCountNum = store.getState().clickCountObj.homeCount;
 
-    alert(`You clicked on the navbar link for the ${ name } Home page ${ homeCount } times!`);
+    alert(`You clicked on the navbar link for the ${ name } Home page ${ homeCountNum } times!`);
 
   };
 
@@ -139,12 +141,12 @@ export function NavBarComCon ( props : NavBarComConProps ) : React.ReactElement 
 
   const handleAboutClick = () => {
 
-    dispatch(clickCountArrIncrement( 'clickCountArr/aboutCount' ));
+    dispatch(aboutCount());
 
     // These must use store.getState() instead of the state prop or it will use an outdated value
-    const aboutCount = store.getState().clickCountArr[0];
+    const aboutCountNum = store.getState().clickCountArr[0];
 
-    alert(`You clicked on the navbar link for the ${ name } About page ${ aboutCount } times!`);
+    alert(`You clicked on the navbar link for the ${ name } About page ${ aboutCountNum } times!`);
 
   };
 
@@ -152,12 +154,12 @@ export function NavBarComCon ( props : NavBarComConProps ) : React.ReactElement 
 
   const handleContactClick = () => {
 
-    dispatch(clickCountArrIncrement( 'clickCountArr/contactCount' ));
+    dispatch(contactCount());
 
     // These must use store.getState() instead of the state prop or it will use an outdated value
-    const contactCount = store.getState().clickCountArr[1];
+    const contactCountNum = store.getState().clickCountArr[1];
 
-    alert(`You clicked on the navbar link for the ${ name } Contact page ${ contactCount } times!`);
+    alert(`You clicked on the navbar link for the ${ name } Contact page ${ contactCountNum } times!`);
 
   };
 

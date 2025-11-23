@@ -1,3 +1,8 @@
+import { createSlice } from '@reduxjs/toolkit';
+
+
+
+/* Leaving this for future reference
 type ClickCountArr = [ number, number ];
 
 const initialClickCountArr : ClickCountArr = [ 0, 0 ];
@@ -36,3 +41,55 @@ export const clickCountArrReducer = ( clickCountArr : ClickCountArr = initialCli
     }
 
 };
+*/
+
+
+
+type InitialState = [ number, number ];
+
+const initialState : InitialState = [ 0, 0 ];
+
+interface Options {
+
+    name         : string;
+
+    initialState : InitialState;
+
+    reducers     : {
+
+        aboutCount   : ( state : InitialState ) => InitialState;
+        contactCount : ( state : InitialState ) => InitialState;
+
+    };
+
+};
+
+const options : Options = {
+
+    name         : 'clickCountArr',
+
+    initialState : initialState,
+
+    reducers     : {
+
+        aboutCount   : ( state = initialState ) => {
+
+            return [ state[0] + 1, state[1] ];
+
+        },
+
+        contactCount : ( state = initialState ) => {
+
+            return [ state[0], state[1] + 1 ];
+
+        },
+
+    },
+
+};
+
+export const clickCountArrSlice = createSlice( options );
+
+export const { aboutCount, contactCount } = clickCountArrSlice.actions;
+
+export default clickCountArrSlice.reducer;

@@ -3,7 +3,7 @@ import viteLogo from '/vite.svg';
 import './App.css';
 
 import { NavBarComCon } from './components/NavBar/NavBarComCon';
-import { counterIncrement, counterDecrement } from './features/counterSlice.tsx';
+import { increment, decrement } from './features/counterSlice.tsx';
 import { useSelector } from 'react-redux';
 import type { State } from './store.tsx';
 
@@ -33,10 +33,10 @@ function App( props : AppProps ) : React.ReactElement {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => { dispatch(counterIncrement(2)) }}>
+        <button onClick={() => { dispatch(increment(2)) }}>
           count is {useSelector((state : { counter : number }) => state.counter)}
         </button>
-        <button onClick={() => { dispatch(counterDecrement(3))} }>
+        <button onClick={() => { dispatch(decrement(3))} }>
           count is {useSelector((state : { counter : number }) => state.counter)}
         </button>
         <p>

@@ -1,3 +1,8 @@
+import { createSlice } from '@reduxjs/toolkit';
+
+
+
+/* Leaving this for future reference
 export const counterIncrement = ( payload : number ) : { type : string; payload : number } => {
 
     return { type : 'counter/increment', payload: payload };
@@ -42,3 +47,69 @@ export const counterReducer = ( counter : number = intialCounter, action : Count
     };
 
 };
+*/
+
+
+
+type InitialState = number;
+
+const initialState = 0;
+
+interface Action {
+
+    type    : string;
+    payload : number;
+
+};
+
+const defaultAction : Action = {
+
+    type    : '',
+    payload : 0,
+
+};
+
+interface Options {
+
+    name         : string;
+
+    initialState : InitialState;
+
+    reducers     : {
+
+        increment : ( state : InitialState, action : Action ) => number;
+        decrement : ( state : InitialState, action : Action ) => number;
+
+    };
+
+};
+
+const options : Options = {
+
+    name         : 'counter',
+
+    initialState : initialState,
+
+    reducers     : {
+
+        increment : ( state = initialState, action = defaultAction ) => {
+
+            return state + action.payload;
+
+        },
+
+        decrement : ( state = initialState, action = defaultAction ) => {
+
+            return state - action.payload;
+
+        },
+
+    },
+
+};
+
+export const counterSlice = createSlice( options );
+
+export const { increment, decrement } = counterSlice.actions;
+
+export default counterSlice.reducer;
