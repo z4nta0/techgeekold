@@ -18,7 +18,11 @@ interface AppProps {
 
 function App( props : AppProps ) : React.ReactElement {
 
+
+
   const { state, dispatch } = props;
+
+
 
   return (
     <>
