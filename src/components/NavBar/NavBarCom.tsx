@@ -31,12 +31,12 @@ export function NavBarCom ( props : NavBarComProps ) : React.ReactElement {
                 <img src={ reactLogo } alt="React logo" />
                 <p className={ styles.NavBarCom_logoTxt }>{ name }</p>
             </a>
+            <p>{ bacEndDat === undefined ? "Data should go here" : bacEndDat }</p>
             <ul className={ styles.NavBarCom_ul }>
                 <li><a onClick={ onHomeAlert } data-linkname="navbar" data-clickname="homeCount" href="#home" className={ styles.NavBarCom_anchor }>Home</a></li>
                 <li><a onClick={ onAboutAlert } data-linkname="About" data-clickindex="0" href="#about" className={ styles.NavBarCom_anchor }>About</a></li>
                 <li><a onClick={ onContactAlert } data-linkname="Contact" data-clickindex="1" href="#contact" className={ styles.NavBarCom_anchor }>Contact</a></li>
             </ul>
-            <p>{ bacEndDat === undefined ? "Data should go here" : bacEndDat }</p>
         </nav>
 
     );

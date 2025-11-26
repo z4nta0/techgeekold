@@ -25,32 +25,81 @@ function App( props : AppProps ) : React.ReactElement {
 
 
   return (
+
     <>
-      <div>
-        <NavBarComCon name="Tech Geek" state={state} dispatch={dispatch} />
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => { dispatch(increment(2)) }}>
-          count is {useSelector((state : { counter : number }) => state.counter)}
-        </button>
-        <button onClick={() => { dispatch(decrement(3))} }>
-          count is {useSelector((state : { counter : number }) => state.counter)}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more. Netlify testing...
-      </p>
+
+      <div className="gridRoot">
+
+
+
+        <div className="gridNav">
+
+          <NavBarComCon name="Tech Geek" state={state} dispatch={dispatch} />
+
+        </div> { /* End gridNav */ }
+
+
+
+        <div className="gridHead">
+
+          <div>
+
+            <h1>Vite + React</h1>
+
+          </div>
+
+          <div className="gridHeadSub">
+
+            <a href="https://vite.dev" target="_blank">
+              <img src={viteLogo} className="logo" alt="Vite logo" />
+            </a>
+
+            <a href="https://react.dev" target="_blank">
+              <img src={reactLogo} className="logo react" alt="React logo" />
+            </a>
+
+          </div>
+
+        </div> { /* End gridHead */ }
+
+
+
+        <div className="gridMain">
+
+          <div className="card">
+
+            <button onClick={() => { dispatch(increment(2)) }}>
+              count is {useSelector((state : { counter : number }) => state.counter)}
+            </button>
+
+            <button onClick={() => { dispatch(decrement(3))} }>
+              count is {useSelector((state : { counter : number }) => state.counter)}
+            </button>
+
+          </div>
+
+            <p>
+              Edit <code>src/App.tsx</code> and save to test HMR
+            </p>
+
+        </div> { /* End gridMain */ }
+
+
+
+        <div className="gridFoot">
+
+          <p className="read-the-docs">
+            Click on the Vite and React logos to learn more.
+          </p>
+
+        </div> { /* End gridFoot */ }
+
+
+
+      </div> { /* End gridRoot */ }
+
     </>
+
   );
 
 
