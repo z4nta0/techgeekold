@@ -472,6 +472,22 @@ function ChristmasCard () {
 
     useEffect( () => {
 
+        // #region GSAP Text Animation
+
+        const split = SplitText.create( '.split', { type: 'words, chars' } ); // split elements with the class 'split' into words and characters
+
+        // animate the characters in a staggered fashion
+        gsap.from( split.chars, {
+
+            duration  : 3,   // animation duration in seconds
+            x         : 10,  // animate from 10px to the left
+            autoAlpha : 0,   // fade in from opacity : 0 and visibility : hidden
+            stagger   : 0.05 // 0.05 seconds between each character
+
+        });
+
+        // #endregion GSAP Text Animation
+
         // #region Snowflake Animation Section
 
         // #region Function Variables
@@ -535,7 +551,7 @@ function ChristmasCard () {
 
         // #region Section Element
 
-        < section id='conSecEle' className={ `${styles.container} split` } >
+        < section id='conSecEle' className={ `${ styles.container } split` } >
 
             < h1  id='conHe1Ele' className={ styles.header1 }>Merry Christmas, Mom!</ h1 >
 
