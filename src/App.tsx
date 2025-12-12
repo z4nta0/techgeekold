@@ -6,7 +6,7 @@ import type { State } from './store.tsx';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import About from './components/About.tsx';
 import Contact from './components/Contact.tsx';
-import ChristmasCard from './components/ChristmasCard.tsx';
+import ChristmasCard from './components/Christmas Card/ChristmasCard.tsx';
 import Home from './components/Home.tsx';
 
 
@@ -34,7 +34,7 @@ function App( props : AppProps ) : React.ReactElement {
 
 
 
-      <main>
+      <main id="main">
         <Routes>
           <Route path="/" element={<Home state={ state } dispatch={ dispatch } />} />
           <Route path="/about" element={ <About /> } />

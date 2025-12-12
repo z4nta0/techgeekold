@@ -1,0 +1,66 @@
+
+@font-face {
+
+    font-family : 'Gloria Hallelujah';
+    src         : url('../../assets/fonts/GloriaHallelujah-Regular.ttf');
+
+    font-family : 'Mountains of Christmas';
+    src         : url('../../assets/fonts/MountainsofChristmas-Bold.ttf');
+
+}
+
+.container {
+
+    background-image    : url('../../assets/background.jpg');
+    background-position : center;
+    background-repeat   : no-repeat;
+    background-size     : cover;
+    color               : white;
+    font-size           : 16px;
+    height              : 100%;
+    margin              : auto;
+    position            : relative;
+    width               : 100%;
+
+}
+
+.header1 {
+
+    font-family : "Mountains of Christmas", cursive;
+    font-size   : 3.5em;
+    margin     : 0;
+    padding-top : 0.5em;
+    text-align  : center;
+
+}
+
+.paragraph {
+
+    bottom           : 0.33rem;
+    font-family      : "Gloria Hallelujah", cursive;
+    font-size        : 3rem;
+    margin           : 0;
+    position         : absolute;
+    right            : 1rem;
+
+}
+
+.snowmanImg {
+
+    bottom        : 3rem;
+    left          : 3rem;
+    position      : absolute;
+    transform     : rotateZ( 5deg );
+    width         : 6rem;
+
+}
+
+.span {
+
+    font-family : "Mountains of Christmas", cursive;
+    font-size   : 3rem;
+    font-weight : bold;
+
+}
+
+

@@ -1,8 +1,9 @@
 .gridNav {
 
-  display: grid;
-  grid-template-rows: 100%;
-  min-height: 10vh;
+    display: grid;
+    grid-area: navbar;
+    grid-template-rows: 100%;
+    min-height: 10vh;
 
 }
 
