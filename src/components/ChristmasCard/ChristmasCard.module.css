@@ -1,0 +1,182 @@
+
+/* #region Font Face Declarations */
+
+@font-face {
+
+    font-family : 'Rubik Glitch';
+    src         : url( '../../assets/fonts/RubikGlitch-Regular.ttf' );
+
+}
+
+@font-face {
+
+    font-family : 'Nosifer';
+    src         : url( '../../assets/fonts/Nosifer-Regular.ttf' );
+
+}
+
+@font-face {
+
+    font-family : 'Gloria Hallelujah';
+    src         : url( '../../assets/fonts/GloriaHallelujah-Regular.ttf' );
+
+}
+
+@font-face {
+
+    font-family : 'Mountains of Christmas';
+    src         : url( '../../assets/fonts/MountainsofChristmas-Bold.ttf' );
+
+}
+
+/* #endregion Font Face Declarations */
+
+
+
+/* #region Component Section */
+
+.componentSection {
+
+    display               : grid;
+    grid-template-columns : 100%; /* this, in combination with grid-column : 1 on direct grid children, will make the sections stack on top of each other */
+    grid-template-rows    : 100%; /* this, in combination with grid-row    : 1 on direct grid children, will make the sections stack on top of each other */
+    height                : 100%;
+    margin-top            : 10px;
+    width                 : 100%;
+
+}
+
+/* #endregion Component Section */
+
+
+
+/* #region Pixelated Transition Squares Section */
+
+.squaresSection {
+
+    display     : grid;
+    gap         : 0;
+    grid-column : 1; /* because only one column is defined on the parent, this will make the sections stack on top of each other */
+    grid-row    : 1; /* because only one row    is defined on the parent, this will make the sections stack on top of each other */
+    z-index     : 3; /* this is required in order to be on top of the snowfall section, which has a z-index : 2 in order to be on top of the hacked section */
+
+}
+
+.squares {
+
+    background-color : #242424; /* this should, ideally, be the same color as the page background but doesn't have to be */
+
+}
+
+/* #endregion Pixelated Transition Squares Section */
+
+
+
+/* #region Hacked Section */
+
+.hackedSection {
+
+    background-image    : url( '../../assets/pirate-background.jpg' );
+    background-position : center;
+    background-repeat   : no-repeat;
+    background-size     : cover;
+    color               : #FF0E0E;
+    container-type      : inline-size; /* text sizing based on the container dimensions, which helps with the .hackedHeader1 font-size not causing container resizing for certain viewport dimenions */
+    grid-column         : 1;           /* because only one column is defined on the parent, this will make the sections stack on top of each other */
+    grid-row            : 1;           /* because only one row    is defined on the parent, this will make the sections stack on top of each other */
+    position            : relative;    /* this is needed for positioning the .hackedParagraph text */
+
+}
+
+.hackedHeader1 {
+
+    font-family : 'Rubik Glitch', cursive;
+    font-size   : 9cqw;                  /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
+    margin      : 0;
+    padding-top : 0.33rem;
+    text-align  : center;
+    text-shadow : #FFFFFF 1px 1px 3px; /* this makes the text more legible in addition to giving it some depth and making it look like it overlays the background image, as opposed to being part of it */
+
+}
+
+.hackedParagraph {
+
+    bottom        : 0.33rem;
+    font-family   : 'Nosifer', cursive;
+    font-size     : 2rem;
+    left          : 0.33rem;
+    margin        : 0;
+    padding-right : 0.33rem;               /* makes sure there is a gap on the right side equal to the above left positioning value */
+    position      : absolute;
+    text-align    : center;
+    text-shadow   : #FFFFFF 1px 1px 3px; /* this makes the text more legible in addition to giving it some depth and making it look like it overlays the background image, as opposed to being part of it */
+
+}
+
+/* #endregion Hacked Section */
+
+
+
+/* #region Snowfall Section */
+
+.snowfallSection {
+
+    background-image    : url( '../../assets/snowy-background.jpg' );
+    background-position : center;
+    background-repeat   : no-repeat;
+    background-size     : cover;
+    color               : #FFFFFF;
+    font-size           : 3rem;
+    grid-column         : 1;        /* because only one column is defined on the parent, this will make the sections stack on top of each other */
+    grid-row            : 1;        /* because only one row    is defined on the parent, this will make the sections stack on top of each other */
+    opacity             : 0;        /* this needs to be set to 0 so that it does not cover the hacked section and will be animted to a value of 1 by the GSAP animation */
+    position            : relative; /* this is needed for positioning the .snowfallParagraph text */
+    z-index             : 2;        /* this needs to be set to 2 so that it is not covered up by the hacked section; the pixelated squares section will be set to 3 in order to overlay this (and all other) sections */
+
+}
+
+.snowfallHeader1 {
+
+    font-family : 'Mountains of Christmas', cursive;
+    font-size   : 3.5rem;
+    text-align  : center;
+    text-shadow : #000000 3px 3px 6px; /* this makes the text more legible in addition to giving it some depth and making it look like it overlays the background image, as opposed to being part of it */
+
+}
+
+.snowfallImage {
+
+    bottom    : 3rem;
+    left      : 3rem;
+    position  : absolute;
+    transform : rotateZ( 5deg );
+    width     : 6rem;
+
+}
+
+.snowfallParagraph {
+
+    bottom      : 0.33rem;
+    font-family : 'Gloria Hallelujah', cursive;
+    font-size   : 3rem;
+    line-height : 3rem;
+    margin      : 0;
+    position    : absolute;
+    right       : 0.33rem;
+    text-shadow : #000000 3px 3px 6px; /* this makes the text more legible in addition to giving it some depth and making it look like it overlays the background image, as opposed to being part of it */
+
+}
+
+.snowfallSpan {
+
+    font-family : 'Mountains of Christmas', cursive;
+    font-size   : 3rem;
+    font-weight : bold;
+    line-height : 3rem;
+    text-shadow : #000000 3px 3px 6px; /* this makes the text more legible in addition to giving it some depth and making it look like it overlays the background image, as opposed to being part of it */
+
+}
+
+/* #endregion Snowfall Section */
+
+
