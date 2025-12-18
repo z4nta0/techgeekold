@@ -800,11 +800,11 @@ function ChristmasCard () {
 
     return (
 
-        < section id='comSecEle' className={ styles.componentSection } >
+        <  section id='comSecEle' className={ styles.componentSection } >
 
             { /* Start Squares Section Element (Pixelated Transition Effect) */}
 
-            < section id='squSecEle' className={ styles.squaresSection } >
+            <  section id='squSecEle' className={ styles.squaresSection } >
 
                 < div className={ `${ styles.squares } pixelatedTransitionSquares `} ></ div >
                 < div className={ `${ styles.squares } pixelatedTransitionSquares `} ></ div >
@@ -1265,11 +1265,11 @@ function ChristmasCard () {
 
             { /* Start Hacked Section Element */}
 
-            < section id='hacSecEle' className={ styles.hackedSection } >
+            <  section id='hacSecEle' className={ styles.hackedSection } >
 
-                < h1  id='hacHe1Ele' className={ styles.hackedHeader1 }></ h1 >
+                < h1  id='hacHe1Ele'  className={ styles.hackedHeader1 }></ h1 >
 
-                < p   id='hacParEle' className={ ` ${ styles.hackedParagraph } hackedSplitText ` } >Just kidding! But it just goes to show you that you should never trust a QR code! Christmas present incoming...</ p >
+                < p   id='hacParEle'  className={ ` ${ styles.hackedParagraph } hackedSplitText ` } >Just kidding! But it just goes to show you that you should never trust a QR code! Christmas present incoming...</ p >
 
             </ section >
 
@@ -1279,13 +1279,13 @@ function ChristmasCard () {
 
             { /* Start Snowfall Section Element */}
 
-            < section id='snoSecEle' className={ `${ styles.snowfallSection } snowfallSplitText` } >
+            <  section id='snoSecEle' className={ `${ styles.snowfallSection } snowfallSplitText` } >
 
-                < h1  id='snoHe1Ele' className={ styles.snowfallHeader1 }>Merry Christmas, { namParStr }!</ h1 >
+                < h1  id='snoHe1Ele'  className={ styles.snowfallHeader1 }>Merry Christmas, { namParStr }!</ h1 >
 
-                < img id='snoImgEle' className={ styles.snowfallImage } src={ snowman } />
+                < img id='snoImgEle'  className={ styles.snowfallImage } src={ snowman } />
 
-                < p   id='snoParEle' className={ styles.snowfallParagraph } >< span id='snoSpaEle' className={ styles.snowfallSpan } >From,</ span > Mr. Awesome</ p >
+                < p   id='snoParEle'  className={ styles.snowfallParagraph } >< span id='snoSpaEle' className={ styles.snowfallSpan } >From,</ span > Mr. Awesome</ p >
 
             </ section >
 

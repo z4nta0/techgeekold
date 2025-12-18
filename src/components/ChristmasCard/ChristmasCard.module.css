@@ -91,11 +91,11 @@
 .hackedHeader1 {
 
     font-family : 'Rubik Glitch', cursive;
-    font-size   : 9cqw;                  /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
+    font-size   : clamp(5cqw, 8cqw, 9cqw); /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
     margin      : 0;
     padding-top : 0.33rem;
     text-align  : center;
-    text-shadow : #FFFFFF 1px 1px 3px; /* this makes the text more legible in addition to giving it some depth and making it look like it overlays the background image, as opposed to being part of it */
+    text-shadow : #FFFFFF 1px 1px 3px;     /* this makes the text more legible in addition to giving it some depth and making it look like it overlays the background image, as opposed to being part of it */
 
 }
 
@@ -103,13 +103,13 @@
 
     bottom        : 0.33rem;
     font-family   : 'Nosifer', cursive;
-    font-size     : 2rem;
+    font-size     : clamp(2cqw, 2cqw, 4cqw); /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
     left          : 0.33rem;
     margin        : 0;
-    padding-right : 0.33rem;               /* makes sure there is a gap on the right side equal to the above left positioning value */
+    padding-right : 0.33rem;                   /* makes sure there is a gap on the right side equal to the above left positioning value */
     position      : absolute;
     text-align    : center;
-    text-shadow   : #FFFFFF 1px 1px 3px; /* this makes the text more legible in addition to giving it some depth and making it look like it overlays the background image, as opposed to being part of it */
+    text-shadow   : #FFFFFF 1px 1px 3px;     /* this makes the text more legible in addition to giving it some depth and making it look like it overlays the background image, as opposed to being part of it */
 
 }
 
@@ -126,31 +126,32 @@
     background-repeat   : no-repeat;
     background-size     : cover;
     color               : #FFFFFF;
+    container-type      : inline-size; /* text sizing based on the container dimensions, which helps with the .hackedHeader1 font-size not causing container resizing for certain viewport dimenions */
     font-size           : 3rem;
-    grid-column         : 1;        /* because only one column is defined on the parent, this will make the sections stack on top of each other */
-    grid-row            : 1;        /* because only one row    is defined on the parent, this will make the sections stack on top of each other */
-    opacity             : 0;        /* this needs to be set to 0 so that it does not cover the hacked section and will be animted to a value of 1 by the GSAP animation */
-    position            : relative; /* this is needed for positioning the .snowfallParagraph text */
-    z-index             : 2;        /* this needs to be set to 2 so that it is not covered up by the hacked section; the pixelated squares section will be set to 3 in order to overlay this (and all other) sections */
+    grid-column         : 1;           /* because only one column is defined on the parent, this will make the sections stack on top of each other */
+    grid-row            : 1;           /* because only one row    is defined on the parent, this will make the sections stack on top of each other */
+    opacity             : 0;           /* this needs to be set to 0 so that it does not cover the hacked section and will be animted to a value of 1 by the GSAP animation */
+    position            : relative;    /* this is needed for positioning the .snowfallParagraph text */
+    z-index             : 2;           /* this needs to be set to 2 so that it is not covered up by the hacked section; the pixelated squares section will be set to 3 in order to overlay this (and all other) sections */
 
 }
 
 .snowfallHeader1 {
 
     font-family : 'Mountains of Christmas', cursive;
-    font-size   : 3.5rem;
+    font-size   : clamp(2cqw, 5cqw, 6cqw); /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
     text-align  : center;
-    text-shadow : #000000 3px 3px 6px; /* this makes the text more legible in addition to giving it some depth and making it look like it overlays the background image, as opposed to being part of it */
+    text-shadow : #000000 3px 3px 6px;       /* this makes the text more legible in addition to giving it some depth and making it look like it overlays the background image, as opposed to being part of it */
 
 }
 
 .snowfallImage {
 
-    bottom    : 3rem;
-    left      : 3rem;
-    position  : absolute;
-    transform : rotateZ( 5deg );
-    width     : 6rem;
+    bottom     : 3rem;
+    left       : 3rem;
+    position   : absolute;
+    transform  : rotateZ( 5deg );
+    width      : 6rem;
 
 }
 
@@ -158,21 +159,21 @@
 
     bottom      : 0.33rem;
     font-family : 'Gloria Hallelujah', cursive;
-    font-size   : 3rem;
-    line-height : 3rem;
+    font-size   : clamp(3cqw, 3cqw, 5cqw); /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
+    line-height : clamp(3cqw, 3cqw, 5cqw);
     margin      : 0;
     position    : absolute;
     right       : 0.33rem;
-    text-shadow : #000000 3px 3px 6px; /* this makes the text more legible in addition to giving it some depth and making it look like it overlays the background image, as opposed to being part of it */
+    text-shadow : #000000 3px 3px 6px;  /* this makes the text more legible in addition to giving it some depth and making it look like it overlays the background image, as opposed to being part of it */
 
 }
 
 .snowfallSpan {
 
     font-family : 'Mountains of Christmas', cursive;
-    font-size   : 3rem;
+    font-size   : clamp(3cqw, 3cqw, 5cqw);                  /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
     font-weight : bold;
-    line-height : 3rem;
+    line-height : clamp(3cqw, 3cqw, 5cqw);
     text-shadow : #000000 3px 3px 6px; /* this makes the text more legible in addition to giving it some depth and making it look like it overlays the background image, as opposed to being part of it */
 
 }
