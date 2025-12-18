@@ -103,7 +103,7 @@
 
     bottom        : 0.33rem;
     font-family   : 'Nosifer', cursive;
-    font-size     : clamp(2cqw, 2cqw, 4cqw); /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
+    font-size     : clamp(4cqw, 4.5cqw, 5cqw); /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
     left          : 0.33rem;
     margin        : 0;
     padding-right : 0.33rem;                   /* makes sure there is a gap on the right side equal to the above left positioning value */
@@ -139,7 +139,7 @@
 .snowfallHeader1 {
 
     font-family : 'Mountains of Christmas', cursive;
-    font-size   : clamp(2cqw, 5cqw, 6cqw); /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
+    font-size   : clamp(5cqw, 8cqw, 9cqw); /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
     text-align  : center;
     text-shadow : #000000 3px 3px 6px;       /* this makes the text more legible in addition to giving it some depth and making it look like it overlays the background image, as opposed to being part of it */
 
@@ -159,8 +159,8 @@
 
     bottom      : 0.33rem;
     font-family : 'Gloria Hallelujah', cursive;
-    font-size   : clamp(3cqw, 3cqw, 5cqw); /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
-    line-height : clamp(3cqw, 3cqw, 5cqw);
+    font-size   : clamp(3cqw, 4cqw, 5cqw); /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
+    line-height : clamp(3cqw, 4cqw, 5cqw);
     margin      : 0;
     position    : absolute;
     right       : 0.33rem;
@@ -171,9 +171,9 @@
 .snowfallSpan {
 
     font-family : 'Mountains of Christmas', cursive;
-    font-size   : clamp(3cqw, 3cqw, 5cqw);                  /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
+    font-size   : clamp(3cqw, 4cqw, 5cqw);                  /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
     font-weight : bold;
-    line-height : clamp(3cqw, 3cqw, 5cqw);
+    line-height : clamp(3cqw, 4cqw, 5cqw);
     text-shadow : #000000 3px 3px 6px; /* this makes the text more legible in addition to giving it some depth and making it look like it overlays the background image, as opposed to being part of it */
 
 }
