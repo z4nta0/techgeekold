@@ -81,6 +81,7 @@
     background-repeat   : no-repeat;
     background-size     : cover;
     color               : #FF0E0E;
+    container-name      : hackedSection;
     container-type      : inline-size; /* text sizing based on the container dimensions, which helps with the .hackedHeader1 font-size not causing container resizing for certain viewport dimenions */
     grid-column         : 1;           /* because only one column is defined on the parent, this will make the sections stack on top of each other */
     grid-row            : 1;           /* because only one row    is defined on the parent, this will make the sections stack on top of each other */
@@ -91,9 +92,10 @@
 .hackedHeader1 {
 
     font-family : 'Rubik Glitch', cursive;
-    font-size   : clamp(5cqw, 8cqw, 9cqw); /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
+    font-size   : 8cqw; /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
+    line-height : 8cqw;
     margin      : 0;
-    padding-top : 0.33rem;
+    padding     : 0.33rem;
     text-align  : center;
     text-shadow : #FFFFFF 1px 1px 3px;     /* this makes the text more legible in addition to giving it some depth and making it look like it overlays the background image, as opposed to being part of it */
 
@@ -101,23 +103,33 @@
 
 .hackedParagraph {
 
-    bottom        : 0.33rem;
-    font-family   : 'Nosifer', cursive;
-    font-size     : clamp(4cqw, 4.5cqw, 5cqw); /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
-    left          : 0.33rem;
-    margin        : 0;
-    padding-right : 0.33rem;                   /* makes sure there is a gap on the right side equal to the above left positioning value */
-    position      : absolute;
-    text-align    : center;
-    text-shadow   : #FFFFFF 1px 1px 3px;     /* this makes the text more legible in addition to giving it some depth and making it look like it overlays the background image, as opposed to being part of it */
+    bottom         : 0.33rem;
+    font-family    : 'Nosifer', cursive;
+    font-size      : 3cqw; /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
+    left           : 0.33rem;
+    line-height    : 4cqw;
+    margin         : 0;
+    padding-bottom : 0.33rem;                /* makes sure there is a gap on the bottom side equal to the above top positioning value */
+    padding-right  : 0.33rem;                   /* makes sure there is a gap on the right side equal to the above left positioning value */
+    position       : absolute;
+    text-align     : center;
+    text-shadow    : #FFFFFF 1px 1px 3px;     /* this makes the text more legible in addition to giving it some depth and making it look like it overlays the background image, as opposed to being part of it */
 
 }
 
-@media (orientation: landscape) {
+@container hackedSection ( max-width: 550px ) {
+
+    .hackedHeader1 {
+
+        font-size   : 10cqw; /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
+        line-height : 10cqw;
+
+    }
 
     .hackedParagraph {
 
-        font-size : clamp(2cqw, 3cqw, 4cqw); /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
+        font-size   : 6cqw; /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
+        line-height : 7cqw;
 
     }
 
@@ -136,6 +148,7 @@
     background-repeat   : no-repeat;
     background-size     : cover;
     color               : #FFFFFF;
+    container-name      : snowfallSection;
     container-type      : inline-size; /* text sizing based on the container dimensions, which helps with the .hackedHeader1 font-size not causing container resizing for certain viewport dimenions */
     font-size           : 3rem;
     grid-column         : 1;           /* because only one column is defined on the parent, this will make the sections stack on top of each other */
@@ -149,7 +162,8 @@
 .snowfallHeader1 {
 
     font-family : 'Mountains of Christmas', cursive;
-    font-size   : clamp(5cqw, 8cqw, 9cqw); /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
+    font-size   : 5cqw; /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
+    line-height : 5cqw;
     text-align  : center;
     text-shadow : #000000 3px 3px 6px;       /* this makes the text more legible in addition to giving it some depth and making it look like it overlays the background image, as opposed to being part of it */
 
@@ -157,11 +171,11 @@
 
 .snowfallImage {
 
-    bottom     : 3rem;
-    left       : 3rem;
-    position   : absolute;
-    transform  : rotateZ( 5deg );
-    width      : 6rem;
+    bottom    : 3rem;
+    left      : 3rem;
+    position  : absolute;
+    transform : rotateZ( 5deg );
+    width     : 6rem;
 
 }
 
@@ -169,8 +183,8 @@
 
     bottom      : 0.33rem;
     font-family : 'Gloria Hallelujah', cursive;
-    font-size   : clamp(3cqw, 4cqw, 5cqw); /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
-    line-height : clamp(3cqw, 4cqw, 5cqw);
+    font-size   : 3cqw; /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
+    line-height : 3cqw;
     margin      : 0;
     position    : absolute;
     right       : 0.33rem;
@@ -181,10 +195,35 @@
 .snowfallSpan {
 
     font-family : 'Mountains of Christmas', cursive;
-    font-size   : clamp(3cqw, 4cqw, 5cqw);                  /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
+    font-size   : 3cqw;                  /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
     font-weight : bold;
-    line-height : clamp(3cqw, 4cqw, 5cqw);
+    line-height : 3cqw;
     text-shadow : #000000 3px 3px 6px; /* this makes the text more legible in addition to giving it some depth and making it look like it overlays the background image, as opposed to being part of it */
+
+}
+
+@container snowfallSection ( max-width: 550px ) {
+
+    .snowfallHeader1 {
+
+        font-size   : 8cqw; /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
+        line-height : 8cqw;
+
+    }
+
+    .snowfallParagraph {
+
+        font-size   : 5cqw; /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
+        line-height : 5cqw;
+
+    }
+
+    .snowfallSpan {
+
+        font-size   : 5cqw; /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
+        line-height : 5cqw;
+
+    }
 
 }
 
