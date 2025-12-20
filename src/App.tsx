@@ -34,7 +34,7 @@ function App( props : AppProps ) : React.ReactElement {
 
 
 
-      <main id="main">
+      <main id="main" className="gridMain">
         <Routes>
           <Route path="/" element={<Home state={ state } dispatch={ dispatch } />} />
           <Route path="/about" element={ <About /> } />
