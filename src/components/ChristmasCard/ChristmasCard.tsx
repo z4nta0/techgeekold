@@ -512,6 +512,7 @@ function ChristmasCard () {
         const squEleArr : HTMLElement[]      = Array.from( document.querySelectorAll( '.pixelatedTransitionSquares' ) ); // squares element array        = this will store an array of all elements with the class name 'pixelatedTransitionSquares', which are the square div elements that cover the screen and will be animated to create a pixelated transition effect
 
         const hacHe1Ele : HTMLElement | null = document.getElementById( 'hacHe1Ele' );                                   // hacked header 1 element      = this will store the h1 element with the 'hacHe1Ele' id that will have two text animations applied to it, the first being a scramble text animation and the second being a gltiched text animation
+        const hacParEle : HTMLElement | null = document.getElementById( 'hacParEle' );                                   // hacked paragraph element     = this will store the paragraph element with the 'hacParEle' id that will have a gltiched text animation applied to it
         const hacSplIns : SplitText          = SplitText.create( '.hackedSplitText', { type : 'words, chars' } );        // hacked split text instance   = this will store a GSAP Split Text instance that splits elements with the class 'hackedSplitText' into words and characters which will then be animated individually in a staggered fashion
         const snoSecEle : HTMLElement | null = document.getElementById( 'snoSecEle' );                                   // snowfall section element     = this will store the section element with the 'snoSecEle' id that will be faded in after the hacked section animations are complete and whose text will have a split text fade in animation applied to it
         const snoSplIns : SplitText          = SplitText.create( '.snowfallSplitText', { type : 'words, chars' } );      // snowfall split text instance = this will store a GSAP Split Text instance that splits all text elements inside of the snowfall section element (this includes the snowfall header 1 text, the snowfall paragraph text and the snowfall span text) into words and characters which will then be animated individually in a staggered fashion
@@ -576,10 +577,6 @@ function ChristmasCard () {
 
 
 
-        gsaTimIns.add( () => {}, '+=1' ); // this is the 2nd GSAP timeline 'pause', between the first hacked header glitch effect animation and the heacked paragraph split character text animation
-
-
-
         // #region 4th GSAP Animation - Hacked Paragraph Split Character Text Animation
 
         // this will animate the characters of the hacked section's paragraph element one character at a time in a staggered fashion, moving a small amount in the right to left direction while also fading in
@@ -590,7 +587,7 @@ function ChristmasCard () {
             autoAlpha : 0,   // this will store the fade in value from opacity : 0 and visibility : hidden
             stagger   : 0.05 // this will store the time gap between each character animation in seconds
 
-        });
+        }, '<');
 
         // #endregion 4th GSAP Animation - Hacked Paragraph Split Character Text Animation
 
@@ -611,11 +608,26 @@ function ChristmasCard () {
 
 
 
-        gsaTimIns.add( () => {}, '+=1' ); // this is the 3rd GSAP timeline 'pause', between the second hacked header glitch effect animation and the second pixelated transition animation (to cover the hacked section)
+        // #region 6th GSAP Animation - Hacked Paragraph Glitch Effect
+
+        gsaTimIns.to( hacParEle, { duration : 0.1,  skewX   : 70,  ease : 'Power4.easeInOut' } ); // this will distort the hacked section paragraph element in the horizontal direction to the right using a GSAP built in ease in out animation, in seconds
+        gsaTimIns.to( hacParEle, { duration : 0.04, skewX   : 0,   ease : 'Power4.easeInOut' } ); // this will undistort the hacked section paragraph element back to normal using a GSAP built in ease in out animation, in seconds
+        gsaTimIns.to( hacParEle, { duration : 0.04, opacity : 0                              } ); // this will quickly make the hacked section paragraph element invisible, creating a flicker effect when used with the below opacity animation, in seconds
+        gsaTimIns.to( hacParEle, { duration : 0.04, opacity : 1                              } ); // this will quickly make the hacked section paragraph element visible, creating a flicker effect when used with the above opacity animation, in seconds
+        gsaTimIns.to( hacParEle, { duration : 0.04, x       : -20                            } ); // this will move the hacked section paragraph element 20 pixels in the horizontal direction to the left, in seconds
+        gsaTimIns.to( hacParEle, { duration : 0.04, x       : 0                              } ); // this will undo the previous move of the hacked section paragraph element back to its original position, in seconds
+        gsaTimIns.to( hacParEle, { duration : 0.02, scaleY  : 1.1, ease : 'Power4.easeInOut' } ); // this will scale the hacked section paragraph element in the vertical direction by 1.1 times its original size with a GSAP built in ease in out animation, in seconds
+        gsaTimIns.to( hacParEle, { duration : 0.04, scaleY  : 1,   ease : 'Power4.easeInOut' } ); // this will scale the hacked section paragraph element back to its original vertical scale with a GSAP built in ease in out animation, in seconds
+
+        // #endregion 6th GSAP Animation - Hacked Paragraph Glitch Effect
 
 
 
-        // #region 6th GSAP Animation - 2nd Pixelated Transition (Fade In to Cover Hacked Section)
+        gsaTimIns.add( () => {}, '+=1' ); // this is the 2nd GSAP timeline 'pause', between the hacked paragraph glitch effect animation and the second pixelated transition animation (to cover the hacked section)
+
+
+
+        // #region 7th GSAP Animation - 2nd Pixelated Transition (Fade In to Cover Hacked Section)
 
         // this will perform a shuffle animation of the square div elements in a staggered fashion to create a fade in pixelated transition effect to cover the hacked message section in order to then perform a pixelated fade out animation before revealing the snowfall section
         gsaTimIns.to( shuSquFun, {
@@ -633,15 +645,15 @@ function ChristmasCard () {
 
         });
 
-        // #endregion 6th GSAP Animation - 2nd Pixelated Transition (Fade In to Cover Hacked Section)
+        // #endregion 7th GSAP Animation - 2nd Pixelated Transition (Fade In to Cover Hacked Section)
 
 
 
-        gsaTimIns.add( () => {}, '+=1' ); // this is the 4th GSAP timeline 'pause', between the second pixelated transition (to cover the hacked section) and the snowfall section fade in +  the third pixelated transition (to reveal the snowfall section)
+        gsaTimIns.add( () => {}, '+=1' ); // this is the 3rd GSAP timeline 'pause', between the second pixelated transition (to cover the hacked section) and the snowfall section fade in +  the third pixelated transition (to reveal the snowfall section)
 
 
 
-        // #region 7th GSAP Animation - Snowfall Section Fade In Animation
+        // #region 8th GSAP Animation - Snowfall Section Fade In Animation
 
         // this will fade in the snowfall section element after the previous pixelated transition (to snowfall section) is complete; this is section is set to opacity 0 on page load so that it does not obscure the hacked section element
         gsaTimIns.to( snoSecEle, {
@@ -651,11 +663,11 @@ function ChristmasCard () {
 
         });
 
-        // #endregion 7th GSAP Animation - Snowfall Section Fade In Animation
+        // #endregion 8th GSAP Animation - Snowfall Section Fade In Animation
 
 
 
-        // #region 8th GSAP Animation - 3rd Pixelated Transition (Fade Out to Reveal Snowfall Section)
+        // #region 9th GSAP Animation - 3rd Pixelated Transition (Fade Out to Reveal Snowfall Section)
 
         // this will perform a shuffle animation of the square div elements in a staggered fashion to create a fade out pixelated transition effect from the previous pixelated fade in animation in order to reveal the snowfall section
         gsaTimIns.to( shuSquFun, {
@@ -673,15 +685,15 @@ function ChristmasCard () {
 
         });
 
-        // #endregion 8th GSAP Animation - 3rd Pixelated Transition (Fade Out to Reveal Snowfall Section)
+        // #endregion 9th GSAP Animation - 3rd Pixelated Transition (Fade Out to Reveal Snowfall Section)
 
 
 
-        gsaTimIns.add( () => {}, '+=1' ); // this is the 5th GSAP timeline 'pause', between the third pixelated transition (to reveal snowfall section) and the snowfall section text elements split text character animation
+        gsaTimIns.add( () => {}, '+=1' ); // this is the 4th GSAP timeline 'pause', between the third pixelated transition (to reveal snowfall section) and the snowfall section text elements split text character animation
 
 
 
-        // #region 9th GSAP Animation - Snowfall Text Split Character Text Animation
+        // #region 10th GSAP Animation - Snowfall Text Split Character Text Animation
 
         // this will animate the characters of the snowfall section element (this includes the snowfall header 1 element, the snowfall paragraph element and the snowfall span element) one character at a time in a staggered fashion, moving a small amount in the right to left direction while also fading in
         gsaTimIns.from( snoSplIns.chars, {
@@ -693,7 +705,7 @@ function ChristmasCard () {
 
         });
 
-        // #endregion 9th GSAP Animation - Snowfall Text Split Character Text Animation
+        // #endregion 10th GSAP Animation - Snowfall Text Split Character Text Animation
 
     }, [] ); // this will define when useGSAP should be run, an empty dependency array ensures this effect runs only once when the component mounts; unlike the snowfall animation inside of useEffect(), this animation does not need to be re-run on window resize
 

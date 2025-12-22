@@ -101,7 +101,7 @@
 .hackedParagraph {
 
     bottom      : 0;                       /* this aligns the element to the bottom of the .hackedSection */
-    font-family : 'Rubik Glitch', cursive; /* this font pairs nicely with the hacked theme of this section (and the glitch animation of the h1 element), itself with outlines of the text appearing in a zigzag type of manner */
+    font-family : 'Rubik Glitch', cursive; /* this font pairs nicely with glitch effect animation on this same element (as well as with the hacked section in general), itself with outlines of the text appearing in a zigzag type of manner */
     font-size   : 3cqw;                    /* this bases the text sizing on the container's (container-name : hackedSection) dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
     line-height : 4cqw;                    /* this makes the text more legible since, unlike the other text elements in this component, it will have multiple lines of text and will give some space between each line; the units are based on the container's (container-name : hackedSection) dimensions */
     margin      : 0;                       /* this removes default margin around the paragraph element */
