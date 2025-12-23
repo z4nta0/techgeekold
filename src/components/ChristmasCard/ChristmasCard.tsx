@@ -1,18 +1,20 @@
 // #region Imports
 
-import { gsap }               from "gsap";                          // this is the Green Socks Animation Platform core library
-import { hasKeyFun }          from '../../utilities/hasKeyFun.tsx'; // this is a custom utility function that performs a type guard check to see if an object has a specific key
-import { ranNumFun }          from '../../utilities/ranNumFun.tsx'; // this is a custom utility function that generates a random number between a provided minimum and maximum value
-import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";       // this is a Green Socks Animation Platform plugin that enables text scrambling animations
-import   snowman              from '../../assets/snowman.png';      // this is the snowman image asset that is used in the .snowflakeSection element
-import { SplitText }          from "gsap/SplitText";                // this is a Green Socks Animation Platform plugin that enables text splitting animations
-import   styles               from './ChristmasCard.module.css';    // this is the CSS module stylesheet for the ChristmasCard component
-import { useEffect }          from 'react';                         // this is the React useEffect hook that enables side effects in functional components (when certain code should be run and/or re-run based on changes to specific dependencies)
-import { useGSAP }            from "@gsap/react";                   // this is the Green Socks Animation Platform custom React hook that enables GSAP functionality in React components
-import { useLocation }        from 'react-router-dom';              // this is the React Router DOM useLocation hook that provides access to the current URL properties and parameters
-import   useWindowSize        from "../../hooks/useWindowSize.tsx"; // this is a custom React hook that provides the current window dimensions and is used to trigger the useEffect() hook on window resize events
+import { gsap }               from "gsap";                          // green socks animation platform     = this is the Green Socks Animation Platform core library
+import { hasKeyFun }          from '../../utilities/hasKeyFun.tsx'; // has key function                   = this is a custom utility function that performs a type guard check to see if an object has a specific key
+import { ranNumFun }          from '../../utilities/ranNumFun.tsx'; // random number function             = this is a custom utility function that generates a random number between a provided minimum and maximum value
+import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";       // scramble text plugin               = this is a Green Socks Animation Platform plugin that enables text scrambling animations
+import   snowman              from '../../assets/snowman.png';      // snowman                            = this is the snowman image asset that is used in the .snowfallSection element
+import { SplitText }          from "gsap/SplitText";                // split text                         = this is a Green Socks Animation Platform plugin that enables text splitting animations (single character, word or line animations)
+import   styles               from './ChristmasCard.module.css';    // styles                             = this is the CSS module stylesheet for the ChristmasCard component
+import { useEffect }          from 'react';                         // use effect                         = this is the React useEffect hook that enables side effects in functional components (when certain code should be run and/or re-run based on changes to specific dependencies)
+import { useGSAP }            from "@gsap/react";                   // use green socks animation platform = this is the Green Socks Animation Platform custom React hook that enables GSAP functionality in React components
+import { useLocation }        from 'react-router-dom';              // use location                       = this is the React Router DOM useLocation hook that provides access to the current URL properties and parameters
+import   useWindowSize        from "../../hooks/useWindowSize.tsx"; // use window size                    = this is a custom React hook that provides the current window dimensions and is used to trigger the useEffect() hook on window resize events
 
-gsap.registerPlugin( useGSAP, ScrambleTextPlugin, SplitText );      // this is a plugin for the GSAP core that ensures the two work seamlessly together and also prevents tree shaking issues in build tools/bundlers
+
+
+gsap.registerPlugin( useGSAP, ScrambleTextPlugin, SplitText ); // this is a plugin for the GSAP core that ensures the two work seamlessly together and also prevents tree shaking issues in build tools/bundlers
 
 // #endregion Imports
 
