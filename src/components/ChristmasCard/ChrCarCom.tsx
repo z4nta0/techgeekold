@@ -1,18 +1,18 @@
 
 // #region Imports
 
-import { gsap }               from "gsap";                          // Green Socks Animation Platform     = This is the Green Socks Animation Platform core library.
-import { hasKeyFun }          from '../../utilities/hasKeyFun.tsx'; // Has Key Function                   = This is a custom utility function that will perform a type guard check in order to see if an object has a specific key, and is required for nested type check narrowing by Typescript.
-import { ranNumFun }          from '../../utilities/ranNumFun.tsx'; // Random Number Function             = This is a custom utility function that will generate a random number between a provided minimum and maximum value.
-import { type ReactElement }  from 'react';                         // React Element                      = This is the React type definition for a React JSX element.
-import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";       // Scramble Text Plugin               = This is a Green Socks Animation Platform plugin that will handle HTML text scrambling animations.
-import   snowman              from '../../assets/snowman.png';      // Snowman                            = This is the snowman image asset that will be used in the .snowfallSection HTML element.
-import { SplitText }          from "gsap/SplitText";                // Split Text                         = This is a Green Socks Animation Platform plugin that will handle HTML text splitting animations (single character, word or line animations).
-import   styles               from './ChrCarCom.module.css';        // Styles                             = This is the CSS module stylesheet for the ChristmasCard component.
-import { useEffect }          from 'react';                         // Use Effect                         = This is the React useEffect() hook that will handle side effects in functional components (when certain code should be run and/or re-run based on changes to specific dependencies).
-import { useGSAP }            from "@gsap/react";                   // Use Green Socks Animation Platform = This is the Green Socks Animation Platform custom React hook that will handle GSAP functionality in React components.
-import { useLocation }        from 'react-router-dom';              // Use Location                       = This is the React Router DOM useLocation() hook that will provide access to the current URL properties and parameters.
-import   useWindowSize        from "../../hooks/useWindowSize.tsx"; // Use Window Size                    = This is a custom React hook that will provide the current window viewport dimensions and will also be used to trigger the useEffect() hook on window resize events, as well as altering certain animation settings based on how small or big its dimeions are.
+import { gsap }               from "gsap";                          /** Green Socks Animation Platform     = This is the Green Socks Animation Platform core library. */
+import { hasKeyFun }          from '../../utilities/hasKeyFun.tsx'; /** Has Key Function                   = This is a custom utility function that will perform a type guard check in order to see if an object has a specific key, and is required for nested type check narrowing by Typescript. */
+import { ranNumFun }          from '../../utilities/ranNumFun.tsx'; /** Random Number Function             = This is a custom utility function that will generate a random number between a provided minimum and maximum value. */
+import { type ReactElement }  from 'react';                         /** React Element                      = This is the React type definition for a React JSX element. */
+import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";       /** Scramble Text Plugin               = This is a Green Socks Animation Platform plugin that will handle HTML text scrambling animations. */
+import   snowman              from '../../assets/snowman.png';      /** Snowman                            = This is the snowman image asset that will be used in the .snowfallSection HTML element. */
+import { SplitText }          from "gsap/SplitText";                /** Split Text                         = This is a Green Socks Animation Platform plugin that will handle HTML text splitting animations (single character, word or line animations). */
+import   styles               from './ChrCarCom.module.css';        /** Styles                             = This is the CSS module stylesheet for the ChristmasCard component. */
+import { useEffect }          from 'react';                         /** Use Effect                         = This is the React useEffect() hook that will handle side effects in functional components (when certain code should be run and/or re-run based on changes to specific dependencies). */
+import { useGSAP }            from "@gsap/react";                   /** Use Green Socks Animation Platform = This is the Green Socks Animation Platform custom React hook that will handle GSAP functionality in React components. */
+import { useLocation }        from 'react-router-dom';              /** Use Location                       = This is the React Router DOM useLocation() hook that will provide access to the current URL properties and parameters. */
+import   useWinSiz            from "../../hooks/useWinSiz.tsx";     /** Use Window Size                    = This is a custom React hook that will provide the current window viewport dimensions and will also be used to trigger the useEffect() hook on window resize events, as well as altering certain animation settings based on how small or big its dimeions are. */
 
 // #endregion Imports
 
@@ -35,9 +35,9 @@ gsap.registerPlugin( useGSAP, ScrambleTextPlugin, SplitText );
  *
  * @author z4ntao <https://github.com/z4nta0>
  * 
- * @param props - This component does not take any props, or more accurately it does not use any props
+ * @param props - This component does not take any props, or more accurately it does not use any props.
  * 
- * @returns A React JSX element representing the Christmas Card component
+ * @returns A React JSX element representing the Christmas Card component.
  * @see {@link chrCarJsx}
  * 
  * @example
@@ -66,7 +66,7 @@ function ChrCarCom () : ReactElement {
     // #region State Variables
 
     /** Window Height Number, Window Width Number = These values come from a custom defined hook that provides the current window viewport height and width numbers and will trigger re-renders when the window is resized and their corresponding state variables change. They are also used to trigger the {@link useEffect} hook for window resize events in order to recalculate the snowfall and the pixelated transitional animation parameters. */
-    const { winHeiNum, winWidNum }                = useWindowSize();
+    const { winHeiNum, winWidNum }                = useWinSiz();
 
     /** Search                             = This value is the search property that is returned from the useLocation() React Router hook. It is a string value representing the query parameters in the URL. */
     const { search } : { search : string } = useLocation();
@@ -1717,6 +1717,8 @@ function ChrCarCom () : ReactElement {
     // #endregion Return Statement
 
 }
+
+
 
 export default ChrCarCom;
 
