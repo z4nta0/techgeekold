@@ -6,7 +6,7 @@ import type { State } from './store.tsx';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import About from './components/About.tsx';
 import Contact from './components/Contact.tsx';
-import ChristmasCard from './components/ChristmasCard/ChristmasCard.tsx';
+import ChristmasCard from './components/ChristmasCard/ChrCarCom.tsx';
 import Home from './components/Home.tsx';
 
 
