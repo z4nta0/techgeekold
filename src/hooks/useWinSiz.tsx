@@ -7,7 +7,7 @@ import { useState }  from 'react'; /** Use state  = This is the React useState()
 // #endregion Imports
 
 
-//CHANGES
+
 /**
  * useWinSiz = Use Window Size Hook Function
  *
@@ -26,7 +26,7 @@ import { useState }  from 'react'; /** Use state  = This is the React useState()
  * @see {@link winSizSta}
  * 
  * @example
- * ```tsx
+ * ```ts
  * const { winHeiNum, winWidNum } = useWinSiz();
  * ```
  *
