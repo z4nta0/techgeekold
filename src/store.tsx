@@ -8,7 +8,7 @@ import loadDataReducer from './dataSlice.tsx';
 
 export interface State {
 
-    counter : number;
+    couStaNum : number;
 
     clickCountObj : {
 
@@ -40,7 +40,7 @@ export const store = configureStore(
 
         reducer : {
 
-            counter       : counterReducer,
+            couStaNum     : counterReducer,
             clickCountObj : clickCountObjReducer,
             clickCountArr : clickCountArrReducer,
             loadData      : loadDataReducer

@@ -1,7 +1,7 @@
 import React from 'react';
 import reactLogo from '../assets/react.svg';
 import viteLogo from '../assets/vite.svg';
-import { increment, decrement } from '../features/counterSlice.tsx';
+import { incNumRed, decNumRed } from '../features/counterSlice.tsx';
 import { useSelector } from 'react-redux';
 import type { State } from '../store.tsx';
 import { useEffect } from 'react';
@@ -75,11 +75,11 @@ function Home ( props : AppProps ) : React.ReactElement {
 
                 <div className="buttonsDiv">
 
-                    <button className="buttons" onClick={() => { dispatch(increment(2)) }}>
+                    <button className="buttons" onClick={() => { dispatch(incNumRed(2)) }}>
                         count is {useSelector((state : { counter : number }) => state.counter)}
                     </button>
 
-                    <button className="buttons" onClick={() => { dispatch(decrement(3))} }>
+                    <button className="buttons" onClick={() => { dispatch(decNumRed(3))} }>
                         count is {useSelector((state : { counter : number }) => state.counter)}
                     </button>
 
