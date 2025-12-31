@@ -11,8 +11,8 @@ import { loadData } from '../dataSlice.tsx';
 
 interface AppProps {
 
-  state : State;
-  dispatch : Function;
+  staObj : State;
+  disFun : Function;
 
 };
 
@@ -20,7 +20,7 @@ interface AppProps {
 
 function Home ( props : AppProps ) : React.ReactElement {
 
-    const { state, dispatch } = props;
+    const { staObj, disFun } = props;
 
 
 
@@ -28,17 +28,17 @@ function Home ( props : AppProps ) : React.ReactElement {
 
         /* Simulate loading data
         setTimeout(() => {
-        dispatch(loadData());
+        disFun(loadData());
         }, 3000); */
 
-        dispatch(loadData());
+        disFun(loadData());
 
-    }, [dispatch]);
+    }, [disFun]);
 
   const { isLoading } = useSelector(( state : State ) => state.loadData);
   const { hasError }  = useSelector(( state : State ) => state.loadData);
 
-  const bacEndDat = isLoading ? 'Fetching data from API...' : hasError ? 'Error fetching data' : state.loadData.data.message;
+  const bacEndDat = isLoading ? 'Fetching data from API...' : hasError ? 'Error fetching data' : staObj.loadData.data.message;
 
 
 
@@ -75,12 +75,12 @@ function Home ( props : AppProps ) : React.ReactElement {
 
                 <div className="buttonsDiv">
 
-                    <button className="buttons" onClick={() => { dispatch(incNumRed(2)) }}>
-                        count is {useSelector((state : { counter : number }) => state.counter)}
+                    <button className="buttons" onClick={() => { disFun(incNumRed(2)) }}>
+                        count is {useSelector((state : { couStaNum : number }) => state.couStaNum)}
                     </button>
 
-                    <button className="buttons" onClick={() => { dispatch(decNumRed(3))} }>
-                        count is {useSelector((state : { counter : number }) => state.counter)}
+                    <button className="buttons" onClick={() => { disFun(decNumRed(3))} }>
+                        count is {useSelector((state : { couStaNum : number }) => state.couStaNum)}
                     </button>
 
                 </div>

@@ -13,8 +13,8 @@ const render = () => {
     <StrictMode>
       <Provider store={ store } >
         <App
-          state={ store.getState() }
-          dispatch={ store.dispatch }
+          staObj={ store.getState() }
+          disFun={ store.dispatch }
         />
       </Provider>
     </StrictMode>,

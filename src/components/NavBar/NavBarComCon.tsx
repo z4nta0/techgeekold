@@ -1,225 +1,385 @@
-import { NavBarCom } from './NavBarCom';
-import { aboutCount, contactCount } from './clickCountArrSlice.tsx';
-import { logoCount, homeCount } from './clickCountObjSlice.tsx';
-import type { State } from '../../store.tsx';
-import { store } from '../../store.tsx';
+
+// #region Imports
+
+import { aboutCount   } from './clickCountArrSlice.tsx'; /** This is the reducer function for managing the click count number staObj value for the About page link. */
+import { contactCount } from './clickCountArrSlice.tsx'; /** This is the reducer function for managing the click count number staObj value for the Contact page link. */
+import { homeCount    } from './clickCountObjSlice.tsx'; /** This is the reducer function for managing the click count number staObj value for the Home page link. */
+import { logoCount    } from './clickCountObjSlice.tsx'; /** This is the reducer function for managing the click count number staObj value for the Home page logo link. */
+import { NavBarCom    } from './NavBarCom';              /** This is the presentational component that contains the JSX for the navigation bar. */
+import { type State   } from '../../store.tsx';          /** This is the custom TypeScript type definition for the Redux store's entire staObj object. */
+import { store        } from '../../store.tsx';          /** This is the Redux store object that contains the entire staObj tree of the application. */
+
+// #endregion Imports
 
 
 
-interface NavBarComConProps {
+// #region Props Type Definitions
 
-  name: string;
+/**
+ * NavBarComConPro = Navigation Bar Component Container Props will store all of the props that will be used in the NavBarComCon and NavBarCom components.
+ *
+ * @property namStr = Name String will store the site/app name that will be displayed in the navigation bar.
+ * @property staObj = State Object will store the entire Redux store's staObj tree for use in the component.
+ * @property disFun = Dispatch Function will store the Redux store's dispatch function for use in the component.
+ *
+*/
 
-  state: State;
+type NavBarComConPro = {
 
-  dispatch: Function;
+  namStr: string;
+  staObj: State;
+  disFun: Function;
+
+};
+
+// #endregion Props Type Definitions
+
+
+
+/**
+ * NavBarComCon = Navigation Bar Component Container
+ *
+ * @summary
+ * This functional component will be responsible for handling all of the logic
+ * and state management for the NavBarCom (navigation bar component). In the
+ * Codecademy tutorial that I followed, it was recommended that when a
+ * component contains a lot of logic and state management, it is best practice
+ * to separate the presentational and container components. All of the click
+ * event handlers and state management stuff is completely unnecessary for a
+ * simple navigation bar, but this was just for personal learning purposes to
+ * gain some experience with using Redux Toolkit alongside React and TypeScript
+ * in a more hands on way (instead of just tutorials) before moving on to my
+ * next project that will use these concepts in a more practical, realistic
+ * way.
+ *
+ * @author z4ntao <https://github.com/z4nta0>
+ * 
+ * @param props.namStr - {@link NavBarComConPro.namStr}
+ * @param props.staObj - {@link NavBarComConPro.staObj}
+ * @param props.disFun - {@link NavBarComConPro.disFun}
+ * 
+ * @returns A React JSX element representing the NavBarCom component.
+ * @see {@link navBarComConJsx}
+ * 
+ * @example
+ * ```tsx
+ * <NavBarComCon /> // => <NavBarCom />
+ * ```
+ *
+*/
+
+function NavBarComCon ( props : NavBarComConPro ) : React.ReactElement {
+
+
+
+    // #region Component Scoped Variables
+
+
+    // #region Props Variables
+
+    /** Dispatch Function = {@link NavBarComConPro.disFun} */
+    const { disFun }      = props;
+    /** Name String       = {@link NavBarComConPro.namStr} */
+    const { namStr }      = props;
+    /** State Object      = {@link NavBarComConPro.staObj} */
+    const { staObj }      = props;
+
+    // #endregion Props Variables
+
+
+    // #endregion Component Scoped Variables
+
+
+
+    // #region handleClickLogFun
+
+
+    // #region Function Type Definitions
+
+    /** Handle Click Logo Function = This will handle the click event for the logo Home page link in the navigation bar. */
+    type HandleClickLogFun         = () => void;
+
+    // #endregion Function Type Definitions
+
+
+    // #region Function Body
+
+    /**
+     * handleClickLogFun = Handle Click Logo Function
+     * @see {@link HandleClickLogFun}
+     *
+     * @summary
+     * This will handle the click event for the logo Home page link in the
+     * navigation bar. A Redux Toolkit {@link store.dispatch} function will be
+     * called in order to increase the {@link State.clickCountObj.logoCount}
+     * variable, then the updated state value will be stored and used in order
+     * to log a console message of how many times the logo Home page link has
+     * been clicked. As mentioned in the component summary, this is all
+     * completely unnecessary for a simple navigation bar, but this was just
+     * for personal learning purposes to gain some experience with using Redux
+     * Toolkit alongside React and TypeScript in a more hands on way (instead
+     * of just tutorials) before moving on to my next project that will use
+     * these concepts in a more practical, realistic way.
+     *
+     * @author z4ntao <https://github.com/z4nta0>
+     *
+     * @param void - This function takes no parameters.
+     *
+     * @returns This function does not return anything.
+     *
+     * @example
+     * ```ts
+     * handleClickLogFun() // => void
+     * ```
+     *
+    */
+
+    const handleClickLogFun : HandleClickLogFun = () => {
+
+
+        /** This will dispatch the Redux Toolkit custom defined logoCount reducer in order to increment the logo click count value in the Redux store. */
+        disFun(logoCount());
+
+
+        /** logCouNum   = Logo Count Number stores the number of times that the navigation bar's logo Home page link has been clicked. These must use the {@link store.getState} method instead of the {@link staObj} prop or it will use an outdated value. */
+        const logCouNum = store.getState().clickCountObj.logoCount;
+
+        /** This logs the number of times the logo Home page link has been clicked to the console in order to verify that the click count is being tracked correctly. */
+        console.log(`You clicked on the logo link for the ${ namStr } Home page ${ logCouNum } times!`);
+
+    };
+
+    // #endregion Function Body
+
+
+    // #endregion handleClickLogFun
+
+
+
+    // #region handleClickHomFun
+
+
+    // #region Function Type Definitions
+
+    /** Handle Click Home Function = This will handle the click event for the Home page link in the navigation bar. */
+    type HandleClickHomFun         = () => void;
+
+    // #endregion Function Type Definitions
+
+
+    // #region Function Body
+
+    /**
+     * handleClickHomFun = Handle Click Home Function
+     * @see {@link HandleClickHomFun}
+     *
+     * @summary
+     * This will handle the click event for the Home page link in the
+     * navigation bar. A Redux Toolkit {@link store.dispatch} function will be
+     * called in order to increase the {@link State.clickCountObj.homeCount}
+     * variable, then the updated state value will be stored and used in order
+     * to log a console message of how many times the Home page link has been
+     * clicked. As mentioned in the component summary, this is all completely
+     * unnecessary for a simple navigation bar, but this was just for personal
+     * learning purposes to gain some experience with using Redux Toolkit
+     * alongside React and TypeScript in a more hands on way (instead of just
+     * tutorials) before moving on to my next project that will use these
+     * concepts in a more practical, realistic way.
+     *
+     * @author z4ntao <https://github.com/z4nta0>
+     *
+     * @param void - This function takes no parameters.
+     *
+     * @returns This function does not return anything.
+     *
+     * @example
+     * ```ts
+     * handleClickHomFun() // => void
+     * ```
+     *
+    */
+
+    const handleClickHomFun : HandleClickHomFun = () => {
+
+
+        /** This will dispatch the Redux Toolkit custom defined homeCount reducer in order to increment the home click count value in the Redux store. */
+        disFun(homeCount());
+
+
+        /** homCouNum   = Home Count Number stores the number of times that the navigation bar's Home page link has been clicked. These must use the {@link store.getState} method instead of the {@link staObj} prop or it will use an outdated value. */
+        const homCouNum = store.getState().clickCountObj.homeCount;
+
+        /** This logs the number of times the Home page link has been clicked to the console in order to verify that the click count is being tracked correctly. */
+        console.log(`You clicked on the navbar link for the ${ namStr } Home page ${ homCouNum } times!`);
+
+    };
+
+    // #endregion Function Body
+
+
+    // #endregion handleClickHomFun
+
+
+
+    // #region handleClickAboFun
+
+
+    // #region Function Type Definitions
+
+    /** Handle Click About Function = This will handle the click event for the About page link in the navigation bar. */
+    type HandleClickAboFun          = () => void;
+
+    // #endregion Function Type Definitions
+
+
+    // #region Function Body
+
+    /**
+     * handleClickAboFun = Handle Click About Function
+     * @see {@link HandleClickAboFun}
+     *
+     * @summary
+     * This will handle the click event for the About page link in the
+     * navigation bar. A Redux Toolkit {@link store.dispatch} function will be
+     * called in order to increase the {@link State.clickCountArr[aboutCount]}
+     * variable, then the updated state value will be stored and used in order
+     * to log a console message of how many times the About page link has been
+     * clicked. As mentioned in the component summary, this is all completely
+     * unnecessary for a simple navigation bar, but this was just for personal
+     * learning purposes to gain some experience with using Redux Toolkit
+     * alongside React and TypeScript in a more hands on way (instead of just
+     * tutorials) before moving on to my next project that will use these
+     * concepts in a more practical, realistic way.
+     *
+     * @author z4ntao <https://github.com/z4nta0>
+     *
+     * @param void - This function takes no parameters.
+     *
+     * @returns This function does not return anything.
+     *
+     * @example
+     * ```ts
+     * handleClickAboFun() // => void
+     * ```
+     *
+    */
+
+    const handleClickAboFun : HandleClickAboFun = () => {
+
+
+        /** This will dispatch the Redux Toolkit custom defined aboutCount reducer in order to increment the about click count value in the Redux store. */
+        disFun(aboutCount());
+
+
+        /** aboCouNum   = About Count Number stores the number of times that the navigation bar's About page link has been clicked. These must use the {@link store.getState} method instead of the {@link staObj} prop or it will use an outdated value. */
+        const aboCouNum = store.getState().clickCountArr[0];
+
+        /** This logs the number of times the About page link has been clicked to the console in order to verify that the click count is being tracked correctly. */
+        console.log(`You clicked on the navbar link for the ${ namStr } About page ${ aboCouNum } times!`);
+
+    };
+
+    // #endregion Function Body
+
+
+    // #endregion handleClickAboFun
+
+
+
+    // #region handleClickConFun
+
+
+    // #region Function Type Definitions
+
+    /** Handle Click Contact Function = This will handle the click event for the Contact page link in the navigation bar. */
+    type HandleClickConFun            = () => void;
+
+    // #endregion Function Type Definitions
+
+
+    // #region Function Body
+
+    /**
+     * handleClickConFun = Handle Click Contact Function
+     * @see {@link HandleClickConFun}
+     *
+     * @summary
+     * This will handle the click event for the Contact page link in the
+     * navigation bar. A Redux Toolkit {@link store.dispatch} function will be
+     * called in order to increase the
+     * {@link State.clickCountArr[contactCount]} variable, then the updated
+     * state value will be stored and used in order to log a console message of
+     * how many times the Contact page link has been clicked. As mentioned in
+     * the component summary, this is all completely unnecessary for a simple
+     * navigation bar, but this was just for personal learning purposes to gain
+     * some experience with using Redux Toolkit alongside React and TypeScript
+     * in a more hands on way (instead of just tutorials) before moving on to
+     * my next project that will use these concepts in a more practical,
+     * realistic way.
+     *
+     * @author z4ntao <https://github.com/z4nta0>
+     *
+     * @param void - This function takes no parameters.
+     *
+     * @returns This function does not return anything.
+     *
+     * @example
+     * ```ts
+     * handleClickConFun() // => void
+     * ```
+     *
+    */
+   
+    const handleClickConFun : HandleClickConFun = () => {
+
+
+        /** This will dispatch the Redux Toolkit custom defined contactCount reducer in order to increment the contact click count value in the Redux store. */
+        disFun(contactCount());
+
+
+        /** conCouNum   = Contact Count Number stores the number of times that the navigation bar's Contact page link has been clicked. These must use the {@link store.getState} method instead of the {@link staObj} prop or it will use an outdated value. */
+        const conCouNum = store.getState().clickCountArr[1];
+
+        /** This logs the number of times the Contact page link has been clicked to the console in order to verify that the click count is being tracked correctly. */
+        console.log(`You clicked on the navbar link for the ${ namStr } Contact page ${ conCouNum } times!`);
+
+    };
+
+    // #endregion Function Body
+
+
+    // #endregion handleClickConFun
+
+
+
+    // #region Return Statement
+
+
+    /** Navigation Bar Component Container Javascript XML = This stores the HTML-like code that the Navigation Bar component container will render when called. I prefer to store this in a variable so that the variable can be referenced inside of comments in the other sections of the component. */
+    const navBarComConJsx                                 = (
+
+        <>
+
+            { /** Start Navigation Bar Component */ }
+
+            < NavBarCom namStr={ namStr } staObj={ staObj } disFun={ disFun } onLogoClick={ handleClickLogFun } onHomeClick={ handleClickHomFun } onAboutClick={ handleClickAboFun } onContactClick={ handleClickConFun } /> { /** Navigation Bar Component = This is the component that contains all of the HTML content for the navigation bar. */ }
+
+            { /** End Navigation Bar Component */ }
+
+        </>
+
+    );
+
+
+    return navBarComConJsx;
+
+
+    // #endregion Return Statement
 
 };
 
 
 
-/* Leaving this for future reference
-type ClickCountObj = {
+export default NavBarComCon;
 
-  logoCount: number;
-  homeCount: number;
 
-};
-*/
-
-
-
-export function NavBarComCon ( props : NavBarComConProps ) : React.ReactElement {
-
-
-
-  const { name, state, dispatch } = props;
-
-
-
-/* Leaving these old useState and handlers for future reference
-
-  interface ClickCountObj {
-
-    logoCount: number;
-    homeCount: number;
-
-  };
-
-  const clickCountObj : ClickCountObj = {
-
-    logoCount: 0,
-    homeCount: 0,
-
-  };
-
-  const [ curCouObj, setCount1 ] = useState<ClickCountObj>(clickCountObj);
-
-  const handleClick1 = ( { currentTarget } : React.MouseEvent<HTMLAnchorElement> ) => {
-
-    if (currentTarget.hasAttribute('data-clickname')) {
-
-      const clickname = currentTarget.getAttribute('data-clickname') as keyof typeof clickCountObj;
-
-      setCount1 ((prevState) => {
-
-        const prevCount : number = prevState[clickname];
-        const newCount : number = prevCount + 1;
-
-        return { ...prevState, [clickname]: newCount };
-
-      });
-
-      const linkName : string | null = currentTarget.getAttribute('data-linkname');
-
-      alert(`You clicked on the ${linkName} link for the ${props.name} Home page ${curCouObj[clickname] + 1} times!`);
-
-    };
-
-  };
-
-  type ClickCountArr = [number, number];
-  const clickCountArr : ClickCountArr = [ 0, 0 ];
-
-  const [ curCouArr, setCount ] = useState<ClickCountArr>(clickCountArr);
-
-  const handleClick2 = ( { currentTarget } : React.MouseEvent<HTMLAnchorElement> ) => {
-
-    if (currentTarget.hasAttribute('data-clickindex')) {
-
-      const clickIndexStr : string = currentTarget.getAttribute('data-clickindex') as string;
-      const clickIndexNum : number = Number(clickIndexStr);
-
-      setCount ((prevState) => {
-
-        const prevCount : number = prevState[clickIndexNum];
-        const newCount : number = prevCount + 1;
-
-        if (clickIndexNum === 0) {
-
-          return [ newCount, prevState[1] ];
-
-        }
-
-        else {
-
-          return [ prevState[0], newCount ];
-
-        };
-
-      });
-
-      const linkName : string | null = currentTarget.getAttribute('data-linkname');
-
-      alert(`You clicked on the navbar link for the ${props.name} ${linkName} page ${curCouArr[clickIndexNum] + 1} times!`);
-
-    };
-
-  };
-*/
-
-
-
-  const handleLogoClick = () => {
-
-    dispatch(logoCount());
-
-    // These must use store.getState() instead of the state prop or it will use an outdated value
-    const logoCountNum = store.getState().clickCountObj.logoCount;
-
-    alert(`You clicked on the logo link for the ${ name } Home page ${ logoCountNum } times!`);
-
-  };
-
-
-
-  const handleHomeClick = () => {
-
-    dispatch(homeCount());
-
-    // These must use store.getState() instead of the state prop or it will use an outdated value
-    const homeCountNum = store.getState().clickCountObj.homeCount;
-
-    alert(`You clicked on the navbar link for the ${ name } Home page ${ homeCountNum } times!`);
-
-  };
-
-
-
-  const handleAboutClick = () => {
-
-    dispatch(aboutCount());
-
-    // These must use store.getState() instead of the state prop or it will use an outdated value
-    const aboutCountNum = store.getState().clickCountArr[0];
-
-    alert(`You clicked on the navbar link for the ${ name } About page ${ aboutCountNum } times!`);
-
-  };
-
-
-
-  const handleContactClick = () => {
-
-    dispatch(contactCount());
-
-    // These must use store.getState() instead of the state prop or it will use an outdated value
-    const contactCountNum = store.getState().clickCountArr[1];
-
-    alert(`You clicked on the navbar link for the ${ name } Contact page ${ contactCountNum } times!`);
-
-  };
-
-
-
-  /* Leaving this for future reference
-  const [ data, setData ] = useState< string >( 'Empty Data' );
-
-  useEffect( () => {
-
-    alert( 'Fetching data from API...' );
-
-    const fetchData = async () => {
-
-      try {
-
-        interface Response {
-
-          message: string;
-
-        };
-
-        const response = await fetch('../../mock-backend/data.json');
-        const result : Response = await response.json();
-
-        setData( result.message );
-
-      } catch ( error ) {
-
-        setData( 'Error fetching data' );
-        console.error( 'Error fetching data:', error );
-
-      }
-
-    };
-
-    fetchData();
-
-  }, [] ); // Variables for dependency array (for fetching new or different data) can be added here
-*/
-
-
-
-  return (
-
-    <>
-
-      <NavBarCom name={ name } state={ state } dispatch={ dispatch } onLogoAlert={ handleLogoClick } onHomeAlert={ handleHomeClick } onAboutAlert={ handleAboutClick } onContactAlert={ handleContactClick } />
-
-    </>
-
-  );
-
-
-
-};

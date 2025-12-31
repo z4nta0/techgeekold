@@ -1,6 +1,6 @@
 import './App.css';
 
-import { NavBarComCon } from './components/NavBar/NavBarComCon';
+import NavBarComCon from './components/NavBar/NavBarComCon';
 import type { State } from './store.tsx';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -13,8 +13,8 @@ import Home from './components/Home.tsx';
 
 interface AppProps {
 
-  state : State;
-  dispatch : Function;
+  staObj : State;
+  disFun : Function;
 
 };
 
@@ -22,7 +22,7 @@ function App( props : AppProps ) : React.ReactElement {
 
 
 
-  const { state, dispatch } = props;
+  const { staObj, disFun } = props;
 
 
 
@@ -30,13 +30,13 @@ function App( props : AppProps ) : React.ReactElement {
 
     <Router>
 
-      <NavBarComCon name="Tech Geek" state={state} dispatch={dispatch} />
+      <NavBarComCon namStr="Tech Geek" staObj={staObj} disFun={disFun} />
 
 
 
       <main id="main" className="gridMain">
         <Routes>
-          <Route path="/" element={<Home state={ state } dispatch={ dispatch } />} />
+          <Route path="/" element={<Home staObj={ staObj } disFun={ disFun } />} />
           <Route path="/about" element={ <About /> } />
           <Route path="/contact" element={ <Contact /> } />
           <Route path="/christmascard" element={ <ChristmasCard /> } />
