@@ -1,8 +1,8 @@
 
 // #region Imports
 
-import { aboutCount   } from './clickCountArrSlice.tsx'; /** This is the reducer function for managing the click count number staObj value for the About page link. */
-import { contactCount } from './clickCountArrSlice.tsx'; /** This is the reducer function for managing the click count number staObj value for the Contact page link. */
+import { aboCouRed    } from './clickCountArrSlice.tsx'; /** This is the reducer function for managing the click count number staObj value for the About page link. */
+import { conCouRed    } from './clickCountArrSlice.tsx'; /** This is the reducer function for managing the click count number staObj value for the Contact page link. */
 import { homeCount    } from './clickCountObjSlice.tsx'; /** This is the reducer function for managing the click count number staObj value for the Home page link. */
 import { logoCount    } from './clickCountObjSlice.tsx'; /** This is the reducer function for managing the click count number staObj value for the Home page logo link. */
 import   NavBarCom      from './NavBarCom';              /** This is the presentational component that contains the JSX for the navigation bar. */
@@ -241,7 +241,7 @@ function NavBarComCon ( props : NavBarComConPro ) : React.ReactElement {
      * @summary
      * This will handle the click event for the About page link in the
      * navigation bar. A Redux Toolkit {@link store.dispatch} function will be
-     * called in order to increase the {@link State.clickCountArr[aboutCount]}
+     * called in order to increase the {@link State.cliCouArr[aboutCount]}
      * variable, then the updated state value will be stored and used in order
      * to log a console message of how many times the About page link has been
      * clicked. As mentioned in the component summary, this is all completely
@@ -267,8 +267,8 @@ function NavBarComCon ( props : NavBarComConPro ) : React.ReactElement {
     const handleClickAboFun : HandleClickAboFun = () => {
 
 
-        /** This will dispatch the Redux Toolkit custom defined aboutCount reducer in order to increment the about click count value in the Redux store. */
-        disFun( aboutCount() );
+        /** This will dispatch the Redux Toolkit custom defined aboCouRed reducer in order to increment the about click count value in the Redux store. */
+        disFun( aboCouRed() );
 
 
         /** aboCouNum   = About Count Number stores the number of times that the navigation bar's About page link has been clicked. These must use the {@link store.getState} method instead of the {@link staObj} prop or it will use an outdated value. */
@@ -307,10 +307,10 @@ function NavBarComCon ( props : NavBarComConPro ) : React.ReactElement {
      * This will handle the click event for the Contact page link in the
      * navigation bar. A Redux Toolkit {@link store.dispatch} function will be
      * called in order to increase the
-     * {@link State.clickCountArr[contactCount]} variable, then the updated
-     * state value will be stored and used in order to log a console message of
-     * how many times the Contact page link has been clicked. As mentioned in
-     * the component summary, this is all completely unnecessary for a simple
+     * {@link State.cliCouArr[contactCount]} variable, then the updated state
+     * value will be stored and used in order to log a console message of how
+     * many times the Contact page link has been clicked. As mentioned in the
+     * component summary, this is all completely unnecessary for a simple
      * navigation bar, but this was just for personal learning purposes to gain
      * some experience with using Redux Toolkit alongside React and TypeScript
      * in a more hands on way (instead of just tutorials) before moving on to
@@ -333,8 +333,8 @@ function NavBarComCon ( props : NavBarComConPro ) : React.ReactElement {
     const handleClickConFun : HandleClickConFun = () => {
 
 
-        /** This will dispatch the Redux Toolkit custom defined contactCount reducer in order to increment the contact click count value in the Redux store. */
-        disFun( contactCount() );
+        /** This will dispatch the Redux Toolkit custom defined conCouRed reducer in order to increment the contact click count value in the Redux store. */
+        disFun( conCouRed() );
 
 
         /** conCouNum   = Contact Count Number stores the number of times that the navigation bar's Contact page link has been clicked. These must use the {@link store.getState} method instead of the {@link staObj} prop or it will use an outdated value. */

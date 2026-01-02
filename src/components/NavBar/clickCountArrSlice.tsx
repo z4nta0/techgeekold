@@ -1,85 +1,96 @@
-import { createSlice } from '@reduxjs/toolkit';
+
+// #region Imports
+
+import { createSlice } from '@reduxjs/toolkit'; /** This is the toolset for Redux that is designed to simplify Redux logic, reduce boilerplate and streamline state management by bundling essential utilities and best practices. This makes Redux easier to set up and use for modern applications. */
+
+// #endregion Imports
 
 
 
-/* Leaving this for future reference
-type ClickCountArr = [ number, number ];
-
-const initialClickCountArr : ClickCountArr = [ 0, 0 ];
-
-interface ClickCountArrAction {
-
-    type : string;
-
-};
-
-const defaultClickCountArrAction : ClickCountArrAction = {
-
-    type : '',
-
-};
-
-export const clickCountArrIncrement = ( type : string ) : ClickCountArrAction => {
-
-    return { type : type };
-
-};
-
-export const clickCountArrReducer = ( clickCountArr : ClickCountArr = initialClickCountArr, action : ClickCountArrAction = defaultClickCountArrAction) : ClickCountArr => {
-
-    switch ( action.type ) {
-
-        case 'clickCountArr/aboutCount' :
-            return [ clickCountArr[0] + 1, clickCountArr[1] ];
-
-        case 'clickCountArr/contactCount' :
-            return [ clickCountArr[0], clickCountArr[1] + 1 ];
-
-        default :
-            return clickCountArr;
-
-    }
-
-};
+/**
+ * clickCountArrSlice = Click Count Array Slice File
+ *
+ * @summary
+ * This file creates a Redux slice for managing a simple counter state. It
+ * defines the initial state of the cliCouArr and provides two reducer
+ * functions, {@link aboutCount} and {@link contactCount}, which allow for
+ * increasing their respective cliCouArr values by 1 every time one of their
+ * navigation bar links are clicked. The slice is created using Redux Toolkit's
+ * {@link createSlice} method, which automatically generates action creators
+ * and action types based on the provided reducers. All of this is completely
+ * unnecessary of course, but this was just for personal learning purposes to
+ * gain some experience with using Redux Toolkit alongside React and TypeScript
+ * while following along with tutorials before moving on to my next project
+ * that will use these concepts in a more practical, realistic way.
+ *
+ * @author z4ntao <https://github.com/z4nta0>
+ *
 */
 
 
 
-type InitialState = [ number, number ];
+// #region State Variables
 
-const initialState : InitialState = [ 0, 0 ];
+/** IniStaArr = Initial State Array will store the two number values for the click counts (About = index 0, Contact = index 1) of the About and Contact links in the navigation bar. */
+type IniStaArr = [ number, number ];
 
-interface Options {
+/** @see {@link IniStaArr} */
+const iniStaArr : IniStaArr = [ 0, 0 ];
+
+// #endregion State Variables
+
+
+
+// #region Slice Variables
+
+
+// #region sliOptObj
+
+/**
+ * SliOptObj = Slice Options Object will store the default properties and values that will be provided to Redux Toolkit's {@link createSlice} function. It abstracts away all of the boilerplate code that is required by Redux (without Toolkit) to handle state management.
+ * 
+ * @property name         = Name will store the name of the slice, in this case a value of cliCouArr, which Redux Toolkit will use to identify this slice and therefore identify these reducers.
+ * @property initialState = Initial State will store the value from {@link iniStaArr}, which will be the starting values of the cliCouArr state variable.
+ * @property reducers     = Reducers will store the two reducer functions, {@link aboCouRed} and {@link conCouRed}, that will handle incrementing the cliCouArr state number values respectively.
+ * @property aboCouRed    = Increment Number Reducer will handle incrementing the cliCouArr[0] (About page count) state number value by 1 each time the navigation bar's About page link is clicked.
+ * @property conCouRed    = Increment Number Reducer will handle incrementing the cliCouArr[1] (Contact page count) state number value by 1 each time the navigation bar's Contact page link is clicked.
+ *
+*/
+
+type SliOptObj = {
 
     name         : string;
-
-    initialState : InitialState;
+    initialState : IniStaArr;
 
     reducers     : {
 
-        aboutCount   : ( state : InitialState ) => InitialState;
-        contactCount : ( state : InitialState ) => InitialState;
+        aboCouRed : ( state : IniStaArr ) => IniStaArr;
+        conCouRed : ( state : IniStaArr ) => IniStaArr;
 
     };
 
 };
 
-const options : Options = {
+/** @see {@link SliOptObj} */
+const sliOptObj : SliOptObj = {
 
-    name         : 'clickCountArr',
-
-    initialState : initialState,
+    name         : 'cliCouArr',
+    initialState : iniStaArr,
 
     reducers     : {
 
-        aboutCount   : ( state = initialState ) => {
+        aboCouRed   : ( state = iniStaArr ) => {
 
+            /** Redux Toolkit abstracts away the need to manually handle immutable state updates by using Immer under the hood. */
+            /** The indexes must be handled carefully to ensure the correct count is incremented. I realize that is a hacky way to do this, but this is just for personal learning purposes. */
             return [ state[0] + 1, state[1] ];
 
         },
 
-        contactCount : ( state = initialState ) => {
+        conCouRed : ( state = iniStaArr ) => {
 
+            /** Redux Toolkit abstracts away the need to manually handle immutable state updates by using Immer under the hood. */
+            /** The indexes must be handled carefully to ensure the correct count is incremented. I realize that is a hacky way to do this, but this is just for personal learning purposes. */
             return [ state[0], state[1] + 1 ];
 
         },
@@ -88,8 +99,26 @@ const options : Options = {
 
 };
 
-export const clickCountArrSlice = createSlice( options );
+// #endregion sliOptObj
 
-export const { aboutCount, contactCount } = clickCountArrSlice.actions;
 
-export default clickCountArrSlice.reducer;
+// #endregion Slice Variables
+
+
+
+// #region Slice Creation
+
+/** cliCouArrSlice = Click Count Array Slice will use Redux Toolkit's core API that automatically generates action creators and reducers for a single slice of application's state. It returns a single object that contains the slice name, generated reducer, its corresponding actions, case reducers, and an optional getSelectors function. */
+export const cliCouArrSlice = createSlice( sliOptObj );
+
+/** This exports the reducer functions that were generated by the above {@link cliCouArrSlice} and that were defined in the {@link sliOptObj} object's reducers property. */
+export const { aboCouRed, conCouRed } = cliCouArrSlice.actions;
+
+// #region Slice Creation
+
+
+
+/** This exports the reducer function that was generated by the above {@link cliCouArrSlice} and that was defined in the {@link sliOptObj} object's reducers property, and it is what will get imported into the Redux store inside of src/store.tsx. */
+export default cliCouArrSlice.reducer;
+
+
