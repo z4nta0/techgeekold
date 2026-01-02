@@ -105,22 +105,22 @@ function NavBarCom ( props : NavBarComPro ) : React.ReactElement {
 
         // #region Navigation Section Element
 
-        < section id='navSecEle' className={ styles.gridNav } > { /* Navigation Section Element = This is the component wrapping HTML element since React requires components to return a single root element. */ }
+        < section id='navSecEle' className={ styles.navSection } > { /* Navigation Section Element = This is the component wrapping HTML element since React requires components to return a single root element. */ }
 
 
 
             { /** Start Navigation Nav Element */ }
 
-            < nav id='navNavEle' className={ styles.NavBarCom_nav } > { /* Navigation Nav Element = This is the nav HTML element within the navigation section that contains all React Router <NavLink> components for navigation. */ }
+            < nav id='navNavEle' className={ styles.nav } > { /* Navigation Nav Element = This is the nav HTML element within the navigation section that contains all React Router <NavLink> components for navigation. */ }
 
 
                 { /** Start Logo Navigation Element */ }
 
-                < NavLink to='/' id='logNavEle' className={ `${ styles.NavBarCom_logoCon } ${ styles.NavBarCom_anchor}` } onClick={ onClickLog } > { /* Logo NavLink Element = This is the React Router <NavLink> HTML element for the logo home page link. */ }
+                < NavLink to='/' id='logNavEle' className={ `${ styles.logoNavLink } ${ styles.navLink}` } onClick={ onClickLog } > { /* Logo NavLink Element = This is the React Router <NavLink> HTML element for the logo home page link. */ }
 
-                    < img id='logImgEle_NavBarEle' className={ styles.NavBarCom_logImg } src={ reactLogo } alt='React logo' /> { /* Logo Image Element for Navigation Bar Element = This is the site/app logo image HTML element for the logo home page link. The id property uses a modifier in order to distinguish it from any other logo image elements that may be placed across the site/app. */ }
+                    < img id='logImgEle_NavBarEle' className={ styles.logoImg } src={ reactLogo } alt='React logo' /> { /* Logo Image Element for Navigation Bar Element = This is the site/app logo image HTML element for the logo home page link. The id property uses a modifier in order to distinguish it from any other logo image elements that may be placed across the site/app. */ }
 
-                    < p   id='logParEle'           className={ styles.NavBarCom_logoTxt } >{ namStr }</ p > { /* Logo Paragraph Element = This is the paragraph HTML element that contains the text for the logo home page link. It uses the nameStr prop as the text, which stores the site/app's name. */ }
+                    < p   id='logParEle'           className={ styles.logoParagraph } >{ namStr }</ p > { /* Logo Paragraph Element = This is the paragraph HTML element that contains the text for the logo home page link. It uses the nameStr prop as the text, which stores the site/app's name. */ }
 
                 </ NavLink >
 
@@ -130,11 +130,11 @@ function NavBarCom ( props : NavBarComPro ) : React.ReactElement {
 
                 { /** Start Navigation Unordered List Element */ }
 
-                < ul id='navUliEle' className={ styles.NavBarCom_ul } > { /* Navigation Unordered List Element = This is the unordered list HTML element within the nav HTML element that contains the Home, About and Contact React Router <NavLink> components for navigation. */ }
+                < ul id='navUliEle' className={ styles.unorderedList } > { /* Navigation Unordered List Element = This is the unordered list HTML element within the nav HTML element that contains the Home, About and Contact React Router <NavLink> components for navigation. */ }
 
-                    < li id='homLisEle' className={ styles.NavBarCom_il } >< NavLink to='/'       id='homNavEle' className={ styles.NavBarCom_anchor } onClick={ onClickHom } >Home</    NavLink ></ li > { /* Home List Element    & Home NavLink Element    = This is the list HTML element and the React Router <NavLink> HTML element for the home page link.    These links will automatically have an .active class (properties and their values are defined in the main App.css file) applied to them by React Router when the current route matches the 'to' attribute. */ }
-                    < li id='aboLisEle' className={ styles.NavBarCom_il } >< NavLink to='about'   id='aboNavEle' className={ styles.NavBarCom_anchor } onClick={ onClickAbo } >About</   NavLink ></ li > { /* About List Element   & About NavLink Element   = This is the list HTML element and the React Router <NavLink> HTML element for the about page link.   These links will automatically have an .active class (properties and their values are defined in the main App.css file) applied to them by React Router when the current route matches the 'to' attribute. */ }
-                    < li id='conLisEle' className={ styles.NavBarCom_il } >< NavLink to='contact' id='conNavEle' className={ styles.NavBarCom_anchor } onClick={ onClickCon } >Contact</ NavLink ></ li > { /* Contact List Element & Contact NavLink Element = This is the list HTML element and the React Router <NavLink> HTML element for the contact page link. These links will automatically have an .active class (properties and their values are defined in the main App.css file) applied to them by React Router when the current route matches the 'to' attribute. */ }
+                    < li id='homLisEle' className={ styles.listItem } >< NavLink to='/'       id='homNavEle' className={ styles.navLink } onClick={ onClickHom } >Home</    NavLink ></ li > { /* Home List Element    & Home NavLink Element    = This is the list HTML element and the React Router <NavLink> HTML element for the home page link.    These links will automatically have an .active class (properties and their values are defined in the main App.css file) applied to them by React Router when the current route matches the 'to' attribute. */ }
+                    < li id='aboLisEle' className={ styles.listItem } >< NavLink to='about'   id='aboNavEle' className={ styles.navLink } onClick={ onClickAbo } >About</   NavLink ></ li > { /* About List Element   & About NavLink Element   = This is the list HTML element and the React Router <NavLink> HTML element for the about page link.   These links will automatically have an .active class (properties and their values are defined in the main App.css file) applied to them by React Router when the current route matches the 'to' attribute. */ }
+                    < li id='conLisEle' className={ styles.listItem } >< NavLink to='contact' id='conNavEle' className={ styles.navLink } onClick={ onClickCon } >Contact</ NavLink ></ li > { /* Contact List Element & Contact NavLink Element = This is the list HTML element and the React Router <NavLink> HTML element for the contact page link. These links will automatically have an .active class (properties and their values are defined in the main App.css file) applied to them by React Router when the current route matches the 'to' attribute. */ }
 
                 </ ul >
 

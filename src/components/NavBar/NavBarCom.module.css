@@ -1,49 +1,120 @@
-.gridNav {
 
-    display: grid;
-    grid-area: navbar;
-    grid-template-rows: 100%;
-    min-height: 10vh;
+/* #region Nav Section */
 
-}
 
-.NavBarCom_nav {
+/* Nav Section = This is the HTML Section element that acts as the root container for the navigation bar component. */
+.navSection {
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: #282c34;
-    color: white;
+    background-color      : hsla( 0, 0%, 18%, 100% ); /* This color was chosen based on the background color of the dfault React + Vite installation, by increaing the light portion by 3%. This method, using hsla and changing only the light portion, is a great way to generate different shades of the same color. */
+    display               : grid;                       /* The CSS Grid was chosen as the layout method for the navigation bar content, mostly to remain consistent with the rest of the site/app but also for its powerful layout capabilities. */
+    grid-area             : navbar;                     /* The chosen grid area name corresponds to the grid area defined in the parent container of this component in App.css, allowing it to be properly placed within the overall site/app layout. */
+    grid-template-areas   : '. nav .';                  /* The grid area was chosen as my preferred method of placing grid items, as I find its visual definition and placement provides more clarity. It defines a single row grid with three columns, where the middle column is designated for the nav area (the actual navigation bar content) and the side columns are empty ('.') to create spacing on either side. */
+    grid-template-columns : 2fr 6fr 2fr;                /* The column fractions were chosen to create a balanced layout, with the navigation bar content taking up the majority of the space (6fr) and equal spacing on either side (2fr each) to center the content within the section. */
+    grid-template-rows    : 100%;                       /* A single row grid was chosen for the navigation bar, as it is a horizontal layout that does not require multiple rows. While technically this declaration could be left out, it is considered best practice to define it explicitly for clarity and maintainability. */
+    justify-content       : space-around;               /* This property was chosen to evenly distribute the navigation bar content within its grid area. */
+    padding               : 1rem;                       /* The padding was chosen to provide adequate spacing around the navigation bar content, ensuring it does not touch the edges of the section. */
 
 }
 
-.NavBarCom_logoCon {
 
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
+/* #endregion Nav Section */
 
-.NavBarCom_logoTxt {
 
-    color: white;
-    text-decoration: none;
-    padding-left: 1rem;
 
-}
+/* #region Nav */
 
-.NavBarCom_ul {
 
-    list-style-type: none !important;
-    display: flex;
-    gap: 1rem;
+/* Nav = This is the HTML Nav element that contains the logo and main navigation links. */
+.nav {
+
+    align-content         : center;        /* This property was chosen to vertically center the navigation bar content within its grid area. */
+    display               : grid;          /* The CSS Grid was chosen as the layout method for the navigation bar content, mostly to remain consistent with the rest of the site/app but also for its powerful layout capabilities. */
+    grid-area             : nav;           /* The chosen grid area name corresponds to the grid area defined in the parent container of this component in the above .navSection declaration, allowing it to be properly placed within the navigation bar component. */
+    grid-template-areas   : 'logo . ul';   /* The grid area was chosen as my preferred method of placing grid items, as I find its visual definition and placement provides more clarity. It defines a single row grid with three columns, where the first column is designated for the logo area (the logo and site/app name), the second column is empty ('.') to create spacing between the logo and navigation links, and the third column is designated for the ul area (the main navigation links). */
+    grid-template-columns : 2fr 5fr 3fr;   /* The column fractions were chosen to create a balanced layout, with the logo area taking up a moderate portion of the space (2fr), the spacing area in between (5fr) providing adequate separation with the navigation links area which take up a slightly larger portion (3fr). */
+    grid-template-rows    : 100%;          /* A single row grid was chosen for the navigation bar content, as it is a horizontal layout that does not require multiple rows. While technically this declaration could be left out, it is considered best practice to define it explicitly for clarity and maintainability. */
+    justify-content       : space-between; /* This property was chosen to distribute the navigation bar content within its grid area, placing the logo on the left and the navigation links on the right. */
 
 }
 
-.NavBarCom_anchor {
 
-    color: #CCCCCC;
-    text-decoration: none;
+/* #endregion Nav */
+
+
+
+/* #region Logo Link */
+
+
+/* Logo NavLink = This is the React Router NavLink element that contains the logo image and paragraph. */
+.logoNavLink {
+
+    align-items           : center;    /* This property was chosen to vertically center the logo image and paragraph within their grid area. */
+    column-gap            : 1rem;      /* This property was chosen to provide adequate spacing between the logo image and the site/app name paragraph, ensuring they are visually distinct yet still closely associated. */
+    display               : grid;      /* The CSS Grid was chosen as the layout method for the logo content, mostly to remain consistent with the rest of the site/app but also for its powerful layout capabilities. */
+    grid-area             : logo;      /* The chosen grid area name corresponds to the grid area defined in the parent .nav declaration above, allowing it to be properly placed within the nav element. */
+    grid-template-areas   : 'img par'; /* The grid area was chosen as my preferred method of placing grid items, as I find its visual definition and placement provides more clarity. It defines a single row grid with two columns, where the first column is designated for the img area (the logo image) and the second column is designated for the par area (the site/app name paragraph text). */
+    grid-template-columns : 1fr 9fr;   /* The column fractions were chosen to create a balanced layout, with the logo image taking up a smaller portion of the space (1fr) and the site/app name paragraph taking up the majority of the space (9fr). */
+    grid-template-rows    : 100%;      /* A single row grid was chosen for the logo content, as it is a horizontal layout that does not require multiple rows. While technically this declaration could be left out, it is considered best practice to define it explicitly for clarity and maintainability. */
+    justify-items         : start;     /* This property was chosen to align the logo image and paragraph to the start (left side) of their respective grid areas, the reasoning behind that being that their parent container is the left most element in said container. */
 
 }
+
+
+/* Logo Image = This is the image element that displays the logo. */
+.logoImg {
+
+    grid-area : img; /* This property was chosen to place the logo image within the img grid area defined in the parent .logoNavLink declaration above. */
+
+}
+
+
+/* Logo Paragraph = This is the paragraph element that displays the site/app name text alongside the logo image. */
+.logoParagraph {
+
+    grid-area : par; /* This property was chosen to place the logo paragraph within the par grid area defined in the parent .logoNavLink declaration above. */
+
+}
+
+
+/* #endregion Logo Link */
+
+
+
+/* #region List Links */
+
+
+/* Unordered List = This is the HTML unordered list element that contains the main navigation links. */
+.unorderedList {
+
+    display               : grid;             /* The CSS Grid was chosen as the layout method for the navigation links, mostly to remain consistent with the rest of the site/app but also for its powerful layout capabilities. */
+    gap                   : 1rem;             /* This property was chosen to provide adequate spacing between each navigation link within the unordered list, ensuring they are visually distinct and easy to interact with. */
+    grid-area             : ul;               /* The chosen grid area name corresponds to the grid area defined in the parent .nav declaration above, allowing it to be properly placed within the nav element. */
+    grid-template-columns : repeat( 3, 1fr ); /* This property was chosen to create three equal width columns within the unordered list, allowing each of the navigation links equal space. */
+    grid-template-rows    : 100%;             /* A single row grid was chosen for the navigation links, as they are arranged horizontally in a single row. While technically this declaration could be left out, it is considered best practice to define it explicitly for clarity and maintainability. */
+    list-style-type       : none !important;  /* This property was chosen to remove the default bullet points from the unordered list. I know using !important is bad practice, but I tried removing them every other way before resorting to this method. */
+    justify-content       : space-around;     /* This property was chosen to evenly distribute the navigation links within the unordered list. */
+
+}
+
+
+/* NavLink = This is the React Router NavLink element that represents each individual navigation link within the unordered list. */
+.navLink {
+
+    text-shadow : 0px 0px 0px hsla( 0, 0%, 100%, 0% ); /* This initial text shadow was chosen to set the size to zero and be fully transparent, effectively making it invisible. This sets the stage for the hover effect, where the text shadow will become visible and create a glowing effect around the text. I prefer using hsla for its flexibility in creating different variations of color by adjusting only the light portion of the value. */
+    transition  : text-shadow 0.3s ease-in-out;          /* This property was chosen to create a smooth transition effect when the text shadow changes on hover. */
+
+}
+
+
+/* NavLink Hover Effect = This defines the hover effect for each navigation link, changing the text color and adding a glowing text shadow. */
+.navLink:hover {
+
+    color       : hsla( 0, 0%, 100%, 100% );             /* This color was chosen to make the text fully white on hover, further enhancing the visual indicator when a link is being hovered over. I prefer using hsla for its flexibility in creating different variations of color by adjusting only the light portion of the value. */
+    text-shadow : 0px 0px 9px hsla( 0, 0%, 100%, 100% ); /* This text shadow was chosen to create a glowing effect around the text when hovered over, creating a strong visual indicator when a link is being hovered over. I prefer using hsla for its flexibility in creating different variations of color by adjusting only the light portion of the value. */
+
+}
+
+
+/* #endregion List Links */
+
+
