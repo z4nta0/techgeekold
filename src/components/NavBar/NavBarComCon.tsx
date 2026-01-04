@@ -1,13 +1,14 @@
 
 // #region Imports
 
-import { aboCouRed    } from './clickCountArrSlice.tsx'; /** This is the reducer function for managing the click count number staObj value for the About page link. */
-import { conCouRed    } from './clickCountArrSlice.tsx'; /** This is the reducer function for managing the click count number staObj value for the Contact page link. */
-import { logCouRed    } from './clickCountObjSlice.tsx'; /** This is the reducer function for managing the click count number staObj value for the Home page link. */
-import { homCouRed    } from './clickCountObjSlice.tsx'; /** This is the reducer function for managing the click count number staObj value for the Home page logo link. */
-import   NavBarCom      from './NavBarCom';              /** This is the presentational component that contains the JSX for the navigation bar. */
-import { type State   } from '../../store.tsx';          /** This is the custom TypeScript type definition for the Redux store's entire staObj object. */
-import { store        } from '../../store.tsx';          /** This is the Redux store object that contains the entire staObj tree of the application. */
+import { aboCouRed      } from './clickCountArrSlice.tsx'; /** This is the reducer function for managing the click count number state value for the About page link. */
+import { conCouRed      } from './clickCountArrSlice.tsx'; /** This is the reducer function for managing the click count number state value for the Contact page link. */
+import { homCouRed      } from './clickCountObjSlice.tsx'; /** This is the reducer function for managing the click count number state value for the Home page logo link. */
+import { logCouRed      } from './clickCountObjSlice.tsx'; /** This is the reducer function for managing the click count number state value for the Home page link. */
+import   NavBarCom        from './NavBarCom';              /** This is the presentational component that contains the JSX for the navigation bar. */
+import { type RooStaObj } from '../../store.tsx';          /** This is the custom TypeScript type definition for the Redux store's entire state object. */
+import   store            from '../../store.tsx';          /** This is the Redux store object that contains the entire state object tree of the application. */
+import { type UseAppDis } from '../../hooks/useAppDis.ts'; /** This is the custom Typescript type definition got a custom React Hook that wraps the React Redux useDispatch hook for better type checking. */
 
 // #endregion Imports
 
@@ -19,16 +20,16 @@ import { store        } from '../../store.tsx';          /** This is the Redux s
  * NavBarComConPro = Navigation Bar Component Container Props will store all of the props that will be used in the NavBarComCon and NavBarCom components.
  *
  * @property namStr = Name String will store the site/app name that will be displayed in the navigation bar.
- * @property staObj = State Object will store the entire Redux store's staObj tree for use in the component.
- * @property disFun = Dispatch Function will store the Redux store's dispatch function for use in the component.
+ * @property staObj = State Object will store the entire Redux store's state object tree for use in the component.
+ * @property disFun = Dispatch Function will store the custom React Hook that wraps the React Redux store's dispatch function for use in the component.
  *
 */
 
 type NavBarComConPro = {
 
   namStr : string;
-  staObj : State;
-  disFun : Function;
+  staObj : RooStaObj;
+  disFun : UseAppDis;
 
 };
 
@@ -77,14 +78,18 @@ function NavBarComCon ( props : NavBarComConPro ) : React.ReactElement {
 
     // #region Props Variables
 
-    /** Dispatch Function = {@link NavBarComConPro.disFun} */
-    const { disFun }      = props;
+    /** Dispatch Function = {@link NavBarComConPro.disFun}. This must be executed as a function to obtain the actual dispatch function. This is a side effect of wrapping the React Redux store's useDispatch function in a custom React Hook. */
+    const disFun          = props.disFun();
     /** Name String       = {@link NavBarComConPro.namStr} */
     const { namStr }      = props;
     /** State Object      = {@link NavBarComConPro.staObj} */
     const { staObj }      = props;
 
     // #endregion Props Variables
+
+
+    /** App Dispatch Function = This will store an instance of the dispatch function obtained by calling the custom React Hook that wraps the React Redux store's dispatch function. */
+    //const appDisFun           = disFun();
 
 
     // #endregion Component Scoped Variables
@@ -141,8 +146,8 @@ function NavBarComCon ( props : NavBarComConPro ) : React.ReactElement {
         disFun( logCouRed() );
 
 
-        /** logCouNum   = Logo Count Number stores the number of times that the navigation bar's logo Home page link has been clicked. These must use the {@link store.getState} method instead of the {@link staObj} prop or it will use an outdated value. */
-        const logCouNum = store.getState().clickCountObj.logCouNum;
+        /** logCouNum   = Logo Count Number stores the number of times that the navigation bar's logo Home page link has been clicked. These must use the {@link store.getState} method instead of the {@link staObj} prop or it will use an outdated value. Also, the useSelector method is not needed here because this is simply for console logging purposes and is not for use directly in a React component or hook (i.e. no rerendering is required). */
+        const logCouNum = store.getState().cliCouObj.logCouNum;
 
         /** This logs the number of times the logo Home page link has been clicked to the console in order to verify that the click count is being tracked correctly. */
         console.log( `You clicked on the logo link for the ${ namStr } Home page ${ logCouNum } times!` );
@@ -206,8 +211,8 @@ function NavBarComCon ( props : NavBarComConPro ) : React.ReactElement {
         disFun( homCouRed() );
 
 
-        /** homCouNum   = Home Count Number stores the number of times that the navigation bar's Home page link has been clicked. These must use the {@link store.getState} method instead of the {@link staObj} prop or it will use an outdated value. */
-        const homCouNum = store.getState().clickCountObj.homCouNum;
+        /** homCouNum   = Home Count Number stores the number of times that the navigation bar's Home page link has been clicked. These must use the {@link store.getState} method instead of the {@link staObj} prop or it will use an outdated value. Also, the useSelector method is not needed here because this is simply for console logging purposes and is not for use directly in a React component or hook (i.e. no rerendering is required). */
+        const homCouNum = store.getState().cliCouObj.homCouNum;
 
         /** This logs the number of times the Home page link has been clicked to the console in order to verify that the click count is being tracked correctly. */
         console.log( `You clicked on the navbar link for the ${ namStr } Home page ${ homCouNum } times!` );
@@ -271,8 +276,8 @@ function NavBarComCon ( props : NavBarComConPro ) : React.ReactElement {
         disFun( aboCouRed() );
 
 
-        /** aboCouNum   = About Count Number stores the number of times that the navigation bar's About page link has been clicked. These must use the {@link store.getState} method instead of the {@link staObj} prop or it will use an outdated value. */
-        const aboCouNum = store.getState().clickCountArr[0];
+        /** aboCouNum   = About Count Number stores the number of times that the navigation bar's About page link has been clicked. These must use the {@link store.getState} method instead of the {@link staObj} prop or it will use an outdated value. Also, the useSelector method is not needed here because this is simply for console logging purposes and is not for use directly in a React component or hook (i.e. no rerendering is required). */
+        const aboCouNum = store.getState().cliCouArr[0];
 
         /** This logs the number of times the About page link has been clicked to the console in order to verify that the click count is being tracked correctly. */
         console.log( `You clicked on the navbar link for the ${ namStr } About page ${ aboCouNum } times!` );
@@ -337,8 +342,8 @@ function NavBarComCon ( props : NavBarComConPro ) : React.ReactElement {
         disFun( conCouRed() );
 
 
-        /** conCouNum   = Contact Count Number stores the number of times that the navigation bar's Contact page link has been clicked. These must use the {@link store.getState} method instead of the {@link staObj} prop or it will use an outdated value. */
-        const conCouNum = store.getState().clickCountArr[1];
+        /** conCouNum   = Contact Count Number stores the number of times that the navigation bar's Contact page link has been clicked. These must use the {@link store.getState} method instead of the {@link staObj} prop or it will use an outdated value. Also, the useSelector method is not needed here because this is simply for console logging purposes and is not for use directly in a React component or hook (i.e. no rerendering is required). */
+        const conCouNum = store.getState().cliCouArr[1];
 
         /** This logs the number of times the Contact page link has been clicked to the console in order to verify that the click count is being tracked correctly. */
         console.log( `You clicked on the navbar link for the ${ namStr } Contact page ${ conCouNum } times!` );
