@@ -4,7 +4,7 @@ import { createAsyncThunk, createSlice, type ActionReducerMapBuilder } from "@re
 
 export const loadData = createAsyncThunk(
 
-  "data/getData",
+  "mocDatJso/getMocDatJso",
 
   async () => {
 
@@ -76,7 +76,7 @@ interface Options {
 
 const sliceOptions : Options = {
 
-  name          : 'data',
+  name          : 'mocDatJso',
 
   initialState  : initialState,
 
@@ -128,6 +128,15 @@ const sliceOptions : Options = {
 
 };
 
-export const loadDataSlice = createSlice(sliceOptions);
+export const loaMocDatSlice = createSlice(sliceOptions);
 
-export default loadDataSlice.reducer;
+
+const mocDatJsoReducer = loaMocDatSlice.reducer;
+
+export type MocDatJsoReducer = typeof mocDatJsoReducer;
+
+
+
+export default mocDatJsoReducer;
+
+

@@ -1,20 +1,23 @@
 import './App.css';
 
 import NavBarComCon from './components/NavBar/NavBarComCon';
-import type { State } from './store.tsx';
-
+import type { RooStaObj } from './store.tsx';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import About from './components/About.tsx';
 import Contact from './components/Contact.tsx';
 import ChristmasCard from './components/ChristmasCard/ChrCarCom.tsx';
 import Home from './components/Home.tsx';
+import { type UseAppThu } from './hooks/useAppThu.ts'; /** This is the custom React hook that provides access to the Redux store's dispatch function with proper TypeScript typing for thunk actions. */
+import { type UseAppDis } from './hooks/useAppDis.ts';
+
 
 
 
 interface AppProps {
 
-  staObj : State;
-  disFun : Function;
+  staObj : RooStaObj;
+  disFun : UseAppDis;
+  thuFun : UseAppThu;
 
 };
 
@@ -22,7 +25,7 @@ function App( props : AppProps ) : React.ReactElement {
 
 
 
-  const { staObj, disFun } = props;
+  const { staObj, disFun, thuFun } = props;
 
 
 
@@ -36,7 +39,7 @@ function App( props : AppProps ) : React.ReactElement {
 
       <main id="main" className="gridMain">
         <Routes>
-          <Route path="/" element={<Home staObj={ staObj } disFun={ disFun } />} />
+          <Route path="/" element={<Home staObj={ staObj } disFun={ disFun } thuFun={ thuFun } />} />
           <Route path="/about" element={ <About /> } />
           <Route path="/contact" element={ <Contact /> } />
           <Route path="/christmascard" element={ <ChristmasCard /> } />
