@@ -9,8 +9,8 @@ import { configureStore     }    from '@reduxjs/toolkit';                       
 import   couStaNumReducer        from './features/counterSlice.tsx';                /** This is the default exported reducer responsible for handling the state of the counter number for the counter feature in the home page component. */
 import { type CouStaNumReducer } from './features/counterSlice.tsx';                /** This is the Typescript type definition for the default click count object reducer imported from the clickCountObjSlice file. */
 import { type EnhancedStore }    from '@reduxjs/toolkit';                           /** This is standard Typescript definition for the return type of Redux Toolkit's configureStore function. */
-import   mocDatJsoReducer        from './dataSlice.tsx';                            /** This is the default exported reducer for the mock (backend) data json handling that is show in the home page compoenent. */
-import { type MocDatJsoReducer } from './dataSlice.tsx';                            /** This is the Typescript type definition for the default mock (backend) data json reducer imported from the dataSlice file. */
+import   mocDatJsoReducer        from './api/dataSlice.tsx';                            /** This is the default exported reducer for the mock (backend) data json handling that is show in the home page compoenent. */
+import { type MocDatJsoReducer } from './api/dataSlice.tsx';                            /** This is the Typescript type definition for the default mock (backend) data json reducer imported from the dataSlice file. */
 
 // #endregion Imports
 
