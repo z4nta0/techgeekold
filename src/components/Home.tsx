@@ -5,7 +5,7 @@ import { incNumRed, decNumRed } from '../features/counterSlice.tsx';
 import useAppSel from '../hooks/useAppSel.ts'; /** This is the custom React hook that provides access to the Redux store's state with proper TypeScript typing. */
 import type { RooStaObj } from '../store.tsx';
 import { useEffect } from 'react';
-import { loadData } from '../dataSlice.tsx';
+import { getMocDatJso } from '../api/dataSlice.tsx';
 import { type UseAppThu } from '../hooks/useAppThu.ts'; /** This is the custom React hook that provides access to the Redux store's dispatch function with proper TypeScript typing for thunk actions. */
 import { type UseAppDis } from '../hooks/useAppDis.ts';
 
@@ -23,7 +23,7 @@ interface AppProps {
 
 function Home ( props : AppProps ) : React.ReactElement {
 
-    const { staObj, disFun, thuFun } = props;
+    const { disFun, thuFun } = props;
 
 const thuDisFun = thuFun();
 const appDisFun = disFun();
@@ -35,14 +35,15 @@ const appDisFun = disFun();
         disFun(loadData());
         }, 3000); */
 
-        thuDisFun(loadData());
+        thuDisFun(getMocDatJso());
 
     }, [disFun]);
 
-  const { isLoading } = useAppSel(( state : RooStaObj ) => state.mocDatJso);
-  const { hasError }  = useAppSel(( state : RooStaObj ) => state.mocDatJso);
+  const { curLoaBoo } = useAppSel(( state : RooStaObj ) => state.mocDatJso);
+  const { encErrBoo } = useAppSel(( state : RooStaObj ) => state.mocDatJso);
+  const { mocDatStr } = useAppSel(( state : RooStaObj ) => state.mocDatJso.mocDatObj);
 
-  const bacEndDat = isLoading ? 'Fetching data from API...' : hasError ? 'Error fetching data' : staObj.mocDatJso.data.message;
+  const bacEndDat = curLoaBoo ? 'Fetching data from API...' : encErrBoo ? 'Error fetching data' : mocDatStr;
 
 
 
