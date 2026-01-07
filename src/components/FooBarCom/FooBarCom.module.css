@@ -1,0 +1,11 @@
+.footerSection {
+
+  grid-area: footer;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 0.5rem;
+  line-height: 1rem;
+  max-height: 100%;
+
+}
