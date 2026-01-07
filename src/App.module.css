@@ -1,20 +1,18 @@
 
-/*
-#root > * {
-  border: 1px solid #000;
-}
-*/
+/** #region App Main */
 
 
+/** App Main = This is the HTML main element that contains the React Router Routes component, which handles the routing of the application. This main grid is where all the routed components will be rendered. */
 .appMain {
 
-    grid-area: main;
-  height: 100%;
-  width: 100%;
-  max-height: 100%;
-  max-width: 100%;
-  padding-top: 3rem;
+    grid-area   : main; /** This property was chosen to place the main element within the site/app root grid area defined in the parent #root declaration in the top level index.css file. */
+    height      : 100%; /** This property was chosen to make the main element take up the full height of its parent container, which is declared by the #root grid container in the top level index.css file. */
+    padding-top : 3rem; /** This property was chosen to add some space at the top of the main element, which can help to visually separate it from the navbar component and provide some breathing room for the content. */
+    width       : 100%; /** This property was chosen to ensure that the main element takes up the full width of its parent container, which is declared by the #root grid container in the top level index.css file. */
 
 }
+
+
+/** #endregion App Main */
 
 
