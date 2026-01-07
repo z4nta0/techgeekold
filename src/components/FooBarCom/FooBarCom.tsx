@@ -87,7 +87,7 @@ function FooBarCom ( props : FooBarComPro ) : React.ReactElement {
 
         < section id='fooSecEle' className={ styles.footerSection } > { /* Footer Section Element = This is the component wrapping HTML element since React requires components to return a single root element. */ }
 
-           < p    id='fooParEle' className={ styles.footerParagraph } >© z4nta0 2025</ p >
+           < p    id='fooParEle' className={ styles.footerParagraph } >{ namStr } © z4nta0 2025</ p >
 
         </ section >
 
