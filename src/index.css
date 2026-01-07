@@ -76,7 +76,7 @@ body {
 }
 
 
-#root {
+#rooSecEle {
 
   display: grid;
   grid-template-areas: "navbar navbar navbar"
