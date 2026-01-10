@@ -1,0 +1,232 @@
+.homeSection {
+
+  display: grid;
+  grid-template-areas: "header"
+                       "content";
+  grid-template-columns: 100%;
+  grid-template-rows: 40% 60%;
+  row-gap: 30px;
+  max-height: 100%;
+  max-width: 100%;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+
+}
+
+.headerSection {
+
+  grid-area: header;
+  display: grid;
+  grid-template-areas: "header1"
+                       "links";
+  grid-template-columns: 100%;
+  grid-template-rows: 30% 70%;
+  max-height: 100%;
+  max-width: 100%;
+  justify-items: center;
+  row-gap: 20px;
+
+}
+
+.header1Div {
+
+  grid-area: header1;
+  display: grid;
+  align-content: center;
+  container-type: inline-size;
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
+
+}
+
+.header1 {
+
+  align-self: center;
+    font-size   : 6cqw; /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
+    line-height : 6cqw;
+    max-height: 100%;
+    margin: 0;
+
+}
+
+.linksDiv {
+
+  container-type: inline-size;
+  grid-area: links;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 100%;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  max-width: 100%;
+
+}
+
+.links:nth-child(1) {
+
+  justify-self: end;
+
+}
+
+.links:nth-child(2) {
+
+  justify-self: start;
+
+}
+
+.logo {
+  height: 8cqw;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.contentSection {
+  grid-area: content;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(4, 25%);
+  justify-content: center;
+  align-items: center;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.buttonsDiv {
+  display: grid;
+  max-width: 100%;
+  max-height: 100%;
+  grid-template-columns: repeat(2, 50%);
+  grid-template-rows: 100%;
+  margin: 0;
+  justify-content: center;
+  column-gap: 20px;
+}
+
+.buttons {
+
+  margin: 0;
+  max-width: 45%;
+  width: 45%;
+
+}
+
+.buttons:nth-child(1) {
+
+  justify-self: end;
+
+}
+
+.buttons:nth-child(2) {
+
+  justify-self: start;
+
+}
+
+.editParagraph {
+  margin: 0;
+  max-width: 100%;
+  width: 100%;
+  align-self: center;
+}
+
+.dataParagraph {
+  margin: 0;
+  max-width: 100%;
+  width: 100%;
+  align-self: center;
+}
+
+.docsParagraph {
+  margin: 0;
+  color: #888;
+}
+
+h1 {
+
+    font-size   : 4.236rem; /** This property was chosen according to a multiplier of the base vertical rhythm of 1.618. 4.236 ~= 1.618^3. */
+    line-height : 1;        /** This property was chosen to set the line height equal to the font size, creating a compact and visually appealing heading. */
+
+}
+
+button {
+
+    background-color : var( --col-but-dar ); /** This property was chosen by the default React installation to set the background color of buttons to a very dark gray tone that provides a strong contrast against the text and stands out against the overall dark theme of the site/app, while still maintaining a cohesive and visually appealing design. */
+    border           : 0.090rem solid transparent; /** This property was chosen so that the hover selector would have a smooth transition. The size value was chosen according to a multiplier of the base vertical rhythm of 1.618. 0.090 ~= 1 / 1.618^5 (this is the same as 1.618^-5). */
+    border-radius    : 0.618rem;                   /** This property was chosen according to a multiplier of the base vertical rhythm of 1.618. 0.618 ~= 1 / 1.618 (this is the same as 1.618^-1). */
+    cursor           : pointer;                    /** This property was chosen as a common standard for changing the cursor to a pointer when hovering over buttons, providing a visual cue to users that the element is interactive and can be clicked. */
+    font-family      : inherit;                    /** This property was chosen by the default React installation to ensure that buttons inherit the font family from their parent elements, maintaining consistency in typography across the site/app and allowing for easier styling and theming. */
+    font-size        : 1rem;                       /** This property was chosen to set the font size of buttons to 1rem, which is the same as the base font size defined in the :root selector. This ensures that button text is consistent with the overall typography of the site/app and allows for easy scaling based on user preferences. */
+    font-weight      : 500;                        /** This property was chosen by the default React installation to make button text slightly bolder than the normal text, which can help it stand out and indicate that it is interactive. */
+    padding          : 0.618rem 1.618rem;          /** This property was chosen to provide sufficient padding around the button text, making the buttons larger and easier to click while also improving their visual appearance. The values were chosen according to a multiplier of the base vertical rhythm of 1.618. 0.618 ~= 1 / 1.618 (this is the same as 1.618^-1) and 1.618 = 1.618^1. */
+    transition       : border-color 0.33s;         /** This property was chosen to create a smooth transition effect when the border color changes on hover, enhancing the user experience by providing visual feedback. The duration of 0.33 seconds was chosen as a common standard (between 150ms and 400ms or 0.15s to 0.4s) for small subtle transitions, providing a noticeable yet not overly slow effect. */
+
+}
+
+button:hover {
+
+    border-color : var( --col-bor_hov-dar ); /** This property was chosen by the default React installation to change the border color of buttons to the same vibrant shade of blue used for links when hovered over, providing visual feedback to users that the button is interactive and currently being hovered. */
+
+}
+
+button:focus,
+button:focus-visible {
+
+    outline : 0.236rem auto -webkit-focus-ring-color; /** This property was chosen to provide a clear and visible focus indicator for buttons when they receive keyboard focus, improving accessibility for users who navigate the site/app using a keyboard. The -webkit-focus-ring-color is often used to restore the native focus style if the outline property has been previously removed for aesthetic reasons. The size value was chosen according to a multiplier of the base vertical rhythm of 1.618. 0.236 ~= 1 / 1.618^3 (this is the same as 1.618^-3). */
+
+}
+
+@media ( prefers-color-scheme : light ) {
+
+    button {
+
+        background-color : var( --col-but-lig ); /** This property was chosen by the default React installation to set the background color of buttons to a very light gray tone in light mode, providing a subtle contrast against the white background. */
+
+    }
+
+    button:hover {
+
+        border-color : var( --col-bor_hov-lig ); /** This property was chosen by the default React installation to change the border color of buttons to the same vibrant shade of blue used for links when hovered over, providing visual feedback to users that the button is interactive and currently being hovered. */
+
+    }
+
+}
+
+/*
+a {
+    color: #CCCCCC;
+}
+
+a.active {
+    color: #FFFFFF;
+    font-weight: bold;
+}*/
