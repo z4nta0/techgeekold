@@ -1,280 +1,442 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color:hsla(0, 0%, 15%, 100%);
+/* #region Custom Properties */
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root { /** This is the root element selector, making it a true globally scoped selector. */
+
+
+
+    /** The golden ratio is often used as the basis for the vertical rhythm of websites and apps, and is chosen as a favorite since this value can found all throughout nature, art, and architecture. There is no empirical evidence that it is the best choice, but it is aesthetically pleasing to many. Regardless, a value must be chosen for said reasons in order to create a consistent and harmonious design, and I find this value as good as any other. */
+
+    --golden-rati : calc( ( 1 + sqrt( 5 ) ) / 2 ); /** ~= 1.618 = This stores the base value, mainly used for establishing a vertical rhythm and sizing property values but it is used pretty much everywhere. */
+
+
+
+    /* #region Border Radius */
+
+    --bor-rad-max : calc( pow( var( --golden-rati ), 7 ) * 1px ); /** ~= 29.034px = This stores the border radius' maximum value and is equal to the golden ratio raised to the 7th power. */
+    --bor-rad-xla : calc( pow( var( --golden-rati ), 6 ) * 1px ); /** ~= 17.944px = This stores the border radius' extra large value and is equal to the golden ratio raised to the 6th power. */
+    --bor-rad-lar : calc( pow( var( --golden-rati ), 5 ) * 1px ); /** ~= 11.090px = This stores the border radius' large value and is equal to the golden ratio raised to the 5th power. */
+    --bor-rad-med : calc( pow( var( --golden-rati ), 4 ) * 1px ); /** ~=  6.854px = This stores the border radius' medium value and is equal to the golden ratio raised to the 4th power. */
+    --bor-rad-sma : calc( pow( var( --golden-rati ), 3 ) * 1px ); /** ~=  4.236px = This stores the border radius' small value and is equal to the golden ratio raised to the 3rd power. */
+    --bor-rad-xsm : calc( pow( var( --golden-rati ), 2 ) * 1px ); /** ~=  2.618px = This stores the border radius' extra small value and is equal to the golden ratio raised to the 2nd power. */
+    --bor-rad-min : calc( pow( var( --golden-rati ), 1 ) * 1px ); /** ~=  1.618px = This stores the border radius' minimum value and is equal to the golden ratio raised to the 1st power. */
+
+    /* #endregion Border Radius */
+
+
+
+    /* #region Border Width */
+
+    --bor-wid-max : calc( pow( var( --golden-rati ), 7 ) * 1px ); /** ~= 29.034px = This stores the border width's maximum value and is equal to the golden ratio raised to the 7th power. */
+    --bor-wid-xla : calc( pow( var( --golden-rati ), 6 ) * 1px ); /** ~= 17.944px = This stores the border width's extra large value and is equal to the golden ratio raised to the 6th power. */
+    --bor-wid-lar : calc( pow( var( --golden-rati ), 5 ) * 1px ); /** ~= 11.090px = This stores the border width's large value and is equal to the golden ratio raised to the 5th power. */
+    --bor-wid-med : calc( pow( var( --golden-rati ), 4 ) * 1px ); /** ~=  6.854px = This stores the border width's medium value and is equal to the golden ratio raised to the 4th power. */
+    --bor-wid-sma : calc( pow( var( --golden-rati ), 3 ) * 1px ); /** ~=  4.236px = This stores the border width's small value and is equal to the golden ratio raised to the 3rd power. */
+    --bor-wid-xsm : calc( pow( var( --golden-rati ), 2 ) * 1px ); /** ~=  2.618px = This stores the border width's extra small value and is equal to the golden ratio raised to the 2nd power. */
+    --bor-wid-min : calc( pow( var( --golden-rati ), 1 ) * 1px ); /** ~=  1.618px = This stores the border width's minimum value and is equal to the golden ratio raised to the 1st power. */
+
+    /* #endregion Border Width */
+
+
+
+    /* #region Colors */
+
+
+    /* #region Colors for Dark Mode */
+
+    --col-acc-dar : hsla( 255.000, 100.000%,  76.013%, 100.000% ); /** This stores the accent color for dark mode, and its lavender color was chosen in order to complement the color main for dark mode's light blue. */
+    --col-bac-dar : hsla(   0.000,   0.000%,  11.090%, 100.000% ); /** This stores the background color for dark mode, and its almost black color was chosen in order to provide a dark but not too dark background color since it will be the central point for the dark mode theme and because a true black is not considered natural for user interfaces. */
+    --col-bor-dar : hsla( 255.000, 100.000%,  76.013%, 100.000% ); /** This stores the border color for dark mode, and its lavender color was chosen in order to match the color accent for dark mode. */
+    --col-but-dar : hsla(   0.000,   0.000%,   6.854%, 100.000% ); /** This stores the button color for dark mode, and its almost black color was chosen in order to stand out slightly from the color background for dark mode's slightly lighter black. */
+    --col-lin-dar : hsla( 199.005, 100.000%,  76.013%, 100.000% ); /** This stores the link color for dark mode, and its powder blue color was chosen in order to be a slightly lighter version of the color main for dark mode's light blue. */
+    --col-mai-dar : hsla( 199.005, 100.000%,  46.979%, 100.000% ); /** This stores the main color for dark mode, and its light blue color was chosen in order to stand out with a little pop from the color background for dark mode's almost black. */
+    --col-sec-dar : hsla(  46.979, 100.000%,  46.979%, 100.000% ); /** This stores the secondary color for dark mode, and its yellow color was chosen in order to complement to the color main for dark mode's light blue. */
+    --col-tex-dar : hsla(   0.000,   0.000%,  76.013%, 100.000% ); /** This stores the text color for dark mode, and its slightly offset white color was chosen in order to stand out from but not be to bright against the color background for dark mode's almost black. */
+
+    --col-bor_hov-dar : hsla( 199.005, 100.000%,  46.979%, 100.000% ); /** This stores the border hover color for dark mode, and its color was chosen to match the color main for dark mode's light blue. */
+    --col-but_hov-dar : hsla( 199.005, 100.000%,  46.979%, 100.000% ); /** This stores the button hover color for dark mode, and its color was chosen to match the color main for dark mode's light blue. */
+    --col-lin_hov-dar : hsla( 199.005, 100.000%,  46.979%, 100.000% ); /** This stores the link hover color for dark mode, and its color was chosen to match the color main for dark mode's light blue. */
+
+    /* #endregion Colors for Dark Mode */
+
+
+    /* #region Colors for Light Mode */
+
+    --col-acc-lig : hsla( 255.000, 100.000%, 46.979%, 100.000% ); /** This stores the accent color for light mode, and its dark blue color was chosen in order to complement the color main for light mode's teal blue. */
+    --col-bac-lig : hsla(   0.000,  0.000%, 100.000%, 100.000% ); /** This stores the background color for light mode, and its full white color was chosen in order to provide a bright background color since it will be the central point for the light mode theme. */
+    --col-bor-lig : hsla( 255.000, 100.000%, 46.979%, 100.000% ); /** This stores the border color for light mode, and its dark blue color was chosen in order to match the color accent for light mode. */
+    --col-but-lig : hsla(   0.000,  0.000%,  76.013%, 100.000% ); /** This stores the button color for light mode, and its slightly offset white color was chosen in order to stand out slightly from the color background for light mode's full white. */
+    --col-lin-lig : hsla( 199.005, 100.000%, 46.979%, 100.000% ); /** This stores the link color for light mode, and its light blue color was chosen in order to be a slightly lighter version of the color main for light mode's teal blue. */
+    --col-mai-lig : hsla( 199.005, 100.000%, 29.034%, 100.000% ); /** This stores the main color for light mode, and its teal blue color was chosen in order to stand out with good contrast from the color background for light mode's full white. */
+    --col-sec-lig : hsla(  46.979, 100.000%, 20.034%, 100.000% ); /** This stores the secondary color for light mode, and its golden yellow color was chosen in order to complement to the color main for light mode's teal blue. */
+    --col-tex-lig : hsla(   0.000,   0.000%,  6.854%, 100.000% ); /** This stores the text color for light mode, and its almost black color was chosen in order to stand out from but not be a true dark against the color background for light mode's full white. */
+
+    --col-bor_hov-lig : hsla( 199.005, 100.000%,  29.034%, 100.000% ); /** This stores the border hover color for light mode, and its color was chosen to match the color main for light mode's teal blue. */
+    --col-but_hov-lig : hsla( 199.005, 100.000%,  29.034%, 100.000% ); /** This stores the button hover color for light mode, and its color was chosen to match the color main for light mode's teal blue. */
+    --col-lin_hov-lig : hsla( 199.005, 100.000%,  29.034%, 100.000% ); /** This stores the link hover color for light mode, and its color was chosen to match the color main for light mode's teal blue. */
+
+    /* #endregion Colors for Light Mode */
+
+
+    /* #endregion Colors */
+
+
+
+    /* #region Column Gap */
+
+    --col-gap-max : calc( 100% / pow( var( --golden-rati ),  7 ) ); /** ~= 66.128px @1920px width = This stores the maximum column gap width and is equal to 100% parent width divided by the golden ratio raised to the 7th power (~29.034). */
+    --col-gap-xla : calc( 100% / pow( var( --golden-rati ),  8 ) ); /** ~= 40.870px @1920px width = This stores the extra large column gap width and is equal to 100% parent width divided by the golden ratio raised to the 8th power (~46.979). */
+    --col-gap-lar : calc( 100% / pow( var( --golden-rati ),  9 ) ); /** ~= 25.259px @1920px width = This stores the large column gap width and is equal to 100% parent width divided by the golden ratio raised to the 9th power (~76.013). */
+    --col-gap-med : calc( 100% / pow( var( --golden-rati ), 10 ) ); /** ~= 15.611px @1920px width = This stores the medium column gap width and is equal to 100% parent width divided by the golden ratio raised to the 10th power (~122.992). */
+    --col-gap-sma : calc( 100% / pow( var( --golden-rati ), 11 ) ); /** ~=  9.648px @1920px width = This stores the small column gap width and is equal to 100% parent width divided by the golden ratio raised to the 11th power (~199.005). */
+    --col-gap-xsm : calc( 100% / pow( var( --golden-rati ), 12 ) ); /** ~=  5.963px @1920px width = This stores the extra small column gap width and is equal to 100% parent width divided by the golden ratio raised to the 12th power (~321.997). */
+    --col-gap-min : calc( 100% / pow( var( --golden-rati ), 13 ) ); /** ~=  3.685px @1920px width = This stores the minimum column gap width and is equal to 100% parent width divided by the golden ratio raised to the 13th power (~521.002). */
+
+    /* #endregion Column Gap */
+
+
+
+    /* #region Font Size */
+
+    --fon-siz-max : calc( pow( var( --golden-rati ),  3 ) * 1rem ); /** ~= 67.777px @16px root font size = This stores the maximum font size and is equal to the golden ratio raised to the 3rd power (~4.236) multiplied by the root font size. */
+    --fon-siz-xla : calc( pow( var( --golden-rati ),  2 ) * 1rem ); /** ~= 41.889px @16px root font size = This stores the extra large font size and is equal to the golden ratio raised to the 2nd power (~2.618) multiplied by the root font size. */
+    --fon-siz-lar : calc( pow( var( --golden-rati ),  1 ) * 1rem ); /** ~= 25.889px @16px root font size = This stores the large font size and is equal to the golden ratio raised to the 1st power (~1.618) multiplied by the root font size. */
+    --fon-siz-bas : calc( pow( var( --golden-rati ),  0 ) * 1rem ); /**  = 16.000px @16px root font size = This stores the base font size and is equal to the golden ratio raised to the 0th power (1) multiplied by the root font size. */
+    --fon-siz-sma : calc( pow( var( --golden-rati ), -1 ) * 1rem ); /** ~=  9.889px @16px root font size = This stores the small font size and is equal to the golden ratio raised to the -1st power (~0.618) multiplied by the root font size. */
+    --fon-siz-xsm : calc( pow( var( --golden-rati ), -2 ) * 1rem ); /** ~=  6.111px @16px root font size = This stores the extra small font size and is equal to the golden ratio raised to the -2nd power (~0.382) multiplied by the root font size. */
+    --fon-siz-min : calc( pow( var( --golden-rati ), -3 ) * 1rem ); /** ~=  3.777px @16px root font size = This stores the minimum font size and is equal to the golden ratio raised to the -3rd power (~0.236) multiplied by the root font size. */
+
+    /* #endregion Font Size */
+
+
+
+    /* #region Grid Column */
+
+    --gri-col-max : calc( 100% / pow( var( --golden-rati ), 1 ) ); /** ~= 1,186.625px @1920px width = This stores the maximum grid column width and is equal to 100% parent width divided by the golden ratio raised to the 1st power (~1.618). */
+    --gri-col-xla : calc( 100% / pow( var( --golden-rati ), 2 ) ); /** ~=   733.375px @1920px width = This stores the extra large grid column width and is equal to 100% parent width divided by the golden ratio raised to the 2nd power (~2.618). */
+    --gri-col-lar : calc( 100% / pow( var( --golden-rati ), 3 ) ); /** ~=   453.251px @1920px width = This stores the large grid column width and is equal to 100% parent width divided by the golden ratio raised to the 3rd power (~4.236). */
+    --gri-col-med : calc( 100% / pow( var( --golden-rati ), 4 ) ); /** ~=   280.124px @1920px width = This stores the medium grid column width and is equal to 100% parent width divided by the golden ratio raised to the 4th power (~6.854). */
+    --gri-col-sma : calc( 100% / pow( var( --golden-rati ), 5 ) ); /** ~=   173.126px @1920px width = This stores the small grid column width and is equal to 100% parent width divided by the golden ratio raised to the 5th power (~11.090). */
+    --gri-col-xsm : calc( 100% / pow( var( --golden-rati ), 6 ) ); /** ~=   106.998px @1920px width = This stores the extra small grid column width and is equal to 100% parent width divided by the golden ratio raised to the 6th power (~17.944). */
+    --gri-col-min : calc( 100% / pow( var( --golden-rati ), 7 ) ); /** ~=    66.128px @1920px width = This stores the minimum grid column width and is equal to 100% parent width divided by the golden ratio raised to the 7th power (~29.034). */
+
+    /* #endregion Grid Column */
+
+
+
+    /* #region Grid Row */
+
+    --gri-row-max : calc( pow( var( --golden-rati ), 8 ) * 1rem ); /** ~= 751.659px @16px root font size = This stores the maximum grid row width and is equal to the golden ratio raised to the 8th power (~46.979) multiplied by the root font size. */
+    --gri-row-xla : calc( pow( var( --golden-rati ), 7 ) * 1rem ); /** ~= 464.551px @16px root font size = This stores the extra large grid row width and is equal to the golden ratio raised to the 7th power (~29.034) multiplied by the root font size. */
+    --gri-row-lar : calc( pow( var( --golden-rati ), 6 ) * 1rem ); /** ~= 287.108px @16px root font size = This stores the large grid row width and is equal to the golden ratio raised to the 6th power (~17.944) multiplied by the root font size. */
+    --gri-row-med : calc( pow( var( --golden-rati ), 5 ) * 1rem ); /** ~= 177.443px @16px root font size = This stores the medium grid row width and is equal to the golden ratio raised to the 5th power (~11.090) multiplied by the root font size. */
+    --gri-row-sma : calc( pow( var( --golden-rati ), 4 ) * 1rem ); /** ~= 109.666px @16px root font size = This stores the small grid row width and is equal to the golden ratio raised to the 4th power (~6.854) multiplied by the root font size. */
+    --gri-row-xsm : calc( pow( var( --golden-rati ), 3 ) * 1rem ); /** ~=  67.777px @16px root font size = This stores the extra small grid row width and is equal to the golden ratio raised to the 3rd power (~4.236) multiplied by the root font size. */
+    --gri-row-min : calc( pow( var( --golden-rati ), 2 ) * 1rem ); /** ~=  41.889px @16px root font size = This stores the minimum grid row width and is equal to the golden ratio raised to the 2nd power (~2.618) multiplied by the root font size. */
+
+    /* #endregion Grid Row */
+
+
+
+    /* #region Grid Template Areas */
+
+
+    /* #region Holy Grail Layout */
+
+    /** The holy grail layout is mostly just design jargon with no real science behind it, but subjectively it is a pleasant and/or practical layout. This is mainly used the site/app main's layout (where page content will be injected by React Router), but it can be used inside of any container. */
+
+    --gta-hol-gra :                /** This stores the grid template areas property value for the holy grail layout (full width navbar, main area with two sidebars and full width footer). The grid area was chosen as my preferred method of placing grid items, as I find its visual definition and placement provides more clarity. */
+        "navbar   navbar navbar"   /** This layout was chosen to create a grid area for the navigation bar that spans all three columns in the first row, allowing it to stretch across the entire width of the page, though at large screen size its width will probably be constrained to less than the full screnn width. */
+        "sidebar1 main   sidebar2" /** This layout was chosen to create a three column grid area in the second row, where the first column is designated for the first sidebar (sidebar1), the second column is designated for the main content area (main), and the third column is designated for the second sidebar (sidebar2). */
+        "footer   footer footer";  /** This layout was chosen to create a grid area for the footer that spans all three columns in the third row, allowing it to stretch across the entire width of the page, though at large screen size its width will probably be constrained to less than the full screen width. */
+
+    /* #endregion Holy Grail Layout */
+
+
+    /* #endregion Grid Template Areas */
+
+
+
+    /* #region Grid Template Columns */
+
+
+    /* #region Holy Grail Layout */
+
+    /** The holy grail layout is mostly just design jargon with no real science behind it, but subjectively it is a pleasant and/or practical layout. This is mainly used the site/app main's layout (where page content will be injected by React Router), but it can be used inside of any container. */
+
+    --gtc-hol-gra : var( --gtc-sb1-col ) var( --gtc-mai-col ) var( --gtc-sb2-col ); /** This stores the grid template columns property value for the holy grail layout and is equal to a maximum column width (100% parent width divided by the golden ratio (~1.618)) for the main content area flanked by two sidebars whose widths are half of whatever space is leftover from the screen width minus the maximum column width. */
+    --gtc-mai-col : var( --gri-col-max );                                           /** This stores the grid template columns value for the main column content area in the holy grail layout and is equal to the maximum grid column width (100% parent width divided by the golden ratio raised to the 1st power (~1.618)), which is approximately equal to 1,186.625px at a 100% width of 1920px. */
+    --gtc-sb1-col : calc( ( 100% - var( --gri-col-max ) ) / 2 );                    /** This stores the grid template columns value for the first sidebar in the holy grail layout and is equal to half of the remaining space after subtracting the maximum grid column width from the total screen width, which allows for two sidebars of equal width to flank the main content area. */
+    --gtc-sb2-col : calc( ( 100% - var( --gri-col-max ) ) / 2 );                    /** This stores the grid template columns value for the second sidebar in the holy grail layout and is equal to half of the remaining space after subtracting the maximum grid column width from the total screen width, which allows for two sidebars of equal width to flank the main content area. */
+
+    /* #endregion Holy Grail Layout */
+
+
+    /* #endregion Grid Template Columns */
+
+
+
+    /* #region Grid Template Rows */
+
+
+    /* #region Holy Grail Layout */
+
+    /** The holy grail layout is mostly just design jargon with no real science behind it, but subjectively it is a pleasant and/or practical layout. This is mainly used the site/app main's layout (where page content will be injected by React Router), but it can be used inside of any container. */
+
+    --gtr-foo-row : calc( pow( var( --golden-rati ), 3) * 1rem );                           /** ~= 67.777px @16px root font size = This stores the grid template rows value for the footer in the holy grail layout and is equal to the golden ratio raised to the 3rd power (~4.236) multiplied by the root font size. */
+    --gtr-hol-gra : var( --gtr-nav-row ) var( --gtr-mai-row ) var( --gtr-foo-row );         /** This stores the grid template rows property value for the holy grail layout and is equal to two fixed height rows (each equal to the golden ratio raised to the 3rd power (~4.236) multipled by the root font size) for the navbar and footer, with the remaining height leftover for the main content area. */
+    --gtr-mai-row : calc( 100% - ( calc( var( --gtr-nav-row ) + var( --gtr-foo-row ) ) ) ); /** This stores the grid template rows value for the main content area in the holy grail layout and is equal to the remaining height leftover after subtracting the fixed height rows for the navbar and footer. */
+    --gtr-nav-row : calc( pow( var( --golden-rati ), 3) * 1rem );                           /** ~= 67.777px @16px root font size = This stores the grid template rows value for the navbar in the holy grail layout and is equal to the golden ratio raised to the 3rd power (~4.236) multiplied by the root font size. */
+
+    /* #endregion Holy Grail Layout */
+
+
+    /* #endregion Grid Template Rows */
+
+
+
+    /* #region Header Sizes */
+
+    --hea-one-siz : calc( pow( var( --golden-rati ),  3 ) * 1rem ); /** ~= 67.777px @16px root font size = This stores the h1 font size and is equal to the golden ratio raised to the 3rd power (~4.236) multiplied by the root font size. */
+    --hea-two-siz : calc( pow( var( --golden-rati ),  2 ) * 1rem ); /** ~= 41.889px @16px root font size = This stores the h2 font size and is equal to the golden ratio raised to the 2nd power (~2.618) multiplied by the root font size. */
+    --hea-thr-siz : calc( pow( var( --golden-rati ),  1 ) * 1rem ); /** ~= 25.889px @16px root font size = This stores the h3 font size and is equal to the golden ratio raised to the 1st power (~1.618) multiplied by the root font size. */
+    --hea-fou-siz : calc( pow( var( --golden-rati ),  0 ) * 1rem ); /**  = 16.000px @16px root font size = This stores the h4 font size and is equal to the golden ratio raised to the 0th power (1) multiplied by the root font size. */
+    --hea-fiv-siz : calc( pow( var( --golden-rati ), -1 ) * 1rem ); /** ~=  9.889px @16px root font size = This stores the h5 font size and is equal to the golden ratio raised to the -1st power (~0.618) multiplied by the root font size. */
+    --hea-six-siz : calc( pow( var( --golden-rati ), -2 ) * 1rem ); /** ~=  6.111px @16px root font size = This stores the h6 font size and is equal to the golden ratio raised to the -2nd power (~0.382) multiplied by the root font size. */
+    --hea-sev-siz : calc( pow( var( --golden-rati ), -3 ) * 1rem ); /** ~=  3.777px @16px root font size = This stores the h7 font size and is equal to the golden ratio raised to the -3rd power (~0.236) multiplied by the root font size. The h7 element technically does not exist, but I wanted to remain consistent with the rest of the custom properties in defining exactly 7 property values and it can still be used if needed regardless. */
+
+    /* #endregion Header Sizes */
+
+
+
+    /* #region Margin Horizontal */
+
+    --mar-hor-max : calc( 100% / pow( var( --golden-rati ),  6 ) ); /** ~= 109.998px @1920px width = This stores the maximum left and/or right margin values and is equal to 100% parent width divided by the golden ratio raised to the 6th power (~17.944). */
+    --mar-hor-xla : calc( 100% / pow( var( --golden-rati ),  7 ) ); /** ~=  66.128px @1920px width = This stores the extra large left and/or right margin values and is equal to 100% parent width divided by the golden ratio raised to the 7th power (~29.034). */
+    --mar-hor-lar : calc( 100% / pow( var( --golden-rati ),  8 ) ); /** ~=  40.870px @1920px width = This stores the large left and/or right margin values and is equal to 100% parent width divided by the golden ratio raised to the 8th power (~46.979). */
+    --mar-hor-bas : calc( 100% / pow( var( --golden-rati ),  9 ) ); /** ~=  25.259px @1920px width = This stores the base left and/or right margin values and is equal to 100% parent width divided by the golden ratio raised to the 9th power (~76.013). */
+    --mar-hor-sma : calc( 100% / pow( var( --golden-rati ), 10 ) ); /** ~=  15.611px @1920px width = This stores the small left and/or right margin values and is equal to 100% parent width divided by the golden ratio raised to the 10th power (~122.992). */
+    --mar-hor-xsm : calc( 100% / pow( var( --golden-rati ), 11 ) ); /** ~=   9.648px @1920px width = This stores the extra small left and/or right margin values and is equal to 100% parent width divided by the golden ratio raised to the 11th power (~199.005). */
+    --mar-hor-min : calc( 100% / pow( var( --golden-rati ), 12 ) ); /** ~=   5.963px @1920px width = This stores the minimum left and/or right margin values and is equal to 100% parent width divided by the golden ratio raised to the 12th power (~321.997). */
+
+    /* #endregion Margin Horizontal */
+
+
+
+    /* #region Margin Vertical */
+
+    --mar-ver-max : calc( pow( var( --golden-rati ),  4 ) * 1rem ); /** ~= 109.666px @16px root font size = This stores the maximum top and/or bottom margin values and is equal to the golden ratio raised to the 4th power (~6.854) multiplied by the root font size. */
+    --mar-ver-xla : calc( pow( var( --golden-rati ),  3 ) * 1rem ); /** ~=  67.777px @16px root font size = This stores the extra large top and/or bottom margin values and is equal to the golden ratio raised to the 3rd power (~4.236) multiplied by the root font size. */
+    --mar-ver-lar : calc( pow( var( --golden-rati ),  2 ) * 1rem ); /** ~=  41.889px @16px root font size = This stores the large top and/or bottom margin values and is equal to the golden ratio raised to the 2nd power (~2.618) multiplied by the root font size. */
+    --mar-ver-bas : calc( pow( var( --golden-rati ),  1 ) * 1rem ); /** ~=  25.889px @16px root font size = This stores the base top and/or bottom margin values and is equal to the golden ratio raised to the 1st power (~1.618) multiplied by the root font size. */
+    --mar-ver-sma : calc( pow( var( --golden-rati ),  0 ) * 1rem ); /**  =  16.000px @16px root font size = This stores the small top and/or bottom margin values and is equal to the golden ratio raised to the 0th power (1) multiplied by the root font size. */
+    --mar-ver-xsm : calc( pow( var( --golden-rati ), -1 ) * 1rem ); /** ~=   9.889px @16px root font size = This stores the extra small top and/or bottom margin values and is equal to the golden ratio raised to the -1st power (~0.618) multiplied by the root font size. */
+    --mar-ver-min : calc( pow( var( --golden-rati ), -2 ) * 1rem ); /** ~=   6.111px @16px root font size = This stores the minimum top and/or bottom margin values and is equal to the golden ratio raised to the -2nd power (~0.382) multiplied by the root font size. */
+
+    /* #endregion Margin Vertical */
+
+
+
+    /* #region Padding Horizontal */
+
+    --pad-hor-max : calc( 100% / pow( var( --golden-rati ),  6 ) ); /** ~= 109.998px @1920px width = This stores the maximum left and/or right padding values and is equal to 100% parent width divided by the golden ratio raised to the 6th power (~17.944). */
+    --pad-hor-xla : calc( 100% / pow( var( --golden-rati ),  7 ) ); /** ~=  66.128px @1920px width = This stores the extra large left and/or right padding values and is equal to 100% parent width divided by the golden ratio raised to the 7th power (~29.034). */
+    --pad-hor-lar : calc( 100% / pow( var( --golden-rati ),  8 ) ); /** ~=  40.870px @1920px width = This stores the large left and/or right padding values and is equal to 100% parent width divided by the golden ratio raised to the 8th power (~46.979). */
+    --pad-hor-bas : calc( 100% / pow( var( --golden-rati ),  9 ) ); /** ~=  25.259px @1920px width = This stores the base left and/or right padding values and is equal to 100% parent width divided by the golden ratio raised to the 9th power (~76.013). */
+    --pad-hor-sma : calc( 100% / pow( var( --golden-rati ), 10 ) ); /** ~=  15.611px @1920px width = This stores the small left and/or right padding values and is equal to 100% parent width divided by the golden ratio raised to the 10th power (~122.992). */
+    --pad-hor-xsm : calc( 100% / pow( var( --golden-rati ), 11 ) ); /** ~=   9.648px @1920px width = This stores the extra small left and/or right padding values and is equal to 100% parent width divided by the golden ratio raised to the 11th power (~199.005). */
+    --pad-hor-min : calc( 100% / pow( var( --golden-rati ), 12 ) ); /** ~=   5.963px @1920px width = This stores the minimum left and/or right padding values and is equal to 100% parent width divided by the golden ratio raised to the 12th power (~321.997). */
+
+    /* #endregion Padding Horizontal */
+
+
+
+    /* #region Padding Vertical */
+
+    --pad-ver-max : calc( pow( var( --golden-rati ),  4 ) * 1rem ); /** ~= 109.666px @16px root font size = This stores the maximum top and/or bottom padding values and is equal to the golden ratio raised to the 4th power (~6.854) multiplied by the root font size. */
+    --pad-ver-xla : calc( pow( var( --golden-rati ),  3 ) * 1rem ); /** ~=  67.777px @16px root font size = This stores the extra large top and/or bottom padding values and is equal to the golden ratio raised to the 3rd power (~4.236) multiplied by the root font size. */
+    --pad-ver-lar : calc( pow( var( --golden-rati ),  2 ) * 1rem ); /** ~=  41.889px @16px root font size = This stores the large top and/or bottom padding values and is equal to the golden ratio raised to the 2nd power (~2.618) multiplied by the root font size. */
+    --pad-ver-bas : calc( pow( var( --golden-rati ),  1 ) * 1rem ); /** ~=  25.889px @16px root font size = This stores the base top and/or bottom padding values and is equal to the golden ratio raised to the 1st power (~1.618) multiplied by the root font size. */
+    --pad-ver-sma : calc( pow( var( --golden-rati ),  0 ) * 1rem ); /**  =  16.000px @16px root font size = This stores the small top and/or bottom padding values and is equal to the golden ratio raised to the 0th power (1) multiplied by the root font size. */
+    --pad-ver-xsm : calc( pow( var( --golden-rati ), -1 ) * 1rem ); /** ~=   9.889px @16px root font size = This stores the extra small top and/or bottom padding values and is equal to the golden ratio raised to the -1st power (~0.618) multiplied by the root font size. */
+    --pad-ver-min : calc( pow( var( --golden-rati ), -2 ) * 1rem ); /** ~=   6.111px @16px root font size = This stores the minimum top and/or bottom padding values and is equal to the golden ratio raised to the -2nd power (~0.382) multiplied by the root font size. */
+
+    /* #endregion Padding Vertical */
+
+
+
+    /* #region Row Gap */
+
+    --row-gap-max : calc( pow( var( --golden-rati ),  3 ) * 1rem ); /** ~= 67.777px @16px root font size = This stores the maximum row gap value and is equal to the golden ratio raised to the 3rd power (~4.236) multiplied by the root font size. */
+    --row-gap-xla : calc( pow( var( --golden-rati ),  2 ) * 1rem ); /** ~= 41.889px @16px root font size = This stores the extra large row gap value and is equal to the golden ratio raised to the 2nd power (~2.618) multiplied by the root font size. */
+    --row-gap-lar : calc( pow( var( --golden-rati ),  1 ) * 1rem ); /** ~= 25.889px @16px root font size = This stores the large row gap value and is equal to the golden ratio raised to the 1st power (~1.618) multiplied by the root font size. */
+    --row-gap-med : calc( pow( var( --golden-rati ),  0 ) * 1rem ); /**  = 16.000px @16px root font size = This stores the medium row gap value and is equal to the golden ratio raised to the 0th power (1) multiplied by the root font size. */
+    --row-gap-sma : calc( pow( var( --golden-rati ), -1 ) * 1rem ); /** ~=  9.889px @16px root font size = This stores the small row gap value and is equal to the golden ratio raised to the -1st power (~0.618) multiplied by the root font size. */
+    --row-gap-xsm : calc( pow( var( --golden-rati ), -2 ) * 1rem ); /** ~=  6.111px @16px root font size = This stores the extra small row gap value and is equal to the golden ratio raised to the -2nd power (~0.382) multiplied by the root font size. */
+    --row-gap-min : calc( pow( var( --golden-rati ), -3 ) * 1rem ); /** ~=  3.777px @16px root font size = This stores the minimum row gap value and is equal to the golden ratio raised to the -3rd power (~0.236) multiplied by the root font size. */
+
+    /* #endregion Row Gap */
+
+
+
+    /* #region Vertical Rhythm (Line Height) */
+
+    --ver-rhy-max : calc( pow( var( --golden-rati ),  4 ) * 1rem ); /** ~= 109.666px @16px root font size = This stores the maximum vertical rhythm (line height) value and is equal to the golden ratio raised to the 4th power (~6.854) multiplied by the root font size. */
+    --ver-rhy-xla : calc( pow( var( --golden-rati ),  3 ) * 1rem ); /** ~=  67.777px @16px root font size = This stores the extra large vertical rhythm (line height) value and is equal to the golden ratio raised to the 3rd power (~4.236) multiplied by the root font size. */
+    --ver-rhy-lar : calc( pow( var( --golden-rati ),  2 ) * 1rem ); /** ~=  41.889px @16px root font size = This stores the large vertical rhythm (line height) value and is equal to the golden ratio raised to the 2nd power (~2.618) multiplied by the root font size. */
+    --ver-rhy-bas : calc( pow( var( --golden-rati ),  1 ) * 1rem ); /** ~=  25.889px @16px root font size = This stores the base vertical rhythm (line height) value and is equal to the golden ratio raised to the 1st power (~1.618) multiplied by the root font size. */
+    --ver-rhy-sma : calc( pow( var( --golden-rati ),  0 ) * 1rem ); /**  =  16.000px @16px root font size = This stores the small vertical rhythm (line height) value and is equal to the golden ratio raised to the 0th power (1) multiplied by the root font size. */
+    --ver-rhy-xsm : calc( pow( var( --golden-rati ), -1 ) * 1rem ); /** ~=   9.889px @16px root font size = This stores the extra small vertical rhythm (line height) value and is equal to the golden ratio raised to the -1st power (~0.618) multiplied by the root font size. */
+    --ver-rhy-min : calc( pow( var( --golden-rati ), -2 ) * 1rem ); /** ~=   6.111px @16px root font size = This stores the minimum vertical rhythm (line height) value and is equal to the golden ratio raised to the -2nd power (~0.382) multiplied by the root font size. */
+
+    /* #endregion Vertical Rhythm (Line Height) */
+
+
+
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+/* #region Media Query for Small Screens */
 
-body {
-  margin: 0;
-}
+@media ( max-width : 521.002px ) { /** This is approximately equal to the golden ratio raised to the 13th power. */
 
-h1 {
-  font-size: 4.2em;
-  line-height: 1.1;
-}
+    :root { /** This is the root element selector, making it a true globally scoped selector. */
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+        --gtc-sb1-col : 0;                                                              /** This overrides the grid template columns property values for both sidebars to 0 width, effectively collapsing the sidebars and creating a single column layout for small screens. */
+        --gtc-sb2-col : 0;                                                              /** This overrides the grid template columns property values for both sidebars to 0 width, effectively collapsing the sidebars and creating a single column layout for small screens. */
+        --gtc-mai-col : 100%;                                                           /** This overrides the grid template columns property values for the main content area width to 100%, creating a single column layout for small screens. */
+        --gtc-hol-gra : var( --gtc-sb1-col ) var( --gtc-mai-col ) var( --gtc-sb2-col ); /** This overrides the grid template columns property value for the holy grail layout to set the main content area to 100% width and both sidebars to 0 width, effectively collapsing the sidebars and creating a single column layout for small screens. */
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
-body {
-
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  max-height: 100vh;
-  max-width: 100vw;
-  height: 100%;
-  box-sizing: border-box;
+    }
 
 }
 
+/* #endregion Media Query for Small Screens */
 
-#rooSecEle {
 
-  display: grid;
-  grid-template-areas: "navbar navbar navbar"
-                        "sidebar1 main sidebar2"
-                        "footer footer footer";
-  grid-template-columns: 1fr 6fr 1fr;
-  grid-template-rows: 1fr 8fr 1fr;
-  max-width: 100%;
-  min-width: 100vw;
-  width: 100%;
-  max-height: 100vh;
-  min-height: 100vh;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  text-align: center;
+/* #endregion Custom Properties */
 
-}
 
-.homeSection {
 
-  display: grid;
-  grid-template-areas: "header"
-                       "content";
-  grid-template-columns: 100%;
-  grid-template-rows: 40% 60%;
-  row-gap: 30px;
-  max-height: 100%;
-  max-width: 100%;
-  height: 100%;
-  width: 100%;
+/* #region Root Selector */
+
+:root { /** This is the root element selector, making it a true globally scoped selector. */
+
+    -webkit-font-smoothing  : antialiased;                             /** This property was chosen by the default React installation and is a non-standard CSS extension that controls how font edges are rendered (anti-aliased) on WebKit browsers (e.g., Safari). It was originally designed to optimize font appearance on macOS systems and primarily affects users of those operating systems. */
+    -moz-osx-font-smoothing : grayscale;                               /** This property was chosen by the default React installation and is non-standard CSS extension that controls how font edges are rendered (anti-aliased) on Firefox browsers. */
+    background-color        : var( --col-bac-dar );                    /** This property is linked to the color background for dark mode CSS Custom Property. See said property definition for more details. */
+    color                   : var( --col-tex-dar );                    /** This property is linked to the color text for dark mode CSS Custom Property. See said property definition for more details. */
+    color-scheme            : light dark;                              /** This property was chosen by the default React installation to indicate that the site/app supports both light and dark color schemes, allowing the browser to apply the appropriate styles based on the user's system preferences with a preference for light if no user preference is set. */
+    font-family             : system-ui, Helvetica, Arial, sans-serif; /** This property was chosen by the default React installation to use the system's default UI font for a more native look and feel, while also providing fallbacks to common sans-serif fonts (Helvetica and Arial) in case the system font is not available. */
+    font-size               : 1rem;                                    /** This property was chosen to set the base font size to 1rem, which is a common and standard value (usually 16px) that allows for easy scaling and consistency across different browsers and devices. This also allows the user to adjust the default font size in their browser settings according to their preferences or accessibility needs. */
+    font-synthesis          : none;                                    /** This property was chosen by the default React installation to control whether the browser is allowed to generate missing font faces (like bold or italic styles) if they are not explicitly provided by the font family's files, disabling this behavior enforces the use of only genuine, designed font faces. */
+    font-weight             : 400;                                     /** This property was chosen by the default React installation and is a standard, common value for the default font weight. */
+    line-height             : var( --ver-rhy-bas );                    /** This property is linked to the vertical rhythm (line height) base CSS Custom Property. See said property definition for more details. */
+    text-rendering          : optimizeLegibility;                      /** This property was chosen by the default React installation to enhance the readability of text by enabling advanced typographic features like ligatures and kerning, which can improve the overall appearance of text especially at larger font sizes. */
 
 }
 
-.headerSection {
+/* #endregion Root Selector */
 
-  grid-area: header;
-  display: grid;
-  grid-template-areas: "header1"
-                       "links";
-  grid-template-columns: 100%;
-  grid-template-rows: 30% 70%;
-  max-height: 100%;
-  max-width: 100%;
-  justify-items: center;
-  row-gap: 20px;
 
-}
 
-.header1Div {
+/* #region Body Selector */
 
-  grid-area: header1;
-  display: grid;
-  align-content: center;
-  container-type: inline-size;
-  max-width: 100%;
-  max-height: 100%;
-  width: 100%;
-  height: 100%;
+body { /** This is the selector for HTML Body element. */
+
+    box-sizing : border-box; /** This property was chosen to change the box model so that the width and height of elements include padding and borders, making it easier to manage layout and spacing without having to account for additional dimensions. */
+    height     : 100vh;      /** This property was chosen to set the height of the body element to 100% of the viewport height, ensuring that the site/app takes up the full height of the screen regardless of the content inside it. */ 
+    margin     : 0;          /** This property was chosen to remove the default margin around the body element, allowing children elements more precise control over layout and spacing within the page. */
+    max-height : 100vh;      /** This property was chosen to set the maximum height of the body element to 100% of the viewport height, preventing it from growing taller than the visible area of the screen and ensuring that no scrollbars appear. */
+    max-width  : 100vw;      /** This property was chosen to set the maximum width of the body element to 100% of the viewport width, preventing it from growing wider than the visible area of the screen and ensuring that no scrollbars appear. */
+    padding    : 0;          /** This property was chosen to remove the default padding around the body element, allowing children elements more precise control over layout and spacing within the page. */
+    width      : 100vw;      /** This property was chosen to set the width of the body element to 100% of the viewport width, ensuring that the site/app takes up the full width of the screen regardless of the content inside it. */
 
 }
 
-.header1 {
+/* #endregion Body Selector */
 
-  align-self: center;
-    font-size   : 6cqw; /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
-    line-height : 6cqw;
-    max-height: 100%;
-    margin: 0;
 
-}
 
-.linksDiv {
+/* #region Anchor Selector */
 
-  container-type: inline-size;
-  grid-area: links;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 100%;
-  gap: 20px;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  max-height: 100%;
-  max-width: 100%;
+a { /** This is the selector for the HTML Anchor (link) element. */
+
+    color           : var( --col-lin-dar ); /** This property is linked to the color link for dark mode CSS Custom Property. See said property definition for more details. */
+    font-weight     : 500;                  /** This property was chosen by the default React installation to make links slightly bolder than the normal text, which can help them stand out and indicate that they are clickable. */
+    text-decoration : none;                 /** This property was chosen to remove the default underline from links, creating a cleaner and more modern look while relying on color and font weight to indicate interactivity. */
 
 }
 
-.links:nth-child(1) {
+a:hover { /** This is the selector for the HTML Anchor:Hover (link:hover) element. */
 
-  justify-self: end;
-
-}
-
-.links:nth-child(2) {
-
-  justify-self: start;
+    color : var( --col-lin_hov-dar ); /** This property is linked to the color link:hover for dark mode CSS Custom Property. See said property definition for more details. */
 
 }
 
-.logo {
-  height: 8cqw;
-  will-change: filter;
-  transition: filter 300ms;
-}
+a.active { /** This is the selector for the HTML Anchor (link) + .active class Body element. This declaration is required by React Router for it to be able to automatically apply property values when it detects that the current page is equal to the link's path. It also seems to need to be declared here, in the index.css file, in order for it to work properly. I tried to declare this in the NavBarCom's CSS module file, but I could not get it to work there. */
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.contentSection {
-  grid-area: content;
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: repeat(4, 25%);
-  justify-content: center;
-  align-items: center;
-  max-height: 100%;
-  max-width: 100%;
-}
-
-.buttonsDiv {
-  display: grid;
-  max-width: 100%;
-  max-height: 100%;
-  grid-template-columns: repeat(2, 50%);
-  grid-template-rows: 100%;
-  margin: 0;
-  justify-content: center;
-  column-gap: 20px;
-}
-
-.buttons {
-
-  margin: 0;
-  max-width: 45%;
-  width: 45%;
+    color : var( --col-lin_hov-dar ); /** This property is linked to the color link:hover for dark mode CSS Custom Property. See said property definition for more details. */
 
 }
 
-.buttons:nth-child(1) {
+/* #endregion Anchor Selector */
 
-  justify-self: end;
+
+
+/* #region Root Section Element */
+
+#rooSecEle { /** This is the selector for the ID of the Root Section Element. This is the root element of the site/app, and it will define the layout as such. It uses the holy grail layout where the navbar will be a page persistent component that takes up the entire width of the first row, the middle row will be a three column layout with a sidebar + the main content column where all page content will be loaded in by React Router + another sidebar, and finally the footer will be a page persistent component that takes up the entire width of the last row. */
+
+    display               : grid;                 /** The CSS Grid property was chosen as the layout method for its powerful layout capabilities. */
+    grid-template-areas   : var( --gta-hol-gra ); /** This property is linked to the grid template areas holy grail CSS Custom Property. See said property definition for more details. */
+    grid-template-columns : var( --gtc-hol-gra ); /** This property is linked to the grid template columns holy grail CSS Custom Property. See said property definition for more details. */
+    grid-template-rows    : var( --gtr-hol-gra ); /** This property is linked to the grid template rows holy grail CSS Custom Property. See said property definition for more details. */
+    height                : 100%;                 /** This property was chosen to set the height of the grid container to 100% of its parent element, allowing it to fill the available vertical space. */
+    margin                : 0;                    /** This property was chosen to remove any default margin around the grid container, allowing children elements more precise control over layout and spacing within the page. */
+    max-height            : 100%;                 /** This property was chosen to set the maximum height of the grid container to 100% of its parent element, preventing it from growing taller than the visible area of the screen and ensuring that no vertical scrollbars appear. */
+    max-width             : 100%;                 /** This property was chosen to set the maximum width of the grid container to 100% of its parent element, preventing it from growing wider than the visible area of the screen and ensuring that no horizontal scrollbars appear. */
+    min-height            : 100%;                 /** This property was chosen to set the minimum height of the grid container to 100% of its parent element, ensuring that it always fills the available vertical space. */
+    min-width             : 100%;                 /** This property was chosen to set the minimum width of the grid container to 100% of its parent element, ensuring that it always fills the available horizontal space. */
+    padding               : 0;                    /** This property was chosen to remove any default padding around the grid container, allowing children elements more precise control over layout and spacing within the page. */
+    width                 : 100%;                 /** This property was chosen to set the width of the grid container to 100% of its parent element, allowing it to fill the available horizontal space. */
 
 }
 
-.buttons:nth-child(2) {
+/* #endregion Root Section Element */
 
-  justify-self: start;
+
+
+/* #region Media Query for Light Mode */
+
+@media ( prefers-color-scheme : light ) { /** This is the media query selector for the light mode color scheme. */
+
+    :root { /** This is the root element selector, making it a true globally scoped selector. */
+
+        background-color : var( --col-bac-lig ); /** This property is linked to the color background for light mode CSS Custom Property. See said property definition for more details. */
+        color            : var( --col-tex-lig ); /** This property is linked to the color text for light mode CSS Custom Property. See said property definition for more details. */
+
+    }
+
+    a { /** This is the selector for the HTML Anchor (link) element. */
+
+        color : var( --col-lin-lig ); /** This property is linked to the color link for light mode CSS Custom Property. See said property definition for more details. */
+
+    }
+
+    a:hover { /** This is the selector for the HTML Anchor:Hover (link:hover) element. */
+
+        color : var( --col-lin_hov-lig ); /** This property is linked to the color link:hover for light mode CSS Custom Property. See said property definition for more details. */
+
+    }
+
+    a.active { /** This is the selector for the HTML Anchor (link) + .active class Body element. This declaration is required by React Router for it to be able to automatically apply property values when it detects that the current page is equal to the link's path. It also seems to need to be declared here, in the index.css file, in order for it to work properly. I tried to declare this in the NavBarCom's CSS module file, but I could not get it to work there. */
+
+        color : var( --col-lin_hov-lig ); /** This property is linked to the color link:hover for light mode CSS Custom Property. See said property definition for more details. */
+
+    }
 
 }
 
-.editParagraph {
-  margin: 0;
-  max-width: 100%;
-  width: 100%;
-  align-self: center;
-}
-
-.dataParagraph {
-  margin: 0;
-  max-width: 100%;
-  width: 100%;
-  align-self: center;
-}
-
-.docsParagraph {
-  margin: 0;
-  color: #888;
-}
+/* #endregion Media Query for Light Mode */
 
 
-a {
-    color: #CCCCCC;
-}
-
-a.active {
-    color: #FFFFFF;
-    font-weight: bold;
-  /* Add any other active styles */
-}
