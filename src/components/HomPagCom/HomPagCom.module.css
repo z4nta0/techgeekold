@@ -1,4 +1,4 @@
-.homeSection {
+.componentSection {
 
   display: grid;
   grid-template-areas: "header"
@@ -14,8 +14,9 @@
 
 }
 
-.headerSection {
+.componentHeader {
 
+    container-type: inline-size;
   grid-area: header;
   display: grid;
   grid-template-areas: "header1"
@@ -29,30 +30,21 @@
 
 }
 
-.header1Div {
+.headerH1 {
 
-  grid-area: header1;
-  display: grid;
-  align-content: center;
-  container-type: inline-size;
-  max-width: 100%;
-  max-height: 100%;
-  width: 100%;
-  height: 100%;
-
-}
-
-.header1 {
-
-  align-self: center;
+    grid-area: header1;
+    align-self: center;
     font-size   : 6cqw; /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
     line-height : 6cqw;
+    max-width: 100%;
     max-height: 100%;
     margin: 0;
+    width: 100%;
+    height: 100%;
 
 }
 
-.linksDiv {
+.headerDiv {
 
   container-type: inline-size;
   grid-area: links;
@@ -69,29 +61,29 @@
 
 }
 
-.links:nth-child(1) {
+.headerAnchors:nth-child(1) {
 
   justify-self: end;
 
 }
 
-.links:nth-child(2) {
+.headerAnchors:nth-child(2) {
 
   justify-self: start;
 
 }
 
-.logo {
+.headerImgs {
   height: 8cqw;
   will-change: filter;
   transition: filter 300ms;
 }
 
-.logo:hover {
+.headerImgs:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
 
-.logo.react:hover {
+.headerImgs:nth-child(2):hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
@@ -105,12 +97,12 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
+  a:nth-of-type(2) .headerImgs {
     animation: logo-spin infinite 20s linear;
   }
 }
 
-.contentSection {
+.contentDiv {
   grid-area: content;
   display: grid;
   grid-template-columns: 100%;
@@ -121,7 +113,7 @@
   max-width: 100%;
 }
 
-.buttonsDiv {
+.buttonDiv {
   display: grid;
   max-width: 100%;
   max-height: 100%;
@@ -132,7 +124,7 @@
   column-gap: 20px;
 }
 
-.buttons {
+.contentButtons {
 
   margin: 0;
   max-width: 45%;
@@ -140,13 +132,13 @@
 
 }
 
-.buttons:nth-child(1) {
+.contentButtons:nth-child(1) {
 
   justify-self: end;
 
 }
 
-.buttons:nth-child(2) {
+.contentButtons:nth-child(2) {
 
   justify-self: start;
 
@@ -159,6 +151,12 @@
   align-self: center;
 }
 
+.editCode {
+
+    padding: 0.2em; /** ??? */
+
+}
+
 .dataParagraph {
   margin: 0;
   max-width: 100%;
@@ -166,7 +164,7 @@
   align-self: center;
 }
 
-.docsParagraph {
+.learnParagraph {
   margin: 0;
   color: #888;
 }
