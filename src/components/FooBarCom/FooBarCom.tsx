@@ -21,7 +21,7 @@ import   styles       from './FooBarCom.module.css'; /** This imports the custom
  * @property onClickLog = On Click Logo will store the event handler function that is called when the logo Home page link is clicked.
  */
 
-interface FooBarComPro {
+type FooBarComPro = {
 
     namStr : string;
 
