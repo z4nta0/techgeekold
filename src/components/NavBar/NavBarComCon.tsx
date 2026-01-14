@@ -19,7 +19,7 @@ import { type UseAppDis } from '../../hooks/useAppDis.ts'; /** This is the custo
 /**
  * NavBarComConPro = Navigation Bar Component Container Props will store all of the props that will be used in the NavBarComCon and NavBarCom components.
  *
- * @property namStr = Name String will store the site/app name that will be displayed in the navigation bar.
+ * @property namStr = Name String will store the site/app name that will be displayed in various parts of the site/app.
  * @property staObj = State Object will store the entire Redux store's state object tree for use in the component.
  * @property disFun = Dispatch Function will store the custom React Hook that wraps the React Redux store's dispatch function for use in the component.
  *

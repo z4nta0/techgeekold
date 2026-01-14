@@ -76,10 +76,11 @@ const rooDomNodRender : RooDomNodRender = () => {
                 { /** Start App Component */ }
 
                 { /** The App component is the root component that contains the core routing structure of the application and acts as the container for the router, footer, navigation links and the components that are rendered based on the current URL via React Router. */ }
-                < App 
+                < App
+                    disFun={ useAppDis }
+                    namStr='Tech Geek'
                     staObj={ store.getState() }
                     thuFun={ useAppThu }
-                    disFun={ useAppDis }
                 />
 
                 { /** End App Component */ }
