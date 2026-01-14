@@ -7,7 +7,6 @@
 
     grid-area   : main; /** This property was chosen to place the main element within the site/app root grid area defined in the parent #root declaration in the top level index.css file. */
     height      : 100%; /** This property was chosen to make the main element take up the full height of its parent container, which is declared by the #root grid container in the top level index.css file. */
-    padding-top : 3rem; /** This property was chosen to add some space at the top of the main element, which can help to visually separate it from the navbar component and provide some breathing room for the content. */
     width       : 100%; /** This property was chosen to ensure that the main element takes up the full width of its parent container, which is declared by the #root grid container in the top level index.css file. */
 
 }

@@ -1,230 +1,458 @@
-.componentSection {
 
-  display: grid;
-  grid-template-areas: "header"
-                       "content";
-  grid-template-columns: 100%;
-  grid-template-rows: 40% 60%;
-  row-gap: 30px;
-  max-height: 100%;
-  max-width: 100%;
-  height: 100%;
-  width: 100%;
-  text-align: center;
+/* #region Component Scoped Custom Properties */
+
+.componentSection { /** Component Section is the component's root element, and it is used here in order to define component scoped custom properties. */
+
+    /** The reason that this is globally scoped is because there are other elements (the H1 and the Vite, React logo anchors and image elements) besides the content buttons that will use this value to align and center themselves with said buttons. Having them all use the exact same width makes this a much easier process. */
+    --con-but-wid : calc( var( --hor-rhy-max ) * pow( var( --golden-rati ), 2 ) ); /** ~=280.124px @1920px width = Content Button Width stores the width of the increment and decrement buttons within the .contentDiv element, and it is equal to the horizontal rhythm maximum value (~= 106.998px @1920px width) multiplied by the golden ratio squared (~= 2.618). */
 
 }
 
-.componentHeader {
+/* #endregion Component Scoped Custom Properties */
 
-    container-type: inline-size;
-  grid-area: header;
-  display: grid;
-  grid-template-areas: "header1"
-                       "links";
-  grid-template-columns: 100%;
-  grid-template-rows: 30% 70%;
-  max-height: 100%;
-  max-width: 100%;
-  justify-items: center;
-  row-gap: 20px;
 
-}
 
-.headerH1 {
+/* #region Component Section */
 
-    grid-area: header1;
-    align-self: center;
-    font-size   : 6cqw; /* text sizing based on the container dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
-    line-height : 6cqw;
-    max-width: 100%;
-    max-height: 100%;
-    margin: 0;
-    width: 100%;
-    height: 100%;
+.componentSection { /** Component Section is this component's root element and the #rooSecEle element grid's second row, which contains the .componentHeader element and the .contentDiv element. */
 
-}
+    /* #region Element Scoped Custom Properties */
 
-.headerDiv {
+    /** Yes, I know these are technically component scoped, but placing and labelling them here makes my intention clear that these are intended for use in this element only. */
 
-  container-type: inline-size;
-  grid-area: links;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 100%;
-  gap: 20px;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  max-height: 100%;
-  max-width: 100%;
+    --cos-row-one : calc( 50% - ( var( --row-gap-max ) / 2 ) ); /** Component Section Row One stores the height of the first row within the .componentSection element's grid, and it is equal to 50% of said component's allotted height (as defined by the index.css's #rooSecEle) minus half of the grid's single row gap maximum value (~= 67.777px @16px root font size). */
+    --cos-row-two : calc( 50% - ( var( --row-gap-max ) / 2 ) ); /** Component Section Row Two stores the height of the second row within the .componentSection element's grid, and it is equal to 50% of said component's allotted height (as defined by the index.css's #rooSecEle) minus half of the grid's single row gap maximum value (~= 67.777px @16px root font size). */
+
+    /* #endregion Element Scoped Custom Properties */
+
+
+    display               : grid;                                      /** The CSS Grid property was chosen as the layout method for its powerful layout capabilities. */
+    grid-template-areas   :                                            /** The grid template areas property was chosen as my preferred method of placing grid items, as I find its visual definition and placement provides more clarity. */
+        'header'                                                       /** The first grid template areas row was chosen to contain the .componentHeader element, which contains the header 1 element and the span elements that it contains. */
+        'homecontent';                                                 /** The second grid template areas row was chosen to contain the .contentDiv element, which contains the .buttonDiv, the .editParagraph, the .learnParagraph and the .dataParagraph elements. */
+    grid-template-columns : 100%;                                      /** The grid template columns property defines the width of the columns in the grid layout, and since this grid only has one column per row it is set to 100% to take up the full width of the .componentSection element (as defined by the #rooSecEle element -> .appMai element). */
+    grid-template-rows    : var( --cos-row-one ) var( --cos-row-two ); /** The grid template rows property defines the heights of the rows in the grid layout, using the element scoped custom properties for the first and second rows respectively. */
+    height                : 100%;                                      /** This property was chosen to make the component section take up the full height of its parent container, which is the 'main' grid area as declared by the #rooSecEle grid container in the top level index.css file. Removing this property and its value will cause the element's height to shrink to less than its intended value. */
+    row-gap               : var( --row-gap-max );                      /** This property was chosen to create space between the two rows of the .componentSection element's grid, and it is approximately equal to 67.777px @16px root font size. */
+    text-align            : center;                                    /** This property was chosen to center the text within the component section, since all content for this section will be centered because it is not 'content heavy' and each section only contains one line of text or one or two elements at most. */
 
 }
 
-.headerAnchors:nth-child(1) {
 
-  justify-self: end;
+/* #region Component Header */
 
-}
+.componentHeader { /** Component Header is the .componentSection element grid's first row which contains the .headerH1 element and .headerDiv element (containing the Vite, React logo anchors and logo images). */
 
-.headerAnchors:nth-child(2) {
+    /* #region Element Scoped Custom Properties */
 
-  justify-self: start;
+    --coh-row-one : calc( 40% - ( var( --row-gap-xla ) / 2 ) ); /** Component Header Row One stores the height of the first row within the .componentHeader element's grid, and it is equal to 40% of said element's allotted height (as defined by the .componentSection element) minus half of the grid's single row gap extra large value (~= 41.889px @16px root font size). */
+    --coh-row-two : calc( 60% - ( var( --row-gap-xla ) / 2 ) ); /** Component Header Row Two stores the height of the second row within the .componentHeader element's grid, and it is equal to 60% of said element's allotted height (as defined by the .componentSection element) minus half of the grid's single row gap extra large value (~= 41.889px @16px root font size). */
 
-}
+    /* #endregion Element Scoped Custom Properties */
 
-.headerImgs {
-  height: 8cqw;
-  will-change: filter;
-  transition: filter 300ms;
-}
 
-.headerImgs:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.headerImgs:nth-child(2):hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .headerImgs {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.contentDiv {
-  grid-area: content;
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: repeat(4, 25%);
-  justify-content: center;
-  align-items: center;
-  max-height: 100%;
-  max-width: 100%;
-}
-
-.buttonDiv {
-  display: grid;
-  max-width: 100%;
-  max-height: 100%;
-  grid-template-columns: repeat(2, 50%);
-  grid-template-rows: 100%;
-  margin: 0;
-  justify-content: center;
-  column-gap: 20px;
-}
-
-.contentButtons {
-
-  margin: 0;
-  max-width: 45%;
-  width: 45%;
+    display               : grid;                                      /** The CSS Grid property was chosen as the layout method for its powerful layout capabilities. */
+    grid-area             : header;                                    /** This property was chosen to place the .componentHeader element within the grid area defined in the parent .componentSection element's grid template areas declaration. */
+    grid-template-areas   :                                            /** The grid template areas property was chosen as my preferred method of placing grid items, as I find its visual definition and placement provides more clarity. */
+        'header1'                                                      /** The first grid template areas row was chosen to contain the .componentHeader element's h1 element, which splits its text into three individual span elements (for horizontal alignment reasons). */
+        'images';                                                      /** The second grid template areas row was chosen to contain the .componentHeader element's .headerDiv element, which contains the Vite, React logo anchor and image elements. */
+    grid-template-columns : 100%;                                      /** The grid template columns property defines the width of the columns in the .componentHeader element's grid layout, and since this grid only has one column per row it is set to 100% to take up the full width of the .componentHeader element (as defined by the .componentSection element). */
+    grid-template-rows    : var( --coh-row-one ) var( --coh-row-two ); /** The grid template rows property defines the heights of the rows in the .componentHeader element's grid layout, using the element scoped custom properties for the first and second rows respectively. */
+    padding-top           : var( --pad-ver-xla );                      /** This property was chosen to add some space at the top of the .componentHeader element, which can help to visually separate it from the navbar component at the top of the page, and it is approximately equal to 67.777px @16px root font size. */
+    row-gap               : var( --row-gap-xla );                      /** This property was chosen to create space between the two rows of the .componentHeader element's grid, and it is approximately equal to 41.889px @16px root font size. */
 
 }
 
-.contentButtons:nth-child(1) {
 
-  justify-self: end;
+/* #region Header H1 */
 
-}
+.headerH1 { /** Header H1 is the .componentHeader element grid's first row which contains the broken up H1 element's text in three individual Span elements in order to align them with the Vite, react logos and the increment, decrement buttons that are further down the page. */
 
-.contentButtons:nth-child(2) {
+    /* #region Element Scoped Custom Properties */
 
-  justify-self: start;
+    --he1-col-one   : calc( 50% - ( var( --he1-col-two ) / 2 ) ); /** Header 1 Column One stores the width of the first column within the .headerH1 element's grid, and it is equal to 50% of said element's allotted width (as defined by the .componentHeader element) minus half of the .headerH1 element's grid second column (the '+' span element text, which is equal to the column gap's maximum value of ~66.128px @1920px width). */
+    --he1-col-two   : var( --col-gap-max );                       /** Header 1 Column Two stores the width of the second column within the .headerH1 element's grid, and it is equal to the column gap's maximum value (~= 66.128px @1920px width). */
+    --he1-col-three : calc( 50% - ( var( --he1-col-two ) / 2 ) ); /** Header 1 Column Three stores the width of the third column within the .headerH1 element's grid, and it is equal to 50% of said element's allotted width (as defined by the .componentHeader element) minus half of the .headerH1 element's grid second column (the '+' span element text, which is equal to the column gap's maximum value of ~66.128px @1920px width). */
 
-}
+    /* #endregion Element Scoped Custom Properties */
 
-.editParagraph {
-  margin: 0;
-  max-width: 100%;
-  width: 100%;
-  align-self: center;
-}
 
-.editCode {
-
-    padding: 0.2em; /** ??? */
-
-}
-
-.dataParagraph {
-  margin: 0;
-  max-width: 100%;
-  width: 100%;
-  align-self: center;
-}
-
-.learnParagraph {
-  margin: 0;
-  color: #888;
-}
-
-h1 {
-
-    font-size   : 4.236rem; /** This property was chosen according to a multiplier of the base vertical rhythm of 1.618. 4.236 ~= 1.618^3. */
-    line-height : 1;        /** This property was chosen to set the line height equal to the font size, creating a compact and visually appealing heading. */
+    align-items           : center;                                                           /** This property was chosen to vertically center the .headerH1 element's Span elements and their containing text. */
+    display               : grid;                                                             /** The CSS Grid property was chosen as the layout method for its powerful layout capabilities. */
+    grid-area             : header1;                                                          /** This property was chosen to place the .headerH1 element within the grid area defined in the parent .componentHeader element's grid template areas declaration. */
+    grid-template-areas   :                                                                   /** The grid template areas property was chosen as my preferred method of placing grid items, as I find its visual definition and placement provides more clarity. */
+        'vite plus react';                                                                    /** The only grid template areas row was chosen to contain all three of the .headerH1 element grid's columns, which will each contain a part of the H1 element's text inside of a Span element. This was done for horizontal alignment reasons. The Vite text is meant to align with both the Vite logo anchor/image and the increment button, the + text is meant to align with both the Vite/React column gap and the increment/decrement column gap, and the React text is meant to align with both the React logo anchor/image and the decrement button. */
+    grid-template-columns : var( --he1-col-one ) var( --he1-col-two ) var( --he1-col-three ); /** The grid template columns property defines the widths of the columns in the .headerH1 element's grid layout, using the element scoped custom properties for the first, second and third columns respectively. */
+    grid-template-rows    : 100%;                                                             /** The grid template rows property defines the height of the columns in the .headerH1 element's grid layout, and since this grid only has one row it is set to 100% to take up the full height of the .headerH1 element (as defined by the .componentHeader element). */
+    font-size             : var( --hea-one-siz );                                             /** This property was chosen to set the font size equal to the header one size globally scoped Custom Property, which is approximately equal to 67.777px @16px root font size. */
+    line-height           : var( --hea-one-siz );                                             /** This property was chosen to set the line height equal to the .headerH1 element's font size so that it's vertical height is exactly the same as its content. This is standard behavior for header elements since line height is used to allow for breathing room in text heavy content and header elements are almost always contained within one line. */
 
 }
 
-button {
 
-    background-color : var( --col-but-dar ); /** This property was chosen by the default React installation to set the background color of buttons to a very dark gray tone that provides a strong contrast against the text and stands out against the overall dark theme of the site/app, while still maintaining a cohesive and visually appealing design. */
-    border           : 0.090rem solid transparent; /** This property was chosen so that the hover selector would have a smooth transition. The size value was chosen according to a multiplier of the base vertical rhythm of 1.618. 0.090 ~= 1 / 1.618^5 (this is the same as 1.618^-5). */
-    border-radius    : 0.618rem;                   /** This property was chosen according to a multiplier of the base vertical rhythm of 1.618. 0.618 ~= 1 / 1.618 (this is the same as 1.618^-1). */
-    cursor           : pointer;                    /** This property was chosen as a common standard for changing the cursor to a pointer when hovering over buttons, providing a visual cue to users that the element is interactive and can be clicked. */
-    font-family      : inherit;                    /** This property was chosen by the default React installation to ensure that buttons inherit the font family from their parent elements, maintaining consistency in typography across the site/app and allowing for easier styling and theming. */
-    font-size        : 1rem;                       /** This property was chosen to set the font size of buttons to 1rem, which is the same as the base font size defined in the :root selector. This ensures that button text is consistent with the overall typography of the site/app and allows for easy scaling based on user preferences. */
-    font-weight      : 500;                        /** This property was chosen by the default React installation to make button text slightly bolder than the normal text, which can help it stand out and indicate that it is interactive. */
-    padding          : 0.618rem 1.618rem;          /** This property was chosen to provide sufficient padding around the button text, making the buttons larger and easier to click while also improving their visual appearance. The values were chosen according to a multiplier of the base vertical rhythm of 1.618. 0.618 ~= 1 / 1.618 (this is the same as 1.618^-1) and 1.618 = 1.618^1. */
-    transition       : border-color 0.33s;         /** This property was chosen to create a smooth transition effect when the border color changes on hover, enhancing the user experience by providing visual feedback. The duration of 0.33 seconds was chosen as a common standard (between 150ms and 400ms or 0.15s to 0.4s) for small subtle transitions, providing a noticeable yet not overly slow effect. */
+/* #region Header H1 Spans */
+
+.he1Spans:nth-child( 1 ) { /** Header H1 Spans first child is the .headerH1 element grid's first column, which contains the 'Vite' text. */
+
+    grid-area     : vite;                 /** This property was chosen to place the first .he1Spans element within the grid area defined in the parent .headerH1 element's grid template areas declaration. */
+    justify-self  : end;                  /** This property was chosen to horizontally align the 'Vite' text to the end (right side) of its grid area so that it aligns with the Vite logo anchor/image and the increment button. */
+    width         : var( --con-but-wid ); /** This property was chosen to set the width of the first .he1Spans element to be equal to the width of the increment button, which is is equal to the horizontal rhythm maximum value (~= 106.998px @1920px width) multiplied by the golden ratio squared (~= 2.618). This was done to make it easier to align the 'Vite' text with the Vite logo anchor/image and the increment button, since they will all be the same width. */
 
 }
 
-button:hover {
+.he1Spans:nth-child( 2 ) { /** Header H1 Spans second child is the .headerH1 element grid's second column, which contains the '+' text. */
 
-    border-color : var( --col-bor_hov-dar ); /** This property was chosen by the default React installation to change the border color of buttons to the same vibrant shade of blue used for links when hovered over, providing visual feedback to users that the button is interactive and currently being hovered. */
-
-}
-
-button:focus,
-button:focus-visible {
-
-    outline : 0.236rem auto -webkit-focus-ring-color; /** This property was chosen to provide a clear and visible focus indicator for buttons when they receive keyboard focus, improving accessibility for users who navigate the site/app using a keyboard. The -webkit-focus-ring-color is often used to restore the native focus style if the outline property has been previously removed for aesthetic reasons. The size value was chosen according to a multiplier of the base vertical rhythm of 1.618. 0.236 ~= 1 / 1.618^3 (this is the same as 1.618^-3). */
+    grid-area    : plus;   /** This property was chosen to place the second .he1Spans element within the grid area defined in the parent .headerH1 element's grid template areas declaration. */
+    justify-self : center; /** This property was chosen to horizontally align the '+' text in the center of its grid area so that it aligns with the column gaps between the Vite and React logo anchors/images and the column gaps between the increment and decrement buttons. */
 
 }
 
-@media ( prefers-color-scheme : light ) {
+.he1Spans:nth-child( 3 ) { /** Header H1 Spans third child is the .headerH1 element grid's third column, which contains the 'React' text. */
 
-    button {
+    grid-area    : react;                /** This property was chosen to place the third .he1Spans element within the grid area defined in the parent .headerH1 element's grid template areas declaration. */
+    justify-self : start;                /** This property was chosen to horizontally align the 'React' text to the start (left side) of its grid area so that it aligns with the React logo anchor/image and the decrement button. */
+    width        : var( --con-but-wid ); /** This property was chosen to set the width of the third .he1Spans element to be equal to the width of the decrement button, which is is equal to the horizontal rhythm maximum value (~= 106.998px @1920px width) multiplied by the golden ratio squared (~= 2.618). This was done to make it easier to align the 'React' text with the React logo anchor/image and the decrement button, since they will all be the same width. */
 
-        background-color : var( --col-but-lig ); /** This property was chosen by the default React installation to set the background color of buttons to a very light gray tone in light mode, providing a subtle contrast against the white background. */
+}
+
+/* #endregion Header H1 Spans */
+
+
+/* #endregion Header H1 */
+
+
+/* #region Header Div */
+
+.headerDiv { /** Header Div is the .componentHeader element grid's second row which contains the .headerAnchors elements. */
+
+    /* #region Element Scoped Custom Properties */
+
+    --hed-col-one : calc( 50% - ( var( --col-gap-max ) / 2 ) ); /** Header Div Column One stores the width of the first column within the .headerDiv element's grid, and it is equal to 50% of said element's allotted width (as defined by the .componentHeader element) minus half of the .headerDiv element grid's single column gap maximum value (~= 66.128px @1920px width). */
+    --hed-col-two : calc( 50% - ( var( --col-gap-max ) / 2 ) ); /** Header Div Column Two stores the width of the second column within the .headerDiv element's grid, and it is equal to 50% of said element's allotted width (as defined by the .componentHeader element) minus half of the .headerDiv element grid's single column gap maximum value (~= 66.128px @1920px width). */
+
+    /* #endregion Element Scoped Custom Properties */
+
+
+    align-items           : center;                                    /** This property was chosen to vertically center both of the .headerAnchors elements. */
+    display               : grid;                                      /** The CSS Grid property was chosen as the layout method for its powerful layout capabilities. */
+    column-gap            : var( --col-gap-max );                      /** This property was chosen to create space between the two columns of the .headerDiv element's grid, and it is approximately equal to 66.128px @1920px width. */
+    grid-area             : images;                                    /** This property was chosen to place the .headerDiv element within the grid area defined in the parent .componentHeader element's grid template areas declaration. */
+    grid-template-areas   :                                            /** The grid template areas property was chosen as my preferred method of placing grid items, as I find its visual definition and placement provides more clarity. */
+        'vite react';                                                  /** The only grid template areas row was chosen to contain both of the .headerDiv element grid's columns, which will each contain a .headerAnchors element with an img element inside of them, one for Vite and one for React. */
+    grid-template-columns : var( --hed-col-one ) var( --hed-col-two ); /** The grid template columns property defines the widths of the columns in the .headerDiv element's grid layout, using the element scoped custom properties for the first and second columns respectively. */
+    grid-template-rows    : 100%;                                      /** The grid template rows property defines the height of the columns in the .headerDiv element's grid layout, and since this grid only has one row it is set to 100% to take up the full height of the .headerDiv element (as defined by the .componentHeader element). */
+
+}
+
+/* #endregion Header Div */
+
+
+/* #region Header Anchors */
+
+.headerAnchors { /** Header Anchors are the .headerDiv element grid's two columns which contain the .headerImgs elements. */
+
+    display               : grid;                 /** The CSS Grid property was chosen as the layout method for its powerful layout capabilities. */
+    grid-template-areas   :                       /** The grid template areas property was chosen as my preferred method of placing grid items, as I find its visual definition and placement provides more clarity. */
+        'imgs';                                   /** The only grid template areas row was chosen to contain both of the .headerAnchors elements grid's single column, which will each contain a .headerImgs element, one for the Vite logo and one for the React logo. */
+    grid-template-columns : 100%;                 /** The grid template columns property defines the width of the column in each of the .headerAnchors elements' grid layout, and since each grid only has one column per row it is set to 100% to take up the full width of each of the .headerAnchors element (as defined by the .headerDiv element). */
+    grid-template-rows    : 100%;                 /** The grid template rows property defines the height of the row in each of the .headerAnchors elements' grid layout, and since each grid only has one row per column it is set to 100% to take up the full height of each of the .headerAnchors element (as defined by the .headerDiv element). */
+    justify-items         : center;               /** This property was chosen to horizontally center the Vite and React logos in their grid area so that they aligns with the Vite and React text and the increment and decrement buttons. */
+    width                 : var( --con-but-wid ); /** This property was chosen to set the width of both of the .headerAnchors elements to be equal to the width of the increment and decrement button, which is is equal to the horizontal rhythm maximum value (~= 106.998px @1920px width) multiplied by the golden ratio squared (~= 2.618). This was done to make it easier to align the logos with the 'Vite' and 'React' text and the increment and decrement button, since they will all be the same width. */
+
+
+}
+
+.headerAnchors:nth-child( 1 ) { /** Header Anchors first child is the .headerDiv element grid's first column, which contains the Vite logo. */
+
+    grid-area     : vite; /** This property was chosen to place the .headerAnchors element containing the Vite logo within the grid area defined in the parent .headerDiv element's grid template areas declaration. */
+    justify-self  : end;  /** This property was chosen to horizontally align the Vite logo to the end (right side) of its grid area so that it aligns with the 'Vite' text and the increment button. */
+
+}
+
+.headerAnchors:nth-child( 2 ) { /** Header Anchors second child is the .headerDiv element grid's second column, which contains the React logo. */
+
+    grid-area    : react; /** This property was chosen to place the .headerAnchors element containing the React logo within the grid area defined in the parent .headerDiv element's grid template areas declaration. */
+    justify-self : start; /** This property was chosen to horizontally align the React logo to the start (left side) of its grid area so that it aligns with the 'React' text and the decrement button. */
+
+}
+
+/* #endregion Header Anchors */
+
+
+/* #region Header Images */
+
+.headerImgs { /** Header Imgs are the .headerAnchors elements' grid's only columns (one column in each .headerAnchors elements' grid), with one containing the Vite logo and one containing the React logo. */
+
+    /* #region Element Scoped Custom Properties */
+
+    --hei-tra-dur : calc( pow( var( --golden-rati ), 12 ) * 1ms ); /** Header Imgs Transition Duration stores the duration in milliseconds for the filter property's drop shadow transitions that will occur on hover for each logo, and it is equal to the golden ratio (~= 1.618) raised to the twelfth power (~= 321.997). */
+
+    /* #endregion Element Scoped Custom Properties */
+
+
+    height      : var( --ver-rhy-max );               /** This property was chosen to set the height of the header images to the vertical rhythm maximum globally scoped CSS Custom Property, ensuring consistent vertical spacing within the layout, and it is approximately equal to 109.666px @16px root font size. */
+    grid-area   : imgs;                               /** This property was chosen to place the .headerImgs elements within the grid area defined in the parent .headerAnchors elements' grid template areas declaration. */
+    transition  : filter var( --hei-tra-dur ) linear; /** This property was chosen to smoothly transition the filter property (in this case it is used for drop shadows) on hover for each logo. */
+    width       : var( --hor-rhy-max );               /** This property was chosen to set the width of the header images to the maximum horizontal rhythm value, ensuring consistent vertical spacing within the layout, and it is approximately equal to 106.998px @1920px width. */
+    will-change : filter;                             /** This property was chosen to inform the browser that the filter property of the .headerImgs elements will be changing (on hover) so that the browser can optimize for this change and ensure a smoother transition effect. */
+
+}
+
+.headerImgs:nth-child( 1 ):hover { /** Header Imgs first child is the first .headerAnchors element grid's first and only column, which contains the Vite img element. */
+
+    filter : drop-shadow( 0 0 var( --ver-rhy-bas ) var( --col-acc-dar ) ); /** This property was chosen to apply a drop shadow filter that will follow the actual shape of the Vite logo using the accent dark color to the Vite logo on hover, using the base vertical rhythm value (~=  25.889px @16px root font size) for the shadow's blur radius. */
+
+}
+
+.headerImgs:nth-child( 2 ):hover { /** Header Imgs second child is the first .headerAnchors element grid's first and only column, which contains the React img element. */
+
+    filter : drop-shadow( 0 0 var( --ver-rhy-bas ) var( --col-mai-dar ) ); /** This property was chosen to apply a drop shadow filter that will follow the actual shape of the React logo using the accent dark color to the React logo on hover, using the base vertical rhythm value (~=  25.889px @16px root font size) for the shadow's blur radius. */
+
+}
+
+/* #endregion Header Images */
+
+
+/* #region Header Images Animation */
+
+@keyframes rea-log-spi { /** React Logo Spin is the .headerImgs second child element's (React logo) animation, which will continously spin the React logo in a complete 360 degree rotation. */
+
+    from { /** This defines the starting state of the animation. */
+
+        transform : rotate( 0deg ); /** This property was chosen to start the animation from a completely unrotated state. */
 
     }
 
-    button:hover {
+    to { /** This defines the ending state of the animation. */
 
-        border-color : var( --col-bor_hov-lig ); /** This property was chosen by the default React installation to change the border color of buttons to the same vibrant shade of blue used for links when hovered over, providing visual feedback to users that the button is interactive and currently being hovered. */
+        transform : rotate( 360deg ); /** This property was chosen to end the animation at a full rotation, which will create a seamless spinning effect when the animation loops back to the starting state. */
 
     }
 
 }
 
-/*
-a {
-    color: #CCCCCC;
+/* #endregion Header Images Animation */
+
+
+/* #region Media Query for Reduced Motion */
+
+@media ( prefers-reduced-motion : no-preference ) { /** This media query targets users who have not expressed a preference for reduced motion, allowing animations to run normally for anyone who has not indicated a preference for no animations. */
+
+    .headerAnchors:nth-of-type( 2 ) .headerImgs { /** The React logo must be targeted in this way to work. I am not sure why and I didn't really have the time to research it. I only know that trying to target it with .headerImgs:nth-child( 2 ) would not apply the animation. */
+
+        /* #region Element Scoped Custom Properties */
+
+        --rlsAniDur : calc( pow( var( --golden-rati ), 6 ) * 1s ); /** React Logo Spin Animation Duration stores the duration in seconds for the animation's total duration of a single complete 360 degree spin, and it is equal to the golden ratio (~= 1.618) raised to the six power (~= 17.944). */
+
+        /* #endregion Element Scoped Custom Properties */
+
+
+        animation : rea-log-spi infinite var( --rlsAniDur ) linear; /** This property applies the React Logo Spin animation to the React logo, making it spin continuously with a duration defined by the --rlsAniDur custom property, and using a linear timing function for a constant speed. */
+
+    }
+
 }
 
-a.active {
-    color: #FFFFFF;
-    font-weight: bold;
-}*/
+/* #endregion Media Query for Reduced Motion */
+
+
+/* #endregion Component Header */
+
+
+
+/* #region Content Div */
+
+.contentDiv { /** Content Div is the .componentSection element grid's second row which contains the .buttonDiv, .editParagraph, .learnParagraph and .dataParagraph elements. */
+
+    /* #region Element Scoped Custom Properties */
+
+    --cod-row-siz : calc( 25% - ( ( var( --row-gap-xla ) * 3) / 4 ) ); /** Content Div Row Sizes stores the height of each row within the .contentDiv element's grid, and it is equal to 25% of said element's allotted height (as defined by the .componentSection element) minus the .contentDiv element grid's three row gap maximum values (~= 41.889px @16px root font size * 3 ~= 125.666px) divided by 4 (in order to split the 3 row gaps' combined value evenly between all 4 rows). */
+
+    /* #endregion Element Scoped Custom Properties */
+
+
+    align-items           : center;                            /** This property was chosen to vertically center both of the .contentButtons elements. */
+    display               : grid;                              /** The CSS Grid property was chosen as the layout method for its powerful layout capabilities. */
+    grid-area             : homecontent;                       /** This property was chosen to place the .headerDiv element within the grid area defined in the parent .componentHeader element's grid template areas declaration. */
+    grid-template-areas   :                                    /** The grid template areas property was chosen as my preferred method of placing grid items, as I find its visual definition and placement provides more clarity. */
+        'buttons'                                              /** The first grid template areas row was chosen to contain the .buttonDiv element, which contains the increment and decrement buttons. */
+        'edit'                                                 /** The second grid template areas row was chosen to contain the .editParagraph element, which contains the paragraph explaining to edit the App.tsx file to test the HMR (Hot Module Replacement). */
+        'learn'                                                /** The third grid template areas row was chosen to contain the .learnParagraph element, which contains the paragraph explaining to click on the Vite and React logos in order to learn more. */
+        'data';                                                /** The fourth grid template areas row was chosen to contain the .dataParagraph element, which contains the paragraph with the mock back end JSON data. */
+    grid-template-columns : 100%;                              /** The grid template columns property defines the width of the columns for each of the .contentDiv elements' rows in its grid layout, and since each grid row only has one column per row it is set to 100% to take up the full width of the .contentDiv element (as defined by the .componentSection element). */
+    grid-template-rows    : repeat( 4, var( --cod-row-siz ) ); /** The grid template rows property defines the heights of the rows in the .contentDiv element's grid layout, using the element scoped custom properties in a repeat to create four evenly sized rows. */
+    row-gap               : var( --row-gap-xla );              /** This property was chosen to create space between the rows of the .contentDiv element's grid, and each of them is approximately equal to 41.889px @16px root font size. */
+
+}
+
+
+/* #region Button Div */
+
+.buttonDiv { /** Button Div is the .contentDiv element grid's first row which contains the .contentButtons (increment and decrement buttons). */
+
+    /* #region Element Scoped Custom Properties */
+
+    --bud-col-one : calc( 50% - ( var( --col-gap-max ) / 2 ) ); /** Button Div Column One stores the width of the first column within the .buttonDiv element's grid, and it is equal to 50% of said element's allotted width (as defined by the .contentDiv element) minus half of the .buttonDiv element grid's single column gap maximum value (~= 66.128px @1920px width). */
+    --bud-col-two : calc( 50% - ( var( --col-gap-max ) / 2 ) ); /** Button Div Column Two stores the width of the second column within the .buttonDiv element's grid, and it is equal to 50% of said element's allotted width (as defined by the .contentDiv element) minus half of the .buttonDiv element grid's single column gap maximum value (~= 66.128px @1920px width). */
+
+    /* #endregion Element Scoped Custom Properties */
+
+
+    column-gap            : var( --col-gap-max );                      /** This property was chosen to create space between the two columns of the .buttonDiv element's grid, and it is approximately equal to 66.128px @1920px width. */
+    display               : grid;                                      /** The CSS Grid property was chosen as the layout method for its powerful layout capabilities. */
+    grid-area             : buttons;                                   /** This property was chosen to place the .buttonDiv element within the grid area defined in the parent .contentDiv element's grid template areas declaration. */
+    grid-template-areas   :                                            /** The grid template areas property was chosen as my preferred method of placing grid items, as I find its visual definition and placement provides more clarity. */
+        'increment decrement';                                         /** The only grid template areas row was chosen to contain both of the .buttonDiv element grid's columns, which will each contain a .contentButtons element with a button element inside of them, one for increment and one for decrement. */
+    grid-template-columns : var( --bud-col-one ) var( --bud-col-two ); /** The grid template columns property defines the widths of the columns in the .buttonDiv element's grid layout, using the element scoped custom properties for the first and second columns respectively. */
+    grid-template-rows    : 100%;                                      /** The grid template rows property defines the height of the columns in the .buttonDiv element's grid layout, and since this grid only has one row it is set to 100% to take up the full height of the .buttonDiv element (as defined by the .contentDiv element). */
+
+}
+
+/* #endregion Button Div */
+
+
+/* #region Content Buttons */
+
+.contentButtons { /** Content Buttons are the .buttonDiv element grid's first and second columns which contain the buttons for incrementing and decrementing the counter state number. */
+
+    /* #region Element Scoped Custom Properties */
+
+    --cob-tra-dur : calc( pow( var( --golden-rati ), 12 ) * 1ms ); /** Content Buttons Transition Duration stores the duration in milliseconds for the border color property's transition that will occur on hover for each button, and it is equal to the golden ratio (~= 1.618) raised to the twelfth power (~= 321.997). */
+
+    /* #endregion Element Scoped Custom Properties */
+
+
+    background-color : var( --col-but-dar );                      /** This property is linked to the color button for dark mode globally scoped CSS Custom Property. See said property definition for more details. */
+    border           : var( --bor-wid-min ) solid transparent;    /** This property was chosen so that the hover selector would have a smooth transition to the new border color. The size value is linked to the border width minimum globally scoped CSS Custom Property, and it is approximately equal to 1.618px. */
+    border-radius    : var( --bor-rad-lar );                      /** This property is linked to the border radius large globally scoped CSS Custom Property, and it is approximately equal to 17.944px. */
+    cursor           : pointer;                                   /** This property was chosen as a common standard for changing the cursor to a pointer when hovering over buttons, providing a visual cue to users that the element is interactive and can be clicked. */
+    font-family      : inherit;                                   /** This property was chosen to ensure that buttons inherit the font family from their parent elements. */
+    font-size        : var( --fon-siz-bas );                      /** This property is linked to the font size base globally scoped CSS Custom Property, and it is equal to 16.000px @16px root font size. */
+    font-weight      : 500;                                       /** This property was chosen to make button text slightly bolder than the normal text, which can help it stand out. */
+    height           : var( --ver-rhy-lar );                      /** This property was chosen to set the height of the button elements to the vertical rhythm large globally scoped CSS Custom Property, ensuring consistent vertical spacing within the layout, and it is approximately equal to 41.889px @16px root font size. */
+    padding          : var( --pad-hor-xsm ) var( --pad-ver-bas ); /** This property was chosen to add some space on all sides of the .contentButtons elements, which helps to give the buttons a balanced and visually appealing appearance with breathing room for text inside of them. The vertical and horizontal padding values are linked to the padding horizontal extra small and padding vertical base globally scoped CSS Custom Properties, and they are approximately equal to 9.648px @1920px width and 25.889px @16px root font size respectively. */
+    transition       : border-color var( --cob-tra-dur ) linear;  /** This property was chosen to smoothly transition the border color property on hover for each button using the content buttons transition duration element scoped CSS Custom Property. */
+    width            : var( --con-but-wid );                      /** This property was chosen to set the width of the buttons to the content buttons width component scoped CSS Custom Property which was also used to size the .componentHeader element grid's columns in order to align themselves with these buttons, and it is approximately equal to 280.124px @1920px width. */
+    will-change      : border-color;                              /** This property was chosen to inform the browser that the border color property of the .contentButtons elements will be changing (on hover) so that the browser can optimize for this change and ensure a smoother transition effect. */
+
+}
+
+.contentButtons:nth-child( 1 ) { /** Content Buttons first child is the first .contentButtons element grid's first column, which contains the increment button element. */
+
+    grid-area    : increment; /** This property was chosen to place the .contentButtons first child element within the grid area defined in the parent .buttonDiv element's grid template areas declaration. */
+    justify-self : end;       /** This property was chosen to horizontally align the increment button to the end (right side) of its grid area so that it aligns with the center of the page along with the 'Vite' text and the Vite logo. */
+
+}
+
+.contentButtons:nth-child( 2 ) { /** Content Buttons second child is the second .contentButtons element grid's second column, which contains the decrement button element. */
+
+    grid-area    : decrement; /** This property was chosen to place the .contentButtons second child element within the grid area defined in the parent .buttonDiv element's grid template areas declaration. */
+    justify-self : start;     /** This property was chosen to horizontally align the decrement button to the start (left side) of its grid area so that it aligns with the center of the page along with the 'React' text and the React logo. */
+
+}
+
+.contentButtons:hover { /** Content Buttons are the .buttonDiv element grid's first and second columns which contain the buttons for incrementing and decrementing the counter state number. */
+
+    border-color : var( --col-bor_hov-dar ); /** This property is linked to the color border on hover for dark mode globally scoped CSS Custom Property. See said property definition for more details. */
+
+}
+
+.contentButtons:focus,
+.contentButtons:focus-visible { /** Content Buttons are the .buttonDiv element grid's first and second columns which contain the buttons for incrementing and decrementing the counter state number. These selectors are used for accessibility purposes to provide a visible focus indicator when the buttons receive keyboard focus. */
+
+    outline-color : default;                                        /** This property value is browser dependent and platform specific and browser vendors use their own specific colors and styles to ensure visibility and adherence to platform conventions. */
+    outline-color : var( --col-mai-dar, -webkit-focus-ring-color ); /** This property is linked to the color main for dark mode globally scoped CSS Custom Property, with a fallback to the WebKit focus ring color. See said property definition for more details. */
+    outline-style : auto;                                           /** This property was chosen to use the browser's native, platform specific focus outline style, which is typically a solid line that may have a specific shape or design depending on the browser and operating system. Using auto allows the browser to determine the most appropriate style for the focus indicator, ensuring it is visible and consistent with user expectations across different platforms. */
+    outline-width : var( --ver-rhy-min );                           /** This property is linked to the vertical rhythm minimum globally scoped CSS Custom Property, and it is approximately equal to 6.111px @16px root font size. */
+
+}
+
+/* #endregion Content Buttons */
+
+
+/* #region Media Query for Light Mode */
+
+
+@media ( prefers-color-scheme : light ) { /** This is the media query selector for the light mode color scheme. */
+
+    .contentButtons { /** Content Buttons are the .buttonDiv element grid's first and second columns which contain the buttons for incrementing and decrementing the counter state number. */
+
+        background-color : var( --col-but-lig ); /** This property is linked to the color button for light mode globally scoped CSS Custom Property. See said property definition for more details. */
+
+    }
+
+    .contentButtons:hover { /** Content Buttons are the .buttonDiv element grid's first and second columns which contain the buttons for incrementing and decrementing the counter state number. */
+
+        border-color : var( --col-bor_hov-lig ); /** This property is linked to the color border on hover for light mode globally scoped CSS Custom Property. See said property definition for more details. */
+
+    }
+
+}
+
+/* #endregion Media Query for Light Mode */
+
+
+
+/* #region Edit Paragraph */
+
+.editParagraph { /** Edit Paragraph is the .contentDiv element grid's second row which contains the paragraph with the 'Edit src/App.tsx...' text. */
+
+    align-self  : center;               /** This property was chosen to vertically center the.editParagraph element within the .contentDiv grid's second row. */
+    grid-area   : edit;                 /** This property was chosen to place the .editParagraph element within the grid area defined in the parent .contentDiv element's grid template areas declaration. */
+    height      : var( --ver-rhy-bas ); /** This property was chosen to set the height of the .editParagraph element to the vertical rhythm base globally scoped CSS Custom Property, ensuring that its height remains equal its natural line height, and it is approximately equal to 25.889px @16px root font size. */
+    line-height : var( --ver-rhy-bas ); /** This property was chosen to set the line height of the .editParagraph element to the vertical rhythm base globally scoped CSS Custom Property, ensuring that its line height remains consistent with the vertical rhythm of the layout, and it is approximately equal to 25.889px @16px root font size. */
+
+}
+
+
+/* #region Edit Code */
+
+.editCode { /** Edit Code is the .editParagraph element's inner <code> HTML element which contains the 'src/App.tsx' text. */
+
+    height      : var( --ver-rhy-bas ); /** This property was chosen to set the height of the .editCode element to the vertical rhythm base globally scoped CSS Custom Property, ensuring that its height remains equal its natural line height, and it is approximately equal to 25.889px @16px root font size. */
+    line-height : var( --ver-rhy-bas ); /** This property was chosen to set the line height of the .editCode element to the vertical rhythm base globally scoped CSS Custom Property, ensuring that its line height remains consistent with the vertical rhythm of the layout, and it is approximately equal to 25.889px @16px root font size. */
+
+}
+
+/* #endregion Edit Code */
+
+
+/* #endregion Edit Paragraph */
+
+
+
+/* #region Learn Paragraph */
+
+.learnParagraph { /** Learn Paragraph is the .contentDiv element grid's third row which contains the paragraph with the 'Click on the Vite and...' text. */
+
+    align-self : center;                /** This property was chosen to vertically center the.learnParagraph element within the .contentDiv grid's third row. */
+    grid-area  : learn;                 /** This property was chosen to place the .learnParagraph element within the grid area defined in the parent .contentDiv element's grid template areas declaration. */
+    height      : var( --ver-rhy-bas ); /** This property was chosen to set the height of the .learnParagraph element to the vertical rhythm base globally scoped CSS Custom Property, ensuring that its height remains equal its natural line height, and it is approximately equal to 25.889px @16px root font size. */
+    line-height : var( --ver-rhy-bas ); /** This property was chosen to set the line height of the .learnParagraph element to the vertical rhythm base globally scoped CSS Custom Property, ensuring that its line height remains consistent with the vertical rhythm of the layout, and it is approximately equal to 25.889px @16px root font size. */
+
+}
+
+/* #endregion Learn Paragraph */
+
+
+
+/* #region Data Paragraph */
+
+.dataParagraph { /** Data Paragraph is the .contentDiv element grid's fourth row which contains the paragraph with the mock backend JSON data. */
+
+    align-self : center;                /** This property was chosen to vertically center the.dataParagraph element within the .contentDiv grid's fourth row. */
+    grid-area  : data;                  /** This property was chosen to place the .dataParagraph element within the grid area defined in the parent .contentDiv element's grid template areas declaration. */
+    height      : var( --ver-rhy-bas ); /** This property was chosen to set the height of the .dataParagraph element to the vertical rhythm base globally scoped CSS Custom Property, ensuring that its height remains equal its natural line height, and it is approximately equal to 25.889px @16px root font size. */
+    line-height : var( --ver-rhy-bas ); /** This property was chosen to set the line height of the .dataParagraph element to the vertical rhythm base globally scoped CSS Custom Property, ensuring that its line height remains consistent with the vertical rhythm of the layout, and it is approximately equal to 25.889px @16px root font size. */
+
+}
+
+/* #endregion Data Paragraph */
+
+
+/* #endregion Content Div */
+
+
+/* #endregion Component Section */
+
+
