@@ -25,16 +25,18 @@ import { type UseAppThu } from '../../hooks/useAppThu.ts'; /** This is the custo
 /**
  * HomPagComPro = Home Page Component Props will store all of the props that will be used in the HomPagCom component.
  *
- * @property staObj = State Object will store the entire Redux store's state object tree for use in the component.
- * @property disFun = Dispatch Function will store the custom React Hook that wraps the React Redux store's dispatch function for use in the component.
- * @property thuFun = Thunk Function will store the custom React Hook that wraps the React Redux store's dispatch function for use in the component.
- *
+ * @property disFun = Dispatch Function will store the custom hook from the utilities directory that wraps the standard dispatch function of the Redux store.
+ * @property namStr = Name String will store the site/app name that will be displayed in various parts of the site/app.
+ * @property staObj = State Object will store all the entire state of the application as inferred by the Redux store's getState method inside of store.tsx. It is best practice to use the useSelector hook from React Redux to access specific slices of the state object within components but this is preferrable in some, select use cases.
+ * @property thuFun = Thunk Function will store the custom hook from the utilities directory that wraps the standard dispatch function of the Redux store, but with proper TypeScript typing for thunk actions.
+ * 
 */
 
 type HomPagComPro = {
 
-    staObj : RooStaObj;
     disFun : UseAppDis;
+    namStr : string;
+    staObj : RooStaObj;
     thuFun : UseAppThu;
 
 };
@@ -56,8 +58,9 @@ type HomPagComPro = {
  *
  * @author z4ntao <https://github.com/z4nta0>
  * 
- * @param props.staObj - {@link HomPagComPro.staObj}
  * @param props.disFun - {@link HomPagComPro.disFun}
+ * @param props.namStr - {@link HomPagComPro.namStr}
+ * @param props.staObj - {@link HomPagComPro.staObj}
  * @param props.thuFun - {@link HomPagComPro.thuFun}
  * 
  * @returns A React JSX element representing the Home component.

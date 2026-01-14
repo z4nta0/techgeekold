@@ -13,7 +13,7 @@ import   styles       from './NavBarCom.module.css'; /** This imports the custom
 // #region Props Type Definitions
 
 /**
- * NavBarComPro = Navigation Bar Component Props will store all of the props that will be used in the NavBarComC component.
+ * NavBarComPro = Navigation Bar Component Props will store all of the props that will be used in the NavBarCom component.
  *
  * @property namStr = Name String will store the site/app name that will be displayed in the navigation bar.
  *

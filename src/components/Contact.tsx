@@ -1,5 +1,20 @@
 import React, { useState } from 'react';
 
+// #region Props Type Definitions
+
+/**
+ * NavBarComPro = Navigation Bar Component Props will store all of the props that will be used in the NavBarComC component.
+ *
+ * @property namStr = Name String will store the site/app name that will be displayed in the navigation bar.
+ * 
+ */
+
+type ConPagComPro = {
+
+    namStr : string;
+
+};
+
 /**
  * * Sample comment only, does not describe the function below.
    * Returns the sum of two numbers.
@@ -10,7 +25,10 @@ import React, { useState } from 'react';
    *
    */
 
-function Contact() {
+function Contact( props : ConPagComPro ) {
+
+    const { namStr } = props;
+
   const password = 'swordfish';
   const [authorized, setAuthorized] = useState(false);
 
@@ -37,7 +55,7 @@ function Contact() {
 
     <ul>
       <li>
-        client@example.com
+        client@example.com {namStr }
       </li>
       <li>
         555.555.5555
