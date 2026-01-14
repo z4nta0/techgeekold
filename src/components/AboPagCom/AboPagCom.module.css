@@ -1,0 +1,59 @@
+
+/* #region Component Section */
+
+.componentSection { /** Component Section is this component's root element and the #rooSecEle element grid's second row, which contains the .componentHeader element and the .contentDiv element. */
+
+    /* #region Element Scoped Custom Properties */
+
+    /** Yes, I know these are technically component scoped, but placing and labelling them here makes my intention clear that these are intended for use in this element only. */
+
+    --cos-row-one : calc( 30% - ( var( --row-gap-max ) / 2 ) ); /** Component Section Row One stores the height of the first row within the .componentSection element's grid, and it is equal to 30% of said component's allotted height (as defined by the index.css's #rooSecEle) minus half of the grid's single row gap maximum value (~= 67.777px @16px root font size). */
+    --cos-row-two : calc( 70% - ( var( --row-gap-max ) / 2 ) ); /** Component Section Row Two stores the height of the second row within the .componentSection element's grid, and it is equal to 70% of said component's allotted height (as defined by the index.css's #rooSecEle) minus half of the grid's single row gap maximum value (~= 67.777px @16px root font size). */
+
+    /* #endregion Element Scoped Custom Properties */
+
+
+    display               : grid;                                      /** The CSS Grid property was chosen as the layout method for its powerful layout capabilities. */
+    grid-template-areas   :                                            /** The grid template areas property was chosen as my preferred method of placing grid items, as I find its visual definition and placement provides more clarity. */
+        'header1'                                                      /** The first grid template areas row was chosen to contain the .componentH1 element. */
+        'paragraph';                                                   /** The second grid template areas row was chosen to contain the .componentParagraph element. */
+    grid-template-columns : 100%;                                      /** The grid template columns property defines the width of the columns in the grid layout, and since this grid only has one column per row it is set to 100% to take up the full width of the .componentSection element (as defined by the #rooSecEle element -> .appMai element). */
+    grid-template-rows    : var( --cos-row-one ) var( --cos-row-two ); /** The grid template rows property defines the heights of the rows in the grid layout, using the element scoped custom properties for the first and second rows respectively. */
+    height                : 100%;                                      /** This property was chosen to make the component section take up the full height of its parent container, which is the 'main' grid area as declared by the #rooSecEle grid container in the top level index.css file. Removing this property and its value will cause the element's height to shrink to less than its intended value. */
+    justify-items         : center;                                    /** This property was chosen to horizontally center the .componentH1 and .componentParagraph elements in their grid area so that they are centered within the page. */
+    row-gap               : var( --row-gap-max );                      /** This property was chosen to create space between the two rows of the .componentSection element's grid, and it is approximately equal to 67.777px @16px root font size. */
+
+}
+
+/* #region Component H1 */
+
+.componentH1 { /** Component H1 is the .componentHeader element grid's first row which contains the H1 element's text. */
+
+    grid-area   : header1;              /** This property was chosen to place the .componentH1 element within the grid area defined in the parent .componentSection element's grid template areas declaration. */
+    font-size   : var( --hea-one-siz ); /** This property was chosen to set the font size equal to the header one size globally scoped Custom Property, which is approximately equal to 67.777px @16px root font size. */
+    line-height : var( --hea-one-siz ); /** This property was chosen to set the line height equal to the .componentH1 element's font size so that it's vertical height is exactly the same as its content. This is standard behavior for header elements since line height is used to allow for breathing room in text heavy content and header elements are almost always contained within one line. */
+    padding-top : var( --pad-ver-xla ); /** This property is linked to the padding vertical extra large globally scoped CSS Custom Property and was chosen to add some space at the top of the .componentH1 element, which can help to visually separate it from the navbar component at the top of the page. It is approximately equal to 67.777px @16px root font size. */
+
+}
+
+/* #endregion Component H1 */
+
+
+
+/* #region Component Paragraph */
+
+.componentParagraph { /** Component Paragraph is the .componentSection element grid's second row which contains the paragraph element's text. */
+
+    grid-area   : paragraph;            /** This property was chosen to place the .componentParagraph element within the grid area defined in the parent .componentSection element's grid template areas declaration. */
+    font-size   : var( --fon-siz-bas ); /** This property was chosen to set the font size equal to the font size base globally scoped Custom Property, which is approximately equal to 16.000px @16px root font size. */
+    line-height : var( --ver-rhy-bas ); /** This property was chosen to set the line height equal to the vertical rhythm base globally scoped Custom Property, which is approximately equal to 25.889px @16px root font size. */
+    max-width   : var( --par-wid-xla ); /** This property is linked to the paragraph width extra large globally scoped Custom Property and was chosen to limit the line length of the paragraph text to the extra large paragraph width globally scoped Custom Property, which is equal to 75 characters. Limiting line length can help to make reading easier and less straining on the eyes, especially for paragraphs that contain more than one line of text. */
+
+}
+
+/* #endregion Component Paragraph */
+
+
+/* #endregion Component Section */
+
+
