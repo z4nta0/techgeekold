@@ -278,6 +278,19 @@
 
 
 
+    /* #region Paragraph Width */
+
+    --par-wid-max : 80ch; /** Paragraph Width Maximum stores the maximum width of paragraph elements in character units. This is mostly, but not solely, used for pargraphs that contain more than one line of text, and it makes reading easier by limiting line length. */
+    --par-wid-xla : 75ch; /** Paragraph Width Extra Large stores the extra large width of paragraph elements in character units. This is mostly, but not solely, used for pargraphs that contain more than one line of text, and it makes reading easier by limiting line length. */
+    --par-wid-lar : 70ch; /** Paragraph Width Large stores the large width of paragraph elements in character units. This is mostly, but not solely, used for pargraphs that contain more than one line of text, and it makes reading easier by limiting line length. */
+    --par-wid-med : 65ch; /** Paragraph Width Base stores the base width of paragraph elements in character units. This is mostly, but not solely, used for pargraphs that contain more than one line of text, and it makes reading easier by limiting line length. */
+    --par-wid-sma : 60ch; /** Paragraph Width Small stores the small width of paragraph elements in character units. This is mostly, but not solely, used for pargraphs that contain more than one line of text, and it makes reading easier by limiting line length. */
+    --par-wid-xsm : 55ch; /** Paragraph Width Extra Small stores the extra small width of paragraph elements in character units. This is mostly, but not solely, used for pargraphs that contain more than one line of text, and it makes reading easier by limiting line length. */
+    --par-wid-min : 50ch; /** Paragraph Width Minimum stores the minimum width of paragraph elements in character units. This is mostly, but not solely, used for pargraphs that contain more than one line of text, and it makes reading easier by limiting line length. */
+    /* #endregion Paragraph Width */
+
+
+
     /* #region Row Gap */
 
     --row-gap-max : calc( pow( var( --golden-rati ),  3 ) * 1rem ); /** ~= 67.777px @16px root font size = Row Gap Maximum stores the maximum row gap value and is equal to the golden ratio raised to the 3rd power (~4.236) multiplied by the root font size. */
