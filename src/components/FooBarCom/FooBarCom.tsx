@@ -1,8 +1,8 @@
 
 // #region Imports
 
-import   React        from 'react';                  /** React is the core library for building user interfaces. */
-import   styles       from './FooBarCom.module.css'; /** This imports the custom CSS module for styling the NavBarCom component. */
+import   React  from 'react';                  /** React is the core library for building user interfaces. */
+import   styles from './FooBarCom.module.css'; /** This imports the custom CSS module for styling the NavBarCom component. */
 
 // #endregion Imports
 
@@ -87,7 +87,7 @@ function FooBarCom ( props : FooBarComPro ) : React.ReactElement {
 
         < section id='fooSecEle' className={ styles.footerSection } > { /* Footer Section Element = This is the component wrapping HTML element since React requires components to return a single root element. */ }
 
-           < p    id='fooParEle' className={ styles.footerParagraph } >{ namStr } © z4nta0 2025</ p >
+           < p id='fooParEle' className={ styles.footerParagraph } >{ namStr } © z4nta0 2025</ p >
 
         </ section >
 
@@ -107,4 +107,5 @@ function FooBarCom ( props : FooBarComPro ) : React.ReactElement {
 
 
 export default FooBarCom;
+
 
