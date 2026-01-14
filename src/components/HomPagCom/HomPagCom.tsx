@@ -174,7 +174,7 @@ function HomPagCom ( props : HomPagComPro ) : React.ReactElement {
             <  header id='comHeaEle' className={ styles.componentHeader } > { /* Component Header Element = This is the header element for the component which contains the main heading and the logos. */ }
 
 
-                < h1 id='heaHe1Ele' className={ styles.headerH1 } >Vite + React</ h1 > { /* Header H1 Element = This is the main heading for the component. */ }
+                < h1 id='heaHe1Ele' className={ styles.headerH1 } >< span id='vitSpaEle' className={ styles.he1Spans } >Vite</ span >< span id='pluSpaEle' className={ styles.he1Spans } > + </ span >< span id='reaSpaEle' className={ styles.he1Spans } >React</ span ></ h1 > { /* Header H1 Element = This is the main heading for the component. The Span elements were added in order to center the content with the rest of the page. */ }
 
 
 
