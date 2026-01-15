@@ -38,7 +38,7 @@ gsap.registerPlugin( useGSAP, ScrambleTextPlugin, SplitText );
  * @param props - This component does not take any props, or more accurately it does not use any props.
  * 
  * @returns A React JSX element representing the Christmas Card component.
- * @see {@link chrCarJsx}
+ * @see {@link chrCarComJsx}
  * 
  * @example
  * ```tsx
@@ -598,8 +598,8 @@ function ChrCarCom () : ReactElement {
     // #region Return Statement
 
 
-    /** Christmas Card Javascript XML = This stores the HTML-like code that the Christmas Card component will render when called. I prefer to store this in a variable so that the variable can be referenced inside of comments in the other sections of the component. */
-    const chrCarJsx : ReactElement    = (
+    /** Christmas Card Component Javascript XML    = This stores the HTML-like code that the Christmas Card component will render when called. I prefer to store this in a variable so that the variable can be referenced inside of comments in the other sections of the component. */
+    const chrCarComJsx : React.ReactElement = (
 
 
         // #region Component Section Element
@@ -1108,7 +1108,7 @@ function ChrCarCom () : ReactElement {
     );
 
 
-    return chrCarJsx;
+    return chrCarComJsx;
 
 
     // #endregion Return Statement

@@ -1,8 +1,8 @@
 
 // #region Imports
 
-import   React  from 'react';                  /** React is the core library for building user interfaces. */
-import   styles from './AboPagCom.module.css'; /** This imports the custom CSS module for styling the AboPagCom component. */
+import React  from 'react';                  /** React is the core library for building user interfaces. */
+import styles from './AboPagCom.module.css'; /** This imports the custom CSS module for styling the AboPagCom component. */
 
 // #endregion Imports
 
@@ -15,7 +15,7 @@ import   styles from './AboPagCom.module.css'; /** This imports the custom CSS m
  *
  * @property namStr = Name String will store the site/app name that will be displayed in various parts of the site/app.
  *
- */
+*/
 
 type AboPagComPro = {
 
@@ -74,7 +74,7 @@ function AboPagCom ( props : AboPagComPro ) : React.ReactElement {
 
 
     /** About Page Component Javascript XML = This stores the HTML-like code that the About Page component will render when called. I prefer to store this in a variable so that the variable can be referenced inside of comments in the other sections of the component. */
-    const aboPagComJsx                      = (
+    const aboPagComJsx : React.ReactElement = (
 
 
         // #region Component Section Element
@@ -108,6 +108,7 @@ function AboPagCom ( props : AboPagComPro ) : React.ReactElement {
 
 
     // #endregion Return Statement
+
 
 };
 

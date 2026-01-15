@@ -21,7 +21,7 @@ import   styles       from './NavBarCom.module.css'; /** This imports the custom
  * @property onClickCon = On Click Contact will store the event handler function that is called when the Contact page link is clicked.
  * @property onClickHom = On Click Home will store the event handler function that is called when the Home page link is clicked.
  * @property onClickLog = On Click Logo will store the event handler function that is called when the logo Home page link is clicked.
- */
+*/
 
 interface NavBarComPro {
 
@@ -100,7 +100,7 @@ function NavBarCom ( props : NavBarComPro ) : React.ReactElement {
 
 
     /** Navigation Bar Component Javascript XML = This stores the HTML-like code that the Navigation Bar component will render when called. I prefer to store this in a variable so that the variable can be referenced inside of comments in the other sections of the component. */
-    const navBarComJsx                          = (
+    const navBarComJsx : React.ReactElement     = (
 
 
         // #region Navigation Section Element
