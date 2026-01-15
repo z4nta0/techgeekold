@@ -361,7 +361,7 @@ function NavBarComCon ( props : NavBarComConPro ) : React.ReactElement {
 
 
     /** Navigation Bar Component Container Javascript XML = This stores the HTML-like code that the Navigation Bar component container will render when called. I prefer to store this in a variable so that the variable can be referenced inside of comments in the other sections of the component. */
-    const navBarComConJsx                                 = (
+    const navBarComConJsx : React.ReactElement            = (
 
         <>
 

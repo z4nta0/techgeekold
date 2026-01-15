@@ -5,7 +5,7 @@ import   About            from './components/AboPagCom/AboPagCom.tsx';     /** T
 import   styles           from './App.module.css';                         /** This is CSS file that contains all styling for this component. */
 import { BrowserRouter  } from 'react-router-dom';                         /** This is the standard import for React Router DOM's routing components, it uses the HTML5 history API (pushState, replaceState, etc.) to keep the UI in sync with the URL resulting in clean, standard URLs. */
 import   ChristmasCard    from './components/ChristmasCard/ChrCarCom.tsx'; /** This is the component that will return the Christmas Card component when navigated to by React Router. */
-import   Contact          from './components/Contact.tsx';                 /** This is the component that will return the Contact component when navigated to by React Router. */
+import   Contact          from './components/ConPagCom/ConPagCom.tsx';     /** This is the component that will return the Contact component when navigated to by React Router. */
 import   FooBarCom        from './components/FooBarCom/FooBarCom.tsx';     /** This is the component that will return the Footer component, which is rendered on every page and contains the copyright information. */
 import   Home             from './components/HomPagCom/HomPagCom.tsx';     /** This is the component that will return the Home component when navigated to by React Router. */
 import   NavBarComCon     from './components/NavBar/NavBarComCon';         /** This is the component that will return the Navigation Bar component, which is rendered on every page and contains the links to navigate between pages. */
@@ -98,8 +98,8 @@ function AppRooCom( props : AppRooComPro ) : React.ReactElement {
     // #region Return Statement
 
 
-    /** App Root Component Javascript XML = This stores the HTML like code that the App Root Component will render when called by main.tsx. I prefer to store this in a variable so that the variable can be referenced inside of comments in the other sections of the component. */
-    const appRooComJsx                    = (
+    /** App Root Component Javascript XML   = This stores the HTML like code that the App Root Component will render when called by main.tsx. I prefer to store this in a variable so that the variable can be referenced inside of comments in the other sections of the component. */
+    const appRooComJsx : React.ReactElement = (
 
 
         // #region BrowserRouter Component
@@ -157,6 +157,7 @@ function AppRooCom( props : AppRooComPro ) : React.ReactElement {
 
 
     // #endregion Return Statement
+
 
 };
 

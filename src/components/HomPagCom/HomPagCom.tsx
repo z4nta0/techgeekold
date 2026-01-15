@@ -11,7 +11,6 @@ import   viteLogo       from '../../assets/vite.svg';           /** This is the 
 import { useEffect }    from 'react';                           /** This is a React hook that allows you to perform side effects in function components. It is used in the HomPagCom component to dispatch an action to retrieve the mock data JSON state when the component mounts. */
 import   useAppSel      from '../../hooks/useAppSel.ts';        /** This is the custom React hook that provides access to the Redux store's state with proper TypeScript typing. */
 
-import { type JSX }       from 'react/jsx-runtime';        /** This is the standard TypeScript type definition for the JSX namespace, which includes types for JSX elements and attributes. It is used to properly type the JSX code in the return statement of components. */
 import { type RooStaObj } from '../../store.tsx';          /** This is the custom Typescript type definition for the entire state object of the Redux store, which is inferred by the store's getState method inside of store.tsx. This type is used to properly type the state object that is passed as a prop to components and will also be imported on said components that have use of the state object but do not need to use the useSelector hook. */
 import { type UseAppDis } from '../../hooks/useAppDis.ts'; /** This is the custom Typescript type definition for the custom React hook that provides access to the Redux store's dispatch function with proper TypeScript typing, specifically for working with thunk actions. */
 import { type UseAppThu } from '../../hooks/useAppThu.ts'; /** This is the custom Typescript type definition for the custom React hook that provides access to the Redux store's dispatch function with proper TypeScript typing. */
@@ -163,8 +162,8 @@ function HomPagCom ( props : HomPagComPro ) : React.ReactElement {
     // #region Return Statement
 
 
-    /** Home Page Component Javascript XML = This stores the HTML-like code that the Home Page component will render when called. I prefer to store this in a variable so that the variable can be referenced inside of comments in the other sections of the component. */
-    const homPagComJsx : JSX.Element       = (
+    /** Home Page Component Javascript XML  = This stores the HTML-like code that the Home Page component will render when called. I prefer to store this in a variable so that the variable can be referenced inside of comments in the other sections of the component. */
+    const homPagComJsx : React.ReactElement = (
 
 
         // #region Component Section Element
@@ -310,7 +309,6 @@ function HomPagCom ( props : HomPagComPro ) : React.ReactElement {
 
 
     // #endregion Return Statement
-
 
 
 }
