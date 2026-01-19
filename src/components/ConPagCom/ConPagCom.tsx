@@ -294,100 +294,117 @@ function ConPagCom ( props : ConPagComPro ) : React.ReactElement {
                 < legend id='fieLegEle' className={ styles.fieldsetLegend } >{ namStr } Contact Form</ legend > { /* Fieldset Legend Element = This is the legend for the main (and only) fieldset of the Contact Page Component form, serving as a sort of main heading but with special placement on the form's top left border. */ }
 
 
-                { /** Start Name Div Element  */ }
 
-                <  div id='namDivEle' className={ styles.nameDiv } > { /* Name Div Element = This is the div containing the name label and input for the Contact Page Component form. */ }
+                <  div id='forDivEle' className={ styles.formDiv } >
+                
+                    { /** Start Name Div Element  */ }
 
-
-                    < label id='namLabEle' className={ styles.nameLabel } htmlFor='namInpEle' >Name : </ label > { /* Name Label Element = This is the label for the name input in the Contact Page Component form. */ }
-
-
-                    { /** Start Name Input Element  */ }
-
-                    < input
-
-                        id='namInpEle'
-                        className={ styles.nameInput }
-                        name='name'
-                        onChange={ handleInpChaFun }
-                        required
-                        type='text'
-                        value={ forDatObj.namStr }
-
-                    /> { /* Name Input Element = This is the input for the name in the Contact Page Component form. */ }
-
-                    { /** End Name Input Element  */ }
+                    <  div id='namDivEle' className={ styles.nameDiv } > { /* Name Div Element = This is the div containing the name label and input for the Contact Page Component form. */ }
 
 
+                        < label id='namLabEle' className={ styles.nameLabel } htmlFor='namInpEle' >Name :</ label > { /* Name Label Element = This is the label for the name input in the Contact Page Component form. */ }
+
+
+                        { /** Start Name Input Element  */ }
+
+                        < input
+
+                            id='namInpEle'
+                            className={ styles.nameInput }
+                            name='name'
+                            onChange={ handleInpChaFun }
+                            placeholder='John Smith'
+                            required
+                            type='text'
+                            value={ forDatObj.namStr }
+
+                        /> { /* Name Input Element = This is the input for the name in the Contact Page Component form. */ }
+
+                        { /** End Name Input Element  */ }
+
+
+                    </ div >
+
+                    { /** End Name Div Element  */ }
+
+
+
+                    { /** Start Email Div Element  */ }
+
+                    <  div id='emaDivEle' className={ styles.emailDiv } > { /* Email Div Element = This is the div containing the email label and input for the Contact Page Component form. */ }
+
+
+                        < label id='emaLabEle' className={ styles.emailLabel } htmlFor='emaInpEle' >Email :</ label > { /* Email Label Element = This is the label for the email input in the Contact Page Component form. */ }
+
+
+                        { /** Start Email Input Element  */ }
+
+                        < input
+
+                            id='emaInpEle'
+                            className={ styles.emailInput }
+                            name='email'
+                            onChange={ handleInpChaFun }
+                            placeholder='myemail@email.com'
+                            required
+                            type='email'
+                            value={ forDatObj.emaStr }
+
+                        /> { /* Email Input Element = This is the input for the email in the Contact Page Component form. */ }
+
+                        { /** End Email Input Element  */ }
+
+
+                    </ div >
+
+                    { /** End Email Div Element  */ }
+
+
+
+                    { /** Start Message Div Element  */ }
+
+                    <  div id='mesDivEle' className={ styles.messageDiv } > { /* Message Div Element = This is the div containing the message label and textarea for the Contact Page Component form. */ }
+
+
+                        < label id='mesLabEle' className={ styles.messageLabel } htmlFor='mesTeaEle' >Message :</ label > { /* Message Label Element = This is the label for the message textarea in the Contact Page Component form. */ }
+
+
+                        { /** Start Message Textarea Element  */ }
+
+                        < textarea
+
+                            id='mesTeaEle'
+                            className={ styles.messageTextarea }
+                            maxLength={ 1000 }
+                            name='message'
+                            onChange={ handleInpChaFun }
+                            placeholder='I just wanted to say...'
+                            required
+                            spellCheck={ true }
+                            value={ forDatObj.mesStr }
+
+                        /> { /* Message Textarea Element = This is the textarea for the message in the Contact Page Component form. */ }
+
+                        { /** End Message Textarea Element  */ }
+
+
+                    </ div >
+
+                    { /** End Message Div Element  */ }
+
+
+
+                    { /** Start Submit Div Element  */ }
+
+                    <  div id='subDivEle' className={ styles.submitDiv } > { /* Submit Div Element = This is the div containing the submit button for the Contact Page Component form. */ }
+
+                        < button id='subButEle' className={ styles.submitButton } type='submit' >Submit</ button > { /* Submit Button Element = This is the submit button for the Contact Page Component form. */ }
+
+                    </ div >
+
+                    { /** End Submit Div Element  */ }
+                
                 </ div >
-
-                { /** End Name Div Element  */ }
-
-
-
-                { /** Start Email Div Element  */ }
-
-                <  div id='emaDivEle' className={ styles.emailDiv } > { /* Email Div Element = This is the div containing the email label and input for the Contact Page Component form. */ }
-
-
-                    < label id='emaLabEle' className={ styles.emailLabel } htmlFor='emaInpEle' >Email : </ label > { /* Email Label Element = This is the label for the email input in the Contact Page Component form. */ }
-
-
-                    { /** Start Email Input Element  */ }
-
-                    < input
-
-                        id='emaInpEle'
-                        className={ styles.emailInput }
-                        name='email'
-                        onChange={ handleInpChaFun }
-                        required
-                        type='email'
-                        value={ forDatObj.emaStr }
-
-                    /> { /* Email Input Element = This is the input for the email in the Contact Page Component form. */ }
-
-                    { /** End Email Input Element  */ }
-
-
-                </ div >
-
-                { /** End Email Div Element  */ }
-
-
-
-                { /** Start Message Div Element  */ }
-
-                <  div id='mesDivEle' className={ styles.messageDiv } > { /* Message Div Element = This is the div containing the message label and textarea for the Contact Page Component form. */ }
-
-
-                    < label id='mesLabEle' className={ styles.messageLabel } htmlFor='mesTeaEle' >Message : </ label > { /* Message Label Element = This is the label for the message textarea in the Contact Page Component form. */ }
-
-
-                    { /** Start Message Textarea Element  */ }
-
-                    < textarea
-
-                        id='mesTeaEle'
-                        className={ styles.messageTextarea }
-                        name='message'
-                        onChange={ handleInpChaFun }
-                        required
-                        rows={ 4 }
-                        value={ forDatObj.mesStr }
-
-                    /> { /* Message Textarea Element = This is the textarea for the message in the Contact Page Component form. */ }
-
-                    { /** End Message Textarea Element  */ }
-
-
-                </ div >
-
-                { /** End Message Div Element  */ }
-
-
-
-                < button id='subButEle' className={ styles.submitButton } type='submit' >Submit</ button > { /* Submit Button Element = This is the submit button for the Contact Page Component form. */ }
 
 
             </ fieldset >
