@@ -372,8 +372,8 @@
 
 /* #region Media Query for Light Mode */
 
-
 @media ( prefers-color-scheme : light ) { /** This is the media query selector for the light mode color scheme. */
+
 
     .contentButtons { /** Content Buttons are the .buttonDiv element grid's first and second columns which contain the buttons for incrementing and decrementing the counter state number. */
 
@@ -386,6 +386,7 @@
         border-color : var( --col-bor_hov-lig ); /** This property is linked to the color border on hover for light mode globally scoped CSS Custom Property. See said property definition for more details. */
 
     }
+
 
 }
 

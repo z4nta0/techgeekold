@@ -4,7 +4,6 @@
 :root { /** This is the root element selector, making it a true globally scoped selector. */
 
 
-
     /** The golden ratio is often used as the basis for the vertical rhythm of websites and apps, and is chosen as a favorite since this value can found all throughout nature, art, and architecture. There is no empirical evidence that it is the best choice, but it is aesthetically pleasing to many. Regardless, a value must be chosen for said reasons in order to create a consistent and harmonious design, and I find this value as good as any other. */
 
     --golden-rati : calc( ( 1 + sqrt( 5 ) ) / 2 ); /** ~= 1.618 = Golden Ratio stores the base value, mainly used for establishing a vertical rhythm and sizing property values but it is used pretty much everywhere. */
@@ -47,6 +46,7 @@
     --col-acc-dar : hsla( 255.000, 100.000%,  76.013%, 100.000% ); /** Color Accent for Dark Mode stores the accent color for dark mode, and its lavender color was chosen in order to complement the color main for dark mode's light blue. */
     --col-bac-dar : hsla(   0.000,   0.000%,  11.090%, 100.000% ); /** Color Background for Dark Mode stores the background color for dark mode, and its almost black color was chosen in order to provide a dark but not too dark background color since it will be the central point for the dark mode theme and because a true black is not considered natural for user interfaces. */
     --col-bor-dar : hsla( 255.000, 100.000%,  76.013%, 100.000% ); /** Color Border for Dark Mode stores the border color for dark mode, and its lavender color was chosen in order to match the color accent for dark mode. */
+    --col-bos-dar : hsla(   0.000,   0.000%,  17.944%, 100.000% ); /** Color Box Shadow for Dark Mode stores the box shadow color for dark mode, and its slightly lighter black color was chosen in order to subtly stand out from the slightly darker background color. */
     --col-but-dar : hsla(   0.000,   0.000%,   6.854%, 100.000% ); /** Color Button for Dark Mode stores the button color for dark mode, and its almost black color was chosen in order to stand out slightly from the color background for dark mode's slightly lighter black. */
     --col-lin-dar : hsla( 199.005, 100.000%,  76.013%, 100.000% ); /** Color Link for Dark Mode stores the link color for dark mode, and its powder blue color was chosen in order to be a slightly lighter version of the color main for dark mode's light blue. */
     --col-mai-dar : hsla( 199.005, 100.000%,  46.979%, 100.000% ); /** Color Main for Dark Mode stores the main color for dark mode, and its light blue color was chosen in order to stand out with a little pop from the color background for dark mode's almost black. */
@@ -61,14 +61,15 @@
 
     /* #region Colors for Light Mode */
 
-    --col-acc-lig : hsla( 255.000, 100.000%, 46.979%, 100.000% ); /** Color Accent for Light Mode stores the accent color for light mode, and its dark blue color was chosen in order to complement the color main for light mode's teal blue. */
-    --col-bac-lig : hsla(   0.000,  0.000%, 100.000%, 100.000% ); /** Color Background for Light Mode stores the background color for light mode, and its full white color was chosen in order to provide a bright background color since it will be the central point for the light mode theme. */
-    --col-bor-lig : hsla( 255.000, 100.000%, 46.979%, 100.000% ); /** Color Border for Light Mode stores the border color for light mode, and its dark blue color was chosen in order to match the color accent for light mode. */
-    --col-but-lig : hsla(   0.000,  0.000%,  76.013%, 100.000% ); /** Color Button for Light Mode stores the button color for light mode, and its slightly offset white color was chosen in order to stand out slightly from the color background for light mode's full white. */
-    --col-lin-lig : hsla( 199.005, 100.000%, 46.979%, 100.000% ); /** Color Link for Light Mode stores the link color for light mode, and its light blue color was chosen in order to be a slightly lighter version of the color main for light mode's teal blue. */
-    --col-mai-lig : hsla( 199.005, 100.000%, 29.034%, 100.000% ); /** Color Main for Light Mode stores the main color for light mode, and its teal blue color was chosen in order to stand out with good contrast from the color background for light mode's full white. */
-    --col-sec-lig : hsla(  46.979, 100.000%, 20.034%, 100.000% ); /** Color Secondary for Light Mode stores the secondary color for light mode, and its golden yellow color was chosen in order to complement to the color main for light mode's teal blue. */
-    --col-tex-lig : hsla(   0.000,   0.000%,  6.854%, 100.000% ); /** Color Text for Light Mode stores the text color for light mode, and its almost black color was chosen in order to stand out from but not be a true dark against the color background for light mode's full white. */
+    --col-acc-lig : hsla( 255.000, 100.000%,  46.979%, 100.000% ); /** Color Accent for Light Mode stores the accent color for light mode, and its dark blue color was chosen in order to complement the color main for light mode's teal blue. */
+    --col-bac-lig : hsla(   0.000,   0.000%, 100.000%, 100.000% ); /** Color Background for Light Mode stores the background color for light mode, and its full white color was chosen in order to provide a bright background color since it will be the central point for the light mode theme. */
+    --col-bor-lig : hsla( 255.000, 100.000%,  46.979%, 100.000% ); /** Color Border for Light Mode stores the border color for light mode, and its dark blue color was chosen in order to match the color accent for light mode. */
+    --col-bos-lig : hsla(   0.000,   0.000%,  76.013%, 100.000% ); /** Color Box Shadow for Light Mode stores the box shadow color for light mode, and its slightly offset white color was chosen to stand out slightly from the color background for light mode's full white. */
+    --col-but-lig : hsla(   0.000,   0.000%,  76.013%, 100.000% ); /** Color Button for Light Mode stores the button color for light mode, and its slightly offset white color was chosen in order to stand out slightly from the color background for light mode's full white. */
+    --col-lin-lig : hsla( 199.005, 100.000%,  46.979%, 100.000% ); /** Color Link for Light Mode stores the link color for light mode, and its light blue color was chosen in order to be a slightly lighter version of the color main for light mode's teal blue. */
+    --col-mai-lig : hsla( 199.005, 100.000%,  29.034%, 100.000% ); /** Color Main for Light Mode stores the main color for light mode, and its teal blue color was chosen in order to stand out with good contrast from the color background for light mode's full white. */
+    --col-sec-lig : hsla(  46.979, 100.000%,  20.034%, 100.000% ); /** Color Secondary for Light Mode stores the secondary color for light mode, and its golden yellow color was chosen in order to complement to the color main for light mode's teal blue. */
+    --col-tex-lig : hsla(   0.000,   0.000%,   6.854%, 100.000% ); /** Color Text for Light Mode stores the text color for light mode, and its almost black color was chosen in order to stand out from but not be a true dark against the color background for light mode's full white. */
 
     --col-bor_hov-lig : hsla( 199.005, 100.000%,  29.034%, 100.000% ); /** Color Border Hover for Light Mode stores the border hover color for light mode, and its color was chosen to match the color main for light mode's teal blue. */
     --col-but_hov-lig : hsla( 199.005, 100.000%,  29.034%, 100.000% ); /** Color Button Hover for Light Mode stores the button hover color for light mode, and its color was chosen to match the color main for light mode's teal blue. */
@@ -318,7 +319,6 @@
     /* #endregion Vertical Rhythm (Line Height) */
 
 
-
 }
 
 /* #region Media Query for Small Screens */
@@ -363,6 +363,14 @@
 
 /* #endregion Root Selector */
 
+
+
+html {
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
 
 
 /* #region Body Selector */
@@ -436,12 +444,15 @@ a.active { /** This is the selector for the HTML Anchor (link) + .active class B
 
 @media ( prefers-color-scheme : light ) { /** This is the media query selector for the light mode color scheme. */
 
+
     :root { /** This is the root element selector, making it a true globally scoped selector. */
 
         background-color : var( --col-bac-lig ); /** This property is linked to the color background for light mode CSS Custom Property. See said property definition for more details. */
         color            : var( --col-tex-lig ); /** This property is linked to the color text for light mode CSS Custom Property. See said property definition for more details. */
 
     }
+
+
 
     a { /** This is the selector for the HTML Anchor (link) element. */
 
@@ -460,6 +471,7 @@ a.active { /** This is the selector for the HTML Anchor (link) + .active class B
         color : var( --col-lin_hov-lig ); /** This property is linked to the color link:hover for light mode CSS Custom Property. See said property definition for more details. */
 
     }
+
 
 }
 
