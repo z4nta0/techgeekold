@@ -341,7 +341,7 @@
 
 .submitDiv { /** Submit Div is the fourth child element of the .formDiv element, and it is the containing element for the .submitButton element that acts as the container for the form's submit button. */
 
-    align-items           : center; /** This property was chosen to horizontally center the button within the grid container, aligning said button with the label and input elements with whom it also shares a width size. */
+    align-items           : center; /** This property was chosen to vertically center the button within the grid container, aligning said button with the label and input elements with whom it also shares a width size. */
     display               : grid;   /** This property was chosen as the layout method for its powerful layout capabilities. */
     grid-area             : submit; /** This property was chosen to place the this element within the grid area defined in the parent .submitDiv element's grid template areas declaration. */
     grid-template-areas   :         /** This property was chosen as my preferred method of placing grid items, as I find its visual definition and placement provides more clarity. */

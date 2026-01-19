@@ -1,11 +1,28 @@
+
+/* #region Nav Section */
+
 .footerSection {
 
-  grid-area: footer;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  font-size: 0.5rem;
-  line-height: 1rem;
-  max-height: 100%;
+    display               : grid;   /** This property was chosen as the layout method for its powerful layout capabilities. */
+    grid-area             : footer; /** This property was chosen to place the this element within the grid area defined in the parent #rooSecEle element's grid template areas declaration, which is defined in the index.css file. */
+    grid-template-areas   :         /** This property was chosen as my preferred method of placing grid items, as I find its visual definition and placement provides more clarity. */
+        'paragraph';                /** This property was chosen to define the first grid template areas row, which contains the .footerParagraph element. */
+    grid-template-columns : 100%;   /** This property was chosen to define the width of the columns in this element's grid layout, and since said grid only has one column per row it is set to 100% to take up the full width of the this element (as defined by the #rooSecEle element in the index.css file). */
+    grid-template-rows    : 100%;   /** This property was chosen to define the height of the rows in this element's grid layout, and since said grid only has one row per column it is set to 100% to take up the full height of the this element (as defined by the #rooSecEle element in the idnex.css file). */
+    height                : 100%;   /** This property was chosen so that the this element takes up the full height of its parent element (#rooSecEle element), even if its inner content does not. */
 
 }
+
+
+
+.footerParagraph {
+
+    align-self   : center;               /** This property was chosen to vertically center the paragraph text within its row of the grid container. */
+    justify-self : center;               /** This property was chosen to horizontally center the paragraph text within its column of the grid container. */
+    font-size    : var( --fon-siz-sma ); /** This property was chosen to set the font size of the paragraph element equal to the font size small globally scoped custom property's value (~= 9.889px @16px root font size). This is one level smaller than the normal text, which helps to visually separate it from the main text on any given component's page. */
+    grid-area    : paragraph;            /** This property was chosen to place the this element within the grid area defined in the parent .footerSection element's grid template areas declaration. */
+    line-height  : var( --fon-siz-sma ); /** This property was chosen to set the line height of the paragraph element equal to the font size of this same element since there is only a single line of text and thus no breathing room is required for it. It is equal to the font size small globally scoped custom property's value (~= 9.889px @16px root font size). */
+
+}
+
+
