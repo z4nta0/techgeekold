@@ -271,7 +271,7 @@ function ChrCarCom () : ReactElement {
         /** This scales the hacParEle HTML element back to its original vertical scale with a GSAP built in ease in out animation, in seconds. */
         gsaTimIns.to( hacParEle, { duration : 0.04, scaleY  : 1,   ease : 'Power4.easeInOut' } );
 
-        // #endregion 5th GSAP Animation - 2nd Hacked Header Glitch Effect
+        // #endregion 5th & 6th GSAP Animation - 2nd Hacked Header Glitch Effect & Hacked Paragraph Glitch Effect
 
 
         /** This is the 2nd GSAP timeline pause, between the {@link hacParEle} HTML element glitch effect animation and the second pixelated transition animation (to cover the hacSecEle HTML element). */
