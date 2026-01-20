@@ -229,48 +229,49 @@ function ChrCarCom () : ReactElement {
         // #endregion 4th GSAP Animation - Hacked Paragraph Split Character Text Animation
 
 
-        // #region 5th GSAP Animation - 2nd Hacked Header Glitch Effect
+        // #region 5th & 6th GSAP Animation - 2nd Hacked Header Glitch Effect & Hacked Paragraph Glitch Effect
 
         /** This distorts the hacHe1Ele HTML element in the horizontal direction to the right using a GSAP built in ease in out animation, in seconds. */
         gsaTimIns.to( hacHe1Ele, { duration : 0.1,  skewX   : 70,  ease : 'Power4.easeInOut' } );
-        /** This undistorts the hacHe1Ele HTML element back to normal using a GSAP built in ease in out animation, in seconds. */
-        gsaTimIns.to( hacHe1Ele, { duration : 0.04, skewX   : 0,   ease : 'Power4.easeInOut' } );
-        /** This quickly makes the hacHe1Ele HTML element invisible, creating a flicker effect when used with the below opacity animation, in seconds. */
-        gsaTimIns.to( hacHe1Ele, { duration : 0.04, opacity : 0                              } );
-        /** This quickly makes the hacHe1Ele HTML element visible, creating a flicker effect when used with the above opacity animation, in seconds. */
-        gsaTimIns.to( hacHe1Ele, { duration : 0.04, opacity : 1                              } );
-        /** This moves the hacHe1Ele HTML element 20 pixels in the horizontal direction to the left, in seconds. */
-        gsaTimIns.to( hacHe1Ele, { duration : 0.04, x       : -20                            } );
-        /** This undoes the previous move of the hacHe1Ele HTML element back to its original position, in seconds. */
-        gsaTimIns.to( hacHe1Ele, { duration : 0.04, x       : 0                              } );
-        /** This scales the hacHe1Ele HTML element in the vertical direction by 1.1 times its original size with a GSAP built in ease in out animation, in seconds. */
-        gsaTimIns.to( hacHe1Ele, { duration : 0.02, scaleY  : 1.1, ease : 'Power4.easeInOut' } );
-        /** This scales the hacHe1Ele HTML element back to its original vertical scale with a GSAP built in ease in out animation, in seconds. */
-        gsaTimIns.to( hacHe1Ele, { duration : 0.04, scaleY  : 1,   ease : 'Power4.easeInOut' } );
-
-        // #endregion 5th GSAP Animation - 2nd Hacked Header Glitch Effect
-
-
-        // #region 6th GSAP Animation - Hacked Paragraph Glitch Effect
-
         /** This distorts the hacParEle HTML element in the horizontal direction to the right using a GSAP built in ease in out animation, in seconds. */
         gsaTimIns.to( hacParEle, { duration : 0.1,  skewX   : 70,  ease : 'Power4.easeInOut' } );
+
+        /** This undistorts the hacHe1Ele HTML element back to normal using a GSAP built in ease in out animation, in seconds. */
+        gsaTimIns.to( hacHe1Ele, { duration : 0.04, skewX   : 0,   ease : 'Power4.easeInOut' } );
         /** This undistorts the hacParEle HTML element back to normal using a GSAP built in ease in out animation, in seconds. */
         gsaTimIns.to( hacParEle, { duration : 0.04, skewX   : 0,   ease : 'Power4.easeInOut' } );
+
+        /** This quickly makes the hacHe1Ele HTML element invisible, creating a flicker effect when used with the below opacity animation, in seconds. */
+        gsaTimIns.to( hacHe1Ele, { duration : 0.04, opacity : 0                              } );
         /** This quickly makes the hacParEle HTML element invisible, creating a flicker effect when used with the below opacity animation, in seconds. */
         gsaTimIns.to( hacParEle, { duration : 0.04, opacity : 0                              } );
+
+        /** This quickly makes the hacHe1Ele HTML element visible, creating a flicker effect when used with the above opacity animation, in seconds. */
+        gsaTimIns.to( hacHe1Ele, { duration : 0.04, opacity : 1                              } );
         /** This quickly makes the hacParEle HTML element visible, creating a flicker effect when used with the above opacity animation, in seconds. */
         gsaTimIns.to( hacParEle, { duration : 0.04, opacity : 1                              } );
+
+        /** This moves the hacHe1Ele HTML element 20 pixels in the horizontal direction to the left, in seconds. */
+        gsaTimIns.to( hacHe1Ele, { duration : 0.04, x       : -20                            } );
         /** This moves the hacParEle HTML element 20 pixels in the horizontal direction to the left, in seconds. */
         gsaTimIns.to( hacParEle, { duration : 0.04, x       : -20                            } );
+
+        /** This undoes the previous move of the hacHe1Ele HTML element back to its original position, in seconds. */
+        gsaTimIns.to( hacHe1Ele, { duration : 0.04, x       : 0                              } );
         /** This undoes the previous move of the hacParEle HTML element back to its original position, in seconds. */
         gsaTimIns.to( hacParEle, { duration : 0.04, x       : 0                              } );
+
+        /** This scales the hacHe1Ele HTML element in the vertical direction by 1.1 times its original size with a GSAP built in ease in out animation, in seconds. */
+        gsaTimIns.to( hacHe1Ele, { duration : 0.02, scaleY  : 1.1, ease : 'Power4.easeInOut' } );
         /** This scales the hacParEle HTML element in the vertical direction by 1.1 times its original size with a GSAP built in ease in out animation, in seconds. */
         gsaTimIns.to( hacParEle, { duration : 0.02, scaleY  : 1.1, ease : 'Power4.easeInOut' } );
+
+        /** This scales the hacHe1Ele HTML element back to its original vertical scale with a GSAP built in ease in out animation, in seconds. */
+        gsaTimIns.to( hacHe1Ele, { duration : 0.04, scaleY  : 1,   ease : 'Power4.easeInOut' } );
         /** This scales the hacParEle HTML element back to its original vertical scale with a GSAP built in ease in out animation, in seconds. */
         gsaTimIns.to( hacParEle, { duration : 0.04, scaleY  : 1,   ease : 'Power4.easeInOut' } );
 
-        // #endregion 6th GSAP Animation - Hacked Paragraph Glitch Effect
+        // #endregion 5th GSAP Animation - 2nd Hacked Header Glitch Effect
 
 
         /** This is the 2nd GSAP timeline pause, between the {@link hacParEle} HTML element glitch effect animation and the second pixelated transition animation (to cover the hacSecEle HTML element). */
