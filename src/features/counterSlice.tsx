@@ -1,62 +1,37 @@
 
 // #region Imports
 
-import { createSlice } from '@reduxjs/toolkit'; /** This is the toolset for Redux that is designed to simplify Redux logic, reduce boilerplate and streamline state management by bundling essential utilities and best practices. This makes Redux easier to set up and use for modern applications. */
+import { createSlice } from '@reduxjs/toolkit'; /** This import is the standard React Redux Toolkit function that is designed to simplify React Redux logic, reduce boilerplate and streamline state management by bundling essential utilities and best practices, making React Redux easier to set up and use for modern applications. */
+
+
+import { type ActionCreatorWithPayload } from '@reduxjs/toolkit'; /** This import is the standard Typescript definition for a standard React Rdux Toolkit function type that takes a single argument (the payload) and returns a specific action object. */
+import { type Reducer                  } from '@reduxjs/toolkit'; /** This import is the standard Typescript definition for reducers that are returned from the standard React Redux Toolkit createSlice function. */
+import { type Slice                    } from '@reduxjs/toolkit'; /** This import is the standard Typescript definition for the standard React Redux Toolkit createSlice function. */
+import { type SliceSelectors           } from '@reduxjs/toolkit'; /** This import is the standard Typescript definition for the standard React Redux Toolkit createSlice function that take the specific slice's state as input (rather than the root state) and return derived data, enabling better type inference and encapsulation of state logic. */
 
 // #endregion Imports
 
 
 
-/**
- * counterSlice = Counter Slice File
- *
- * @summary
- * This file creates a Redux slice for managing a simple counter state. It
- * defines the initial state of the couStaNum and provides two reducer functions,
- * {@link incNumRed} and {@link decNumRed}, which allow for increasing and
- * decreasing the couStaNum value by a specified amount. The slice is created
- * using Redux Toolkit's {@link createSlice} method, which automatically
- * generates action creators and action types based on the provided reducers. I
- * created this to replace the previous counter implementation on the default
- * home page for the React + Vite package that used {@link useState}. I realize
- * that this is way overkill for what it is accomplishing, but I did this as
- * more of a learning exercise in order to understand how to manage state using
- * Redux Toolkit in a more scalable and maintainable way.
- *
- * @author z4ntao <https://github.com/z4nta0>
- *
-*/
+// #region couStaNumSlice
 
 
+// #region couStaNumSlice Variables
 
-// #region File Scoped Variables
-
-/**
- * File Scoped Variables
- *
- * @summary
- * These values are all scoped to the ChristmasCard component function,
- * and are meant to be set and shared between the various functions.
- *
-*/
-
-
-// #region State Variables
-
-/** Initial State Number    = This will store the initial value of the couStaNum variable {@link iniStaNum} in the {@link sliOptObj} object's initialState property. This will also be used in the {@link sliOptObj} object as the reducers functions' default value for the state parameter. */
+/** Initial State Number    = This custom type stores the type that will be used for the custom {@link iniStaNum} variable. I chose to create this custom type instead of just using 'number' because I wanted to make it clear in the custom {@link SliOptObj} type that what would be stored there would be the value of the initial state. */
 type IniStaNum              = number;
-/** @see {@link IniStaNum} */
+/** Initial state Number    = This custom variable stores the initial value of the custom couStaNum state variable in the custom object's standard {@link sliOptObj.initialState} property and is also used in the custom object's standard{@link sliOptObj.reducers} property as the reducers functions' default value for the state parameter. */
 const iniStaNum : IniStaNum = 0;
 
-// #endregion State Variables
+
 
 // #region defActObj
 
 /**
- * DefActObj = Default Action Object will store the default properties and values that will be provided to the {@link sliOptObj} object's reducers function {@link incNumRed} and {@link decNumRed} as their default action parameter's value. This action parameter is what replaces the traditional Redux action object that contained the type and payload properties, which was then handled by a switch statement inside of the reducer.
+ * Default Action Object = This custom type stores the types that will be used for the custom {@link defActObj} object.
  * 
- * @property type    = Redux Toolkit automatically generates this value via createSlice, often as a namespaced string like 'sliceName/actionName' (e.g., 'couStaNum/incNumRed'), which is used behind the scene in the reducers to match and update state.
- * @property payload = Payload will store the numeric value that will be used to increment or decrement the couStaNum state number value. This value will be provided when dispatching the action wherever it is called,, e.g. incNumRed( 2 ).
+ * @property type    = Type standard property stores the type that will be used for the standard {@link defActObj.type} property.
+ * @property payload = Payload standard property stores the type that will be used for the standard {@link defActObj.payload} property.
  *
 */
 
@@ -67,7 +42,15 @@ type DefActObj = {
 
 };
 
-/** @see {@link DefActObj} */
+
+/**
+ * Default Action Object = This custom object stores the properties that are provided to the standard {@link sliOptObj.reducers} property's reducers functions {@link incNumRed} and {@link decNumRed} as their default action parameter's value.
+ * 
+ * @property type    = Type standard property stores the string value that React Redux Toolkit automatically generates via the standard React Redux Toolkit {@link createSlice} function, as a namespaced string like 'sliceName/actionName' (e.g., 'couStaNum/incNumRed') which is used behind the scene in the reducers to match and update the corresponding state.
+ * @property payload = Payload standard property stores the numeric value that will be used to increment or decrement the custom couStaNum state variable and will be provided when dispatching the action wherever it is called, e.g. incNumRed( 2 ).
+ *
+*/
+
 const defActObj : DefActObj = {
 
     type    : '',
@@ -78,16 +61,17 @@ const defActObj : DefActObj = {
 // #endregion defActObj
 
 
+
 // #region sliOptObj
 
 /**
- * SliOptObj = Slice Options Object will store the default properties and values that will be provided to Redux Toolkit's {@link createSlice} function. It abstracts away all of the boilerplate code that is required by Redux (without Toolkit) to handle state management.
+ * Slice Options Object = This custom type stores the types that will be used for the custom {@link sliOptObj} object.
  * 
- * @property name         = Name will store the name of the slice, in this case a value of couStaNum, which Redux Toolkit will use to identify this slice and therefore identify these reducers.
- * @property initialState = Initial State will store the value from {@link iniStaNum}, which will be the starting value of the couStaNum state variable.
- * @property reducers     = Reducers will store the two reducer functions, {@link incNumRed} and {@link decNumRed}, that will handle incrementing and decrementing the couStaNum state number value respectively.
- * @property incNumRed    = Increment Number Reducer will handle incrementing the couStaNum state number value by the amount specified in the action.payload property when the action is dispatched.
- * @property decNumRed    = Decrement Number Reducer will handle decrementing the couStaNum state number value by the amount specified in the action.payload property when the action is dispatched.
+ * @property name         = Name standard property stores the type that will be used for the standard {@link sliOptObj.name} property.
+ * @property initialState = Initial State standard property stores the type that will be used for the standard {@link sliOptObj.initialState} property.
+ * @property reducers     = Reducers standard property stores the type that will be used for the standard {@link sliOptObj.reducers} property.
+ * @property incNumRed    = Increment Number Reducer custom property stores the type that will be used for the custom {@link sliOptObj.reducers.incNumRed} property.
+ * @property decNumRed    = Decrement Number Reducer custom property stores the type that will be used for the custom {@link sliOptObj.reducers.decNumRed} property.
  *
 */
 
@@ -105,7 +89,18 @@ type SliOptObj = {
 
 };
 
-/** @see {@link SliOptObj} */
+
+/**
+ * Slice Options Object = This custom object stores the properties that are provided to the standard React Redux Toolkit {@link createSlice} function.
+ * 
+ * @property name         = Name standard property stores the name of the slice, in this case a value of couStaNum, which React Redux Toolkit will use to identify this slice and its corresponding state and reducers.
+ * @property initialState = Initial State standard property stores the value from the custom {@link iniStaNum} variable, which is the starting value of the custom couStaNum state variable.
+ * @property reducers     = Reducers standard property stores the two custom reducer functions, {@link incNumRed} and {@link decNumRed}, that handles incrementing and decrementing the custom couStaNum state number value respectively.
+ * @property incNumRed    = Increment Number Reducer custom property stores the reducer function that will handle incrementing the custom couStaNum state number value by the amount specified in the standard action object's payload property when the action is dispatched, e.g. incNumRed( 2 ).
+ * @property decNumRed    = Decrement Number Reducer custom property stores the reducer function that will handle decrementing the custom couStaNum state number value by the amount specified in the standard action object's payload property when the action is dispatched, e.g. decNumRed( 3 ).
+ *
+*/
+
 const sliOptObj : SliOptObj = {
 
     name         : 'couStaNum',
@@ -113,21 +108,29 @@ const sliOptObj : SliOptObj = {
 
     reducers : {
 
+
         incNumRed : ( state = iniStaNum, action = defActObj ) => {
 
-            /** Redux Toolkit abstracts away the need to manually handle immutable state updates by using Immer under the hood. */
-            /** State will contain the current state value of the couStaNum (starting at 0) and action.payload will contain how much to increment the couStaNum state variable by. */
+
+            /** React Redux Toolkit abstracts away the need to manually handle immutable state updates by using Immer under the hood. */
+            /** State will contain the current state value of the custom couStaNum state variable (starting at 0) and the action object's payload property will contain how much to increment the custom couStaNum state variable by. */
             return state + action.payload;
 
+
         },
+
+
 
         decNumRed : ( state = iniStaNum, action = defActObj ) => {
 
-            /** Redux Toolkit abstracts away the need to manually handle immutable state updates by using Immer under the hood. */
-            /** State will contain the current state value of the couStaNum (starting at 0) and action.payload will contain how much to decrement the couStaNum state variable by. */
+
+            /** React Redux Toolkit abstracts away the need to manually handle immutable state updates by using Immer under the hood. */
+            /** State will contain the current state value of the custom couStaNum state variable (starting at 0) and the action object's payload property will contain how much to decrement the custom couStaNum state variable by. */
             return state - action.payload;
 
+
         },
+
 
     },
 
@@ -136,22 +139,152 @@ const sliOptObj : SliOptObj = {
 // #endregion sliOptObj
 
 
-// #endregion File Scoped Variables
+
+/** Counter State Number Slice = This custom type stores the type that will be used for the custom {@link couStaNumSlice} variable. */
+type CouStaNumSlice            = Slice< number, { incNumRed : ( state : IniStaNum, action : DefActObj ) => number; decNumRed : ( state : IniStaNum, action : DefActObj ) => number; }, string, string, SliceSelectors< number > >;
+
+// #endregion couStaNumSlice Variables
 
 
 
-// #region Slice Creation
+/**
+ * couStaNumSlice = Counter State Number Slice
+ *
+ * @summary
+ * This custom variable stores the stores the standard object that is returned by
+ * the standard React Redux Toolkit {@link createSlice} function. Said object
+ * contains the slice name, generated reducer, its corresponding actions, case
+ * reducers, and an optional getSelectors function. Said function is called
+ * using the custom {@link sliOptObj} object as its parameter, which defines
+ * the slice name, initial state and reducers properties. The reducers property
+ * contains the custom reducer functions that handle the incrementing and
+ * decrementing of the custom couStaNum state variable. I realize that all of
+ * this functionality is complete overkill for what it is accomplishing, but I
+ * did this as more of a learning exercise in order to understand how to manage
+ * state using React Redux Toolkit in a more scalable and maintainable way.
+ * 
+ * @author Redux Toolkit <https://redux-toolkit.js.org/api/createSlice>
+ * @author z4nta0        <https://github.com/z4nta0>
+ *
+*/
 
-/** Counter State Number Slice             = This stores the return of Redux Toolkit's core API that automatically generates action creators and reducers for a single "slice" of application's state. It returns a single object that contains the slice name, generated reducer, its corresponding actions, case reducers, and an optional getSelectors function. */
-export const couStaNumSlice                = createSlice( sliOptObj );
-/** Increment and Decrement Number Reducer = These store the reducer functions that were generated by the above {@link couStaNumSlice} and that were defined in the {@link sliOptObj} object's reducers property. */
-export const { incNumRed, decNumRed }      = couStaNumSlice.actions;
-/** Counter State Number Reducer           = This stores the parent reducer of this slice and will be what is exported into the store inside of src/store.tsx. It is responsible for handling all actions defined within this specific slice of the Redux store's state. */
-const couStaNumReducer                     = couStaNumSlice.reducer;
-/** Counter State Number Reducer           = This stores the type of this slice's parent reducer. Although this may seem redundant, exporting the type of the reducer can be useful for type checking and ensuring consistency across the application. */
-export type CouStaNumReducer               = typeof couStaNumReducer;
+const couStaNumSlice : CouStaNumSlice = createSlice( sliOptObj );
 
-// #region Slice Creation
+// #endregion couStaNumSlice
+
+
+
+// #region incNumRed
+
+
+// #region incNumRed Variables
+
+/** Increment Number Reducer = This custom type stores the type that will be used for the custom {@link incNumRed} variable. */
+type IncNumRed               = ActionCreatorWithPayload< number, `${ string }/incNumRed` >;
+
+// #endregion incNumRed Variables
+
+
+
+/**
+ * incNumRed = Increment Number Reducer
+ *
+ * @summary
+ * This custom variable stores the custom {@link incNumRed} reducer function
+ * that was created in the standard {@link sliOptObj.reducers} property and
+ * then generated as the standard {@link couStaNumSlice.actions} property by
+ * the standard React Redux Toolkit {@link createSlice} function. This custom
+ * variable is exported for use in whatever component has a need to increment
+ * the custom couStaNum state variable, like the HomPagCom component's
+ * incButEle button for example. I realize that all of this functionality is
+ * complete overkill for what it is accomplishing, but I did this as more of a
+ * learning exercise in order to understand how to manage state using React
+ * Redux Toolkit in a more scalable and maintainable way.
+ * 
+ * @author Redux Toolkit <https://redux-toolkit.js.org/api/createSlice>
+ * @author z4nta0        <https://github.com/z4nta0>
+ *
+*/
+
+export const incNumRed : IncNumRed = couStaNumSlice.actions.incNumRed;
+
+// #endregion incNumRed
+
+
+
+// #region decNumRed
+
+
+// #region decNumRed Variables
+
+/** Decrement Number Reducer = This custom type stores the type that will be used for the custom {@link decNumRed} variable. */
+type DecNumRed               = ActionCreatorWithPayload< number, `${ string }/decNumRed` >;
+
+// #endregion decNumRed Variables
+
+
+
+/**
+ * decNumRed = Decrement Number Reducer
+ *
+ * @summary
+ * This custom variable stores the custom {@link decNumRed} reducer function
+ * that was created in the standard {@link sliOptObj.reducers} property and
+ * then generated as the standard {@link couStaNumSlice.actions} property by
+ * the standard React Redux Toolkit {@link createSlice} function. This custom
+ * variable is exported for use in whatever component has a need to decrement
+ * the custom couStaNum state variable, like the HomPagCom component's
+ * decButEle button for example. I realize that all of this functionality is
+ * complete overkill for what it is accomplishing, but I did this as more of a
+ * learning exercise in order to understand how to manage state using React
+ * Redux Toolkit in a more scalable and maintainable way.
+ * 
+ * @author Redux Toolkit <https://redux-toolkit.js.org/api/createSlice>
+ * @author z4nta0        <https://github.com/z4nta0>
+ *
+*/
+
+export const decNumRed : DecNumRed = couStaNumSlice.actions.decNumRed;
+
+// #endregion decNumRed
+
+
+
+// #region couStaNumReducer
+
+
+// #region couStaNumReducer Variables
+
+/** Counter State Number Reducer = This custom type stores the type that will be used for the custom {@link couStaNumReducer} variable and is exported for use in any component that said variable is required. */
+export type CouStaNumReducer     = Reducer< number >;
+
+// #endregion couStaNumReducer Variables
+
+
+
+/**
+ * couStaNumReducer = Counter State Number Reducer
+ *
+ * @summary
+ * This custom variable stores the standard reducer property of the standard
+ * object that is returned from the standard React Redux Toolkit
+ * {@link createSlice} function and stored inside of the custom
+ * {@link couStaNumSlice} variable. This custom variable is the default export
+ * of this file, and it will be imported into the site/app's custom React Redux
+ * store to be used in the reducer object property that is passed into the
+ * standard React Redux Toolkit createStore function. I realize that all of
+ * this functionality is complete overkill for what it is accomplishing, but I
+ * did this as more of a learning exercise in order to understand how to manage
+ * state using React Redux Toolkit in a more scalable and maintainable way.
+ *
+ * @author Redux Toolkit <https://redux-toolkit.js.org/api/createSlice>
+ * @author z4nta0        <https://github.com/z4nta0>
+ *
+*/
+
+const couStaNumReducer : CouStaNumReducer = couStaNumSlice.reducer;
+
+// #endregion couStaNumReducer
 
 
 

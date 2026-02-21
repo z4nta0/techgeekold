@@ -1,28 +1,75 @@
 
-/* #region Nav Section */
+/* #region Footer Section */
 
-.footerSection {
+.footerDiv { /** Footer Div = This custom selector contains the custom .footerParagraph selector, is the custom #rooSecEle selector's third grid row, all three grid columns and is this component's root selector. */
 
-    display               : grid;   /** This property was chosen as the layout method for its powerful layout capabilities. */
-    grid-area             : footer; /** This property was chosen to place the this element within the grid area defined in the parent #rooSecEle element's grid template areas declaration, which is defined in the index.css file. */
-    grid-template-areas   :         /** This property was chosen as my preferred method of placing grid items, as I find its visual definition and placement provides more clarity. */
-        'paragraph';                /** This property was chosen to define the first grid template areas row, which contains the .footerParagraph element. */
-    grid-template-columns : 100%;   /** This property was chosen to define the width of the columns in this element's grid layout, and since said grid only has one column per row it is set to 100% to take up the full width of the this element (as defined by the #rooSecEle element in the index.css file). */
-    grid-template-rows    : 100%;   /** This property was chosen to define the height of the rows in this element's grid layout, and since said grid only has one row per column it is set to 100% to take up the full height of the this element (as defined by the #rooSecEle element in the idnex.css file). */
-    height                : 100%;   /** This property was chosen so that the this element takes up the full height of its parent element (#rooSecEle element), even if its inner content does not. */
+    /* #region Selector Scoped Custom Properties */
+
+    --foo-div-gta :                /** Footer Div Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+        '.   footerParagraph   .'; /** This value was chosen to be used to contain the custom .footerParagraph selector within this selector grid's full height row, full width column, with the idea behind this being that there are empty spaces on either side that will line up the element with the site/app's main grid and at smaller viewport widths those empty spaces will be removed. */
+
+    --fod-bor-pro : var( --bor-wid-min ) solid var( --col-nav-bac ); /** Footer Div Border Properties = This custom property stores all of the border properties using the specified global scoped derivative and global scoped prime custom properties, with the idea behind this being to create an extremely subtle separator between the footer and the rest of the page. */
+
+    --foo-div-gtc : var( --hol-gra-gtc ); /** Footer Div Grid Template Columns = 1920.000px @1920px width = This custom property stores the grid template columns value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that these columns need to align precisely with the site/app's main grid columns. */
+
+    /* #endregion Selector Scoped Custom Properties */
+
+
+    border-top            : var( --fod-bor-pro ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    column-gap            : var( --col-gap-max ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property, with the idea behind this being that these gaps need to align precisely with the site/app's main grid column gaps. */
+    display               : grid;                 /** This value was chosen to be used as the preferred layout method, with the idea behind this being that it provides powerful element placement and sizing capabilities. */
+    grid-area             : footerDiv;            /** This value was chosen to be used to place this selector within the custom #rooSecEle selector grid area's third row, all three columns. */
+    grid-template-areas   : var( --foo-div-gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-columns : var( --foo-div-gtc ); /** This value was chosen to be used according to the details of the specified selector scoped custom property, with the idea behind this being that these columns need to align precisely with the site/app's main grid columns. */
+    grid-template-rows    : 100%;                 /** This value was chosen to be used to fill columns using all available vertical space as defined by its parent, the custom #rooSecEle selector. */
+    height                : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom #rooSecEle selector. */
 
 }
 
 
 
-.footerParagraph {
+/* #region Media Query for Small Viewport Widths */
 
-    align-self   : center;               /** This property was chosen to vertically center the paragraph text within its row of the grid container. */
-    justify-self : center;               /** This property was chosen to horizontally center the paragraph text within its column of the grid container. */
-    font-size    : var( --fon-siz-sma ); /** This property was chosen to set the font size of the paragraph element equal to the font size small globally scoped custom property's value (~= 9.889px @16px root font size). This is one level smaller than the normal text, which helps to visually separate it from the main text on any given component's page. */
-    grid-area    : paragraph;            /** This property was chosen to place the this element within the grid area defined in the parent .footerSection element's grid template areas declaration. */
-    line-height  : var( --fon-siz-sma ); /** This property was chosen to set the line height of the paragraph element equal to the font size of this same element since there is only a single line of text and thus no breathing room is required for it. It is equal to the font size small globally scoped custom property's value (~= 9.889px @16px root font size). */
+@media ( max-width : 842.999px ) { /** Golden Ratio to the 14th Power = This custom media query selector targets all viewport widths below 843.000px. */
+
+
+    .footerDiv { /** Footer Div = This custom selector contains the custom .footerParagraph selector, is the custom #rooSecEle selector's third grid row, all three grid columns and is this component's root selector. */
+
+
+        /* #region Selector Scoped Custom Properties */
+
+        --foo-div-gta :        /** Footer Div Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+            'footerParagraph'; /** This value was chosen to be used to contain the custom .footerParagraph selector within this selector grid's full height row, full width column, with the idea behind this being to remove the empty spaces for smaller viewport widths and let the footer take up all available horizontal space. */
+
+        --foo-div-gtc : 100%; /** Footer Div Grid Template Columns = 1920.000px @1920px width = This custom property stores the grid template columns value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that at small viewport widths the footer needs to take up all available horizontal space. */
+
+        /* #endregion Selector Scoped Custom Properties */
+
+
+    }
+
 
 }
+
+/* #endregion Media Query for Small Viewport Widths */
+
+
+
+/* #region Footer Paragraph */
+
+.footerParagraph { /** Footer Paragraph = This custom selector contains the custom text for the site/app name and copyright and is the custom .footerDiv selector's only grid row, full width column. */
+
+    align-self   : center;               /** This value was chosen to be used to vertically center this selector within its grid area, with the idea behind this being that the footer's content is more aesthetically balanced and pleasing with equal spacing above and below it. */
+    font-size    : var( --fon-siz-sma ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    grid-area    : footerParagraph;      /** This value was chosen to be used to place this selector within the custom .footerDiv selector grid area's only row, only column. */
+    justify-self : center;               /** This value was chosen to be used to horizontally center this selector within its grid area, with the idea behind this being that with so little content in the footer it is more aesthetically pleasing when horizontally centered to the middle of the viewport. */
+    line-height  : var( --fon-siz-sma ); /** This value was chosen to be used to set the line height equal to its corresponding font size, with the idea behind this being that it makes for better visual asthetics when used with short, one line text (headers especially). */
+
+}
+
+/* #endregion Footer Paragraph */
+
+
+/* #endregion Footer Section */
 
 

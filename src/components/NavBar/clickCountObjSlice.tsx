@@ -1,44 +1,31 @@
 
 // #region Imports
 
-import { createSlice } from '@reduxjs/toolkit'; /** This is the toolset for Redux that is designed to simplify Redux logic, reduce boilerplate and streamline state management by bundling essential utilities and best practices. This makes Redux easier to set up and use for modern applications. */
+import { createSlice } from '@reduxjs/toolkit'; /** This import is the standard React Redux Toolkit function that is designed to simplify React Redux logic, reduce boilerplate and streamline state management by bundling essential utilities and best practices, making React Redux easier to set up and use for modern applications. */
+
+
+import { type ActionCreatorWithoutPayload } from '@reduxjs/toolkit'; /** This import is the standard Typescript definition for a standard React Rdux Toolkit function type that takes no arguments and returns an action object with a specific type string. */
+import { type Reducer                     } from '@reduxjs/toolkit'; /** This import is the standard Typescript definition for reducers that are returned from the standard React Redux Toolkit createSlice function. */
+import { type Slice                       } from '@reduxjs/toolkit'; /** This import is the standard Typescript definition for the standard React Redux Toolkit createSlice function. */
+import { type SliceSelectors              } from '@reduxjs/toolkit'; /** This import is the standard Typescript definition for the standard React Redux Toolkit createSlice function that take the specific slice's state as input (rather than the root state) and return derived data, enabling better type inference and encapsulation of state logic. */
 
 // #endregion Imports
 
 
 
-/**
- * clickCountObjSlice = Click Count Object Slice File
- *
- * @summary
- * This file creates a Redux slice for managing a simple counter state. It
- * defines the initial state of the cliCouObj and provides two reducer
- * functions, {@link logCouRed} and {@link homCouRed}, which allow for
- * increasing their respective cliCouObj values by 1 every time one of their
- * navigation bar links are clicked. The slice is created using Redux Toolkit's
- * {@link createSlice} method, which automatically generates action creators
- * and action types based on the provided reducers. All of this is completely
- * unnecessary of course, but this was just for personal learning purposes to
- * gain some experience with using Redux Toolkit alongside React and TypeScript
- * while following along with tutorials before moving on to my next project
- * that will use these concepts in a more practical, realistic way.
- *
- * @author z4ntao <https://github.com/z4nta0>
- *
-*/
+// #region cliCouObjSlice
 
 
-
-// #region State Variables
+// #region cliCouObjSlice Variables
 
 
 // #region iniStaObj
 
 /**
- * IniStaObj = Initial State Object will store the state's initial properties and values that will be provided to the {@link sliOptObj} object.
+ * Initial State Object = This custom type stores the types that will be used for the custom {@link iniStaObj} object.
  * 
- * @property logCouNum = Logo Count Number will store the number of times that the navigation bar's logo Home page link has been clicked.
- * @property homCouNum = Home Count Number will store the number of times that the navigation bar's Home page link has been clicked.
+ * @property logCouNum = Logo Count Number custom property stores the type that will be used for the custom {@link iniStaObj.logCouNum} property.
+ * @property homCouNum = Home Count Number custom property stores the type that will be used for the custom {@link iniStaObj.homCouNum} property.
  *
 */
 
@@ -49,7 +36,15 @@ interface IniStaObj {
 
 };
 
-/** @see {@link IniStaObj} */
+
+/**
+ * Initial State Object = This custom object stores the state's initial properties that will be provided to the custom {@link sliOptObj} object.
+ * 
+ * @property logCouNum = Logo Count Number custom property stores the initial value of the custom cliCouObj.logCouNum state variable, that tracks the number of times that the NavBarCom component's logo Home page link has been clicked.
+ * @property homCouNum = Home Count Number custom property stores the initial value of the custom cliCouObj.homCouNum state variable, that tracks the number of times that the NavBarCom component's Home page link has been clicked.
+ *
+*/
+
 const iniStaObj : IniStaObj = {
 
     logCouNum : 0,
@@ -57,27 +52,24 @@ const iniStaObj : IniStaObj = {
 
 };
 
-// #endregion State Variables
+// #endregion iniStaObj
 
-
-
-// #region Slice Variables
 
 
 // #region sliOptObj
 
 /**
- * SliOptObj = Slice Options Object will store the default properties and values that will be provided to Redux Toolkit's {@link createSlice} function. It abstracts away all of the boilerplate code that is required by Redux (without Toolkit) to handle state management.
+ * Slice Options Object = This custom type stores the types that will be used for the custom {@link sliOptObj} object.
  * 
- * @property name         = Name will store the name of the slice, in this case a value of cliCouObj, which Redux Toolkit will use to identify this slice and therefore identify these reducers.
- * @property initialState = Initial State will store the value from {@link iniStaObj}, which will be the starting values of the cliCouObj state variable.
- * @property reducers     = Reducers will store the two reducer functions, {@link logCouRed} and {@link homCouRed}, that will handle incrementing the {@link iniStaObj.logCouNum} and {@link iniStaObj.homCouNum} values respectively.
- * @property logCouRed    = Increment Number Reducer will handle incrementing the {@link cliCouObj.logCouNum} (Logo page count) state number value by 1 each time the navigation bar's logo Home page link is clicked.
- * @property homCouRed    = Increment Number Reducer will handle incrementing the {@link cliCouObj.homCouNum} (Home page count) state number value by 1 each time the navigation bar's Home page link is clicked.
+ * @property name         = Name standard property stores the type that will be used for the standard {@link sliOptObj.name} property.
+ * @property initialState = Initial State standard property stores the type that will be used for the standard {@link sliOptObj.initialState} property.
+ * @property reducers     = Reducers standard property stores the type that will be used for the standard {@link sliOptObj.reducers} property.
+ * @property logCouRed    = Logo Count Reducer custom property stores the type that will be used for the custom {@link sliOptObj.reducers.logCouRed} property.
+ * @property homCouRed    = Home Count Reducer custom property stores the type that will be used for the custom {@link sliOptObj.reducers.homCouRed} property.
  *
 */
 
-interface SliOptObj {
+type SliOptObj = {
 
     name         : string;
     initialState : IniStaObj;
@@ -91,49 +83,203 @@ interface SliOptObj {
 
 };
 
-/** @see {@link SliOptObj} */
+
+/**
+ * Slice Options Object = This custom object stores the properties that are provided to the standard React Redux Toolkit {@link createSlice} function.
+ * 
+ * @property name         = Name standard property stores the name of the slice, in this case a value of cliCouObj, which React Redux Toolkit will use to identify this slice and its corresponding state and reducers.
+ * @property initialState = Initial State standard property stores the value from the custom {@link iniStaObj} variable, which are the starting values of the custom cliCouObj state object.
+ * @property reducers     = Reducers standard property stores the two custom reducer functions, {@link logCouRed} and {@link homCouRed}, that handles incrementing the custom cliCouObj state values respectively ({ logCouNum, homCouNum }).
+ * @property logCouRed    = Logo Count Reducer custom property stores the reducer function that will handle incrementing the logCouNum property of the custom cliCouObj state object by 1 when the action is dispatched.
+ * @property homCouRed    = Home Count Reducer custom property stores the reducer function that will handle incrementing the homCouNum property of the custom cliCouObj state object by 1 when the action is dispatched.
+ *
+*/
+
 const sliOptObj : SliOptObj = {
 
     name         : 'cliCouObj',
     initialState : iniStaObj,
 
-    reducers     : {
+    reducers : {
 
-        logCouRed : ( state = iniStaObj ) => {
 
-            /** Redux Toolkit abstracts away the need to manually handle immutable state updates by using Immer under the hood. This also means that the state variable does not need to be returned (as long as it is a complex variable like an object or array, and not just a plain variable). */
+        logCouRed   : ( state = iniStaObj ) => {
+
+
+            /** React Redux Toolkit abstracts away the need to manually handle immutable state updates by using Immer under the hood. */
+            /** State will contain the current state value of the custom iniStaObj.logCouNum state variable (starting at 0). */
             state.logCouNum = state.logCouNum + 1;
 
+
         },
+
+
 
         homCouRed : ( state = iniStaObj ) => {
 
-            /** Redux Toolkit abstracts away the need to manually handle immutable state updates by using Immer under the hood. This also means that the state variable does not need to be returned (as long as it is a complex variable like an object or array, and not just a plain variable). */
+
+            /** React Redux Toolkit abstracts away the need to manually handle immutable state updates by using Immer under the hood. */
+            /** State will contain the current state value of the custom iniStaObj.homCouNum state variable (starting at 0). */
             state.homCouNum = state.homCouNum + 1;
 
+
         },
+
 
     },
 
 };
 
-// #endregion Slice Variables
+// #endregion sliOptObj
 
 
 
-// #region Slice Creation
+/** Click Count Object Slice = This custom type stores the type that will be used for the custom {@link cliCouObjSlice} variable. */
+type CliCouObjSlice          = Slice< IniStaObj, { logCouRed : ( state : IniStaObj ) => void; homCouRed : ( state : IniStaObj ) => void; }, string, string, SliceSelectors< IniStaObj > >;
+
+// #endregion cliCouObjSlice Variables
 
 
-/** Click Count Object Slice          = This stores the return of Redux Toolkit's core API that automatically generates action creators and reducers for a single slice of application's state. It returns a single object that contains the slice name, generated reducer, its corresponding actions, case reducers, and an optional getSelectors function. */
-export const cliCouObjSlice           = createSlice( sliOptObj );
-/** Logo and Home Count Reducer       = These store the reducer functions that were generated by the above {@link cliCouObjSlice} and that were defined in the {@link sliOptObj} object's reducers property. */
-export const { logCouRed, homCouRed } = cliCouObjSlice.actions;
-/** Click Count Object Reducer        = This stores the parent reducer of this slice and will be what is exported into the store inside of src/store.tsx. It is responsible for handling all actions defined within this specific slice of the Redux store's state. */
-const cliCouObjReducer                = cliCouObjSlice.reducer;
-/** Click Count Object Reducer        = This stores the type of this slice's parent reducer. Although this may seem redundant, exporting the type of the reducer can be useful for type checking and ensuring consistency across the application. */
-export type CliCouObjReducer          = typeof cliCouObjReducer;
 
-// #region Slice Creation
+/**
+ * cliCouObjSlice = Click Count Object Slice
+ *
+ * @summary
+ * This custom variable stores the stores the standard object that is returned by
+ * the standard React Redux Toolkit {@link createSlice} function. Said object
+ * contains the slice name, generated reducer, its corresponding actions, case
+ * reducers, and an optional getSelectors function. Said function is called
+ * using the custom {@link sliOptObj} object as its parameter, which defines
+ * the slice name, initial state and reducers properties. The reducers property
+ * contains the custom reducer functions that handle incrementing the
+ * properties of the custom cliCouObj state variable (Logo count =
+ * logCouNum, Home count = homCouNum). I realize that all of this functionality
+ * is complete overkill for what it is accomplishing, but I did this as more of
+ * a learning exercise in order to understand how to manage state using React
+ * Redux Toolkit in a more scalable and maintainable way.
+ * 
+ * @author Redux Toolkit <https://redux-toolkit.js.org/api/createSlice>
+ * @author z4nta0        <https://github.com/z4nta0>
+ *
+*/
+
+const cliCouObjSlice : CliCouObjSlice = createSlice( sliOptObj );
+
+// #endregion cliCouObjSlice
+
+
+
+// #region logCouRed
+
+
+// #region logCouRed Variables
+
+/** Logo Count Reducer = This custom type stores the type that will be used for the custom {@link logCouRed} variable. */
+type LogCouRed         = ActionCreatorWithoutPayload< `${ string }/logCouRed` >;
+
+// #endregion logCouRed Variables
+
+
+
+/**
+ * logCouRed = Logo Count Reducer
+ *
+ * @summary
+ * This custom variable stores the custom {@link logCouRed} reducer function
+ * that was created in the standard {@link sliOptObj.reducers} property and
+ * then generated as the standard {@link cliCouObjSlice.actions} property by
+ * the standard React Redux Toolkit {@link createSlice} function. This custom
+ * variable is exported for use in whatever component has a need to increment
+ * the custom cliCouObj.logCouNum state variable, like the NavBarCom
+ * component's logNavEle NavLink for example. I realize that all of this
+ * functionality is complete overkill for what it is accomplishing, but I did
+ * this as more of a learning exercise in order to understand how to manage
+ * state using React Redux Toolkit in a more scalable and maintainable way.
+ * 
+ * @author Redux Toolkit <https://redux-toolkit.js.org/api/createSlice>
+ * @author z4nta0        <https://github.com/z4nta0>
+ *
+*/
+
+export const logCouRed : LogCouRed = cliCouObjSlice.actions.logCouRed;
+
+// #endregion logCouRed
+
+
+
+// #region homCouRed
+
+
+// #region homCouRed Variables
+
+/** Home Count Reducer = This custom type stores the type that will be used for the custom {@link homCouRed} variable. */
+type HomCouRed         = ActionCreatorWithoutPayload< `${ string }/homCouRed` >;
+
+// #endregion homCouRed Variables
+
+
+
+/**
+ * homCouRed = Home Count Reducer
+ *
+ * @summary
+ * This custom variable stores the custom {@link homCouRed} reducer function
+ * that was created in the standard {@link sliOptObj.reducers} property and
+ * then generated as the standard {@link cliCouArrSlice.actions} property by
+ * the standard React Redux Toolkit {@link createSlice} function. This custom
+ * variable is exported for use in whatever component has a need to increment
+ * the custom cliCouObj.homCouNum state variable, like the NavBarCom
+ * component's homNavEle NavLink for example. I realize that all of this
+ * functionality is complete overkill for what it is accomplishing, but I did
+ * this as more of a learning exercise in order to understand how to manage
+ * state using React Redux Toolkit in a more scalable and maintainable way.
+ * 
+ * @author Redux Toolkit <https://redux-toolkit.js.org/api/createSlice>
+ * @author z4nta0        <https://github.com/z4nta0>
+ *
+*/
+
+export const homCouRed : HomCouRed = cliCouObjSlice.actions.homCouRed;
+
+// #endregion homCouRed
+
+
+
+// #region cliCouObjReducer
+
+
+// #region cliCouObjReducer Variables
+
+/** Click Count Object Reducer = This custom type stores the type that will be used for the custom {@link cliCouObjReducer} variable and is exported for use in any component that said variable is required. */
+export type CliCouObjReducer   = Reducer< IniStaObj >;
+
+// #endregion cliCouObjReducer Variables
+
+
+
+/**
+ * cliCouObjReducer = Click Count Object Reducer
+ *
+ * @summary
+ * This custom variable stores the standard reducer property of the standard
+ * object that is returned from the standard React Redux Toolkit
+ * {@link createSlice} function and stored inside of the custom
+ * {@link cliCouObjSlice} variable. This custom variable is the default export
+ * of this file, and it will be imported into the site/app's custom React Redux
+ * store to be used in the reducer object property that is passed into the
+ * standard React Redux Toolkit createStore function. I realize that all of
+ * this functionality is complete overkill for what it is accomplishing, but I
+ * did this as more of a learning exercise in order to understand how to manage
+ * state using React Redux Toolkit in a more scalable and maintainable way.
+ *
+ * @author Redux Toolkit <https://redux-toolkit.js.org/api/createSlice>
+ * @author z4nta0        <https://github.com/z4nta0>
+ *
+*/
+
+const cliCouObjReducer : CliCouObjReducer = cliCouObjSlice.reducer;
+
+// #endregion cliCouObjReducer
 
 
 

@@ -1,24 +1,24 @@
 
 /* #region Font Face Declarations */
 
-@font-face {
+@font-face { /** This standard selector contains a custom font family along with its source and allows web developers to use custom fonts not installed on a user's computer. */
 
-    font-family : 'Rubik Glitch';                                            /* this is used for the hacked section's h1 element */
-    src         : url( '../../assets/fonts/RubikGlitch-Regular.ttf' );       /* this font is locally hosted */
-
-}
-
-@font-face {
-
-    font-family : 'Gloria Hallelujah';                                       /* this is used for the snowfall section's span element */
-    src         : url( '../../assets/fonts/GloriaHallelujah-Regular.ttf' );  /* this font is locally hosted */
+    font-family : 'Rubik Glitch';                                      /** This value was chosen to be used as the font family for the custom .hackedH1 and .hackedParagraph selectors. */
+    src         : url( '../../assets/fonts/RubikGlitch-Regular.ttf' ); /** This value was chosen to be used in order to host the font file locally. */
 
 }
 
-@font-face {
+@font-face { /** This standard selector contains a custom font family along with its source and allows web developers to use custom fonts not installed on a user's computer. */
 
-    font-family : 'Mountains of Christmas';                                  /* this is used for the snowfall section's h1 and paragraph elements */
-    src         : url( '../../assets/fonts/MountainsofChristmas-Bold.ttf' ); /* this font is locally hosted */
+    font-family : 'Gloria Hallelujah';                                      /** This value was chosen to be used as the font family for the custom .snowfallParagraph selector. */
+    src         : url( '../../assets/fonts/GloriaHallelujah-Regular.ttf' ); /** This value was chosen to be used in order to host the font file locally. */
+
+}
+
+@font-face { /** This standard selector contains a custom font family along with its source and allows web developers to use custom fonts not installed on a user's computer. */
+
+    font-family : 'Mountains of Christmas';                                  /** This value was chosen to be used as the font family for the custom .snowfallH1 and .snowfallParagraph selectors. */
+    src         : url( '../../assets/fonts/MountainsofChristmas-Bold.ttf' ); /** This value was chosen to be used in order to host the font file locally. */
 
 }
 
@@ -26,108 +26,180 @@
 
 
 
-/* #region Component Section */
+/* #region Component Scoped Custom Properties */
 
-.componentSection {
+.christmasCardDiv { /** Christmas Card Div = This custom selector contains the custom .squaresDiv, .hackedSection and .snowfallSection selectors, is the custom .appMain selector's only child and is this component's root selector. */
 
-    container-name        : componentSection; /* this allows the element to be referenced for creating a container query */
-    container-type        : inline-size;      /* this was only needed so that the container query referencing this element would work (which property value is used does not seem to matter); the other containers use this to allow children to size certain properties based on the container dimensions but this element does not need that functionality */
-    display               : grid;             /* this allows easier placement of child elements, with 1 column and 1 row where all of the child elements will stack on top of each other and shown via animations as needed */
-    grid-template-columns : 100%;             /* this, in combination with grid-column : 1 on direct grid children, will make the sections stack on top of each other */
-    grid-template-rows    : 100%;             /* this, in combination with grid-row    : 1 on direct grid children, will make the sections stack on top of each other */
-    height                : 100vh;            /* this component, due to its 'fun' nature and the resulting animations, works best in fullscreen and this makes sure the component section takes up the full viewport height; this will of course hide the navbar and footer but that does not matter for this particular component */
-    left                  : 0;                /* this component, due to its 'fun' nature and the resulting animations, works best in fullscreen and this makes sure the component section is aligned to the left edge of the viewport; this will of course hide the navbar and footer but that does not matter for this particular component */
-    position              : fixed;            /* this component, due to its 'fun' nature and the resulting animations, works best in fullscreen and this makes sure the component section is fixed in place, covering the entire viewport; this will of course hide the navbar and footer but that does not matter for this particular component */
-    top                   : 0;                /* this component, due to its 'fun' nature and the resulting animations, works best in fullscreen and this makes sure the component section is aligned to the top edge of the viewport; this will of course hide the navbar and footer but that does not matter for this particular component */
-    width                 : 100vw;            /* this component, due to its 'fun' nature and the resulting animations, works best in fullscreen and this makes sure the component section takes up the full viewport width; this will of course hide the navbar and footer but that does not matter for this particular component */
-    z-index               : 2;                /* this is needed so that this component section overlays the navbar and footer, which have a z-index of 1 */
+
+    --neg-x-offse : calc( var( --x-offse-min ) * -1 ); /** Negative X Offset = This custom property stores the negative value of the specified global scoped derivative custom property, with the idea behind this being that storing this value here makes the custom properties that use it cleaner and easier to read. */
+    --neg-y-offse : calc( var( --y-offse-min ) * -1 ); /** Negative Y Offset = This custom property stores the negative value of the specified global scoped derivative custom property, with the idea behind this being that storing this value here makes the custom properties that use it cleaner and easier to read. */
+
+    --top-lef-tes : var( --neg-x-offse ) var( --neg-y-offse ) var( --blu-rad-med ) var( --col-tex-sha ); /** Top Left Text Shadow     = This custom property stores all of the text shadow properties for the top left text shadow using the values of the specified global scoped derivative and global scoped prime custom properties, with the idea behind this being that storing this value here makes it easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --top-rig-tes : var( --x-offse-min ) var( --neg-y-offse ) var( --blu-rad-med ) var( --col-tex-sha ); /** Top Right Text Shadow    = This custom property stores all of the text shadow properties for the top right text shadow using the values of the specified global scoped derivative and global scoped prime custom properties, with the idea behind this being that storing this value here makes it easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --bot-lef-tes : var( --neg-x-offse ) var( --y-offse-min ) var( --blu-rad-med ) var( --col-tex-sha ); /** Bottom Left Text Shadow  = This custom property stores all of the text shadow properties for the bottom left text shadow using the values of the specified global scoped derivative and global scoped prime custom properties, with the idea behind this being that storing this value here makes it easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --bot-rig-tes : var( --x-offse-min ) var( --y-offse-min ) var( --blu-rad-med ) var( --col-tex-sha ); /** Bottom Right Text Shadow = This custom property stores all of the text shadow properties for the bottom right text shadow using the values of the specified global scoped derivative and global scoped prime custom properties, with the idea behind this being that storing this value here makes it easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+
+    --sel-sha-tes : var( --top-lef-tes ), var( --top-rig-tes ), var( --bot-lef-tes ), var( --bot-rig-tes ); /** Selector Shared Text Shadow = This custom property stores all of the text shadow properties for this section using the values of the specified component scoped custom properties, with the idea behind this being that the text for this digital card can be somewhat hard to read and adding a text shadow seemed the most effective solution while also adding a slight depth to the text and making it look like the text was overlaid on top of the card. */
+
+    --sel-sha-mar : var( --mar-ver-bas ) var( --mar-hor-bas ); /** Selector Shared Margin = This custom property stores the margins for multiple selectors using the specified global scoped second derivative custom properties, with the idea behind this being to maintain consistency and ease of maintenance for the shared selectors. */
+
 
 }
 
-/* #endregion Component Section */
+/* #endregion Component Scoped Custom Properties */
 
 
 
-/* #region Pixelated Transition Squares Section */
+/* #region Christmas Card Div */
 
-.squaresSection {
+.christmasCardDiv { /** Christmas Card Div = This custom selector contains the custom .squaresDiv, .hackedSection and .snowfallSection selectors, is the custom .appMain selector's only child and is this component's root selector. */
 
-    display     : grid; /* this allows the pixelated transition squares to be arranged in a grid layout; the grid-column-template and grid-row-template properties wil be defined via javascript when the component loads, which allows those property values to be dynamically sized according to the viewport dimensions */
-    gap         : 0;    /* this removes any gaps between the grid items, which is needed for the pixelated transition effect to work properly */
-    grid-column : 1;    /* this will make the sections stack on top of each other, because only one column is defined on the parent */
-    grid-row    : 1;    /* this will make the sections stack on top of each other, because only one row is defined on the parent */
-    z-index     : 3;    /* this is required in order to be on top of the snowfall section, which has a z-index : 2 in order to be on top of the hacked section */
+    /** NOTE: Yes, these settings will hide the navbar and footer which will hide the main navigation links, but this digital card works best this way. I do plan on adding an "Exit Fullscreen" button at some point in the future though. */
 
-}
-
-.squares {
-
-    background-color : #242424; /* this should, ideally, be the same color as the page background but doesn't have to be */
+    height   : 100vh; /** This value was chosen to be used to set the height to 100% of the viewport height, with the idea behind this being that this digital card works best in fullscreen. */
+    left     : 0;     /** This value was chosen to be used to position this selector in the very top left hand corner of the viewport, with the idea behind this being that this digital card works best in fullscreen. */
+    position : fixed; /** This value was chosen to be used to maintain a fixed position for this selector, with the idea behind this being that this digital card works best in fullscreen. */
+    top      : 0;     /** This value was chosen to be used to position this selector in the very top left hand corner of the viewport, with the idea behind this being that this digital card works best in fullscreen. */
+    width    : 100vw; /** This value was chosen to be used to set the width to 100% of the viewport width, with the idea behind this being that this digital card works best in fullscreen. */
 
 }
 
-/* #endregion Pixelated Transition Squares Section */
+
+
+/* #region Pixels Container Div */
+
+.pixelsContainerDiv { /** Pixels Container Div = This custom selector contains the custom .pixelDivs selectors, is the container for the pixelated transition animation and is the first child of the custom .christmasCardDiv selector. */
+
+    display  : grid;  /** This value was chosen to be used because it is required by the pixelated transition animation in the Javascript code in order to dynamically calculate the exact number of grid columns and rows according to the viewport dimensions (with no gaps between the .pixelDivs and no extra .pixelDivs overflowing), with the idea behind this being that the grid template columns and grid template rows properties will be defined via Javascript when the component loads. */
+    gap      : 0;     /** This value was chosen to be used in order to remove any possible gaps between the custom .pixelDivs selectors, with the idea behind this being that this is needed in order for the pixelated transition animation fully cover each section before being faded out (or in) to reveal (or cover) the next section. */
+    height   : 100vh; /** This value was chosen to be used to set the height to 100% of the viewport height, with the idea behind this being that this digital card works best in fullscreen. */
+    left     : 0;     /** This value was chosen to be used to position this selector in the very top left hand corner of the viewport, with the idea behind this being that this digital card works best in fullscreen. */
+    position : fixed; /** This value was chosen to be used to maintain a fixed position for this selector, with the idea behind this being that this digital card works best in fullscreen. */
+    top      : 0;     /** This value was chosen to be used to position this selector in the very top left hand corner of the viewport, with the idea behind this being that this digital card works best in fullscreen. */
+    width    : 100vw; /** This value was chosen to be used to set the width to 100% of the viewport width, with the idea behind this being that this digital card works best in fullscreen. */
+    z-index  : 2;     /** This value was chosen to be used in order to overlay on top of the custom .snowfallSection selector which has a z index of 1, with the idea behind this being that both selectors need to be layered on top of the custom .hackedSection selector in order for the animations to run and display properly. */
+
+}
+
+
+
+/* #region Pixel Divs */
+
+.pixelDivs { /** Pixel Divs = These custom selectors contain the custom divs that are used as the pixels for the pixelated transition animation and are all children of the custom .pixelsContainerDiv selector. */
+
+    background-color : var( --col-bac-col ); /** This value was chosen to be used to match the background color of the page using the specified global scoped prime custom property, with the idea behind this being to ensure that the pixelated transition animation blends seamlessly with the rest of the page. */
+
+}
+
+/* #endregion Pixel Divs */
+
+
+/* #endregion Pixels Container Div */
 
 
 
 /* #region Hacked Section */
 
-.hackedSection {
+.hackedSection { /** Hacked section = This custom selector contains the custom .hackedH1 and .hackedParagraph selectors and is the second child of the custom .christmasCardDiv selector. */
 
-    background-image    : url( '../../assets/pirate-background.jpg' ); /* this is a cartoony, pirate skull and crossbones image on a black background */
-    background-position : center;                                      /* this centers the background image within the section and is needed because of background-size : cover */
-    background-repeat   : no-repeat;                                   /* this prevents the background image from repeating in a tile like fashion and is needed because of background-size : cover */
-    background-size     : cover;                                       /* this makes sure the background image covers the entire section area */
-    color               : #FF0E0E;                                   /* this makes text a bright red color to fit the 'hacked' theme (danger, warning, etc...) */
-    container-name      : hackedSection;                               /* this allows the element to be referenced for creating a container query */
-    container-type      : inline-size;                                 /* this allows children elements to size certain properties based on this element's dimensions, which helps with the .hackedHeader1 font size not causing container resizing during its animation for certain viewport dimensions */
-    grid-column         : 1;                                           /* this will make the sections stack on top of each other, because only one column is defined on the parent */
-    grid-row            : 1;                                           /* this will make the sections stack on top of each other, because only one row is defined on the parent */
-    position            : relative;                                    /* this is needed for position : absolute to work on the .hackedParagraph element */
+    /* #region Selector Scoped Custom Properties */
 
-}
+    /** These are technically section scoped but placing and labelling them here makes my intention clear that these are intended for use in this selector only. */
 
-.hackedHeader1 {
+    --bac-img-url : url( '../../assets/pirate-background.jpg' ); /** Background Image URL      = This custom property stores the cartoony, pirate skull and crossbones image on a black background, with the idea behind this being that the image matches the hacked theme (pirate <-> hacker) of this section. */
+    --has-tex-col : var( --col-err-sta );                        /** Hacked Section Text Color = This custom property stores the red text color for this section using the specified global scoped prime custom property, with the idea behind this being that it matches the hacked theme (danger, warning, etc...) of this section. */
 
-    font-family : 'Rubik Glitch', cursive; /* this font pairs nicely with glitch effect animation on this same element (as well as with the hacked section in general), itself with outlines of the text appearing in a zigzag type of manner */
-    font-size   : 8cqw;                    /* this bases the text sizing on the container's (container-name : hackedSection) dimensions, which helps with this font size not causing container resizing during animation for certain viewport dimenions */
-    line-height : 8cqw;                    /* this needs to match the font-size to ensure proper vertical alignment and spacing; the units are based on the container's (container-name : hackedSection) dimensions */
-    margin      : 0;                       /* this removes default margin around the h1 element */
-    padding     : 0.333rem;                /* this adds a slight amount padding, based on the root font size, for the h1 element, mostly only needed at the top but on certain viewport sizes the sides can also brush up against the edges */
-    text-shadow : #FFFFFF 1px 1px 3px;   /* this makes the text more legible in addition to giving it some depth and making it look like it overlays the background image, as opposed to being part of it */
+    /* #endregion Selector Scoped Custom Properties */
 
-}
 
-.hackedParagraph {
-
-    bottom      : 0;                       /* this aligns the element to the bottom of the .hackedSection */
-    font-family : 'Rubik Glitch', cursive; /* this font pairs nicely with glitch effect animation on this same element (as well as with the hacked section in general), itself with outlines of the text appearing in a zigzag type of manner */
-    font-size   : 3cqw;                    /* this bases the text sizing on the container's (container-name : hackedSection) dimensions, which helps with this font-size not causing container resizing for certain viewport dimenions */
-    line-height : 4cqw;                    /* this makes the text more legible since, unlike the other text elements in this component, it will have multiple lines of text and will give some space between each line; the units are based on the container's (container-name : hackedSection) dimensions */
-    margin      : 0;                       /* this removes default margin around the paragraph element */
-    padding     : 0.333rem;                /* this adds a slight amount padding, based on the root font size, for the paragraph element, mostly only needed at the bottom but on certain viewport sizes the sides can also brush up against the edges */
-    position    : absolute;                /* this is needed so that the element can be aligned to the bottom of the .hackedSection */
-    text-shadow : #FFFFFF 1px 1px 3px;   /* this makes the text more legible in addition to giving it some depth and making it look like it overlays the background image, as opposed to being part of it */
+    background-image    : var( --bac-img-url ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    background-position : center;               /** This value was chosen to be used to center the background image, with the idea behind this being that because of the use of the background size cover value it will need to be repositioned to make sure the main part of the image is showing. */
+    background-repeat   : no-repeat;            /** This value was chosen to be used in order to prevent the background image from repeating in a tile like fashion. */
+    background-size     : cover;                /** This value was chosen to be used in order to makes sure that the background image covers the entirety of the section area. */
+    color               : var( --has-tex-col ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    height              : 100vh;                /** This value was chosen to be used to set the height to 100% of the viewport height, with the idea behind this being that this digital card works best in fullscreen. */
+    left                : 0;                    /** This value was chosen to be used to position this selector in the very top left hand corner of the viewport, with the idea behind this being that this digital card works best in fullscreen. */
+    position            : fixed;                /** This value was chosen to be used to maintain a fixed position for this selector, with the idea behind this being that this digital card works best in fullscreen. */
+    text-align          : center;               /** This value was chosen to be used to horizontally center all of this selector's text, with the idea behind this being that it is more aesthetically pleasing when centered. */
+    top                 : 0;                    /** This value was chosen to be used to position this selector in the very top left hand corner of the viewport, with the idea behind this being that this digital card works best in fullscreen. */
+    width               : 100vw;                /** This value was chosen to be used to set the width to 100% of the viewport width, with the idea behind this being that this digital card works best in fullscreen. */
 
 }
 
-@container hackedSection ( max-width: 550px ) { /* this container query adjusts font sizes for smaller viewport widths (think portrait orientation on mobile), since container font size scaling did not work so well for said viewports (the font was way too small) */
 
-    .hackedHeader1 {
 
-        font-size   : 10cqw; /* this bases the text sizing on the container's (container-name : hackedSection)dimensions, which helps with this font size not causing container resizing during animation for certain viewport dimenions */
-        line-height : 10cqw; /* this needs to match the font-size to ensure proper vertical alignment and spacing; the units are based on the container's (container-name : hackedSection) dimensions */
+/* #region Hacked H1 */
+
+.hackedH1 { /** Hacked H1 = This custom selector contains the custom text that serves as the title for this section and is the first child of the custom .hackedSection selector. */
+
+    font-family : 'Rubik Glitch', cursive; /** This value was chosen to be used because this font pairs nicely with GSAP glitch effect animation on this same element (as well as with the theme of this section in general), with the idea behind this being that the outlines of the text appearing in a zigzagging type of manner are aesthetically similar to the distortion effect of the glitch animation. */
+    font-size   : var( --hea-one-siz );    /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property. */
+    line-height : var( --hea-one-siz );    /** This value was chosen to be used to set the line height equal to its corresponding font size, with the idea behind this being that it makes for better visual asthetics when used with short, one line text (headers especially). */
+    margin      : var( --sel-sha-mar );    /** This value was chosen to be used according to the details of the specified component scoped custom property. */
+    text-shadow : var( --sel-sha-tes );    /** This value was chosen to be used according to the details of the specified component scoped custom property. */
+
+}
+
+
+
+/* #region Media Query for Small Viewport Widths */
+
+@media ( max-width : 842.999px ) { /** Golden Ratio to the 14th Power = This custom media query selector targets all viewport widths below 843.000px. */
+
+
+    .hackedH1 { /** Hacked H1 = This custom selector contains the custom text that serves as the title for this section and is the first child of the custom .hackedSection selector. */
+
+        font-size   : var( --hea-one-siz ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property. */
+        line-height : var( --hea-one-siz ); /** This value was chosen to be used to set the line height equal to its corresponding font size, with the idea behind this being that it makes for better visual asthetics when used with short, one line text (headers especially). */
 
     }
 
-    .hackedParagraph {
 
-        font-size   : 6cqw; /* this bases the text sizing on the container's (container-name : hackedSection) dimensions */
-        line-height : 7cqw; /* this makes the text more legible since, unlike the other text elements in this component, it will have multiple lines of text and will give some space between each line; the units are based on the container's (container-name : hackedSection) dimensions */
+}
+
+/* #endregion Media Query for Small Viewport Widths */
+
+
+/* #endregion Hacked H1 */
+
+
+
+/* #region Hacked Paragraph */
+
+.hackedParagraph { /** Hacked Paragraph = This custom selector contains the custom text that serves as the "Just kidding..." message for this section and is the second child of the custom .hackedSection selector. */
+
+    bottom      : 0;                       /** This value was chosen to be used to position this selector in the very bottom of the viewport, with the idea behind this being to place this text opposite of the custom .hackedH1 selector leaving the middle of the page empty for showing the background image. */
+    font-family : 'Rubik Glitch', cursive; /** This value was chosen to be used because this font pairs nicely with GSAP glitch effect animation on this same element (as well as with the theme of this section in general), with the idea behind this being that the outlines of the text appearing in a zigzagging type of manner are aesthetically similar to the distortion effect of the glitch animation. */
+    font-size   : var( --fon-siz-xla );    /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    line-height : var( --fon-siz-xla );    /** This value was chosen to be used to set the line height equal to its corresponding font size, with the idea behind this being that it makes for better visual asthetics when used with short, one line text (headers especially). */
+    margin      : var( --sel-sha-mar );    /** This value was chosen to be used according to the details of the specified component scoped custom property. */
+    position    : absolute;                /** This value was chosen to be used to position this selector in the very bottom of the viewport, with the idea behind this being to place this text opposite of the custom .hackedH1 selector leaving the middle of the page empty for showing the background image. */
+    text-shadow : var( --sel-sha-tes );    /** This value was chosen to be used according to the details of the specified component scoped custom property. */
+
+}
+
+
+
+/* #region Media Query for Small Viewport Widths */
+
+@media ( max-width : 842.999px ) { /** Golden Ratio to the 14th Power = This custom media query selector targets all viewport widths below 843.000px. */
+
+
+    .hackedParagraph { /** Hacked Paragraph = This custom selector contains the custom text that serves as the "Just kidding..." message for this section and is the second child of the custom .hackedSection selector. */
+
+        font-size   : var( --fon-siz-xla ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+        line-height : var( --fon-siz-xla ); /** This value was chosen to be used to set the line height equal to its corresponding font size, with the idea behind this being that it makes for better visual asthetics when used with short, one line text (headers especially). */
 
     }
 
+
 }
+
+/* #endregion Media Query for Small Viewport Widths */
+
+
+/* #endregion Hacked Paragraph */
+
 
 /* #endregion Hacked Section */
 
@@ -135,101 +207,190 @@
 
 /* #region Snowfall Section */
 
-.snowfallSection {
+.snowfallSection { /** Snowfall section = This custom selector contains the custom .snowfallH1, .snowfallImage, and .snowfallParagraph selectors and is the third child of the custom .christmasCardDiv selector. */
 
-    background-image    : url( '../../assets/snowy-background.jpg' ); /* this is a cartoony, snowy scene with a small cabin and evergreen trees */
-    background-position : center;                                     /* this centers the background image within the section and is needed because of background-size : cover */
-    background-repeat   : no-repeat;                                  /* this prevents the background image from repeating in a tile like fashion and is needed because of background-size : cover */
-    background-size     : cover;                                      /* this makes sure the background image covers the entire section area */
-    color               : #FFFFFF;                                  /* this sets the text color to white for better contrast against the snowy background, and it pairs well with the snowy theme */
-    container-name      : snowfallSection;                            /* this allows the element to be referenced for creating a container query */
-    container-type      : inline-size;                                /* this allows children elements to size certain properties based on this element's dimensions */
-    grid-column         : 1;                                          /* this will make the sections stack on top of each other, because only one column is defined on the parent */
-    grid-row            : 1;                                          /* this will make the sections stack on top of each other, because only one row is defined on the parent */
-    opacity             : 0;                                          /* this needs to be set to 0 so that it does not cover the hacked section and will be animted to a value of 1 by the GSAP animation */
-    position            : relative;                                   /* this is needed for position : absolute to work on the .snowfallParagraph element */
-    z-index             : 2;                                          /* this needs to be set to 2 so that it is not covered up by the hacked section; the pixelated transition squares section will be set to 3 in order to overlay this (and all other) sections */
+    /* #region Selector Scoped Custom Properties */
+
+    /** These are technically section scoped but placing and labelling them here makes my intention clear that these are intended for use in this selector only. */
+
+    --bac-img-url : url( '../../assets/snowy-background.jpg' ); /** Background Image URL        = This custom property stores the cartoony, snowy cabin in the woods image, with the idea behind this being that the image matches the snowfall theme of this section. */
+    --sns-tex-col : var( --col-bac-lig );                       /** Snowfall Section Text Color = This custom property stores the white text color for this section using the specified global scoped prime custom property (for the light theme), with the idea behind this being that it matches the snowfall theme (snow <-> white) of this section. */
+
+    /* #endregion Selector Scoped Custom Properties */
+
+
+    background-image    : var( --bac-img-url ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    background-position : center;               /** This value was chosen to be used to center the background image, with the idea behind this being that because of the use of the background size cover value it will need to be repositioned to make sure the main part of the image is showing. */
+    background-repeat   : no-repeat;            /** This value was chosen to be used in order to prevent the background image from repeating in a tile like fashion. */
+    background-size     : cover;                /** This value was chosen to be used in order to makes sure that the background image covers the entirety of the section area. */
+    color               : var( --sns-tex-col ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    height              : 100vh;                /** This value was chosen to be used to set the height to 100% of the viewport height, with the idea behind this being that this digital card works best in fullscreen. */
+    left                : 0;                    /** This value was chosen to be used to position this selector in the very top left hand corner of the viewport, with the idea behind this being that this digital card works best in fullscreen. */
+    opacity             : 0;                    /** This value was chosen to be used because to visually hide this section on component mount, with the idea behind this being that this section needs to be hidden so that it does not cover the custom .hackedSection selector and then this property will be animted to a value of 1 by the GSAP timeline when it is time to show this selector. */
+    position            : fixed;                /** This value was chosen to be used to maintain a fixed position for this selector, with the idea behind this being that this digital card works best in fullscreen. */
+    z-index             : 1;                    /** This value was chosen to be used in order to overlay on top of the custom .hackedSection selector which has a z index of 0, with the idea behind this being that both this selector and the custom .pixelsContainerDiv selector need to be layered on top of the custom .hackedSection selector in order for the animations to run and display properly. */
+    text-align          : center;               /** This value was chosen to be used to horizontally center all of this selector's text, with the idea behind this being that it is more aesthetically pleasing when centered. */
+    top                 : 0;                    /** This value was chosen to be used to position this selector in the very top left hand corner of the viewport, with the idea behind this being that this digital card works best in fullscreen. */
+    width               : 100vw;                /** This value was chosen to be used to set the width to 100% of the viewport width, with the idea behind this being that this digital card works best in fullscreen. */
 
 }
 
-@container componentSection ( max-width: 550px ) { /* this container query adjusts the background image for smaller viewport widths (think portrait orientation on mobile), since said image's main draw is in the bottom right area */
 
-    .snowfallSection {
 
-        background-position : 90% 90%; /* this shifts the background image towards the bottom right for better composition on smaller viewports, since that is where the main draw of the image is at (and the center of the image is basically dead space) */
+/* #region Media Query for Small Viewport Widths */
+
+@media ( max-width : 842.999px ) { /** Golden Ratio to the 14th Power = This custom media query selector targets all viewport widths below 843.000px. */
+
+
+    .snowfallSection { /** Snowfall section = This custom selector contains the custom .snowfallH1, .snowfallImage, and .snowfallParagraph selectors and is the third child of the custom .christmasCardDiv selector. */
+
+        background-position : 90% 90%; /** This value was chosen to be used in order to shift the background image towards the bottom right'ish area for better composition on smaller viewport widths, with the idea behind this being that said positioning is where the main draw of the image is at and the center of the image is basically dead space. */
 
     }
 
-}
-
-.snowfallHeader1 {
-
-    font-family : 'Mountains of Christmas', cursive; /* this font pairs nicely with the Christmas theme, as it is a fun font reminiscent of a holiday cartoon (for some reason it made me think of the Grinch, though I'm not sure that is accurate =P) */
-    font-size   : 5cqw;                              /* this bases the text sizing on the container's (container-name : snowfallSection) dimensions */
-    line-height : 5cqw;                              /* this needs to match the font-size to ensure proper vertical alignment and spacing; the units are based on the container's (container-name : snowfallSection) dimensions */
-    text-shadow : #000000 3px 3px 6px;             /* this makes the text more legible in addition to giving it some depth and making it look like it overlays the background image, as opposed to being part of it */
 
 }
 
-.snowfallImage {
+/* #endregion Media Query for Small Viewport Widths */
 
-    bottom    : 0;               /* this aligns the element to the bottom of the .snowfallSection */
-    left      : 0;               /* this aligns the element to the left of the .snowfallSection */
-    padding   : 3cqw;            /* this adds padding, based on the container's (container-name : snowfallSection) dimensions, to ensure the image does not brush up against the edges */
-    position  : absolute;        /* this is needed so that the element can be positioned in the bottom left of the .snowfallSection */
-    transform : rotateZ( 7deg ); /* this rotates the image slightly to give it a more dynamic and festive appearance */
-    width     : 6rem;            /* this sets a width for the image, based on the root font size, to ensure it is appropriately sized within the section */
 
-}
 
-.snowfallParagraph {
+/* #region Snowfall H1 */
 
-    bottom      : 0;                            /* this aligns the element to the bottom of the .snowfallSectoin */
-    font-family : 'Gloria Hallelujah', cursive; /* this font is only for the 'name' text (the From text is styled via the .snowfallSpan class) and is a fun and casual handwritten style font, meant to mimic someone signing their name like they would for a physical letter or card */
-    font-size   : 3cqw;                         /* this bases the text sizing on the container's (container-name : snowfallSection) dimensions */
-    line-height : 3cqw;                         /* this needs to match the font-size to ensure proper vertical alignment and spacing; the units are based on the container's (container-name : snowfallSection) dimensions */
-    margin      : 0;                            /* this removes default margin around the paragraph element */
-    padding     : 0.333rem;                     /* this adds a slight amount padding, based on the root font size, for the paragraph element, mostly only needed for the bottom and right edges but I left it all around it just in case */
-    position    : absolute;                     /* this is needed so that the element can be positioned in the bottom right of the .snowfallSection */
-    right       : 0;                            /* this aligns the element to the right of the .snowfallSection */
-    text-shadow : #000000 3px 3px 6px;        /* this makes the text more legible in addition to giving it some depth and making it look like it overlays the background image, as opposed to being part of it */
+.snowfallH1 { /** Snowfall H1 = This custom selector contains the custom text that serves as the title for this section and is the first child of the custom .snowfallSection selector. */
+
+    font-family : 'Mountains of Christmas', cursive; /** This value was chosen to be used because this font pairs nicely with the snowfall theme, with the idea behind this being that the styling of the text is reminiscent of a whimsical, Christmas themed cartoon. */
+    font-size   : var( --hea-one-siz );              /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property. */
+    line-height : var( --hea-one-siz );              /** This value was chosen to be used to set the line height equal to its corresponding font size, with the idea behind this being that it makes for better visual asthetics when used with short, one line text (headers especially). */
+    margin      : var( --sel-sha-mar );              /** This value was chosen to be used according to the details of the specified component scoped custom property. */
+    text-shadow : var( --sel-sha-tes );              /** This value was chosen to be used according to the details of the specified component scoped custom property. */
 
 }
 
-.snowfallSpan {
 
-    font-family : 'Mountains of Christmas', cursive; /* this font is only for the 'From' text (the 'name' text is styled via the .snowfallParagraph class) and pairs nicely with the Christmas theme, as it is a fun font reminiscent of a holiday cartoon (for some reason it made me think of the Grinch, though I'm not sure that is accurate =P) */
-    font-size   : 3cqw;                              /* this bases the text sizing on the container's (container-name : snowfallSection) dimensions */
-    line-height : 3cqw;                              /* this needs to match the font-size to ensure proper vertical alignment and spacing; the units are based on the container's (container-name : snowfallSection) dimensions */
-    text-shadow : #000000 3px 3px 6px;             /* this makes the text more legible in addition to giving it some depth and making it look like it overlays the background image, as opposed to being part of it */
 
-}
+/* #region Media Query for Small Viewport Widths */
 
-@container snowfallSection ( max-width: 550px ) { /* this container query adjusts font sizes for smaller viewport widths (think portrait orientation on mobile), since container font size scaling did not work so well for said viewports (the font was way too small) */
+@media ( max-width : 842.999px ) { /** Golden Ratio to the 14th Power = This custom media query selector targets all viewport widths below 843.000px. */
 
-    .snowfallHeader1 {
 
-        font-size   : 8cqw; /* this bases the text sizing on the container's (container-name : snowfallSection) dimensions */
-        line-height : 8cqw; /* this needs to match the font-size to ensure proper vertical alignment and spacing; the units are based on the container's (container-name : snowfallSection) dimensions */
+    .snowfallH1 { /** Snowfall H1 = This custom selector contains the custom text that serves as the title for this section and is the first child of the custom .snowfallSection selector. */
+
+        font-size   : var( --hea-one-siz ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property. */
+        line-height : var( --hea-one-siz ); /** This value was chosen to be used to set the line height equal to its corresponding font size, with the idea behind this being that it makes for better visual asthetics when used with short, one line text (headers especially). */
 
     }
 
-    .snowfallParagraph {
-
-        font-size   : 5cqw; /* this bases the text sizing on the container's (container-name : snowfallSection) dimensions */
-        line-height : 5cqw; /* this needs to match the font-size to ensure proper vertical alignment and spacing; the units are based on the container's (container-name : snowfallSection) dimensions */
-
-    }
-
-    .snowfallSpan {
-
-        font-size   : 5cqw; /* this bases the text sizing on the container's (container-name : snowfallSection) dimensions */
-        line-height : 5cqw; /* this needs to match the font-size to ensure proper vertical alignment and spacing; the units are based on the container's (container-name : snowfallSection) dimensions */
-
-    }
 
 }
+
+/* #endregion Media Query for Small Viewport Widths */
+
+
+/* #endregion Snowfall H1 */
+
+
+
+/* #region Snowfall Image */
+
+.snowfallImg { /** Snowfall Image = This custom selector contains the custom image of a snowman and is the second child of the custom .snowfallSection selector. */
+
+    /* #region Selector Scoped Custom Properties */
+
+    --sno-img-rot : rotateZ( calc( pow( var( --golden-rati ), 4 ) * 1deg ) ); /** Snowfall Image Rotate ~= 6.854deg = This custom property stores the rotation of this selector's transform using the specified global scoped prime custom property, with the idea behind this being that a small rotation adds a touch of whimsy which pairs well with the fun, festive theme of this component. */
+
+    /* #endregion Selector Scoped Custom Properties */
+
+
+    bottom    : 0;                    /** This value was chosen to be used to position this selector in the very bottom left hand corner of the viewport, with the idea behind this being that this digital card works best in fullscreen. */
+    left      : 0;                    /** This value was chosen to be used to position this selector in the very bottom left hand corner of the viewport, with the idea behind this being that this digital card works best in fullscreen. */
+    margin    : var( --sel-sha-mar ); /** This value was chosen to be used according to the details of the specified component scoped custom property. */
+    position  : absolute;             /** This value was chosen to be used to position this selector in the very bottom left hand corner of the viewport, with the idea behind this being that this digital card works best in fullscreen. */
+    transform : var( --sno-img-rot ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    width     : var( --hor-rhy-max ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+
+}
+
+/* #endregion Snowfall Image */
+
+
+
+/* #region Snowfall Paragraph */
+
+.snowfallParagraph { /** Snowfall Paragraph = This custom selector contains the custom .snowfallSpan selector and the custom ' Mr. Awesome' text and is the third child of the custom .snowfallSection selector. */
+
+    bottom      : 0;                            /** This value was chosen to be used to position this selector in the very bottom right hand corner of the viewport, with the idea behind this being that this digital card works best in fullscreen. */
+    font-family : 'Gloria Hallelujah', cursive; /** This value was chosen to be used because this font pairs nicely with the greeting card theme, with the idea behind this being that the styling of the text is a handwritten style which this text is meant to imitate (From, <handwritten name>). */
+    font-size   : var( --fon-siz-xla );         /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    line-height : var( --fon-siz-xla );         /** This value was chosen to be used to set the line height equal to its corresponding font size, with the idea behind this being that it makes for better visual asthetics when used with short, one line text (headers especially). */
+    margin      : var( --sel-sha-mar );         /** This value was chosen to be used according to the details of the specified component scoped custom property. */
+    position    : absolute;                     /** This value was chosen to be used to position this selector in the very bottom right hand corner of the viewport, with the idea behind this being that this digital card works best in fullscreen. */
+    right       : 0;                            /** This value was chosen to be used to position this selector in the very bottom right hand corner of the viewport, with the idea behind this being that this digital card works best in fullscreen. */
+    text-shadow : var( --sel-sha-tes );         /** This value was chosen to be used according to the details of the specified component scoped custom property. */
+
+}
+
+
+
+/* #region Media Query for Small Viewport Widths */
+
+@media ( max-width : 842.999px ) { /** Golden Ratio to the 14th Power = This custom media query selector targets all viewport widths below 843.000px. */
+
+
+    .snowfallParagraph { /** Snowfall Paragraph = This custom selector contains the custom .snowfallSpan selector and the custom ' Mr. Awesome' text and is the third child of the custom .snowfallSection selector. */
+
+        font-size   : var( --fon-siz-xla ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+        line-height : var( --fon-siz-xla ); /** This value was chosen to be used to set the line height equal to its corresponding font size, with the idea behind this being that it makes for better visual asthetics when used with short, one line text (headers especially). */
+
+    }
+
+
+}
+
+/* #endregion Media Query for Small Viewport Widths */
+
+
+
+/* #region Snowfall Span */
+
+.snowfallSpan { /** Snowfall Span = This custom selector contains the custom 'From' text and is the first child of the custom .snowfallParagraph selector. */
+
+    font-family : 'Mountains of Christmas', cursive; /** This value was chosen to be used because this font pairs nicely with the snowfall theme, with the idea behind this being that the styling of the text is reminiscent of a whimsical, Christmas themed cartoon. */
+    font-size   : var( --fon-siz-xla );              /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    line-height : var( --fon-siz-xla );              /** This value was chosen to be used to set the line height equal to its corresponding font size, with the idea behind this being that it makes for better visual asthetics when used with short, one line text (headers especially). */
+    text-shadow : var( --sel-sha-tes );              /** This value was chosen to be used according to the details of the specified component scoped custom property. */
+
+}
+
+
+
+/* #region Media Query for Small Viewport Widths */
+
+@media ( max-width : 842.999px ) { /** Golden Ratio to the 14th Power = This custom media query selector targets all viewport widths below 843.000px. */
+
+
+    .snowfallSpan { /** Snowfall Span = This custom selector contains the custom 'From' text and is the first child of the custom .snowfallParagraph selector. */
+
+        font-size   : var( --fon-siz-xla ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+        line-height : var( --fon-siz-xla ); /** This value was chosen to be used to set the line height equal to its corresponding font size, with the idea behind this being that it makes for better visual asthetics when used with short, one line text (headers especially). */
+
+    }
+
+
+}
+
+/* #endregion Media Query for Small Viewport Widths */
+
+
+/* #endregion Snowfall Span */
+
+
+/* #endregion Snowfall Paragraph */
+
 
 /* #endregion Snowfall Section */
+
+
+/* #endregion Christmas Card Div */
 
 

@@ -1,120 +1,233 @@
 
-/* #region Nav Section */
+/* #region Navbar Nav */
+
+.navbarNav { /** Navbar Nav = This custom selector contains the custom .navbarDiv selector, is the custom #rooSecEle selector's first grid row, all three grid columns and is this component's root selector. */
+
+    /* #region Selector Scoped Custom Properties */
+
+    --nab-nav-gta :          /** Navbar Nav Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+        '.   navbarDiv   .'; /** This value was chosen to be used to contain the custom .navbarDiv selector within this selector grid's full height row, full width column, with the idea behind this being that there are empty spaces on either side that will line up the element with the site/app's main grid and at smaller viewport widths those empty spaces will be removed. */
+
+    --nab-nav-gtc : var( --hol-gra-gtc ); /** Navbar Div Grid Template Columns = 1920.000px @1920px width = This custom property stores the grid template columns value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that these columns need to align precisely with the site/app's main grid columns. */
+
+    /* #endregion Selector Scoped Custom Properties */
 
 
-/* Nav Section = This is the HTML Section element that acts as the root container for the navigation bar component. */
-.navSection {
-
-    background-color      : hsla( 0, 0%, 18%, 100% ); /* This color was chosen based on the background color of the dfault React + Vite installation, by increaing the light portion by 3%. This method, using hsla and changing only the light portion, is a great way to generate different shades of the same color. */
-    display               : grid;                       /* The CSS Grid was chosen as the layout method for the navigation bar content, mostly to remain consistent with the rest of the site/app but also for its powerful layout capabilities. */
-    grid-area             : navbar;                     /* The chosen grid area name corresponds to the grid area defined in the parent container of this component in App.css, allowing it to be properly placed within the overall site/app layout. */
-    grid-template-areas   : '. nav .';                  /* The grid area was chosen as my preferred method of placing grid items, as I find its visual definition and placement provides more clarity. It defines a single row grid with three columns, where the middle column is designated for the nav area (the actual navigation bar content) and the side columns are empty ('.') to create spacing on either side. */
-    grid-template-columns : 2fr 6fr 2fr;                /* The column fractions were chosen to create a balanced layout, with the navigation bar content taking up the majority of the space (6fr) and equal spacing on either side (2fr each) to center the content within the section. */
-    grid-template-rows    : 100%;                       /* A single row grid was chosen for the navigation bar, as it is a horizontal layout that does not require multiple rows. While technically this declaration could be left out, it is considered best practice to define it explicitly for clarity and maintainability. */
-    justify-content       : space-around;               /* This property was chosen to evenly distribute the navigation bar content within its grid area. */
-    padding               : 1rem;                       /* The padding was chosen to provide adequate spacing around the navigation bar content, ensuring it does not touch the edges of the section. */
-
-}
-
-
-/* #endregion Nav Section */
-
-
-
-/* #region Nav */
-
-
-/* Nav = This is the HTML Nav element that contains the logo and main navigation links. */
-.nav {
-
-    align-content         : center;        /* This property was chosen to vertically center the navigation bar content within its grid area. */
-    display               : grid;          /* The CSS Grid was chosen as the layout method for the navigation bar content, mostly to remain consistent with the rest of the site/app but also for its powerful layout capabilities. */
-    grid-area             : nav;           /* The chosen grid area name corresponds to the grid area defined in the parent container of this component in the above .navSection declaration, allowing it to be properly placed within the navigation bar component. */
-    grid-template-areas   : 'logo . ul';   /* The grid area was chosen as my preferred method of placing grid items, as I find its visual definition and placement provides more clarity. It defines a single row grid with three columns, where the first column is designated for the logo area (the logo and site/app name), the second column is empty ('.') to create spacing between the logo and navigation links, and the third column is designated for the ul area (the main navigation links). */
-    grid-template-columns : 2fr 5fr 3fr;   /* The column fractions were chosen to create a balanced layout, with the logo area taking up a moderate portion of the space (2fr), the spacing area in between (5fr) providing adequate separation with the navigation links area which take up a slightly larger portion (3fr). */
-    grid-template-rows    : 100%;          /* A single row grid was chosen for the navigation bar content, as it is a horizontal layout that does not require multiple rows. While technically this declaration could be left out, it is considered best practice to define it explicitly for clarity and maintainability. */
-    justify-content       : space-between; /* This property was chosen to distribute the navigation bar content within its grid area, placing the logo on the left and the navigation links on the right. */
+    background-color      : var( --col-nav-bac ); /** This value was chosen to be used according to the details of the specified global scoped prime custom property. */
+    column-gap            : var( --col-gap-max ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property, with the idea behind this being that these gaps need to align precisely with the site/app's main grid column gaps. */
+    display               : grid;                 /** This value was chosen to be used as the preferred layout method, with the idea behind this being that it provides powerful element placement and sizing capabilities. */
+    grid-area             : navbarNav;            /** This value was chosen to be used to place this selector within the custom #rooSecEle selector grid area's first row, all three columns. */
+    grid-template-areas   : var( --nab-nav-gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-columns : var( --nab-nav-gtc ); /** This value was chosen to be used according to the details of the specified selector scoped custom property, with the idea behind this being that these columns need to align precisely with the site/app's main grid columns. */
+    grid-template-rows    : 100%;                 /** This value was chosen to be used to fill columns using all available vertical space as defined by its parent, the custom #rooSecEle selector. */
+    height                : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom #rooSecEle selector. */
 
 }
 
 
-/* #endregion Nav */
+
+/* #region Media Query for Small Viewport Widths */
+
+@media ( max-width : 842.999px ) { /** Golden Ratio to the 14th Power = This custom media query selector targets all viewport widths below 843.000px. */
+
+
+    .navbarNav { /** Navbar Nav = This custom selector contains the custom .navbarDiv selector, is the custom #rooSecEle selector's first grid row, all three grid columns and is this component's root selector. */
+
+
+        /* #region Selector Scoped Custom Properties */
+
+        --nab-nav-gta :  /** Navbar Nav Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+            'navbarDiv'; /** This value was chosen to be used to contain the custom .navbarDiv selector within this selector grid's full height row, full width column, with the idea behind this being to remove the empty spaces for smaller viewport widths and let the navbar take up all available horizontal space. */
+
+        --nab-nav-gtc : 100%; /** Navbar Div Grid Template Columns = 1920.000px @1920px width = This custom property stores the grid template columns value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that at small viewport widths the navbar needs to take up all available horizontal space. */
+
+        /* #endregion Selector Scoped Custom Properties */
+
+
+    }
+
+
+}
+
+/* #endregion Media Query for Small Viewport Widths */
+
+
+
+/* #region Navbar Div */
+
+.navbarDiv { /** Navbar Div = This custom selector contains the custom .logoLink and .navbarUl selectors and is the custom .navbarNav selector's second grid column (the first and third columns are empty for spacing), only grid row. */
+
+    /* #region Selector Scoped Custom Properties */
+
+    --nav-div-gta :            /** Navbar Div Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+        'logoLink   navbarUl'; /** This value was chosen to be used to contain the custom .logoLink and .navbarUl selectors within this selector grid's full height row, two columns. */
+
+    --log-lin-col : var( --gri-col-med );                                           /** Logo Link Column                 ~=  165.750px @1920px width = This custom property stores the width of the custom .logoLink selector's column within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template columns custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --nav-div-gtc : var( --log-lin-col ) var( --nav-ul--col );                      /** Navbar Div Grid Template Columns ~= 1186.600px @1920px width = This custom property stores the grid template columns value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+    --nav-ul--col : calc( 100% - ( var( --log-lin-col ) + var( --col-gap-xla ) ) ); /** Navbar Ul Column                 ~=  904.217px @1920px width = This custom property stores the width of the custom .navbarUl selector's column within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template columns custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+
+    --nad-pad-pro : var( --pad-ver-sma ) var( --pad-hor-bas ); /** Navbar Div Padding Properties = This custom property stores all of the padding properties using the specified global scoped second derivative custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+
+    /* #endregion Selector Scoped Custom Properties */
+
+
+    align-items           : center;               /** This value was chosen to be used to vertically center the custom .logoLink and .navbarUl selectors within their grid areas, with the idea behind this being that the navbar's content is more aesthetically balanced and pleasing with equal spacing above and below it. */
+    column-gap            : var( --col-gap-xla ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property. */
+    display               : grid;                 /** This value was chosen to be used as the preferred layout method, with the idea behind this being that it provides powerful element placement and sizing capabilities. */
+    grid-area             : navbarDiv;            /** This value was chosen to be used to place this selector within the custom .navbarNav selector grid area's full height row, second column. */
+    grid-template-areas   : var( --nav-div-gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-columns : var( --nav-div-gtc ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-rows    : 100%;                 /** This value was chosen to be used to fill columns using all available vertical space as defined by its parent, the custom .navbarNav selector. */
+    height                : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .navbarNav selector. */
+    padding               : var( --nad-pad-pro ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+
+}
 
 
 
 /* #region Logo Link */
 
+.logoLink { /** Logo Link = This custom selector contains the custom .logoImg and .logoParagraph selectors and is the custom .navbarDiv selector's first grid column, only grid row. */
 
-/* Logo NavLink = This is the React Router NavLink element that contains the logo image and paragraph. */
-.logoNavLink {
+    /* #region Selector Scoped Custom Properties */
 
-    align-items           : center;    /* This property was chosen to vertically center the logo image and paragraph within their grid area. */
-    column-gap            : 1rem;      /* This property was chosen to provide adequate spacing between the logo image and the site/app name paragraph, ensuring they are visually distinct yet still closely associated. */
-    display               : grid;      /* The CSS Grid was chosen as the layout method for the logo content, mostly to remain consistent with the rest of the site/app but also for its powerful layout capabilities. */
-    grid-area             : logo;      /* The chosen grid area name corresponds to the grid area defined in the parent .nav declaration above, allowing it to be properly placed within the nav element. */
-    grid-template-areas   : 'img par'; /* The grid area was chosen as my preferred method of placing grid items, as I find its visual definition and placement provides more clarity. It defines a single row grid with two columns, where the first column is designated for the img area (the logo image) and the second column is designated for the par area (the site/app name paragraph text). */
-    grid-template-columns : 1fr 9fr;   /* The column fractions were chosen to create a balanced layout, with the logo image taking up a smaller portion of the space (1fr) and the site/app name paragraph taking up the majority of the space (9fr). */
-    grid-template-rows    : 100%;      /* A single row grid was chosen for the logo content, as it is a horizontal layout that does not require multiple rows. While technically this declaration could be left out, it is considered best practice to define it explicitly for clarity and maintainability. */
-    justify-items         : start;     /* This property was chosen to align the logo image and paragraph to the start (left side) of their respective grid areas, the reasoning behind that being that their parent container is the left most element in said container. */
+    --nav-div-gta :                /** Logo Link Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+        'logoImg   logoParagraph'; /** This value was chosen to be used to contain the custom .logoImg and .logoParagraph selectors within this selector grid's full height row, two columns. */
+
+    --log-img-col : var( --ver-rhy-bas );                                           /** Logo Image Column               ~=  25.250px @1920px width = This custom property stores the width of the custom .logoImg selector's column within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template columns custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --log-lin-gtc : var( --log-img-col ) var( --log-par-col );                      /** Logo Link Grid Template Columns ~= 165.750px @1920px width = This custom property stores the grid template columns value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+    --log-par-col : calc( 100% - ( var( --log-img-col ) + var( --col-gap-sma ) ) ); /** Logo Paragraph Column           ~= 124.250px @1920px width = This custom property stores the width of the custom .logoParagraph selector's column within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template columns custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+
+    /* #endregion Selector Scoped Custom Properties */
+
+
+    align-items           : center;               /** This value was chosen to be used to vertically center the custom .logoImg and .logoParagraph selectors within their grid areas, with the idea behind this being that the navbar's content is more aesthetically balanced and pleasing with equal spacing above and below it. */
+    column-gap            : var( --col-gap-sma ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property, with the idea behind this being that although this should be a large column gap (since its parent selector uses an extra large column gap) it doesn't make sense for these two columns to have such a large gap since they are very closely related (logo <-> site/app name). */
+    display               : grid;                 /** This value was chosen to be used as the preferred layout method, with the idea behind this being that it provides powerful element placement and sizing capabilities. */
+    grid-area             : logoLink;             /** This value was chosen to be used to place this selector within the custom .navbarDiv selector grid area's full height row, first column. */
+    grid-template-areas   : var( --nav-div-gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-columns : var( --log-lin-gtc ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-rows    : 100%;                 /** This value was chosen to be used to fill columns using all available vertical space as defined by its parent, the custom .navbarDiv selector. */
+    height                : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .navbarDiv selector. */
+
+}
+
+
+
+/* #region Logo Img */
+
+.logoImg { /** Logo Image = This custom selector contains the official React logo SVG and is the custom .logoLink selector's first grid column, only grid row. */
+
+    grid-area : logoImg;              /** This value was chosen to be used to place this selector within the custom .logoLink selector grid area's full height row, first column. */
+    height    : var( --ver-rhy-bas ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    width     : var( --hor-rhy-bas ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property, with the idea behind this being that since it is a square image that it should use a horizontal rhythm width that closely matches its vertical rhythm height. */
 
 }
 
-
-/* Logo Image = This is the image element that displays the logo. */
-.logoImg {
-
-    grid-area : img; /* This property was chosen to place the logo image within the img grid area defined in the parent .logoNavLink declaration above. */
-
-}
+/* #endregion Logo Img */
 
 
-/* Logo Paragraph = This is the paragraph element that displays the site/app name text alongside the logo image. */
-.logoParagraph {
 
-    grid-area : par; /* This property was chosen to place the logo paragraph within the par grid area defined in the parent .logoNavLink declaration above. */
+/* #region Logo Paragraph */
+
+.logoParagraph { /** Logo Paragraph = This custom selector contains the custom text for the site/app name and is the custom .logoLink selector's second grid column, only grid row. */
+
+    align-content : center;        /** This value was chosen to be used to vertically center the custom text inside of this selector within its content box, with the idea behind this being that the navbar's content is more aesthetically balanced and pleasing with equal spacing above and below it. */
+    grid-area     : logoParagraph; /** This value was chosen to be used to place this selector within the custom .logoLink selector grid area's full height row, second column. */
+    height        : 100%;          /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .logoLink selector. */
 
 }
+
+/* #endregion Logo Paragraph */
 
 
 /* #endregion Logo Link */
 
 
 
-/* #region List Links */
+/* #region Navbar Ul */
+
+.navbarUl { /** Navbar Unordered List = This custom selector contains the custom .homeLi, .aboutLi and .contactLi selectors and is the custom .navbarDiv selector's second grid column, only grid row. */
+
+    /* #region Selector Scoped Custom Properties */
+
+    --nav-ul--gta :                     /** Navbar UL Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+        'homeLi   aboutLi   contactLi'; /** This value was chosen to be used to contain the custom .homeLi, .aboutLi and .contactLi selectors within this selector grid's full height row, three columns. */
+
+    --nav-ul--gtc : repeat( 3, calc( 33.333% - var( --col-gap-lar ) ) ); /** Navbar Ul Grid Template Columns ~= 904.217px @1920px width = This custom property stores the grid template columns value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+
+    /* #endregion Selector Scoped Custom Properties */
 
 
-/* Unordered List = This is the HTML unordered list element that contains the main navigation links. */
-.unorderedList {
-
-    display               : grid;             /* The CSS Grid was chosen as the layout method for the navigation links, mostly to remain consistent with the rest of the site/app but also for its powerful layout capabilities. */
-    gap                   : 1rem;             /* This property was chosen to provide adequate spacing between each navigation link within the unordered list, ensuring they are visually distinct and easy to interact with. */
-    grid-area             : ul;               /* The chosen grid area name corresponds to the grid area defined in the parent .nav declaration above, allowing it to be properly placed within the nav element. */
-    grid-template-columns : repeat( 3, 1fr ); /* This property was chosen to create three equal width columns within the unordered list, allowing each of the navigation links equal space. */
-    grid-template-rows    : 100%;             /* A single row grid was chosen for the navigation links, as they are arranged horizontally in a single row. While technically this declaration could be left out, it is considered best practice to define it explicitly for clarity and maintainability. */
-    list-style-type       : none !important;  /* This property was chosen to remove the default bullet points from the unordered list. I know using !important is bad practice, but I tried removing them every other way before resorting to this method. */
-    justify-content       : space-around;     /* This property was chosen to evenly distribute the navigation links within the unordered list. */
-
-}
-
-
-/* NavLink = This is the React Router NavLink element that represents each individual navigation link within the unordered list. */
-.navLink {
-
-    text-shadow : 0px 0px 0px hsla( 0, 0%, 100%, 0% ); /* This initial text shadow was chosen to set the size to zero and be fully transparent, effectively making it invisible. This sets the stage for the hover effect, where the text shadow will become visible and create a glowing effect around the text. I prefer using hsla for its flexibility in creating different variations of color by adjusting only the light portion of the value. */
-    transition  : text-shadow 0.3s ease-in-out;          /* This property was chosen to create a smooth transition effect when the text shadow changes on hover. */
-
-}
-
-
-/* NavLink Hover Effect = This defines the hover effect for each navigation link, changing the text color and adding a glowing text shadow. */
-.navLink:hover {
-
-    color       : hsla( 0, 0%, 100%, 100% );             /* This color was chosen to make the text fully white on hover, further enhancing the visual indicator when a link is being hovered over. I prefer using hsla for its flexibility in creating different variations of color by adjusting only the light portion of the value. */
-    text-shadow : 0px 0px 9px hsla( 0, 0%, 100%, 100% ); /* This text shadow was chosen to create a glowing effect around the text when hovered over, creating a strong visual indicator when a link is being hovered over. I prefer using hsla for its flexibility in creating different variations of color by adjusting only the light portion of the value. */
+    column-gap            : var( --col-gap-lar ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property. */
+    display               : grid;                 /** This value was chosen to be used as the preferred layout method, with the idea behind this being that it provides powerful element placement and sizing capabilities. */
+    grid-area             : navbarUl;             /** This value was chosen to be used to place this selector within the custom .navbarDiv selector grid area's full height row, second column. */
+    grid-template-areas   : var( --nav-ul--gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-columns : var( --nav-ul--gtc ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-rows    : 100%;                 /** This value was chosen to be used to fill columns using all available vertical space as defined by its parent, the custom .navbarDiv selector. */
+    height                : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .navbarDiv selector. */
+    justify-content       : end;                  /** This value was chosen to be used to horizontally align the custom .homeLi, .aboutLi and .contactLi selectors to the right side of their grid areas, with the idea behind this being to align them to the right side of the navbar and leave the navbar's biggest empty space between them and the site/app logo and name on the left side. */
 
 }
 
 
-/* #endregion List Links */
+
+/* #region Navbar List Items */
+
+.navbarListItems { /** Navbar List Items = These custom selectors contain the shared styles for the custom .homeLi, .aboutLi and .contactLi selectors and are the custom .navbarUl selector's first, second and third grid columns respectively, only grid row. */
+
+    align-self : center; /** This value was chosen to be used to vertically center the custom .homeLi, .aboutLi and .contactLi selectors within their grid areas, with the idea behind this being that the navbar's content is more aesthetically balanced and pleasing with equal spacing above and below it. */
+    text-align : right;  /** This value was chosen to horizontally align the custom link text to the right side of their content boxes, with the idea behind this being that the justify items/content property will not work since this selector's width is seto to 100% in order to fully fill out its grid space. */
+    width      : 100%;   /** This value was chosen to be used to fill all available horizontal space as defined by its parent, the custom .navbarUl selector. */
+
+}
+
+
+
+/* #region Home List Item */
+
+.homeLi { /** Home List Item = This custom selector contains the custom .homeLi selector and is the custom .navbarUl selector's first grid column, only grid row. */
+
+    grid-area : homeLi; /** This value was chosen to place this selector within the custom .navbarUl selector grid area's first column, full height row. */
+
+}
+
+/* #endregion Home List Item */
+
+
+
+/* #region About List Item */
+
+.aboutLi { /** About List Item = This custom selector contains the custom .aboutLi selector and is the custom .navbarUl selector's second grid column, only grid row. */
+
+    grid-area : aboutLi; /** This value was chosen to place this selector within the custom .navbarUl selector grid area's second column, full height row. */
+
+}
+
+/* #endregion About List Item */
+
+
+
+/* #region Contact List Item */
+
+.contactLi { /** Contact List Item = This custom selector contains the custom .contactLi selector and is the custom .navbarUl selector's third grid column, only grid row. */
+
+    grid-area : contactLi; /** This value was chosen to place this selector within the custom .navbarUl selector grid area's third column, full height row. */
+
+}
+
+/* #endregion Contact List Item */
+
+
+/* #endregion Navbar List Items */
+
+
+/* #endregion Navbar Ul */
+
+
+/* #endregion Navbar Div */
+
+
+/* #endregion Navbar Nav */
 
 

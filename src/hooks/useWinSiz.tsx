@@ -1,63 +1,90 @@
 
 // #region Imports
 
-import { useEffect } from 'react'; /** Use Effect = This is the React useEffect() hook that will handle side effects in functional components (when certain code should be run and/or re-run based on changes to specific dependencies). */
-import { useState }  from 'react'; /** Use state  = This is the React useState() hook that enables state management in functional components. */
+import { useEffect } from 'react'; /** This import is the standard React hook that enables side effects for components. */
+import { useState  } from 'react'; /** This import is the standard React hook that enables state management in functional components. */
 
 // #endregion Imports
 
 
 
+// #region Function Type Definitions
+
+/** Use Window Size = This custom type stores the type that will be used for the custom {@link useWinSiz} function. */
+type UseWinSiz      =  () => WinSizObj;
+
+
+
 /**
- * useWinSiz = Use Window Size Hook Function
+ * Window Size Object = This custom type stores the types that will be used for the custom {@link winSizObj} state variable and is exported for use in any component that said variable is required.
+ * 
+ * @property winHeiNum = Window Height Number custom property stores the type that will be used for the custom {@link winSizObj.winHeiNum} property.
+ * @property winWidNum = Window Width Number custom property stores the type that will be used for the custom {@link winSizObj.winWidNum} property.
+ *
+*/
+
+export type WinSizObj = {
+
+    winHeiNum : number;
+    winWidNum : number;
+
+};
+
+
+// #endregion Function Type Definitions
+
+
+
+// #region useWinSiz
+
+/**
+ * useWinSiz = Use Window Size
  *
  * @summary
- * This custom React hook function is designed to provide the current window
- * viewport dimensions (height and width) and to update these values whenever
- * the window is resized. It utilizes the {@link useState} hook to manage the
- * state of the window dimensions and the {@link useEffect} hook to set up an
- * event listener for window resize events.
+ * This custom React hook executes the logic that is intended to provide the
+ * current window viewport dimensions (height and width), and to update these
+ * values whenever the window is resized. It utilizes the standard React
+ * {@link useState} hook to manage the state of the window dimensions and the
+ * standard React {@link useEffect} hook to set up an event listener for window
+ * resize events.
  *
- * @author z4ntao <https://github.com/z4nta0>
+ * @author z4nta0 <https://github.com/z4nta0>
  * 
  * @param void - This function takes no parameters.
  * 
- * @returns The winSizSta state object containing the current window height and width in pixels.
- * @see {@link winSizSta}
+ * @returns The winSizObj state object containing the current window height and width numbers in pixels.
+ * @see {@link winSizObj}
  * 
  * @example
  * ```ts
- * const { winHeiNum, winWidNum } = useWinSiz();
+ * useWinSiz() // => winSizObj;
  * ```
  *
 */
 
-const useWinSiz = () => {
-
+const useWinSiz : UseWinSiz = () => {
 
 
     // #region Function Scoped Variables
 
 
+    // #region State Variables
+
+
     // #region iniStaObj
 
+    /** Initial State Object = This custom type stores the custom {@link WinSizObj} type. I mirrored this type here because I wanted to make it clear in the declared types below that this object represents the initial state for the custom {@link winSizObj} state variable. */
+    type IniStaObj           = WinSizObj;
+
+
     /**
-     * IniSetObj = Initial State Object will store the values that will trigger rerenders when their values change. They can also be added to a component's useEffect() dependency array in order to re-run specific code on window resize events.
-     * @see {@link iniStaObj}
+     * Initial Size Object = This custom object stores the properties that are provided to the standard React {@link useState} function and are used to trigger rerenders when their values change. These values are commonly added to a component's standard React {@link useEffect} hook dependency array in order to re-run specific code on window resize events.
      * 
-     * @property winHeiNum = Window Height Number will store the current height of the browser window viewport in pixels.
-     * @property winWidNum = Window Width Number will store the current width of the browser window viewport in pixels.
+     * @property winHeiNum = Window Height Number custom property stores the current height number of the browser window viewport value, in pixels.
+     * @property winWidNum = Window Width Number custom property stores the current width number of the browser window viewport value, in pixels.
      *
     */
 
-    type IniStaObj = {
-
-        winHeiNum : number;
-        winWidNum : number;
-
-    };
-
-    /** @see {@link IniStaObj} */
     const iniStaObj : IniStaObj = {
 
         winHeiNum : window.innerHeight,
@@ -68,15 +95,24 @@ const useWinSiz = () => {
     // #endregion iniStaObj
 
 
-    /** Window Size State         = This will store the winHeiNum and winWidNum property values and this object shares the exact same structure as the {@link iniStaObj} object. */
-    type WinSizSta                = IniStaObj;
-    /** Use State Function Return = This will store the standard array that is returned by the {@link useState} hook, and it will contain the {@link winSizSta} state variable object and the setter function used to update said state variable object. */
-    type UseStaFunRet             = [ WinSizSta, SetWinSizSta ];
-    /** Set Window Size State     = This custom state setter function will be used to update the {@link winSizSta} state variable object inside of the {@link useEffect} hook whenever the window is resized. */
-    type SetWinSizSta             = React.Dispatch<React.SetStateAction<IniStaObj>>;
 
-    /** These are the state object variable and setter function returned by the useState() hook. The setter is used inside of the {@link useEffect} hook to update the state variable object whenever the window is resized, and the state variable object is what is returned by this custom hook function. */
-    const [ winSizSta, setWinSizSta ] : UseStaFunRet = useState( iniStaObj );
+    /** Set Window Size Obj       = This custom type stores the type that will be used for the custom {@link setWinSizObj} state setter function. */
+    type SetWinSizObj             = React.Dispatch< React.SetStateAction< IniStaObj > >;
+    /** Use State Function Return = This custom type stores the types that will be returned from the standard React {@link useState} hook. */
+    type UseStaFunRet             = [ WinSizObj, SetWinSizObj ];
+
+
+
+    // #region State Initialization
+
+    /** Window Size Object                           = This custom object stores the custom state variable that mirrors the custom {@link iniStaObj} object and is returned by the standard React {@link useState} hook. */
+    /** Set Window Size Object                       = This custom variable stores the custom state setter function returned by the standard React {@link useState} hook, and it is used inside of the standard React {@link useEffect} hook to execute updates to the custom {@link winSizObj} state variable whenever the window is resized. */
+    const [ winSizObj, setWinSizObj ] : UseStaFunRet = useState< WinSizObj >( iniStaObj );
+
+    // #endregion State Initialization
+
+
+    // #endregion State Variables
 
 
     // #endregion Function Scoped Variables
@@ -89,19 +125,19 @@ const useWinSiz = () => {
      * useEffect Hook
      *
      * @summary
-     * The useEffect hook in React allows you to perform side effects in
-     * functional components, such as data fetching, subscriptions, or manual
-     * DOM manipulation. It serves to synchronize a component with external
-     * systems. The custom inner code blocks inside of useEffect will handle
-     * setting the {@link winSizSta} state object values via the
-     * {@link setWinSizSta} setter function by attaching an event listener to
-     * the window's resize event. A function will then be returned by useEffect
-     * so that said listener can be removed whenever the component unmounts.
-     * The empty dependency array ensures this effect runs only once when the
-     * component mounts.
-     *
+     * This standard React hook executes side effects for functional
+     * components, such as data fetching, subscriptions, or manual DOM
+     * manipulation. It serves to synchronize a component with external
+     * systems. The custom inner code blocks inside will set up the custom
+     * {@link handleResizeWinFun} function that will update the custom
+     * {@link winSizObj} state object whenever the window is resized. It will
+     * then attach said function as an event listener to the window's resize
+     * event. Finally, it will return a cleanup function that will remove the
+     * event listener. The empty dependency array ensures this effect runs only
+     * once when the component mounts.
+     * 
      * @author React  <https://react.dev/reference/react/useEffect>
-     * @author z4ntao <https://github.com/z4nta0>
+     * @author z4nta0 <https://github.com/z4nta0>
      *
      * @param void - This function takes no parameters.
      *
@@ -110,7 +146,7 @@ const useWinSiz = () => {
      * @example
      * ```ts
      * This function is not called directly, but rather it is run on component
-     * mount and on changes to whatever state variables are specified in the
+     * mount and on changes to whatever variables are specified in the
      * dependency array.
      * ```
      *
@@ -119,38 +155,31 @@ const useWinSiz = () => {
     useEffect( () => {
 
 
-        // #region hanResFun
+        // #region handleResizeWinFun
 
 
         // #region Function Type Declarations
 
-        /** Handle Resize Function = This function will handle updating the {@link winSizSta} state object by calling the {@link setWinSizSta} setter function whenever the window is resized. */
-        type HanResFun = () => void;
+        /** Handle Resize Window Function = This custom type stores type of the custom {@link handleResizeWinFun} function. */
+        type HandleResizeWinFun           = () => void;
 
         // #endregion Function Type Declarations
 
 
-        // #region Function Body
 
         /**
-         * cleSnoFun = Clear Snowfall Function
-         * @see {@link CleSnoFun}
+         * handleResizeWinFun = Handle Resize Window Function
+         * @see {@link HandleResizeWinFun}
          *
          * @summary
-         * This will remove all snowflake HTML elements from the DOM that were
-         * created from the previous snowfall animation, empty the component scoped
-         * {@link posSnoArr} array and then clear the previous animation's timeout
-         * interval that is stored in the component scoped {@link setTimFun}. This
-         * function is called inside of {@link useEffect}, which itself is called
-         * when the component is first mounted and whenever the window is resized.
+         * This custom function executes the logic that will update the custom
+         * {@link winSizObj} state object by calling the custom
+         * {@link setWinSizObj} state setter function whenever the window is
+         * resized. It retrieves the current window inner height and width
+         * values from the standard JS Window object and sets those values
+         * accordingly.
          *
-         * The original code for the entire snowfall animation came from a very
-         * old Codecademy tutorial (minified code linked below) that is no longer
-         * available on their site. I have since heavily modified and adapted the
-         * code to work inside of a React functional component using Typescript.
-         *
-         * @author Original Code <https://s3.amazonaws.com/codecademy-content/courses/holiday-cards/snowfall.min.js>
-         * @author z4ntao        <https://github.com/z4nta0>
+         * @author z4nta0 <https://github.com/z4nta0>
          *
          * @param void - This function takes no parameters.
          *
@@ -158,50 +187,50 @@ const useWinSiz = () => {
          *
          * @example
          * ```ts
-         * hanResFun() // => void
+         * handleResizeWinFun() // => void
          * ```
          *
         */
 
-        const hanResFun : HanResFun = () => {
+        const handleResizeWinFun : HandleResizeWinFun = () => {
 
-            /** This is the custom state setter function that will set the {@link winSizSta} state object values. */
-            setWinSizSta({
 
-                winHeiNum : window.innerHeight, /** This sets the Window Height Number state variable equal to the window viewport's inner height value. */
-                winWidNum : window.innerWidth,  /** This sets the Window Width Number state variable equal to the window viewport's inner width value. */
+            /** Set Window Size Object = This custom state setter function executes the updates to the custom {@link winSizObj} state object. */
+            setWinSizObj({
+
+                winHeiNum : window.innerHeight, /** Window Height Number = This custom property stores the custom state object's window height number equal to the standard JS Window object's inner height value. */
+                winWidNum : window.innerWidth,  /** Window Width Number  = This custom property stores the custom state object's window width number equal to the standard JS Window object's inner width value. */
 
             });
 
+
         };
 
-        // #endregion Function Body
-
-
-        // #endregion hanResFun
+        // #endregion handleResizeWinFun
 
 
 
-        /** This attaches the handle resize function as an event listener to the window's resize event so that the {@link winSizSta} state object is updated whenever the window is resized. */
-        window.addEventListener( 'resize', hanResFun );
+        /** Window Add Event Listener = This standard JS Window object method executes the attachment of the custom handle resize window function as an event listener to the standard JS Window object's resize event, so that the custom {@link winSizObj} state object can be updated whenever the window is resized. */
+        window.addEventListener( 'resize', handleResizeWinFun );
 
 
 
         // #region Return Statement
 
-        /** This cleanup function removes the handle resize event listener from the window when the component unmounts in order to prevent memory leaks. */
-        return () => {
+        /** Anonymous Function = This custom function executes the removal of the previously set custom handle resize window function as an event listener on the standard JS Window object's resize event, when the component unmounts in order to prevent memory leaks. */
+        return () : void => {
 
-            /** This will remove the previously attached event listener whenever the component unmounts in order to prevent memory leaks. */
-            window.removeEventListener( 'resize', hanResFun );
+
+            /** Window Remove Event Listener = This standard JS Window object method executes the removal of the custom handle resize window function as an event listener from the standard JS Window object's resize event, when the component unmounts in order to prevent memory leaks. */
+            window.removeEventListener( 'resize', handleResizeWinFun );
+
 
         };
 
         // #endregion Return Statement
 
 
-
-    }, [] ); /** This defines when useEffect() should be run. An empty dependency array ensures this hook will run only once when the component mounts. */
+    }, [] ); /** Empty Aray = This custom dependency array stores the values that define when useGSAP should be run, with an empty dependency array ensuring that this hook will run only once when the component mounts. */
 
     // #endregion useEffect
 
@@ -209,12 +238,14 @@ const useWinSiz = () => {
 
     // #region Return Statement
 
-    /** This returns the current window size state object wherever this custom hook is called, and it can be destructured to access the individual width and height values like so const { winHeiNum, winWidNum } = useWinSiz(). */
-    return winSizSta;
+    return winSizObj;
 
     // #endregion Return Statement
 
+
 };
+
+// #endregion useWinSiz
 
 
 

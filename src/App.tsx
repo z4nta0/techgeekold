@@ -1,37 +1,41 @@
 
 // #region Imports
 
-import   About            from './components/AboPagCom/AboPagCom.tsx';     /** This is the component that will return the About component when navigated to by React Router. */
-import   styles           from './App.module.css';                         /** This is CSS file that contains all styling for this component. */
-import { BrowserRouter  } from 'react-router-dom';                         /** This is the standard import for React Router DOM's routing components, it uses the HTML5 history API (pushState, replaceState, etc.) to keep the UI in sync with the URL resulting in clean, standard URLs. */
-import   ChristmasCard    from './components/ChristmasCard/ChrCarCom.tsx'; /** This is the component that will return the Christmas Card component when navigated to by React Router. */
-import   Contact          from './components/ConPagCom/ConPagCom.tsx';     /** This is the component that will return the Contact component when navigated to by React Router. */
-import   FooBarCom        from './components/FooBarCom/FooBarCom.tsx';     /** This is the component that will return the Footer component, which is rendered on every page and contains the copyright information. */
-import   Home             from './components/HomPagCom/HomPagCom.tsx';     /** This is the component that will return the Home component when navigated to by React Router. */
-import   NavBarComCon     from './components/NavBar/NavBarComCon';         /** This is the component that will return the Navigation Bar component, which is rendered on every page and contains the links to navigate between pages. */
-import { type RooStaObj } from './store.tsx';                              /** This is the custom Typescript type definition for the entire state object of the Redux store, which is inferred by the store's getState method inside of store.tsx. This type is used to properly type the state object that is passed as a prop to components and will also be imported on said components that have use of the state object but do not need to use the useSelector hook. */
-import { Route          } from 'react-router-dom';                         /** This is a React Router fundamental element used to declaratively render specific UI components when the application's current URL matches a defined path. It acts as a bridge between the URL and the user interface. */
-import { Routes         } from 'react-router-dom';                         /** This is a React Router element that acts as a container for all route definitions, ensuring only one route is rendered at a time. */
-import { type UseAppDis } from './hooks/useAppDis.ts';                     /** This is the custom React hook that provides access to the Redux store's dispatch function with proper TypeScript typing, specifically for working with thunk actions. */
-import { type UseAppThu } from './hooks/useAppThu.ts';                     /** This is the custom React hook that provides access to the Redux store's dispatch function with proper TypeScript typing. */
+import About         from './components/AboPagCom/AboPagCom.tsx';     /** This import is the custom component that will return the About page when navigated to by React Router. */
+import ChristmasCard from './components/ChristmasCard/ChrCarCom.tsx'; /** This import is the custom component that will return the Christmas Card page when navigated to by React Router. */
+import Contact       from './components/ConPagCom/ConPagCom.tsx';     /** This import is the custom component that will return the Contact page when navigated to by React Router. */
+import FooBarCom     from './components/FooBarCom/FooBarCom.tsx';     /** This import is the custom component that will return the Footer Bar, which is rendered on every page and contains the copyright information. */
+import Home          from './components/HomPagCom/HomPagCom.tsx';     /** This import is the custom component that will return the Home page when navigated to by React Router. */
+import NavBarComCon  from './components/NavBar/NavBarComCon.tsx';     /** This import is the custom component that will return the Navigation Bar, which is rendered on every page and contains the links to navigate between pages. */
+import styles        from './App.module.css';                         /** This import is the custom CSS file that contains all of the styling declarations for this component. */
+
+
+import { BrowserRouter } from 'react-router-dom'; /** This import is the standard React Router element for the DOM's routing components, using the HTML5 history API (pushState, replaceState, etc.) to keep the UI in sync with the URL resulting in clean, standard URLs. */
+import { Route         } from 'react-router-dom'; /** This import is the standard React Router element that is used to declaratively render specific UI components when the application's current URL matches a defined path, acting as a bridge between the URL and the user interface. */
+import { Routes        } from 'react-router-dom'; /** This import is the standard React Router element that acts as a container for all route definitions, ensuring only one route is rendered at a time. */
+
+
+import { type RooStaObj } from './store.tsx';          /** This import is the custom type definition for the entire state object of the custom React Redux Toolkit store, which is inferred by the store's standard getState method. */
+import { type UseAppDis } from './hooks/useAppDis.ts'; /** This import is the custom type definition for the custom React hook that acts as a wrapper around the standard React Redux store dispatch function. */
+import { type UseAppThu } from './hooks/useAppThu.ts'; /** This import is the custom type definition for the custom React hook that acts as a wrapper around the standard React Redux store dispatch function, this one designed specifically for working with thunk actions. */
 
 // #endregion Imports
 
 
 
-// #region AppProObj
+// #region AppRooComPro
 
 /**
- * AppRooComPro = App Root Component Props will store the properties and values that are passed into the App component from main.tsx.
- * 
- * @property disFun = Dispatch Function will store the custom hook from the utilities directory that wraps the standard dispatch function of the Redux store.
- * @property namStr = Name String will store the site/app name that will be displayed in various parts of the site/app.
- * @property staObj = State Object will store all the entire state of the application as inferred by the Redux store's getState method inside of store.tsx. It is best practice to use the useSelector hook from React Redux to access specific slices of the state object within components but this is preferrable in some, select use cases.
- * @property thuFun = Thunk Function will store the custom hook from the utilities directory that wraps the standard dispatch function of the Redux store, but with proper TypeScript typing for thunk actions.
- * 
+ * App Root Component Props = This custom type stores the types that will be used for the custom props that are passed into this custom component.
+ *
+ * @property disFun = Dispatch Function custom property stores the type that will be used for the custom {@link disFun} variable.
+ * @property namStr = Name String custom property stores the type that will be used for the custom {@link namStr} variable.
+ * @property staObj = State Object custom property stores the type that will be used for the custom {@link staObj} variable.
+ * @property thuFun = Thunk Function custom property stores the type that will be used for the custom {@link thuFun} variable.
+ *
 */
 
-interface AppRooComPro {
+type AppRooComPro = {
 
     disFun : UseAppDis;
     namStr : string;
@@ -40,33 +44,38 @@ interface AppRooComPro {
 
 };
 
-// #endregion AppProObj
+// #endregion AppRooComPro
 
 
+
+// #region AppRooCom
 
 /**
  * AppRooCom = App Root Component
  *
  * @summary
- * This functional component is the root component of the entire site/app where
- * the core routing structure is setup. It acts as the container for the
- * router, footer, navigation links and the components that are rendered based
- * on the current URL.
+ * This custom functional component executes the root logic of and renders the
+ * root JSX of the site/app. The React Router structure is set up here, and
+ * acts as the core of the site/app for routing all requested paths to the
+ * specified custom components. Said custom components will then be rendered
+ * inside of the <main> HTML element. In addition, this component will render
+ * any custom components that should always be displayed on all pages. For this
+ * site/app, that includes the navigation and footer bars.
  *
  * @author React Router <https://reactrouter.com/>
- * @author z4ntao       <https://github.com/z4nta0>
+ * @author z4nta0       <https://github.com/z4nta0>
  * 
- * @param props.disFun - {@link ProObj.disFun}
- * @param props.namStr - {@link ProObj.namStr}
- * @param props.staObj - {@link ProObj.staObj}
- * @param props.thuFun - {@link ProObj.thuFun}
+ * @param props.disFun - {@link disFun}
+ * @param props.namStr - {@link namStr}
+ * @param props.staObj - {@link staObj}
+ * @param props.thuFun - {@link thuFun}
  * 
  * @returns A React JSX element representing the App component.
  * @see {@link appRooComJsx}
  * 
  * @example
  * ```tsx
- * <App /> // => <Router> ... </Router>
+ * <App /> // => appRooComJsx
  * ```
  *
 */
@@ -79,16 +88,16 @@ function AppRooCom( props : AppRooComPro ) : React.ReactElement {
 
     // #region Props Variables
 
-    /** Dispatch Function = {@link AppRooComPro.disFun} */
-    const { disFun }      = props;
-    /** Name String       = {@link AppRooComPro.namStr} */
-    const { namStr }      = props;
-    /** State Object      = {@link AppRooComPro.staObj} */
-    const { staObj }      = props;
-    /** Thunk Function    = {@link AppRooComPro.thuFun} */
-    const { thuFun }      = props;
+    /** Dispatch Function    = This custom variable stores the custom React hook from the utilities directory that wraps the standard React Redux store dispatch function. */
+    const disFun : UseAppDis = props.disFun;
+    /** Name String          = This custom variable stores the site/app name that will be displayed in various parts of the site/app. */
+    const namStr : string    = props.namStr;
+    /** State Object         = This custom variable stores the entire state object of the site/app as inferred by the standard React Redux store getState method. */
+    const staObj : RooStaObj = props.staObj;
+    /** Thunk Function       = This custom variable stores the custom React hook from the utilities directory that wraps the standard React Redux store dispatch function but with proper typing specifically for thunk actions. */
+    const thuFun : UseAppThu = props.thuFun;
 
-    // #region Props Variables
+    // #endregion Props Variables
 
 
     // #endregion Component Scoped Variables
@@ -97,40 +106,42 @@ function AppRooCom( props : AppRooComPro ) : React.ReactElement {
 
     // #region Return Statement
 
-
-    /** App Root Component Javascript XML   = This stores the HTML like code that the App Root Component will render when called by main.tsx. I prefer to store this in a variable so that the variable can be referenced inside of comments in the other sections of the component. */
+    /** App Root Component Javascript XML   = This custom variable stores the HTML like code that this component will render when called by its parent component. I prefer to store this in a variable before being returned so that it can be referenced inside of comments in the other sections of this component. */
     const appRooComJsx : React.ReactElement = (
 
 
-        // #region BrowserRouter Component
+        // #region BrowserRouter Element
 
-        < BrowserRouter > { /** The BrowserRouter is a core component of React Router that enables client side routing in React applications using clean URLs, manages browser history using the HTML5 history API, and provides routing context by making all the routing functionality (like the useParams, useNavigate hooks, and <Link> components) available to the entire site/app. */ }
+        <  BrowserRouter > { /** BrowserRouter = This standard React Router element is the root HTML element and container for this component since React requires the JSX to return a single root element. It enables client side routing in React applications using clean URLs, manages browser history using the HTML5 history API, and provides routing context by making all the routing functionality (like the useParams, useNavigate hooks, and <Link> components) available to the entire site/app. */ }
 
 
-            { /* Start NavBarComCon Component */ }
+            { /* Start NavBarComCon Element */ }
 
-            < NavBarComCon namStr={ namStr } staObj={ staObj } disFun={ disFun } /> { /* Navigation Bar Component Container = This is the component container for the Navigation Bar Component and contains all of the handler and other such logic for said component. In addition to handling said logic, it will also return the Navigation Bar Component JSX element. */ }
+            < NavBarComCon namStr={ namStr } disFun={ disFun } /> { /* Navigation Bar Component Container = This custom element is the container for the Navigation Bar Component and contains all of the logic and JSX for said component. */ }
 
-            { /* End NavBarComCon Component */ }
+            { /* End NavBarComCon Element */ }
+
 
 
             { /* Start Main Element */ }
 
-            <  main id='appMaiEle' className={ styles.appMain } > { /* App Main Element = This is the main content section of the app where the components that correspond to the current URL will be rendered by React Router. */ }
+            <  main id='appMaiEle' className={ styles.appMain } > { /* App Main Element = This custom main element is the container for the main element, and it is where the components that correspond to the current URL will be rendered by React Router. */ }
 
 
-                { /* Start Routes Component */ }
+                { /* Start Routes Element */ }
 
-                <  Routes > { /** The Routes component is a React Router container for all Route components, ensuring that only the first matching route is rendered. It manages the rendering of different components based on the current URL path. */ }
+                <  Routes > { /** Routes = This standard React Router element is the container for all of the Route elements, and it ensures only the first matching route is rendered based on the current URL path. */ }
 
-                    < Route path='/'              element={ < Home    namStr={ namStr } staObj={ staObj } disFun={ disFun } thuFun={ thuFun } /> } /> { /** This is the React Router path to the Home page component. */ }
-                    < Route path='/about'         element={ < About   namStr={ namStr } /> } /> { /** This is the React Router path to the About page component.          */ }
-                    < Route path='/contact'       element={ < Contact namStr={ namStr } /> } /> { /** This is the React Router path to the Contact page component.        */ }
-                    < Route path='/christmascard' element={ < ChristmasCard             /> } /> { /** This is the React Router path to the Christmas Card page component. */ }
+
+                    < Route path='/'              element={ < Home    namStr={ namStr } staObj={ staObj } disFun={ disFun } thuFun={ thuFun } /> } /> { /** Route -> Home = This standard React Router element will render the Home page component. */ }
+                    < Route path='/about'         element={ < About   namStr={ namStr } /> } /> { /** Route -> About         = This standard React Router element will render the About page component.          */ }
+                    < Route path='/contact'       element={ < Contact namStr={ namStr } /> } /> { /** Route -> Contact       = This standard React Router element will render the Contact page component.        */ }
+                    < Route path='/christmascard' element={ < ChristmasCard             /> } /> { /** Route -> ChristmasCard = This standard React Router element will render the Christmas Card page component. */ }
+
 
                 </ Routes >
 
-                { /* End Routes Component */ }
+                { /* End Routes Element */ }
 
 
             </ main >
@@ -138,28 +149,31 @@ function AppRooCom( props : AppRooComPro ) : React.ReactElement {
             { /* End Main Element */ }
 
 
-            { /* Start FooBarCom Component */ }
 
-            < FooBarCom namStr='Tech Geek' /> { /* Footer Bar Component = This is the component container for the Footer Bar Component and will return the Footer Bar JSX element. */ }
+            { /* Start FooBarCom Element */ }
 
-            { /* End FooBarCom Component */ }
+            < FooBarCom namStr='Tech Geek' /> { /* Footer Bar Component = This custom element is the container for all of the logic and JSX of the Footer Bar Component. */ }
+
+            { /* End FooBarCom Element */ }
 
 
-        </  BrowserRouter >
+        </ BrowserRouter >
 
-        // #endregion BrowserRouter Component
+        // #endregion BrowserRouter Element
 
 
     );
 
 
-    return appRooComJsx;
 
+    return appRooComJsx;
 
     // #endregion Return Statement
 
 
 };
+
+// #endregion AppRooCom
 
 
 
