@@ -1,10 +1,26 @@
 
 // #region Imports
 
-import   store         from '../store';    /** This is the Redux store that holds the complete state object tree of the app, as well as provide methods for the reading of and writing to the state object tree. */
-import { useDispatch } from 'react-redux'; /** This is a React Redux hook that allows functional components to access the Redux store's dispatch function so that they can dispatch actions to the store. */
+import { useDispatch } from 'react-redux'; /** This import is the standard React Redux hook that allows functional components to access the standard React Redux store dispatch function so that they can dispatch actions to the store. */
+
+
+import { type Dispatch      } from '@reduxjs/toolkit'; /** This import is the standard Typescript definition for a standard React Redux Toolkit dispatch function that accepts an action as an argument and returns void. */
+import { type UnknownAction } from '@reduxjs/toolkit'; /** This import is the standard Typescript definition for an object that has a type property of type string and all other fields are of the TypeScript unknown type. */
+import { type UseDispatch   } from 'react-redux';      /** This import is the standard Typescript definition for the standard React Redux useDispatch hook. */
 
 // #endregion Imports
+
+
+
+// #region useAppDis
+
+
+// #region useAppDis Variables
+
+/** Use App Dispatch  = This custom type stores the type that will be used for the custom {@link useAppDis} variable and is exported for use in any component that said variable is required. */
+export type UseAppDis = UseDispatch< Dispatch< UnknownAction > >;
+
+// #endregion useAppDis Variables
 
 
 
@@ -12,27 +28,32 @@ import { useDispatch } from 'react-redux'; /** This is a React Redux hook that a
  * useAppDis = Use App Dispatch
  *
  * @summary
- * This is a custom React hook that provides access to the Redux store's
- * {@link useDispatch} function. The main benefit for this site/app is that it
- * provides consistent type checking throughout the application and simplifies
- * type inference. For more complex sites/apps, these custom hooks can also be
- * used for logic reusability (for instance, creating a useCart hook that would
- * be used on multiple pages), better code organization and readability,
- * simplified testing, easier refactoring and maintenance and a flatter
- * component tree.
+ * This custom React hook executes the standard React Redux {@link useDispatch}
+ * hook. The main benefit for executing said hook inside of a custom hook is
+ * that it provides consistent type checking throughout the site/app and
+ * simplifies type inference. For more complex sites/apps, these custom hooks
+ * can also be used for logic reusability (for instance, creating a useCart
+ * hook that would be used on multiple pages), better code organization and
+ * readability, simplified testing, easier refactoring and maintenance and a
+ * flatter component tree.
  *
- * @author z4ntao <https://github.com/z4nta0>
+ * @author React Redux <https://react-redux.js.org/api/hooks#usedispatch>
+ * @author z4nta0      <https://github.com/z4nta0>
  *
+ * @param void - This function takes no parameters.
+ * 
+ * @returns The standard React Redux useDispatch hook.
+ * @see {@link useDispatch}
+ * 
+ * @example
+ * ```ts
+ * useAppDis() // => useDispatch;
+ * ```
 */
 
+const useAppDis : UseAppDis = useDispatch.withTypes();
 
-
-/** App Dispatch Function = This stores the type of the Redux store's dispatch function, making the {@link useAppDis} definition below appear cleaner and more readable. */
-type AppDisFun            = typeof store.dispatch;
-/** Use App Dispatch      = This stores the standard React hook that provides access to the Redux store's dispatch function but with proper TypeScript typing. */
-const useAppDis           = useDispatch.withTypes<AppDisFun>();
-/** Use App Dispatch      = This stores the type check for use anywhere that the useAppDis hook is passed as a prop. Although this may seem redundant, exporting this type can be useful for type checking and ensuring consistency across the application. */
-export type UseAppDis     = typeof useAppDis;
+// #endregion useAppDis
 
 
 

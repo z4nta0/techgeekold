@@ -1,59 +1,62 @@
 
-/* #region Component Section */
+/* #region About Section */
 
-.componentSection { /** Component Section is this component's root element and the #rooSecEle element grid's second row, which contains the .componentHeader element and the .contentDiv element. */
+.aboutSection { /** About Section = This custom selector contains the custom .aboutH1 and.aboutParagraph selectors, is the custom .appMain selector's only child and is this component's root selector. */
 
-    /* #region Element Scoped Custom Properties */
+    /* #region Selector Scoped Custom Properties = These are technically component scoped but placing and labelling them here makes my intention clear that these are intended for use in this selector only. */
 
-    /** Yes, I know these are technically component scoped, but placing and labelling them here makes my intention clear that these are intended for use in this element only. */
+    --abo-sec-gta :       /** About Section Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+        '    aboutH1   '  /** This value was chosen to be used to contain the custom .aboutH1 selector within this selector grid's first row, full width column. */
+        'aboutParagraph'; /** This value was chosen to be used to contain the custom .aboutParagraph selector within this selector grid's second row, full width column. */
 
-    --cos-row-one : calc( 30% - ( var( --row-gap-max ) / 2 ) ); /** Component Section Row One stores the height of the first row within the .componentSection element's grid, and it is equal to 30% of said component's allotted height (as defined by the index.css's #rooSecEle) minus half of the grid's single row gap maximum value (~= 67.777px @16px root font size). */
-    --cos-row-two : calc( 70% - ( var( --row-gap-max ) / 2 ) ); /** Component Section Row Two stores the height of the second row within the .componentSection element's grid, and it is equal to 70% of said component's allotted height (as defined by the index.css's #rooSecEle) minus half of the grid's single row gap maximum value (~= 67.777px @16px root font size). */
+    --abo-h1--row : calc( 30% - ( var( --row-gap-max ) / 2 ) ); /** About H1 Row                     ~=  67.783px @1080px height = This custom property stores the height of the custom .aboutH1 selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --abo-par-row : calc( 70% - ( var( --row-gap-max ) / 2 ) ); /** About Paragraph Row              ~= 452.733px @1080px height = This custom property stores the height of the custom .aboutParagraph selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --abo-sec-gtr : var( --abo-h1--row ) var( --abo-par-row );  /** About Section Grid Template Rows ~= 725.100px @1080px height = This custom property stores the grid template rows value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
 
-    /* #endregion Element Scoped Custom Properties */
+    /* #endregion Selector Scoped Custom Properties */
 
 
-    display               : grid;                                      /** The CSS Grid property was chosen as the layout method for its powerful layout capabilities. */
-    grid-template-areas   :                                            /** The grid template areas property was chosen as my preferred method of placing grid items, as I find its visual definition and placement provides more clarity. */
-        'header1'                                                      /** The first grid template areas row was chosen to contain the .componentH1 element. */
-        'paragraph';                                                   /** The second grid template areas row was chosen to contain the .componentParagraph element. */
-    grid-template-columns : 100%;                                      /** The grid template columns property defines the width of the columns in the grid layout, and since this grid only has one column per row it is set to 100% to take up the full width of the .componentSection element (as defined by the #rooSecEle element -> .appMai element). */
-    grid-template-rows    : var( --cos-row-one ) var( --cos-row-two ); /** The grid template rows property defines the heights of the rows in the grid layout, using the element scoped custom properties for the first and second rows respectively. */
-    height                : 100%;                                      /** This property was chosen to make the component section take up the full height of its parent container, which is the 'main' grid area as declared by the #rooSecEle grid container in the top level index.css file. Removing this property and its value will cause the element's height to shrink to less than its intended value. */
-    justify-items         : center;                                    /** This property was chosen to horizontally center the .componentH1 and .componentParagraph elements in their grid area so that they are centered within the page. */
-    row-gap               : var( --row-gap-max );                      /** This property was chosen to create space between the two rows of the .componentSection element's grid, and it is approximately equal to 67.777px @16px root font size. */
-
-}
-
-/* #region Component H1 */
-
-.componentH1 { /** Component H1 is the .componentHeader element grid's first row which contains the H1 element's text. */
-
-    grid-area   : header1;              /** This property was chosen to place the .componentH1 element within the grid area defined in the parent .componentSection element's grid template areas declaration. */
-    font-size   : var( --hea-one-siz ); /** This property was chosen to set the font size equal to the header one size globally scoped Custom Property, which is approximately equal to 67.777px @16px root font size. */
-    line-height : var( --hea-one-siz ); /** This property was chosen to set the line height equal to the .componentH1 element's font size so that it's vertical height is exactly the same as its content. This is standard behavior for header elements since line height is used to allow for breathing room in text heavy content and header elements are almost always contained within one line. */
-    padding-top : var( --pad-ver-xla ); /** This property is linked to the padding vertical extra large globally scoped CSS Custom Property and was chosen to add some space at the top of the .componentH1 element, which can help to visually separate it from the navbar component at the top of the page. It is approximately equal to 67.777px @16px root font size. */
+    display               : grid;                 /** This value was chosen to be used as the preferred layout method, with the idea behind this being that it provides powerful element placement and sizing capabilities. */
+    grid-template-areas   : var( --abo-sec-gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-columns : 100%;                 /** This value was chosen to be used to fill columns using all available horizontal space as defined by its parent, the custom .appMain selector. */
+    grid-template-rows    : var( --abo-sec-gtr ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    height                : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .appMain selector. */
+    justify-items         : center;               /** This value was chosen to be used to horizontally center the custom .aboutH1 and .aboutParagraph selectors within their grid areas, with the idea behind this being that this page's content is more aesthetically pleasing when aligned to the middle of the viewport. */
+    row-gap               : var( --row-gap-xla ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property. */
 
 }
 
-/* #endregion Component H1 */
 
 
+/* #region About H1 */
 
-/* #region Component Paragraph */
+.aboutH1 { /** About H1 = This custom selector contains the custom h1 text and is the custom .aboutSection selector's first grid row, only grid column. */
 
-.componentParagraph { /** Component Paragraph is the .componentSection element grid's second row which contains the paragraph element's text. */
-
-    grid-area   : paragraph;            /** This property was chosen to place the .componentParagraph element within the grid area defined in the parent .componentSection element's grid template areas declaration. */
-    font-size   : var( --fon-siz-bas ); /** This property was chosen to set the font size equal to the font size base globally scoped Custom Property, which is approximately equal to 16.000px @16px root font size. */
-    line-height : var( --ver-rhy-bas ); /** This property was chosen to set the line height equal to the vertical rhythm base globally scoped Custom Property, which is approximately equal to 25.889px @16px root font size. */
-    max-width   : var( --par-wid-xla ); /** This property is linked to the paragraph width extra large globally scoped Custom Property and was chosen to limit the line length of the paragraph text to the extra large paragraph width globally scoped Custom Property, which is equal to 75 characters. Limiting line length can help to make reading easier and less straining on the eyes, especially for paragraphs that contain more than one line of text. */
+    align-self  : center;               /** This value was chosen to be used to vertically center this selector within its grid area, with the idea behind this being to more evenly distribute the space between them and the elements below them and creating a better visual, aesthetic balance. */
+    grid-area   : aboutH1;              /** This value was chosen to be used to place this selector within the custom .aboutSection selector grid area's first row, full width column. */
+    font-size   : var( --hea-one-siz ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property. */
+    line-height : var( --hea-one-siz ); /** This value was chosen to be used to set the line height equal to its corresponding font size, with the idea behind this being that it makes for better visual asthetics when used with short, one line text (headers especially). */
 
 }
 
-/* #endregion Component Paragraph */
+/* #endregion About H1 */
 
 
-/* #endregion Component Section */
+
+/* #region About Paragraph */
+
+.aboutParagraph { /** About Paragraph = This custom selector contains the custom paragraph text and is the custom .aboutSection selector's second grid row, only grid column. */
+
+    grid-area   : aboutParagraph;       /** This value was chosen to be used to place this selector within the custom .aboutSection selector grid area's second row, full width column. */
+    font-size   : var( --fon-siz-bas ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    line-height : var( --ver-rhy-bas ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    max-width   : var( --par-wid-xla ); /** This value was chosen to be used according to the details of the specified global scoped prime custom property. */
+
+}
+
+/* #endregion About Paragraph */
+
+
+/* #endregion About Section */
 
 

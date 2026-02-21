@@ -1,17 +1,14 @@
 
-/** #region App Main */
+/* #region App Main */
 
+.appMain { /** App Main = This custom selector contains the standard React Router Routes selector where all routed components will be rendered and is the custom #rooSecEle selector's second row, second column. */
 
-/** App Main = This is the HTML main element that contains the React Router Routes component, which handles the routing of the application. This main grid is where all the routed components will be rendered. */
-.appMain {
-
-    grid-area   : main; /** This property was chosen to place the main element within the site/app root grid area defined in the parent #root declaration in the top level index.css file. */
-    height      : 100%; /** This property was chosen to make the main element take up the full height of its parent container, which is declared by the #root grid container in the top level index.css file. */
-    width       : 100%; /** This property was chosen to ensure that the main element takes up the full width of its parent container, which is declared by the #root grid container in the top level index.css file. */
+    grid-area : appMain; /** This value was chosen to be used to place this selector within the custom #rooSecEle selector grid area's second row, second column (for small viewports it will be the second row, 100% width column). */
+    height    : 100%;    /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom #rooSecEle selector. */
+    width     : 100%;    /** This value was chosen to be used to fill all available horizontal space as defined by its parent, the custom #rooSecEle selector. */
 
 }
 
-
-/** #endregion App Main */
+/* #endregion App Main */
 
 

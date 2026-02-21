@@ -1,10 +1,11 @@
 
 /* #region Component Scoped Custom Properties */
 
-.componentSection { /** Component Section is the component's root element, and it is used here in order to define component scoped custom properties. */
+.homeSection { /** Home Section = This custom selector contains the custom .homeHeader and .contentDiv selectors, is the custom .appMain selector's only child and is this custom component's root selector. */
 
-    /** The reason that this is globally scoped is because there are other elements (the H1 and the Vite, React logo anchors and image elements) besides the content buttons that will use this value to align and center themselves with said buttons. Having them all use the exact same width makes this a much easier process. */
-    --con-but-wid : calc( var( --hor-rhy-max ) * pow( var( --golden-rati ), 2 ) ); /** ~=280.124px @1920px width = Content Button Width stores the width of the increment and decrement buttons within the .contentDiv element, and it is equal to the horizontal rhythm maximum value (~= 106.998px @1920px width) multiplied by the golden ratio squared (~= 2.618). */
+
+    --hab-sha-wid : calc( var( --hor-rhy-max ) * var( --gol-rat-xsm ) ); /** Headers Anchors Buttons Shared Width ~= 280.124px @1920px width = This custom property stores the width that will be used for the custom headers = Vite and React H1 spans text, anchors = Vite and React logo anchors/images and buttons = increment and decrement buttons, with the idea behind this being that these elements should all be visually aligned and even though their inner content is not the same width, making their containers the exact same width makes aligning them precisely much easier. */
+
 
 }
 
@@ -12,406 +13,501 @@
 
 
 
-/* #region Component Section */
+/* #region Home Section */
 
-.componentSection { /** Component Section is this component's root element and the #rooSecEle element grid's second row, which contains the .componentHeader element and the .contentDiv element. */
+.homeSection { /** Home Section = This custom selector contains the custom .homeHeader and .contentDiv selectors, is the custom .appMain selector's only child and is this custom component's root selector. */
 
-    /* #region Element Scoped Custom Properties */
+    /* #region Selector Scoped Custom Properties = These are technically component scoped but placing and labelling them here makes my intention clear that these are intended for use in this selector only. */
 
-    /** Yes, I know these are technically component scoped, but placing and labelling them here makes my intention clear that these are intended for use in this element only. */
+    --hom-sec-gta :   /** Home Section Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+        'homeHeader'  /** This value was chosen to be used to contain the custom .homeHeader selector within this selector grid's first row, full width column. */
+        'contentDiv'; /** This value was chosen to be used to contain the custom .contentDiv selector within this selector grid's second row, full width column. */
 
-    --cos-row-one : calc( 50% - ( var( --row-gap-max ) / 2 ) ); /** Component Section Row One stores the height of the first row within the .componentSection element's grid, and it is equal to 50% of said component's allotted height (as defined by the index.css's #rooSecEle) minus half of the grid's single row gap maximum value (~= 67.777px @16px root font size). */
-    --cos-row-two : calc( 50% - ( var( --row-gap-max ) / 2 ) ); /** Component Section Row Two stores the height of the second row within the .componentSection element's grid, and it is equal to 50% of said component's allotted height (as defined by the index.css's #rooSecEle) minus half of the grid's single row gap maximum value (~= 67.777px @16px root font size). */
+    --con-div-row : calc( 55% - ( var( --row-gap-xla ) / 2 ) ); /** Content Div Row                 ~= 292.400px @1080px height = This custom property stores the height of the custom .contentDiv selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --hom-hea-row : calc( 45% - ( var( --row-gap-xla ) / 2 ) ); /** Home Header Row                 ~= 364.900px @1080px height = This custom property stores the height of the custom .homeHeader selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --hom-sec-gtr : var(  --hom-hea-row ) var( --con-div-row ); /** Home Section Grid Template Rows ~= 725.100px @1080px height = This custom property stores the grid template rows value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
 
-    /* #endregion Element Scoped Custom Properties */
+    /* #endregion Selector Scoped Custom Properties */
 
 
-    display               : grid;                                      /** The CSS Grid property was chosen as the layout method for its powerful layout capabilities. */
-    grid-template-areas   :                                            /** The grid template areas property was chosen as my preferred method of placing grid items, as I find its visual definition and placement provides more clarity. */
-        'header'                                                       /** The first grid template areas row was chosen to contain the .componentHeader element, which contains the header 1 element and the span elements that it contains. */
-        'homecontent';                                                 /** The second grid template areas row was chosen to contain the .contentDiv element, which contains the .buttonDiv, the .editParagraph, the .learnParagraph and the .dataParagraph elements. */
-    grid-template-columns : 100%;                                      /** The grid template columns property defines the width of the columns in the grid layout, and since this grid only has one column per row it is set to 100% to take up the full width of the .componentSection element (as defined by the #rooSecEle element -> .appMai element). */
-    grid-template-rows    : var( --cos-row-one ) var( --cos-row-two ); /** The grid template rows property defines the heights of the rows in the grid layout, using the element scoped custom properties for the first and second rows respectively. */
-    height                : 100%;                                      /** This property was chosen to make the component section take up the full height of its parent container, which is the 'main' grid area as declared by the #rooSecEle grid container in the top level index.css file. Removing this property and its value will cause the element's height to shrink to less than its intended value. */
-    row-gap               : var( --row-gap-max );                      /** This property was chosen to create space between the two rows of the .componentSection element's grid, and it is approximately equal to 67.777px @16px root font size. */
-    text-align            : center;                                    /** This property was chosen to center the text within the component section, since all content for this section will be centered because it is not 'content heavy' and each section only contains one line of text or one or two elements at most. */
+    display               : grid;                 /** This value was chosen to be used as the preferred layout method, with the idea behind this being that it provides powerful element placement and sizing capabilities. */
+    grid-template-areas   : var( --hom-sec-gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-columns : 100%;                 /** This value was chosen to be used to fill columns using all available horizontal space as defined by its parent, the custom .appMain selector. */
+    grid-template-rows    : var( --hom-sec-gtr ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    height                : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .appMain selector. */
+    row-gap               : var( --row-gap-xla ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property. */
+    text-align            : center;               /** This value was chosen to be used to horizontally center all text, with the idea behind this being that each section contains only one line of text and is more aesthetically appealing when centered. */
+
+}
+
+
+
+/* #region Home Header */
+
+.homeHeader { /** Home Header = This custom selector contains the custom .headerH1 and .headerDiv selectors and is the custom .homeSection selector's first grid row, only grid column. */
+
+    /* #region Selector Scoped Custom Properties */
+
+    --hom-hea-gta :  /** Home Header Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+        'headerH1 '  /** This value was chosen to be used to contain the custom .headerH1 selector within this selector grid's first row, full width column. */
+        'headerDiv'; /** This value was chosen to be used to contain the custom .headerDiv selector within this selector grid's second row, full width column. */
+
+    --hea-div-row : calc( 60% - ( var( --row-gap-lar ) / 2 ) ); /** Header Div Row                 ~= 154.483px @1080px height = This custom property stores the height of the custom .headerDiv selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --hea-h1--row : calc( 40% - ( var( --row-gap-lar ) / 2 ) ); /** Header H1 Row                  ~=  96.000px @1080px height = This custom property stores the height of the custom .headerH1 selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --hom-hea-gtr : var( --hea-h1--row ) var( --hea-div-row );  /** Home Header Grid Template Rows ~= 292.400px @1080px height = This custom property stores the grid template rows value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+
+    /* #endregion Selector Scoped Custom Properties */
+
+
+    display               : grid;                 /** This value was chosen to be used as the preferred layout method, with the idea behind this being that it provides powerful element placement and sizing capabilities. */
+    grid-area             : homeHeader;           /** This value was chosen to be used to place this selector within the custom .homeSection selector grid area's first row, full width column. */
+    grid-template-areas   : var( --hom-hea-gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-columns : 100%;                 /** This value was chosen to be used to fill columns using all available horizontal space as defined by its parent, the custom .homeSection selector. */
+    grid-template-rows    : var( --hom-hea-gtr ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    row-gap               : var( --row-gap-lar ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property. */
 
 }
 
-
-/* #region Component Header */
-
-.componentHeader { /** Component Header is the .componentSection element grid's first row which contains the .headerH1 element and .headerDiv element (containing the Vite, React logo anchors and logo images). */
-
-    /* #region Element Scoped Custom Properties */
-
-    --coh-row-one : calc( 40% - ( var( --row-gap-xla ) / 2 ) ); /** Component Header Row One stores the height of the first row within the .componentHeader element's grid, and it is equal to 40% of said element's allotted height (as defined by the .componentSection element) minus half of the grid's single row gap extra large value (~= 41.889px @16px root font size). */
-    --coh-row-two : calc( 60% - ( var( --row-gap-xla ) / 2 ) ); /** Component Header Row Two stores the height of the second row within the .componentHeader element's grid, and it is equal to 60% of said element's allotted height (as defined by the .componentSection element) minus half of the grid's single row gap extra large value (~= 41.889px @16px root font size). */
-
-    /* #endregion Element Scoped Custom Properties */
-
-
-    display               : grid;                                      /** The CSS Grid property was chosen as the layout method for its powerful layout capabilities. */
-    grid-area             : header;                                    /** This property was chosen to place the .componentHeader element within the grid area defined in the parent .componentSection element's grid template areas declaration. */
-    grid-template-areas   :                                            /** The grid template areas property was chosen as my preferred method of placing grid items, as I find its visual definition and placement provides more clarity. */
-        'header1'                                                      /** The first grid template areas row was chosen to contain the .componentHeader element's h1 element, which splits its text into three individual span elements (for horizontal alignment reasons). */
-        'images';                                                      /** The second grid template areas row was chosen to contain the .componentHeader element's .headerDiv element, which contains the Vite, React logo anchor and image elements. */
-    grid-template-columns : 100%;                                      /** The grid template columns property defines the width of the columns in the .componentHeader element's grid layout, and since this grid only has one column per row it is set to 100% to take up the full width of the .componentHeader element (as defined by the .componentSection element). */
-    grid-template-rows    : var( --coh-row-one ) var( --coh-row-two ); /** The grid template rows property defines the heights of the rows in the .componentHeader element's grid layout, using the element scoped custom properties for the first and second rows respectively. */
-    padding-top           : var( --pad-ver-xla );                      /** This property was chosen to add some space at the top of the .componentHeader element, which can help to visually separate it from the navbar component at the top of the page, and it is approximately equal to 67.777px @16px root font size. */
-    row-gap               : var( --row-gap-xla );                      /** This property was chosen to create space between the two rows of the .componentHeader element's grid, and it is approximately equal to 41.889px @16px root font size. */
-
-}
 
 
 /* #region Header H1 */
 
-.headerH1 { /** Header H1 is the .componentHeader element grid's first row which contains the broken up H1 element's text in three individual Span elements in order to align them with the Vite, react logos and the increment, decrement buttons that are further down the page. */
+.headerH1 { /** Header H1 = This custom selector contains the custom .viteSpan, plusSpan and .reactSpan selectors and is the custom .homeHeader selector's first grid row, only grid column. */
 
-    /* #region Element Scoped Custom Properties */
+    /* #region Selector Scoped Custom Properties */
 
-    --he1-col-one   : calc( 50% - ( var( --he1-col-two ) / 2 ) ); /** Header 1 Column One stores the width of the first column within the .headerH1 element's grid, and it is equal to 50% of said element's allotted width (as defined by the .componentHeader element) minus half of the .headerH1 element's grid second column (the '+' span element text, which is equal to the column gap's maximum value of ~66.128px @1920px width). */
-    --he1-col-two   : var( --col-gap-max );                       /** Header 1 Column Two stores the width of the second column within the .headerH1 element's grid, and it is equal to the column gap's maximum value (~= 66.128px @1920px width). */
-    --he1-col-three : calc( 50% - ( var( --he1-col-two ) / 2 ) ); /** Header 1 Column Three stores the width of the third column within the .headerH1 element's grid, and it is equal to 50% of said element's allotted width (as defined by the .componentHeader element) minus half of the .headerH1 element's grid second column (the '+' span element text, which is equal to the column gap's maximum value of ~66.128px @1920px width). */
+    --hea-h1--gta :                        /** Header H1 Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+        'viteSpan   plusSpan   reactSpan'; /** This value was chosen to be used to contain the custom .viteSpan, .plusSpan and .reactSpan selectors within this selector grid's first row, three columns. */
 
-    /* #endregion Element Scoped Custom Properties */
+    --hea-h1--gtc : var( --vit-spa-col ) var( --plu-spa-col ) var( --rea-spa-col ); /** Header H1 Grid Template Columns ~= 1186.620px @1920px width = This custom property stores the grid template columns value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+    --plu-spa-col : var( --col-gap-med );                                           /** Plus Span Column                ~=   25.259px @1920px width = This custom property stores the width of the custom .plusSpan selector's column within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template columns custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --rea-spa-col : calc( 50% - ( var( --plu-spa-col ) / 2 ) );                     /** React Span Column               ~=  280.117px @1920px width = This custom property stores the width of the custom .reactSpan selector's column within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template columns custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --vit-spa-col : calc( 50% - ( var( --plu-spa-col ) / 2 ) );                     /** Vite Span Column                ~=  280.117px @1920px width = This custom property stores the width of the custom .viteSpan selector's column within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template columns custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
 
-
-    align-items           : center;                                                           /** This property was chosen to vertically center the .headerH1 element's Span elements and their containing text. */
-    display               : grid;                                                             /** The CSS Grid property was chosen as the layout method for its powerful layout capabilities. */
-    grid-area             : header1;                                                          /** This property was chosen to place the .headerH1 element within the grid area defined in the parent .componentHeader element's grid template areas declaration. */
-    grid-template-areas   :                                                                   /** The grid template areas property was chosen as my preferred method of placing grid items, as I find its visual definition and placement provides more clarity. */
-        'vite plus react';                                                                    /** The only grid template areas row was chosen to contain all three of the .headerH1 element grid's columns, which will each contain a part of the H1 element's text inside of a Span element. This was done for horizontal alignment reasons. The Vite text is meant to align with both the Vite logo anchor/image and the increment button, the + text is meant to align with both the Vite/React column gap and the increment/decrement column gap, and the React text is meant to align with both the React logo anchor/image and the decrement button. */
-    grid-template-columns : var( --he1-col-one ) var( --he1-col-two ) var( --he1-col-three ); /** The grid template columns property defines the widths of the columns in the .headerH1 element's grid layout, using the element scoped custom properties for the first, second and third columns respectively. */
-    grid-template-rows    : 100%;                                                             /** The grid template rows property defines the height of the columns in the .headerH1 element's grid layout, and since this grid only has one row it is set to 100% to take up the full height of the .headerH1 element (as defined by the .componentHeader element). */
-    font-size             : var( --hea-one-siz );                                             /** This property was chosen to set the font size equal to the header one size globally scoped Custom Property, which is approximately equal to 67.777px @16px root font size. */
-    line-height           : var( --hea-one-siz );                                             /** This property was chosen to set the line height equal to the .headerH1 element's font size so that it's vertical height is exactly the same as its content. This is standard behavior for header elements since line height is used to allow for breathing room in text heavy content and header elements are almost always contained within one line. */
-
-}
+    /* #endregion Selector Scoped Custom Properties */
 
 
-/* #region Header H1 Spans */
-
-.he1Spans:nth-child( 1 ) { /** Header H1 Spans first child is the .headerH1 element grid's first column, which contains the 'Vite' text. */
-
-    grid-area     : vite;                 /** This property was chosen to place the first .he1Spans element within the grid area defined in the parent .headerH1 element's grid template areas declaration. */
-    justify-self  : end;                  /** This property was chosen to horizontally align the 'Vite' text to the end (right side) of its grid area so that it aligns with the Vite logo anchor/image and the increment button. */
-    width         : var( --con-but-wid ); /** This property was chosen to set the width of the first .he1Spans element to be equal to the width of the increment button, which is is equal to the horizontal rhythm maximum value (~= 106.998px @1920px width) multiplied by the golden ratio squared (~= 2.618). This was done to make it easier to align the 'Vite' text with the Vite logo anchor/image and the increment button, since they will all be the same width. */
+    align-items           : center;               /** This value was chosen to be used to vertically center the custom .viteSpan, .plusSpan and .reactspan selectors within their grid areas, with the idea behind this being to more evenly distribute the space between them and the elements below them and creating a better visual, aesthetic balance. */
+    display               : grid;                 /** This value was chosen to be used as the preferred layout method, with the idea behind this being that it provides powerful element placement and sizing capabilities. */
+    grid-area             : headerH1;             /** This value was chosen to be used to place this selector within the custom .homeHeader selector grid area's first row, full width column. */
+    grid-template-areas   : var( --hea-h1--gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-columns : var( --hea-h1--gtc ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-rows    : 100%;                 /** This value was chosen to be used to fill rows using all available vertical space as defined by its parent, the custom .homeHeader selector. */
+    font-size             : var( --hea-one-siz ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property. */
+    line-height           : var( --hea-one-siz ); /** This value was chosen to be used to set the line height equal to its corresponding font size, with the idea behind this being that it makes for better visual asthetics when used with short, one line text (headers especially). */
 
 }
 
-.he1Spans:nth-child( 2 ) { /** Header H1 Spans second child is the .headerH1 element grid's second column, which contains the '+' text. */
 
-    grid-area    : plus;   /** This property was chosen to place the second .he1Spans element within the grid area defined in the parent .headerH1 element's grid template areas declaration. */
-    justify-self : center; /** This property was chosen to horizontally align the '+' text in the center of its grid area so that it aligns with the column gaps between the Vite and React logo anchors/images and the column gaps between the increment and decrement buttons. */
 
-}
+/* #region Vite Span */
 
-.he1Spans:nth-child( 3 ) { /** Header H1 Spans third child is the .headerH1 element grid's third column, which contains the 'React' text. */
+.viteSpan { /** Vite Span = This custom selector contains the custom 'Vite' text and is the custom .headerH1 selector's first grid column, only grid row. */
 
-    grid-area    : react;                /** This property was chosen to place the third .he1Spans element within the grid area defined in the parent .headerH1 element's grid template areas declaration. */
-    justify-self : start;                /** This property was chosen to horizontally align the 'React' text to the start (left side) of its grid area so that it aligns with the React logo anchor/image and the decrement button. */
-    width        : var( --con-but-wid ); /** This property was chosen to set the width of the third .he1Spans element to be equal to the width of the decrement button, which is is equal to the horizontal rhythm maximum value (~= 106.998px @1920px width) multiplied by the golden ratio squared (~= 2.618). This was done to make it easier to align the 'React' text with the React logo anchor/image and the decrement button, since they will all be the same width. */
+    grid-area     : viteSpan;             /** This value was chosen to be used to place this selector within the custom .headerH1 selector grid area's first column, full height row. */
+    justify-self  : end;                  /** This value was chosen to be used to horizontally align this selector to the end (right side) of its grid area, with the idea behind this being to further align itself with the Vite logo anchor/image and the increment button. */
+    width         : var( --hab-sha-wid ); /** This value was chosen to be used according to the details of the specified component scoped custom property. */
 
 }
 
-/* #endregion Header H1 Spans */
+/* #endregion Vite Span */
+
+
+
+/* #region Plus Span */
+
+.plusSpan { /** Plus Span = This custom selector contains the custom '+' text and is the custom .headerH1 selector's second grid column, only grid row. */
+
+    grid-area    : plusSpan; /** This value was chosen to be used to place this selector within the custom .headerH1 selector grid area's second column, full height row. */
+    justify-self : center;   /** This value was chosen to be used to horizontally align this selector to the center of its grid area, with the idea behind this being to further align itself with the spacing of the custom .headerDiv and .buttonDiv selector's column gap. */
+
+}
+
+/* #endregion Plus Span */
+
+
+
+/* #region React Span */
+
+.reactSpan { /** React Span = This custom selector contains the custom 'React' text and is the custom .headerH1 selector's third grid column, only grid row. */
+
+    grid-area    : reactSpan;            /** This value was chosen to be used to place this selector within the custom .headerH1 selector grid area's third column, full height row. */
+    justify-self : start;                /** This value was chosen to be used to horizontally align this selector to the start (left side) of its grid area, with the idea behind this being to further align itself with the React logo anchor/image and the decrement button. */
+    width        : var( --hab-sha-wid ); /** This value was chosen to be used according to the details of the specified component scoped custom property. */
+
+}
+
+/* #endregion React Span */
 
 
 /* #endregion Header H1 */
 
 
+
 /* #region Header Div */
 
-.headerDiv { /** Header Div is the .componentHeader element grid's second row which contains the .headerAnchors elements. */
+.headerDiv { /** Header Div = This custom selector contains the custom shared .headerAnchors selector which includes also the custom .viteAnchor and .reactAnchor selectors and is the custom .homeHeader selector's second grid row, only grid column. */
 
-    /* #region Element Scoped Custom Properties */
+    /* #region Selector Scoped Custom Properties */
 
-    --hed-col-one : calc( 50% - ( var( --col-gap-max ) / 2 ) ); /** Header Div Column One stores the width of the first column within the .headerDiv element's grid, and it is equal to 50% of said element's allotted width (as defined by the .componentHeader element) minus half of the .headerDiv element grid's single column gap maximum value (~= 66.128px @1920px width). */
-    --hed-col-two : calc( 50% - ( var( --col-gap-max ) / 2 ) ); /** Header Div Column Two stores the width of the second column within the .headerDiv element's grid, and it is equal to 50% of said element's allotted width (as defined by the .componentHeader element) minus half of the .headerDiv element grid's single column gap maximum value (~= 66.128px @1920px width). */
+    --hea-div-gta :                 /** Header Div Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+        'viteAnchor   reactAnchor'; /** This value was chosen to be used to contain the custom .viteAnchor and .reactAnchor selectors within this selector grid's first row, two columns. */
 
-    /* #endregion Element Scoped Custom Properties */
+    --hea-div-gtc : var( --vit-anc-col ) var( --rea-anc-col );  /** Header Div Grid Template Columns ~= 364.900px @1920px width = This custom property stores the grid template columns value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+    --rea-anc-col : calc( 50% - ( var( --col-gap-med ) / 2 ) ); /** React Anchor Column              ~= 280.117px @1920px width = This custom property stores the width of the custom .reactAnchor selector's column within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template columns custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --vit-anc-col : calc( 50% - ( var( --col-gap-med ) / 2 ) ); /** Vite Anchor Column               ~= 280.117px @1920px width = This custom property stores the width of the custom .viteAnchor selector's column within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template columns custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+
+    /* #endregion Selector Scoped Custom Properties */
 
 
-    align-items           : center;                                    /** This property was chosen to vertically center both of the .headerAnchors elements. */
-    display               : grid;                                      /** The CSS Grid property was chosen as the layout method for its powerful layout capabilities. */
-    column-gap            : var( --col-gap-max );                      /** This property was chosen to create space between the two columns of the .headerDiv element's grid, and it is approximately equal to 66.128px @1920px width. */
-    grid-area             : images;                                    /** This property was chosen to place the .headerDiv element within the grid area defined in the parent .componentHeader element's grid template areas declaration. */
-    grid-template-areas   :                                            /** The grid template areas property was chosen as my preferred method of placing grid items, as I find its visual definition and placement provides more clarity. */
-        'vite react';                                                  /** The only grid template areas row was chosen to contain both of the .headerDiv element grid's columns, which will each contain a .headerAnchors element with an img element inside of them, one for Vite and one for React. */
-    grid-template-columns : var( --hed-col-one ) var( --hed-col-two ); /** The grid template columns property defines the widths of the columns in the .headerDiv element's grid layout, using the element scoped custom properties for the first and second columns respectively. */
-    grid-template-rows    : 100%;                                      /** The grid template rows property defines the height of the columns in the .headerDiv element's grid layout, and since this grid only has one row it is set to 100% to take up the full height of the .headerDiv element (as defined by the .componentHeader element). */
+    align-items           : center;               /** This value was chosen to be used to vertically center the custom .viteAnchor and .reactAnchor selectors within their grid areas, with the idea behind this being to more evenly distribute the space between them and the elements below them and creating a better visual, aesthetic balance. */
+    column-gap            : var( --col-gap-med ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property. */
+    display               : grid;                 /** This value was chosen to be used as the preferred layout method, with the idea behind this being that it provides powerful element placement and sizing capabilities. */
+    grid-area             : headerDiv;            /** This value was chosen to be used to place this selector within the custom .homeHeader selector grid area's second row, full width column. */
+    grid-template-areas   : var( --hea-div-gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-columns : var( --hea-div-gtc ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-rows    : 100%;                 /** This value was chosen to be used to fill rows using all available vertical space as defined by its parent, the custom .homeHeader selector. */
 
 }
 
-/* #endregion Header Div */
 
 
 /* #region Header Anchors */
 
-.headerAnchors { /** Header Anchors are the .headerDiv element grid's two columns which contain the .headerImgs elements. */
+.headerAnchors { /** Header Anchors = These custom selectors contain the shared styles for the custom .viteAnchor and .reactAnchor selectors and are the custom .headerDiv selector's first and second grid columns, only grid row. */
 
-    display               : grid;                 /** The CSS Grid property was chosen as the layout method for its powerful layout capabilities. */
-    grid-template-areas   :                       /** The grid template areas property was chosen as my preferred method of placing grid items, as I find its visual definition and placement provides more clarity. */
-        'imgs';                                   /** The only grid template areas row was chosen to contain both of the .headerAnchors elements grid's single column, which will each contain a .headerImgs element, one for the Vite logo and one for the React logo. */
-    grid-template-columns : 100%;                 /** The grid template columns property defines the width of the column in each of the .headerAnchors elements' grid layout, and since each grid only has one column per row it is set to 100% to take up the full width of each of the .headerAnchors element (as defined by the .headerDiv element). */
-    grid-template-rows    : 100%;                 /** The grid template rows property defines the height of the row in each of the .headerAnchors elements' grid layout, and since each grid only has one row per column it is set to 100% to take up the full height of each of the .headerAnchors element (as defined by the .headerDiv element). */
-    justify-items         : center;               /** This property was chosen to horizontally center the Vite and React logos in their grid area so that they aligns with the Vite and React text and the increment and decrement buttons. */
-    width                 : var( --con-but-wid ); /** This property was chosen to set the width of both of the .headerAnchors elements to be equal to the width of the increment and decrement button, which is is equal to the horizontal rhythm maximum value (~= 106.998px @1920px width) multiplied by the golden ratio squared (~= 2.618). This was done to make it easier to align the logos with the 'Vite' and 'React' text and the increment and decrement button, since they will all be the same width. */
-
+    display               : grid;                 /** This value was chosen to be used as the preferred layout method, with the idea behind this being that it provides powerful element placement and sizing capabilities. */
+    grid-template-columns : 100%;                 /** This value was chosen to be used to fill columns using all available horizontal space as defined by its parent, the custom .headerDiv selector. */
+    grid-template-rows    : 100%;                 /** This value was chosen to be used to fill rows using all available vertical space as defined by its parent, the custom .headerDiv selector. */
+    justify-items         : center;               /** This value was chosen to be used to horizontally center the custom .headerImgs selectors within their grid areas, with the idea behind this being to align them with the H1 text above them and the increment/decrement buttons below them. */
+    width                 : var( --hab-sha-wid ); /** This value was chosen to be used according to the details of the specified component scoped custom property. */
 
 }
 
-.headerAnchors:nth-child( 1 ) { /** Header Anchors first child is the .headerDiv element grid's first column, which contains the Vite logo. */
 
-    grid-area     : vite; /** This property was chosen to place the .headerAnchors element containing the Vite logo within the grid area defined in the parent .headerDiv element's grid template areas declaration. */
-    justify-self  : end;  /** This property was chosen to horizontally align the Vite logo to the end (right side) of its grid area so that it aligns with the 'Vite' text and the increment button. */
+
+/* #region Vite Anchor */
+
+.viteAnchor { /** Vite Anchor = This custom selector contains the custom .viteImg selector and is the custom .headerDiv selector's first grid column, only grid row. */
+
+    /* #region Selector Scoped Custom Properties */
+
+    --vit-anc-gta : /** Vite Anchor Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+        'viteImg';  /** This value was chosen to be used to contain the custom .viteImg selector within this selector grid's only row, only column. */
+
+    /* #endregion Selector Scoped Custom Properties */
+
+
+    grid-area           : viteAnchor;           /** This value was chosen to be used to place this selector within the custom .headerDiv selector grid area's first column, full height row. */
+    grid-template-areas : var( --vit-anc-gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    justify-self        : end;                  /** This value was chosen to be used to horizontally align this selector to the right side of its grid area, with the idea behind this being to align itself with the Vite text above it and the increment button below it. */
 
 }
 
-.headerAnchors:nth-child( 2 ) { /** Header Anchors second child is the .headerDiv element grid's second column, which contains the React logo. */
+/* #endregion Vite Anchor */
 
-    grid-area    : react; /** This property was chosen to place the .headerAnchors element containing the React logo within the grid area defined in the parent .headerDiv element's grid template areas declaration. */
-    justify-self : start; /** This property was chosen to horizontally align the React logo to the start (left side) of its grid area so that it aligns with the 'React' text and the decrement button. */
+
+
+/* #region React Anchor */
+
+.reactAnchor { /** React Anchor = This custom selector contains the custom .reactImg selector and is the custom .headerDiv selector's second grid column, only grid row. */
+
+    /* #region Selector Scoped Custom Properties */
+
+    --rea-anc-gta : /** React Anchor Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+        'reactImg'; /** This value was chosen to be used to contain the custom .reactImg selector within this selector grid's only row, only column. */
+
+    /* #endregion Selector Scoped Custom Properties */
+
+
+    grid-area           : reactAnchor;          /** This value was chosen to be used to place this selector within the custom .headerDiv selector grid area's second column, full height row. */
+    grid-template-areas : var( --rea-anc-gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    justify-self        : start;                /** This value was chosen to be used to horizontally align this selector to the left side of its grid area, with the idea behind this being to align itself with the React text above it and the decrement button below it. */
 
 }
+
+/* #endregion React Anchor */
+
 
 /* #endregion Header Anchors */
 
 
+
 /* #region Header Images */
 
-.headerImgs { /** Header Imgs are the .headerAnchors elements' grid's only columns (one column in each .headerAnchors elements' grid), with one containing the Vite logo and one containing the React logo. */
+.headerImgs { /** Header Images = These custom selectors contain the shared styles for the custom .viteImg and .reactImg selectors and are the custom .headerAnchors selector's only grid columns, only grid rows. */
 
-    /* #region Element Scoped Custom Properties */
+    /* #region Selector Scoped Custom Properties */
 
-    --hei-tra-dur : calc( pow( var( --golden-rati ), 12 ) * 1ms ); /** Header Imgs Transition Duration stores the duration in milliseconds for the filter property's drop shadow transitions that will occur on hover for each logo, and it is equal to the golden ratio (~= 1.618) raised to the twelfth power (~= 321.997). */
+    --dro-sha-col : var( --col-bra-sec );                      /** Drop Shadow Color         = This custom property stores the drop shadow color using the specified global scoped prime custom property, with the idea behind this being to allow the hover state to change this value dynamically instead of setting the drop shadow color directly. */
+    --hea-img-drs : drop-shadow( 0 0 0 var( --dro-sha-col ) ); /** Header Images Drop Shadow = This custom property stores all of the drop shadow properties using the specified selector scoped custom property, with the idea behind this being to allow the hover state to change this value dynamically instead of setting the drop shadow color directly. */
+    --hea-img-fil : var( --hea-img-drs );                      /** Header Images Filter      = This custom property stores the filter using the specified selector scoped custom property, with the idea behind this being to allow the hover state to change this value dynamically instead of setting the drop shadow color directly. */
+    --hea-img-tra : filter var( --tra-dur-bas ) ease-in-out;   /** Header Images Transition  = This custom property stores the transition for the hover state using the specified selector scoped custom property, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
 
-    /* #endregion Element Scoped Custom Properties */
+    /* #endregion Selector Scoped Custom Properties */
 
 
-    height      : var( --ver-rhy-max );               /** This property was chosen to set the height of the header images to the vertical rhythm maximum globally scoped CSS Custom Property, ensuring consistent vertical spacing within the layout, and it is approximately equal to 109.666px @16px root font size. */
-    grid-area   : imgs;                               /** This property was chosen to place the .headerImgs elements within the grid area defined in the parent .headerAnchors elements' grid template areas declaration. */
-    transition  : filter var( --hei-tra-dur ) linear; /** This property was chosen to smoothly transition the filter property (in this case it is used for drop shadows) on hover for each logo. */
-    width       : var( --hor-rhy-max );               /** This property was chosen to set the width of the header images to the maximum horizontal rhythm value, ensuring consistent vertical spacing within the layout, and it is approximately equal to 106.998px @1920px width. */
-    will-change : filter;                             /** This property was chosen to inform the browser that the filter property of the .headerImgs elements will be changing (on hover) so that the browser can optimize for this change and ensure a smoother transition effect. */
-
-}
-
-.headerImgs:nth-child( 1 ):hover { /** Header Imgs first child is the first .headerAnchors element grid's first and only column, which contains the Vite img element. */
-
-    filter : drop-shadow( 0 0 var( --ver-rhy-bas ) var( --col-acc-dar ) ); /** This property was chosen to apply a drop shadow filter that will follow the actual shape of the Vite logo using the accent dark color to the Vite logo on hover, using the base vertical rhythm value (~=  25.889px @16px root font size) for the shadow's blur radius. */
+    filter      : var( --hea-img-fil ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    height      : var( --ver-rhy-max ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    transition  : var( --hea-img-tra ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    width       : var( --hor-rhy-max ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    will-change : filter;               /** This value was chosen to be used in order to inform the browser that the filter property will be changing on hover, so that the browser can optimize for this change and ensure a smoother transition effect. */
 
 }
 
-.headerImgs:nth-child( 2 ):hover { /** Header Imgs second child is the first .headerAnchors element grid's first and only column, which contains the React img element. */
 
-    filter : drop-shadow( 0 0 var( --ver-rhy-bas ) var( --col-mai-dar ) ); /** This property was chosen to apply a drop shadow filter that will follow the actual shape of the React logo using the accent dark color to the React logo on hover, using the base vertical rhythm value (~=  25.889px @16px root font size) for the shadow's blur radius. */
+.headerImgs:hover { /** Header Images Hover = These custom selectors contain the shared styles for the custom .viteImg and .reactImg selectors and are the custom .headerAnchors selector's only grid columns, only grid rows. */
+
+
+    /* #region Selector Scoped Custom Properties */
+
+    --hea-img-drs : drop-shadow( 0 0 var( --blu-rad-max ) var( --dro-sha-col ) ); /** Header Images Drop Shadow = This custom property stores all of the drop shadow properties using the specified global scoped derivative custom property and selector scoped custom property, with the idea behind this being to allow the hover state to change this value dynamically instead of setting the drop shadow color directly. */
+    --hea-img-fil : var( --hea-img-drs );                                         /** Header Images Filter      = This custom property stores the filter using the specified selector scoped custom property, with the idea behind this being to allow the hover state to change this value dynamically instead of setting the drop shadow color directly. */
+
+    /* #endregion Selector Scoped Custom Properties */
+
 
 }
 
 /* #endregion Header Images */
 
 
-/* #region Header Images Animation */
 
-@keyframes rea-log-spi { /** React Logo Spin is the .headerImgs second child element's (React logo) animation, which will continously spin the React logo in a complete 360 degree rotation. */
+/* #region Header Images + Vite Image */
 
-    from { /** This defines the starting state of the animation. */
+.headerImgs:where( .viteImg ) { /** Header Images Where Vite Image Exists = This custom selector contains the official Vite logo and is the custom .headerAnchors selector's only grid column, only grid row. The :where() functional pseudo class selector's key feature is that it always has a specificity of zero, making it ideal for applying styles that are easy to override. */
 
-        transform : rotate( 0deg ); /** This property was chosen to start the animation from a completely unrotated state. */
 
-    }
+    /* #region Selector Scoped Custom Properties */
 
-    to { /** This defines the ending state of the animation. */
+    --dro-sha-col : var( --col-bra-acc ); /** Drop Shadow Color = This custom property stores the drop shadow color using the specified global scoped prime custom property, with the idea behind this being to allow the hover state to change this value dynamically instead of setting the drop shadow color directly. */
 
-        transform : rotate( 360deg ); /** This property was chosen to end the animation at a full rotation, which will create a seamless spinning effect when the animation loops back to the starting state. */
+    /* #endregion Selector Scoped Custom Properties */
 
-    }
 
 }
 
-/* #endregion Header Images Animation */
+/* #endregion Header Images + Vite Image */
+
+
+
+/* #region Vite Image */
+
+.viteImg { /** Vite Image = This custom selector contains the official Vite logo and is the custom .viteAnchor selector's only grid column, only grid row. */
+
+    grid-area : viteImg; /** This value was chosen to be used to place this selector within the custom .viteAnchor selector grid area's full width column, full height row. */
+
+}
+
+/* #endregion Vite Image */
+
+
+
+/* #region Header Images + React Image */
+
+.headerImgs:where( .reactImg ) { /** Header Images Where React Image Exists = This custom selector contains the official React logo and is the custom .headerAnchors selector's only grid column, only grid row. The :where() functional pseudo class selector's key feature is that it always has a specificity of zero, making it ideal for applying styles that are easy to override. */
+
+
+    /* #region Selector Scoped Custom Properties */
+
+    --dro-sha-col : var( --col-bra-mai ); /** Drop Shadow Color = This custom property stores the drop shadow color using the specified global scoped prime custom property, with the idea behind this being to allow the hover state to change this value dynamically instead of setting the drop shadow color directly. */
+
+    /* #endregion Selector Scoped Custom Properties */
+
+
+}
+
+/* #endregion Header Images + React Image */
+
+
+
+/* #region React Image */
+
+.reactImg { /** React Image = This custom selector contains the official React logo and is the custom .reactAnchor selector's only grid column, only grid row. */
+
+    grid-area   : reactImg; /** This value was chosen to be used to place this selector within the custom .reactAnchor selector grid area's full width column, full height row. */
+
+}
+
+
+
+/* #region React Image Animation */
+
+@keyframes rea-log-spi { /** React Logo Spin = This custom keyframes stores the animation for the custom .reactImg selector, with the idea behind this being that it will continously spin the React logo in a complete 360 degree rotation. */
+
+
+    from { /** From = This standard selector defines the starting state of the animation. */
+
+        transform : rotate( 0deg ); /** This value was chosen to be used to start the animation from a completely unrotated state. */
+
+    }
+
+
+
+    to { /** To = This standard selector defines the ending state of the animation. */
+
+        transform : rotate( 360deg ); /** This value was chosen to be used to end the animation at a full rotation, with the idea behind this being that it will create a continuous spinning effect when the animation loops back to the from selector. */
+
+    }
+
+
+}
+
+/* #endregion React Image Animation */
+
 
 
 /* #region Media Query for Reduced Motion */
 
-@media ( prefers-reduced-motion : no-preference ) { /** This media query targets users who have not expressed a preference for reduced motion, allowing animations to run normally for anyone who has not indicated a preference for no animations. */
-
-    .headerAnchors:nth-of-type( 2 ) .headerImgs { /** The React logo must be targeted in this way to work. I am not sure why and I didn't really have the time to research it. I only know that trying to target it with .headerImgs:nth-child( 2 ) would not apply the animation. */
-
-        /* #region Element Scoped Custom Properties */
-
-        --rlsAniDur : calc( pow( var( --golden-rati ), 6 ) * 1s ); /** React Logo Spin Animation Duration stores the duration in seconds for the animation's total duration of a single complete 360 degree spin, and it is equal to the golden ratio (~= 1.618) raised to the six power (~= 17.944). */
-
-        /* #endregion Element Scoped Custom Properties */
+@media ( prefers-reduced-motion : no-preference ) { /** Reduced Motion = This standard media query selector targets users who have not expressed a preference for reduced motion, with the idea behind this being that it will allow animations to run normally for said users. */
 
 
-        animation : rea-log-spi infinite var( --rlsAniDur ) linear; /** This property applies the React Logo Spin animation to the React logo, making it spin continuously with a duration defined by the --rlsAniDur custom property, and using a linear timing function for a constant speed. */
+    .reactAnchor .reactImg { /** React Anchor React Image = This custom selector contains the custom .reactImg selector and the official React logo and is the custom .headerDiv selector's second grid column, only row and the custom .reactAnchor selector's only grid column, only grid row. */
+
+        /* #region Selector Scoped Custom Properties */
+
+        --rls-ani-dur : calc( pow( var( --golden-rati ), 6 ) * 1s ); /** ~= 17.944s = React Logo Spin Animation Duration = This custom property stores the duration in seconds for the custom React Logo Spin animation's total duration for a single complete 360 degree spin, with the idea behind this being to create a duration based on the golden ratio that is not too fast and not too slow. */
+
+        /* #endregion Selector Scoped Custom Properties */
+
+
+        animation : rea-log-spi infinite var( --rls-ani-dur ) linear; /** This value was chosen to be used to apply the custom React Logo Spin animation using the specified selector scoped custom property. */
 
     }
+
 
 }
 
 /* #endregion Media Query for Reduced Motion */
 
 
-/* #endregion Component Header */
+/* #endregion React Image */
+
+
+/* #endregion Header Div */
+
+
+/* #endregion Home Header */
 
 
 
 /* #region Content Div */
 
-.contentDiv { /** Content Div is the .componentSection element grid's second row which contains the .buttonDiv, .editParagraph, .learnParagraph and .dataParagraph elements. */
+.contentDiv { /** Content Div = This custom selector contains the custom .buttonDiv, .editParagraph, .learnParagraph and .dataParagraph selectors and is the custom .homeSection selector's second grid row, only grid column. */
 
-    /* #region Element Scoped Custom Properties */
+    /* #region Selector Scoped Custom Properties */
 
-    --cod-row-siz : calc( 25% - ( ( var( --row-gap-xla ) * 3) / 4 ) ); /** Content Div Row Sizes stores the height of each row within the .contentDiv element's grid, and it is equal to 25% of said element's allotted height (as defined by the .componentSection element) minus the .contentDiv element grid's three row gap maximum values (~= 41.889px @16px root font size * 3 ~= 125.666px) divided by 4 (in order to split the 3 row gaps' combined value evenly between all 4 rows). */
+    --con-div-gta :       /** Content Div Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+        '  buttonDiv   '  /** This value was chosen to be used to contain the custom .buttonDiv selector within this selector grid's first row, full width column. */
+        'editParagraph '  /** This value was chosen to be used to contain the custom .editParagraph selector within this selector grid's second row, full width column. */
+        'learnParagraph'  /** This value was chosen to be used to contain the custom .learnParagraph selector within this selector grid's third row, full width column. */
+        'dataParagraph '; /** This value was chosen to be used to contain the custom .dataParagraph selector within this selector grid's fourth row, full width column. */
 
-    /* #endregion Element Scoped Custom Properties */
+    --con-div-gtr : repeat( 4, var( --gri-rep-row ) );                  /** Content Div Grid Template Rows ~= 1186.620px @1080px height = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+    --gri-rep-row : calc( 25% - ( ( var( --row-gap-lar ) * 3 ) / 4 ) ); /** Grid Repeat Rows               ~=   59.800px @1080px height = This custom property stores the height of the custom .buttonDiv, .editParagraph, .learnParagraph and .dataParagraph selectors' rows within this selector's grid, with the idea behind this being that all four rows are one line only and have the exact same line height which means that all available vertical space should be distributed evenly between them. */
+
+    /* #endregion Selector Scoped Custom Properties */
 
 
-    align-items           : center;                            /** This property was chosen to vertically center both of the .contentButtons elements. */
-    display               : grid;                              /** The CSS Grid property was chosen as the layout method for its powerful layout capabilities. */
-    grid-area             : homecontent;                       /** This property was chosen to place the .headerDiv element within the grid area defined in the parent .componentHeader element's grid template areas declaration. */
-    grid-template-areas   :                                    /** The grid template areas property was chosen as my preferred method of placing grid items, as I find its visual definition and placement provides more clarity. */
-        'buttons'                                              /** The first grid template areas row was chosen to contain the .buttonDiv element, which contains the increment and decrement buttons. */
-        'edit'                                                 /** The second grid template areas row was chosen to contain the .editParagraph element, which contains the paragraph explaining to edit the App.tsx file to test the HMR (Hot Module Replacement). */
-        'learn'                                                /** The third grid template areas row was chosen to contain the .learnParagraph element, which contains the paragraph explaining to click on the Vite and React logos in order to learn more. */
-        'data';                                                /** The fourth grid template areas row was chosen to contain the .dataParagraph element, which contains the paragraph with the mock back end JSON data. */
-    grid-template-columns : 100%;                              /** The grid template columns property defines the width of the columns for each of the .contentDiv elements' rows in its grid layout, and since each grid row only has one column per row it is set to 100% to take up the full width of the .contentDiv element (as defined by the .componentSection element). */
-    grid-template-rows    : repeat( 4, var( --cod-row-siz ) ); /** The grid template rows property defines the heights of the rows in the .contentDiv element's grid layout, using the element scoped custom properties in a repeat to create four evenly sized rows. */
-    row-gap               : var( --row-gap-xla );              /** This property was chosen to create space between the rows of the .contentDiv element's grid, and each of them is approximately equal to 41.889px @16px root font size. */
+    align-items           : center;               /** This value was chosen to be used to vertically center the custom .buttonDiv, .editParagraph, .learnParagraph and .dataParagraph selectors within their grid areas, with the idea behind this being to more evenly distribute the space between them and the elements below them and creating a better visual, aesthetic balance. */
+    display               : grid;                 /** This value was chosen to be used as the preferred layout method, with the idea behind this being that it provides powerful element placement and sizing capabilities. */
+    grid-area             : contentDiv;           /** This value was chosen to be used to place this selector within the custom .homeSection selector grid area's second row, full width column. */
+    grid-template-areas   : var( --con-div-gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-columns : 100%;                 /** This value was chosen to be used to fill columns using all available horizontal space as defined by its parent, the custom .homeSection selector. */
+    grid-template-rows    : var( --con-div-gtr ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    row-gap               : var( --row-gap-lar ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property. */
 
 }
+
 
 
 /* #region Button Div */
 
-.buttonDiv { /** Button Div is the .contentDiv element grid's first row which contains the .contentButtons (increment and decrement buttons). */
+.buttonDiv { /** Button Div = This custom selector contains the custom .incrementButton and .decrementButton selectors and is the custom .contentDiv selector's first grid row, only grid column. */
 
-    /* #region Element Scoped Custom Properties */
+    /* #region Selector Scoped Custom Properties */
 
-    --bud-col-one : calc( 50% - ( var( --col-gap-max ) / 2 ) ); /** Button Div Column One stores the width of the first column within the .buttonDiv element's grid, and it is equal to 50% of said element's allotted width (as defined by the .contentDiv element) minus half of the .buttonDiv element grid's single column gap maximum value (~= 66.128px @1920px width). */
-    --bud-col-two : calc( 50% - ( var( --col-gap-max ) / 2 ) ); /** Button Div Column Two stores the width of the second column within the .buttonDiv element's grid, and it is equal to 50% of said element's allotted width (as defined by the .contentDiv element) minus half of the .buttonDiv element grid's single column gap maximum value (~= 66.128px @1920px width). */
+    --but-div-gta :                           /** Button Div Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+        'incrementButton   decrementButton '; /** This value was chosen to be used to contain the custom .incrementButton and .decrementButton selectors within this selector grid's first row, two columns. */
 
-    /* #endregion Element Scoped Custom Properties */
+    --but-div-gtc : var( --inc-but-col ) var( --dec-but-col );  /** Button Div Grid Template Columns ~= 1186.620px @1920px width = This custom property stores the grid template columns value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+    --dec-but-col : calc( 50% - ( var( --col-gap-med ) / 2 ) ); /** Decrement Button Column          ~=  280.117px @1920px width = This custom property stores the width of the custom .decrementButton selector's column within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template columns custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --inc-but-col : calc( 50% - ( var( --col-gap-med ) / 2 ) ); /** Increment Button Column          ~=  280.117px @1920px width = This custom property stores the width of the custom .incrementButton selector's column within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template columns custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+
+    /* #endregion Selector Scoped Custom Properties */
 
 
-    column-gap            : var( --col-gap-max );                      /** This property was chosen to create space between the two columns of the .buttonDiv element's grid, and it is approximately equal to 66.128px @1920px width. */
-    display               : grid;                                      /** The CSS Grid property was chosen as the layout method for its powerful layout capabilities. */
-    grid-area             : buttons;                                   /** This property was chosen to place the .buttonDiv element within the grid area defined in the parent .contentDiv element's grid template areas declaration. */
-    grid-template-areas   :                                            /** The grid template areas property was chosen as my preferred method of placing grid items, as I find its visual definition and placement provides more clarity. */
-        'increment decrement';                                         /** The only grid template areas row was chosen to contain both of the .buttonDiv element grid's columns, which will each contain a .contentButtons element with a button element inside of them, one for increment and one for decrement. */
-    grid-template-columns : var( --bud-col-one ) var( --bud-col-two ); /** The grid template columns property defines the widths of the columns in the .buttonDiv element's grid layout, using the element scoped custom properties for the first and second columns respectively. */
-    grid-template-rows    : 100%;                                      /** The grid template rows property defines the height of the columns in the .buttonDiv element's grid layout, and since this grid only has one row it is set to 100% to take up the full height of the .buttonDiv element (as defined by the .contentDiv element). */
+    column-gap            : var( --col-gap-med ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property. */
+    display               : grid;                 /** This value was chosen to be used as the preferred layout method, with the idea behind this being that it provides powerful element placement and sizing capabilities. */
+    grid-area             : buttonDiv;            /** This value was chosen to be used to place this selector within the custom .contentDiv selector grid area's first column, full height row. */
+    grid-template-areas   : var( --but-div-gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-columns : var( --but-div-gtc ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-rows    : 100%;                 /** This value was chosen to be used to fill rows using all available vertical space as defined by its parent, the custom .contentDiv selector. */
 
 }
 
-/* #endregion Button Div */
 
 
 /* #region Content Buttons */
 
-.contentButtons { /** Content Buttons are the .buttonDiv element grid's first and second columns which contain the buttons for incrementing and decrementing the counter state number. */
+.contentButtons { /** Content Buttons = These custom selectors contain the shared styles for the custom .incrementButton and .decrementButton selectors and are the custom .buttonDiv selector's two grid columns, only grid row. */
 
-    /* #region Element Scoped Custom Properties */
-
-    --cob-tra-dur : calc( pow( var( --golden-rati ), 12 ) * 1ms ); /** Content Buttons Transition Duration stores the duration in milliseconds for the border color property's transition that will occur on hover for each button, and it is equal to the golden ratio (~= 1.618) raised to the twelfth power (~= 321.997). */
-
-    /* #endregion Element Scoped Custom Properties */
-
-
-    background-color : var( --col-but-dar );                      /** This property is linked to the color button for dark mode globally scoped CSS Custom Property. See said property definition for more details. */
-    border           : var( --bor-wid-min ) solid transparent;    /** This property was chosen so that the hover selector would have a smooth transition to the new border color. The size value is linked to the border width minimum globally scoped CSS Custom Property, and it is approximately equal to 1.618px. */
-    border-radius    : var( --bor-rad-lar );                      /** This property is linked to the border radius large globally scoped CSS Custom Property, and it is approximately equal to 17.944px. */
-    cursor           : pointer;                                   /** This property was chosen as a common standard for changing the cursor to a pointer when hovering over buttons, providing a visual cue to users that the element is interactive and can be clicked. */
-    font-family      : inherit;                                   /** This property was chosen to ensure that buttons inherit the font family from their parent elements. */
-    font-size        : var( --fon-siz-bas );                      /** This property is linked to the font size base globally scoped CSS Custom Property, and it is equal to 16.000px @16px root font size. */
-    font-weight      : 500;                                       /** This property was chosen to make button text slightly bolder than the normal text, which can help it stand out. */
-    height           : var( --ver-rhy-lar );                      /** This property was chosen to set the height of the button elements to the vertical rhythm large globally scoped CSS Custom Property, ensuring consistent vertical spacing within the layout, and it is approximately equal to 41.889px @16px root font size. */
-    padding          : var( --pad-hor-xsm ) var( --pad-ver-bas ); /** This property was chosen to add some space on all sides of the .contentButtons elements, which helps to give the buttons a balanced and visually appealing appearance with breathing room for text inside of them. The vertical and horizontal padding values are linked to the padding horizontal extra small and padding vertical base globally scoped CSS Custom Properties, and they are approximately equal to 9.648px @1920px width and 25.889px @16px root font size respectively. */
-    transition       : border-color var( --cob-tra-dur ) linear;  /** This property was chosen to smoothly transition the border color property on hover for each button using the content buttons transition duration element scoped CSS Custom Property. */
-    width            : var( --con-but-wid );                      /** This property was chosen to set the width of the buttons to the content buttons width component scoped CSS Custom Property which was also used to size the .componentHeader element grid's columns in order to align themselves with these buttons, and it is approximately equal to 280.124px @1920px width. */
-    will-change      : border-color;                              /** This property was chosen to inform the browser that the border color property of the .contentButtons elements will be changing (on hover) so that the browser can optimize for this change and ensure a smoother transition effect. */
+    width : var( --hab-sha-wid ); /** This value was chosen to be used according to the details of the specified component scoped custom property. */
 
 }
 
-.contentButtons:nth-child( 1 ) { /** Content Buttons first child is the first .contentButtons element grid's first column, which contains the increment button element. */
 
-    grid-area    : increment; /** This property was chosen to place the .contentButtons first child element within the grid area defined in the parent .buttonDiv element's grid template areas declaration. */
-    justify-self : end;       /** This property was chosen to horizontally align the increment button to the end (right side) of its grid area so that it aligns with the center of the page along with the 'Vite' text and the Vite logo. */
 
-}
+/* #region Increment Button */
 
-.contentButtons:nth-child( 2 ) { /** Content Buttons second child is the second .contentButtons element grid's second column, which contains the decrement button element. */
+.incrementButton { /** Increment Button = This custom selector contains the custom button and is the custom .buttonDiv selector's first grid column, only grid row. */
 
-    grid-area    : decrement; /** This property was chosen to place the .contentButtons second child element within the grid area defined in the parent .buttonDiv element's grid template areas declaration. */
-    justify-self : start;     /** This property was chosen to horizontally align the decrement button to the start (left side) of its grid area so that it aligns with the center of the page along with the 'React' text and the React logo. */
+    grid-area    : incrementButton; /** This value was chosen to be used to place this selector within the custom .buttonDiv selector grid area's first column, full height row. */
+    justify-self : end;             /** This value was chosen to be used to horizontally align this selector to the right side of its grid area, with the idea behind this being to align itself with the Vite text and logo above it. */
 
 }
 
-.contentButtons:hover { /** Content Buttons are the .buttonDiv element grid's first and second columns which contain the buttons for incrementing and decrementing the counter state number. */
+/* #endregion Increment Button */
 
-    border-color : var( --col-bor_hov-dar ); /** This property is linked to the color border on hover for dark mode globally scoped CSS Custom Property. See said property definition for more details. */
 
-}
 
-.contentButtons:focus,
-.contentButtons:focus-visible { /** Content Buttons are the .buttonDiv element grid's first and second columns which contain the buttons for incrementing and decrementing the counter state number. These selectors are used for accessibility purposes to provide a visible focus indicator when the buttons receive keyboard focus. */
+/* #region Decrement Button */
 
-    outline-color : default;                                        /** This property value is browser dependent and platform specific and browser vendors use their own specific colors and styles to ensure visibility and adherence to platform conventions. */
-    outline-color : var( --col-mai-dar, -webkit-focus-ring-color ); /** This property is linked to the color main for dark mode globally scoped CSS Custom Property, with a fallback to the WebKit focus ring color. See said property definition for more details. */
-    outline-style : auto;                                           /** This property was chosen to use the browser's native, platform specific focus outline style, which is typically a solid line that may have a specific shape or design depending on the browser and operating system. Using auto allows the browser to determine the most appropriate style for the focus indicator, ensuring it is visible and consistent with user expectations across different platforms. */
-    outline-width : var( --ver-rhy-min );                           /** This property is linked to the vertical rhythm minimum globally scoped CSS Custom Property, and it is approximately equal to 6.111px @16px root font size. */
+.decrementButton { /** Decrement Button = This custom selector contains the custom button and is the custom .buttonDiv selector's second grid column, only grid row. */
+
+    grid-area    : decrementButton; /** This value was chosen to be used to place this selector within the custom .buttonDiv selector grid area's second column, full height row. */
+    justify-self : start;           /** This value was chosen to be used to horizontally align this selector to the left side of its grid area, with the idea behind this being to align itself with the React text and logo above it. */
 
 }
+
+/* #endregion Decrement Button */
+
 
 /* #endregion Content Buttons */
 
 
-/* #region Media Query for Light Mode */
-
-@media ( prefers-color-scheme : light ) { /** This is the media query selector for the light mode color scheme. */
-
-
-    .contentButtons { /** Content Buttons are the .buttonDiv element grid's first and second columns which contain the buttons for incrementing and decrementing the counter state number. */
-
-        background-color : var( --col-but-lig ); /** This property is linked to the color button for light mode globally scoped CSS Custom Property. See said property definition for more details. */
-
-    }
-
-    .contentButtons:hover { /** Content Buttons are the .buttonDiv element grid's first and second columns which contain the buttons for incrementing and decrementing the counter state number. */
-
-        border-color : var( --col-bor_hov-lig ); /** This property is linked to the color border on hover for light mode globally scoped CSS Custom Property. See said property definition for more details. */
-
-    }
-
-
-}
-
-/* #endregion Media Query for Light Mode */
+/* #endregion Button Div */
 
 
 
 /* #region Edit Paragraph */
 
-.editParagraph { /** Edit Paragraph is the .contentDiv element grid's second row which contains the paragraph with the 'Edit src/App.tsx...' text. */
+.editParagraph { /** Edit Paragraph = This custom selector contains the custom .editCode selector and is the .contentDiv selector's second grid row, only grid column. */
 
-    align-self  : center;               /** This property was chosen to vertically center the.editParagraph element within the .contentDiv grid's second row. */
-    grid-area   : edit;                 /** This property was chosen to place the .editParagraph element within the grid area defined in the parent .contentDiv element's grid template areas declaration. */
-    height      : var( --ver-rhy-bas ); /** This property was chosen to set the height of the .editParagraph element to the vertical rhythm base globally scoped CSS Custom Property, ensuring that its height remains equal its natural line height, and it is approximately equal to 25.889px @16px root font size. */
-    line-height : var( --ver-rhy-bas ); /** This property was chosen to set the line height of the .editParagraph element to the vertical rhythm base globally scoped CSS Custom Property, ensuring that its line height remains consistent with the vertical rhythm of the layout, and it is approximately equal to 25.889px @16px root font size. */
+    grid-area   : editParagraph;        /** This value was chosen to be used to place this selector within the custom .contentDiv selector grid area's second row, full width column. */
+    height      : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .contentDiv selector. */
+    line-height : var( --ver-rhy-bas ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
 
 }
 
 
+
 /* #region Edit Code */
 
-.editCode { /** Edit Code is the .editParagraph element's inner <code> HTML element which contains the 'src/App.tsx' text. */
+.editCode { /** Edit Code = This custom selector contains the custom code text and is the .editParagraph selector's inline block child. */
 
-    height      : var( --ver-rhy-bas ); /** This property was chosen to set the height of the .editCode element to the vertical rhythm base globally scoped CSS Custom Property, ensuring that its height remains equal its natural line height, and it is approximately equal to 25.889px @16px root font size. */
-    line-height : var( --ver-rhy-bas ); /** This property was chosen to set the line height of the .editCode element to the vertical rhythm base globally scoped CSS Custom Property, ensuring that its line height remains consistent with the vertical rhythm of the layout, and it is approximately equal to 25.889px @16px root font size. */
+    height      : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .editParagraph selector. */
+    line-height : var( --ver-rhy-bas ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
 
 }
 
@@ -424,12 +520,11 @@
 
 /* #region Learn Paragraph */
 
-.learnParagraph { /** Learn Paragraph is the .contentDiv element grid's third row which contains the paragraph with the 'Click on the Vite and...' text. */
+.learnParagraph { /** Learn Paragraph = This custom selector contains the custom paragraph text and is the .contentDiv selector's third grid row, only grid column. */
 
-    align-self : center;                /** This property was chosen to vertically center the.learnParagraph element within the .contentDiv grid's third row. */
-    grid-area  : learn;                 /** This property was chosen to place the .learnParagraph element within the grid area defined in the parent .contentDiv element's grid template areas declaration. */
-    height      : var( --ver-rhy-bas ); /** This property was chosen to set the height of the .learnParagraph element to the vertical rhythm base globally scoped CSS Custom Property, ensuring that its height remains equal its natural line height, and it is approximately equal to 25.889px @16px root font size. */
-    line-height : var( --ver-rhy-bas ); /** This property was chosen to set the line height of the .learnParagraph element to the vertical rhythm base globally scoped CSS Custom Property, ensuring that its line height remains consistent with the vertical rhythm of the layout, and it is approximately equal to 25.889px @16px root font size. */
+    grid-area   : learnParagraph;       /** This value was chosen to be used to place this selector within the custom .contentDiv selector grid area's third row, full width column. */
+    height      : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .contentDiv selector. */
+    line-height : var( --ver-rhy-bas ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
 
 }
 
@@ -439,12 +534,11 @@
 
 /* #region Data Paragraph */
 
-.dataParagraph { /** Data Paragraph is the .contentDiv element grid's fourth row which contains the paragraph with the mock backend JSON data. */
+.dataParagraph { /** Data Paragraph = This custom selector contains the custom paragraph text and is the .contentDiv selector's fourth grid row, only grid column. */
 
-    align-self : center;                /** This property was chosen to vertically center the.dataParagraph element within the .contentDiv grid's fourth row. */
-    grid-area  : data;                  /** This property was chosen to place the .dataParagraph element within the grid area defined in the parent .contentDiv element's grid template areas declaration. */
-    height      : var( --ver-rhy-bas ); /** This property was chosen to set the height of the .dataParagraph element to the vertical rhythm base globally scoped CSS Custom Property, ensuring that its height remains equal its natural line height, and it is approximately equal to 25.889px @16px root font size. */
-    line-height : var( --ver-rhy-bas ); /** This property was chosen to set the line height of the .dataParagraph element to the vertical rhythm base globally scoped CSS Custom Property, ensuring that its line height remains consistent with the vertical rhythm of the layout, and it is approximately equal to 25.889px @16px root font size. */
+    grid-area   : dataParagraph;        /** This value was chosen to be used to place this selector within the custom .contentDiv selector grid area's fourth row, full width column. */
+    height      : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .contentDiv selector. */
+    line-height : var( --ver-rhy-bas ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
 
 }
 
@@ -454,6 +548,6 @@
 /* #endregion Content Div */
 
 
-/* #endregion Component Section */
+/* #endregion Home Section */
 
 

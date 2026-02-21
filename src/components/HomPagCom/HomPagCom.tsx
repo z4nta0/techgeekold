@@ -1,19 +1,25 @@
 
 // #region Imports
 
-import { decNumRed }    from '../../features/counterSlice.tsx'; /** This is the named export for the counter state number reducer's action creator function that will be used to dispatch an action to decrement the counter number state in the HomPagCom component. */
-import { getMocDatJso } from '../../api/dataSlice.tsx';         /** This is the named export for the mock data JSON reducer's thunk action creator function that will be used to dispatch an action to retrieve the mock data JSON state in the HomPagCom component. */
-import { incNumRed }    from '../../features/counterSlice.tsx'; /** This is the named export for the counter state number reducer's action creator function that will be used to dispatch an action to increment the counter number state in the HomPagCom component. */
-import   React          from 'react';                           /** This is the default export from the React library, which is necessary to use JSX syntax in this file. It provides the core functionality for building React components and managing their lifecycle. */
-import   reactLogo      from '../../assets/react.svg';          /** This is the React logo image that is imported and used in the HomPagCom component to display the React logo. */
-import   styles         from './HomPagCom.module.css';          /** This is the CSS module file that contains all styling for the HomPagCom component. */
-import   viteLogo       from '../../assets/vite.svg';           /** This is the Vite logo image that is imported and used in the HomPagCom component to display the Vite logo. */
-import { useEffect }    from 'react';                           /** This is a React hook that allows you to perform side effects in function components. It is used in the HomPagCom component to dispatch an action to retrieve the mock data JSON state when the component mounts. */
-import   useAppSel      from '../../hooks/useAppSel.ts';        /** This is the custom React hook that provides access to the Redux store's state with proper TypeScript typing. */
+import React     from 'react';                    /** This import is the standard React core library, providing the core functionality for building React components and managing their lifecycle. */
+import reactLogo from '../../assets/react.svg';   /** This import is the React logo image that is used in the this component to display the official React logo. */
+import styles    from './HomPagCom.module.css';   /** This import is the custom CSS file that contains all of the styling declarations for this component. */
+import useAppSel from '../../hooks/useAppSel.ts'; /** This import is the custom React hook that provides access to the Redux store's state with the additional advantage of applying proper type definitions. */
+import viteLogo  from '../../assets/vite.svg';    /** This import is the Vite logo image that is used in this component to display the official Vite logo. */
 
-import { type RooStaObj } from '../../store.tsx';          /** This is the custom Typescript type definition for the entire state object of the Redux store, which is inferred by the store's getState method inside of store.tsx. This type is used to properly type the state object that is passed as a prop to components and will also be imported on said components that have use of the state object but do not need to use the useSelector hook. */
-import { type UseAppDis } from '../../hooks/useAppDis.ts'; /** This is the custom Typescript type definition for the custom React hook that provides access to the Redux store's dispatch function with proper TypeScript typing, specifically for working with thunk actions. */
-import { type UseAppThu } from '../../hooks/useAppThu.ts'; /** This is the custom Typescript type definition for the custom React hook that provides access to the Redux store's dispatch function with proper TypeScript typing. */
+
+import { decNumRed    } from '../../features/counterSlice.tsx'; /** This import is the custom counter state number reducer's action creator function that will be used to dispatch an action to decrement the counter number state in the this component. */
+import { getMocDatJso } from '../../api/dataSlice.tsx';         /** This import is the custom mock data JSON reducer's thunk action creator function that will be used to dispatch an action to retrieve the mock data JSON state in the this component. */
+import { incNumRed    } from '../../features/counterSlice.tsx'; /** This import is the custom counter state number reducer's action creator function that will be used to dispatch an action to increment the counter number state in the this component. */
+import { useEffect    } from 'react';                           /** This import is the standard React hook that enables side effects for components. */
+
+
+import { type Action        } from '@reduxjs/toolkit';         /** This import is the standard Typescript definition for an object used in React Redux management patterns that describes an intention to change the application state. */
+import { type Dispatch      } from '@reduxjs/toolkit';         /** This import is the standard Typescript definition for a standard React Redux Toolkit dispatch function that accepts an action as an argument and returns void. */
+import { type RooStaObj     } from '../../store.tsx';          /** This import is the custom type definition for the entire state object of the custom React Redux Toolkit store, which is inferred by the store's standard getState method. */
+import { type ThunkDispatch } from '@reduxjs/toolkit';         /** This import is the standard Typescript definition for an interface provided by the standard React Redux thunk middleware that describes a dispatch function capable of accepting both standard React Redux action objects and thunk functions. */
+import { type UseAppDis     } from '../../hooks/useAppDis.ts'; /** This import is the custom type definition for the custom React hook that acts as a wrapper around the standard React Redux store dispatch function. */
+import { type UseAppThu     } from '../../hooks/useAppThu.ts'; /** This import is the custom type definition for the custom React hook that acts as a wrapper around the standard React Redux store dispatch function, this one designed specifically for working with thunk actions. */
 
 // #endregion Imports
 
@@ -22,13 +28,13 @@ import { type UseAppThu } from '../../hooks/useAppThu.ts'; /** This is the custo
 // #region Props Type Definitions
 
 /**
- * HomPagComPro = Home Page Component Props will store all of the props that will be used in the HomPagCom component.
+ * Home Page Component Props = This custom type stores the types that will be used for the custom props that are passed into this custom component.
  *
- * @property disFun = Dispatch Function will store the custom hook from the utilities directory that wraps the standard dispatch function of the Redux store.
- * @property namStr = Name String will store the site/app name that will be displayed in various parts of the site/app.
- * @property staObj = State Object will store all the entire state of the application as inferred by the Redux store's getState method inside of store.tsx. It is best practice to use the useSelector hook from React Redux to access specific slices of the state object within components but this is preferrable in some, select use cases.
- * @property thuFun = Thunk Function will store the custom hook from the utilities directory that wraps the standard dispatch function of the Redux store, but with proper TypeScript typing for thunk actions.
- * 
+ * @property disFun = Dispatch Function custom property stores the type that will be used for the custom {@link appDisFun} variable.
+ * @property namStr = Name String custom property stores the type that will be used for the custom {@link appNamStr} variable.
+ * @property staObj = State Object custom property stores the type that will be used for the custom {@link appStaObj} variable.
+ * @property thuFun = Thunk Function custom property stores the type that will be used for the custom {@link appThuFun} variable.
+ *
 */
 
 type HomPagComPro = {
@@ -44,30 +50,35 @@ type HomPagComPro = {
 
 
 
+// #region HomPagCom
+
 /**
  * HomPagCom = Home Page Component
  *
  * @summary
- * This functional component will be responsible for returning all of the HTML
- * content for the Home page. The mock data stuff is completely unnecessary,
- * but this was just for personal learning purposes to gain some experience
- * with using Redux Toolkit alongside React and TypeScript in a more hands on
+ * This custom functional component executes the logic of and renders the JSX
+ * of the Home page. The core functionality and appearance of the default React
+ * + Vite installation is preserved, though I have heavily customized both to
+ * suit my (learning) needs. The incrementing counter, decrementing counter and
+ * mock back end data functionality is completely unnecessary, but this was all
+ * done for personal learning purposes in order to gain some experience with
+ * using React Redux Toolkit alongside React and TypeScript in a more hands on
  * way (instead of just tutorials) before moving on to my next project that
  * will use these concepts in a more practical, realistic way.
  *
- * @author z4ntao <https://github.com/z4nta0>
+ * @author z4nta0 <https://github.com/z4nta0>
  * 
- * @param props.disFun - {@link HomPagComPro.disFun}
- * @param props.namStr - {@link HomPagComPro.namStr}
- * @param props.staObj - {@link HomPagComPro.staObj}
- * @param props.thuFun - {@link HomPagComPro.thuFun}
+ * @param props.disFun - {@link appDisFun}
+ * @param props.namStr - {@link appNamStr}
+ * @param props.staObj - {@link appStaObj}
+ * @param props.thuFun - {@link appThuFun}
  * 
  * @returns A React JSX element representing the Home component.
  * @see {@link homPagComJsx}
  * 
  * @example
  * ```tsx
- * <Home /> // => <section className={styles.homeSection}> ... </section>
+ * <Home /> // => homPagComJsx
  * ```
  *
 */
@@ -75,31 +86,60 @@ type HomPagComPro = {
 function HomPagCom ( props : HomPagComPro ) : React.ReactElement {
 
 
-
     // #region Component Scoped Variables
 
 
     // #region Props Variables
 
-    /** App Dispatch Function   = {@link HomPagComPro.disFun}. This must be executed as a function to obtain the actual dispatch function. This is a side effect of wrapping the React Redux store's useDispatch function in a custom React Hook. */
-    const appDisFun             = props.disFun();
-    /** Thunk Dispatch Function = {@link HomPagComPro.thuFun}. This must be executed as a function to obtain the actual dispatch function. This is a side effect of wrapping the React Redux store's useDispatch function in a custom React Hook. */
-    const thuDisFun             = props.thuFun();
+    /** App Dispatch Function   = This custom variable stores the custom React hook from the utilities directory that wraps the standard React Redux store dispatch function. This must be executed as a function in order to obtain access the the standard React Redux store dispatch function that this custom hook wraps. */
+    const appDisFun : Dispatch = props.disFun();
+    /** App Name String         = This custom variable stores the site/app name that will be displayed in various parts of the site/app. */
+    const appNamStr : string    = props.namStr;
+    /** App Thunk Function      = This custom type stores the type that will be used for the custom {@link appThuFun} variable. */
+    type AppThuFun              = ThunkDispatch< any, any, Action >;
+    /** Thunk Dispatch Function = This custom variable stores the custom React hook from the utilities directory that wraps the standard React Redux store dispatch function but with proper typing specifically for thunk actions. This must be executed as a function in order to obtain access the the standard React Redux store dispatch function that this custom hook wraps. */
+    const appThuFun : AppThuFun = props.thuFun();
 
     // #endregion Props Variables
 
 
+
     // #region State Variables
 
-    /** Currently Loading Boolean = This state variable stores the boolean value that indicates whether the mock data JSON is currently being fetched from the API. This is used to conditionally render a loading message in the component while the data is being fetched. */
-    const { curLoaBoo }           = useAppSel( ( state : RooStaObj ) => state.mocDatJso );
-    /** Encountered Error Boolean = This state variable stores the boolean value that indicates whether an error was encountered while fetching the mock data JSON from the API. This is used to conditionally render an error message in the component if an error occurs during data fetching. */
-    const { encErrBoo }           = useAppSel( ( state : RooStaObj ) => state.mocDatJso );
-    /** Mock Data String          = This state variable stores the actual mock data JSON string fetched from the API. This data is used to display some of the content on the Home page. */
-    const { mocDatStr }           = useAppSel( ( state : RooStaObj ) => state.mocDatJso.mocDatObj );
 
-    /* Data Paragraph Content = This stores the string that will be displayed in the component's .dataParagraph Paragraph HTML element based on the current state of the mock data fetching process. If the data is currently being fetched, it will display a loading message. If an error was encountered during fetching, it will display an error message. Otherwise, it will display the actual mock back end JSON data string. */
-    const datParCon           = curLoaBoo ? 'Fetching data from API...' : encErrBoo ? 'Error fetching data' : mocDatStr;
+    // #region AppSelObj
+
+    /**
+     * App Selector Object = This custom type stores the types that will be used for the return values from the custom {@link useAppSel} React hook.
+     * 
+     * @property curLoaBoo = Currently Loading Boolean custom property stores the type that will be used for the custom {@link curLoaBoo} variable.
+     * @property encErrBoo = Encountered Error Boolean custom property stores the type that will be used for the custom {@link encErrBoo} variable.
+     * @property mocDatObj = Mock Data String custom property stores the type that will be used for the custom {@link mocDatObj} variable.
+     *
+    */
+
+    type AppSelObj = {
+
+        curLoaBoo : boolean;
+        encErrBoo : boolean;
+        mocDatObj : { mocDatStr : string; };
+
+    };
+
+    // #endregion AppSelObj
+
+
+    /** Currently Loading Boolean   = This custom state variable stores the boolean value that indicates whether the mock data JSON is currently being fetched from the API, and it will be used to conditionally render a loading message in the component while the data is being fetched. */
+    const { curLoaBoo } : AppSelObj = useAppSel( ( state : RooStaObj ) => state.mocDatJso );
+    /** Encountered Error Boolean   = This custom state variable stores the boolean value that indicates whether an error was encountered while fetching the mock data JSON from the API, and it will be used to conditionally render an error message in the component if an error occurs during data fetching. */
+    const { encErrBoo } : AppSelObj = useAppSel( ( state : RooStaObj ) => state.mocDatJso );
+    /** Mock Data Object            = This custom state variable stores the actual mock data JSON object fetched from the API, and it will be used to display some of the content on the Home page. */
+    const { mocDatObj } : AppSelObj = useAppSel( ( state : RooStaObj ) => state.mocDatJso );
+
+
+
+    /* Data Paragraph Content = This custom variable stores the string that will be displayed in this component's .dataParagraph HTML element based on the current state of the mock data fetching process. If the data is currently being fetched, it will display a loading message. If an error was encountered during fetching, it will display an error message. Otherwise, it will display the actual mock back end JSON data string. */
+    const datParCon : string  = curLoaBoo ? 'Fetching data from API...' : encErrBoo ? 'Error fetching data' : mocDatObj.mocDatStr;
 
     // #endregion State Variables
 
@@ -110,24 +150,21 @@ function HomPagCom ( props : HomPagComPro ) : React.ReactElement {
 
     // #region useEffect
 
-
-    // #region Function Body
-
     /**
      * useEffect
      *
      * @summary
-     * The useEffect hook in React allows you to perform side effects in
-     * functional components, such as data fetching, subscriptions, or manual
-     * DOM manipulation. It serves to synchronize a component with external
-     * systems. The custom inner code block inside of useEffect handles the
-     * fetching of the mock back end JSON data by dispatching the appropriate
-     * Redux Toolkit thunk action when the component mounts. The empty
-     * dependency array ensures that this effect only runs once when the
-     * component is first rendered.
+     * The standard React useEffect hook executes side effects for functional
+     * components, such as data fetching, subscriptions or manual DOM
+     * manipulation. Its main purpose is to synchronize a component with
+     * external systems. The custom inner code block of this hook handles the
+     * fetching of the mock back end JSON data using the custom React hook that
+     * wraps the standard React Redux Toolkit useDispatch hook. The empty
+     * dependency array ensures that this only runs once when the component is
+     * first rendered.
      *
      * @author React  <https://react.dev/reference/react/useEffect>
-     * @author z4ntao <https://github.com/z4nta0>
+     * @author z4nta0 <https://github.com/z4nta0>
      *
      * @param void - This function takes no parameters.
      *
@@ -136,7 +173,7 @@ function HomPagCom ( props : HomPagComPro ) : React.ReactElement {
      * @example
      * ```ts
      * This function is not called directly, but rather it is run on component
-     * mount and on changes to whatever state variables are specified in the
+     * mount and on changes to whatever variables are specified in the
      * dependency array.
      * ```
      *
@@ -145,51 +182,48 @@ function HomPagCom ( props : HomPagComPro ) : React.ReactElement {
     useEffect( () => {
 
 
-        /**Thunk Dispatch Function = This function will use the custom hook that wraps Redux Toolkit's useDispatch hook in order to execute the async thunk action which fetches the mock back end JSON data. */
-        thuDisFun( getMocDatJso() );
+        /** App Thunk Function = This custom React hook executes the standard Redux Toolkit useDispatch hook in order to execute the async thunk action which fetches the mock back end JSON data. */
+        appThuFun( getMocDatJso() );
 
 
-    }, []);
+    }, []); /** Empty Aray = This custom dependency array stores the values that define when useEffect should be run, with an empty dependency array ensuring that this hook will run only once when the component mounts. */
 
-
-    // #region useEffect
-
-
-    // #region Function Body
+    // #endregion useEffect
 
 
 
     // #region Return Statement
 
-
-    /** Home Page Component Javascript XML  = This stores the HTML-like code that the Home Page component will render when called. I prefer to store this in a variable so that the variable can be referenced inside of comments in the other sections of the component. */
+    /** Home Page Component Javascript XML  = This custom variable stores the HTML like code that this component will render when called by its parent component. I prefer to store this in a variable before being returned so that it can be referenced inside of comments in the other sections of this component. */
     const homPagComJsx : React.ReactElement = (
 
 
-        // #region Component Section Element
+        // #region Home Section Element
 
-        < section id='comSecEle' className={ styles.componentSection } > { /* Component Section Element = This is the component wrapping HTML element since React requires components to return a single root element. */ }
-
-
-            { /** Start Component Header Element */ }
-
-            <  header id='comHeaEle' className={ styles.componentHeader } > { /* Component Header Element = This is the header element for the component which contains the main heading and the logos. */ }
+        < section id='homSecEle' className={ styles.homeSection } > { /* Home Section Element = This custom section element is the root HTML element and container for this component since React requires the JSX to return a single root element. */ }
 
 
-                < h1 id='heaHe1Ele' className={ styles.headerH1 } >< span id='vitSpaEle' className={ styles.he1Spans } >Vite</ span >< span id='pluSpaEle' className={ styles.he1Spans } > + </ span >< span id='reaSpaEle' className={ styles.he1Spans } >React</ span ></ h1 > { /* Header H1 Element = This is the main heading for the component. The Span elements were added in order to center the content with the rest of the page. */ }
+            { /** Start Home Header Element */ }
+
+            <  header id='homHeaEle' className={ styles.homeHeader } > { /* Home Header Element = This custom header element is the container for the h1 heading and the logo anchors and images. */ }
+
+
+                < h1 id='heaHe1Ele' className={ styles.headerH1 } >< span id='vitSpaEle' className={ styles.viteSpan } >Vite</ span >< span id='pluSpaEle' className={ styles.plusSpan } > + </ span >< span id='reaSpaEle' className={ styles.reactSpan } >React</ span ></ h1 > { /* Header H1 Element = This custom h1 element is the container for the title text of the page. The Span elements were added in order to align the individual parts of the heading with the logo and counter buttons. */ }
 
 
 
                 { /** Start Header Div Element */ }
 
-                < div id='heaDivEle' className={ styles.headerDiv } > { /* Header Div Element = This is the Header div element that contains the logos for the header. */ }
+                < div id='heaDivEle' className={ styles.headerDiv } > { /* Header Div Element = This custom div element is the container for the logo anchors and images. */ }
 
 
                     { /** Start Vite Anchor Element */ }
 
-                    <  a id='vitAncEle' className={ styles.headerAnchors } href='https://vite.dev' target='_blank' > { /* Vite Anchor Element = This is the anchor element for the Vite logo which links to the Vite website. */ }
+                    <  a id='vitAncEle' className={ `${ styles.headerAnchors } ${ styles.viteAnchor }` } href='https://vite.dev' target='_blank' > { /* Vite Anchor Element = This custom anchor element is the container for the link to the Vite website and for the Vite logo image. */ }
 
-                        < img id='vitImgEle' className={ styles.headerImgs } src={ viteLogo  } alt='Vite logo' /> { /* Vite Image Element = This is the image element for the Vite logo. */ }
+
+                        < img id='vitImgEle' className={ `${ styles.headerImgs } ${ styles.viteImg }` } src={ viteLogo } alt='Vite logo' /> { /* Vite Image Element = This custom img element is the container for the official Vite logo image. */ }
+
 
                     </ a >
 
@@ -198,9 +232,11 @@ function HomPagCom ( props : HomPagComPro ) : React.ReactElement {
 
                     { /** Start React Anchor Element */ }
 
-                    <  a id='reaAncEle' className={ styles.headerAnchors } href='https://react.dev' target='_blank' > { /* React Anchor Element = This is the anchor element for the React logo which links to the React website. */ }
+                    <  a id='reaAncEle' className={ `${ styles.headerAnchors } ${ styles.reactAnchor }` } href='https://react.dev' target='_blank' > { /* React Anchor Element = This custom anchor element is the container for the link to the React website and for the React logo image. */ }
 
-                        < img id='reaImgEle' className={ styles.headerImgs } src={ reactLogo } alt='React logo' /> { /* React Image Element = This is the image element for the React logo. */ }
+
+                        < img id='reaImgEle' className={ `${ styles.headerImgs } ${ styles.reactImg }` } src={ reactLogo } alt='React logo' /> { /* React Image Element = This custom img element is the container for the official React logo image. */ }
+
 
                     </ a >
 
@@ -211,25 +247,26 @@ function HomPagCom ( props : HomPagComPro ) : React.ReactElement {
 
                 { /** End Header Div Element */ }
 
+
             </ header>
 
-            { /** End Component Header Element */ }
+            { /** End Home Header Element */ }
 
 
 
             { /** Start Content Div Element */ }
 
-            <  div id='conDivEle' className={ styles.contentDiv } > { /* Content Div Element = This is the div element that contains the main content of the Home page, including the buttons to increment and decrement the counter state, the paragraph that display instructions and the mock backend JSON data. */ }
+            <  div id='conDivEle' className={ styles.contentDiv } > { /* Content Div Element = This custom div element is the container for the content of this component, including the buttons to increment and decrement the counter state, and the paragraphs that display instructions for editing the site/app, instructions to click on the logos to learn more and the mock backend JSON data. */ }
 
 
                 { /** Start Button Div Element */ }
 
-                <  div id='butDivEle' className={ styles.buttonDiv } > { /* Button Div Element = This is the div element that contains the buttons for incrementing and decrementing the counter state. */ }
+                <  div id='butDivEle' className={ styles.buttonDiv } > { /* Button Div Element = This custom div element is the container for the buttons that increment and decrement the counter state. */ }
 
 
                     { /** Start Increment Button Element */ }
 
-                    <  button id='incButEle' className={ styles.contentButtons } onClick={ () => { appDisFun( incNumRed( 2 ) ) } } > { /* Increment Button Element = This is the button element that will dispatch an action to increment the counter state by 2 when clicked. The current value of the counter state is also displayed in the button. */ }
+                    <  button id='incButEle' className={ `${ styles.contentButtons } ${ styles.incrementButton }` } onClick={ () => { appDisFun( incNumRed( 2 ) ) } } > { /* Increment Button Element = This custom button element is the container for the button that will dispatch an action to increment the counter state by 2 when clicked, as well as displaying the current value of the counter state in the button's text. */ }
 
                         Count = { useAppSel( ( state : RooStaObj ) => state.couStaNum ) }
 
@@ -238,9 +275,10 @@ function HomPagCom ( props : HomPagComPro ) : React.ReactElement {
                     { /** End Increment Button Element */ }
 
 
+
                     { /** Start Decrement Button Element */ }
 
-                    <  button id='decButEle' className={ styles.contentButtons } onClick={ () => { appDisFun( decNumRed( 3 ) ) } } > { /* Decrement Button Element = This is the button element that will dispatch an action to decrement the counter state by 3 when clicked. The current value of the counter state is also displayed in the button. */ }
+                    <  button id='decButEle' className={ `${ styles.contentButtons } ${ styles.decrementButton }` } onClick={ () => { appDisFun( decNumRed( 3 ) ) } } > { /* Decrement Button Element = This custom button element is the container for the button that will dispatch an action to decrement the counter state by 3 when clicked, as well as displaying the current value of the counter state in the button's text. */ }
 
                         Count = { useAppSel( ( state : RooStaObj ) => state.couStaNum ) }
 
@@ -257,11 +295,9 @@ function HomPagCom ( props : HomPagComPro ) : React.ReactElement {
 
                 { /** Start Edit Paragraph Element */ }
 
-                <  p id='ediParEle' className={ styles.editParagraph } > { /* Edit Paragraph Element = This is the paragraph element that contains instructions for editing the code to test hot module replacement (HMR). */ }
+                <  p id='ediParEle' className={ styles.editParagraph } > { /* Edit Paragraph Element = This custom paragraph element is the container for the text instructions on editing the code to test hot module replacement (HMR) functionality. */ }
 
                     Edit < code id='ediCodEle' className={ styles.editCode } >src/App.tsx</ code > and save to test HMR
-
-                    { /** TEMPORARY */ } <a href='https://react.dev' target='_blank' >Learn React</ a >
 
                 </ p >
 
@@ -271,9 +307,9 @@ function HomPagCom ( props : HomPagComPro ) : React.ReactElement {
 
                 { /** Start Learn Paragraph Element */ }
 
-                <  p id='leaParEle' className={ styles.learnParagraph } > { /* Learn Paragraph Element = This is the paragraph element that contains instructions for learning more about Vite and React. */ }
+                <  p id='leaParEle' className={ styles.learnParagraph } > { /* Learn Paragraph Element = This custom paragraph element is the container for the text instructions on learning more about Vite and React. */ }
 
-                    Click on the Vite and React logos to learn more.
+                    Click on the < a href='https://vite.dev' target='_blank' >Vite</ a > and < a href='https://react.dev' target='_blank' >React</ a > logos to learn more.
 
                 </ p >
 
@@ -283,9 +319,9 @@ function HomPagCom ( props : HomPagComPro ) : React.ReactElement {
 
                 { /** Start Data Paragraph Element */ }
 
-                <  p id='datParEle' className={ styles.dataParagraph } > { /* Data Paragraph Element = This is the paragraph element that contains the mock backend JSON data or a placeholder text if the data is undefined. */ }
+                <  p id='datParEle' className={ styles.dataParagraph } > { /* Data Paragraph Element = This custom paragraph element is the container for the mock backend JSON data text or for the placeholder text if the data is either loading or it encountered an error. */ }
 
-                    { datParCon === undefined ? 'Data should go here' : datParCon }
+                    { datParCon === undefined ? 'Data should go here' : datParCon } ~ { appNamStr }
 
                 </ p >
 
@@ -299,19 +335,21 @@ function HomPagCom ( props : HomPagComPro ) : React.ReactElement {
 
         </ section >
 
-        // #endregion Component Section Element
+        // #endregion Home Section Element
 
 
     );
 
 
-    return homPagComJsx;
 
+    return homPagComJsx;
 
     // #endregion Return Statement
 
 
-}
+};
+
+// #endregion HomPagCom
 
 
 

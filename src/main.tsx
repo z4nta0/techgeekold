@@ -1,45 +1,53 @@
 
 // #region Imports
 
-import { StrictMode } from 'react';                /** This is a development only tool for highlighting potential problems in an application. It activates additional checks and warnings for its descendants, rendering no visible UI and has no impact on the production build acting solely as a passive debugging aid during development. */
-import { createRoot } from 'react-dom/client';     /** This is the new React 18 API for creating a root DOM node to render the application. It replaces the older ReactDOM.render method and provides better performance and support for concurrent features. */
-import                     './index.css';          /** This is the root CSS file where all non module CSS is placed, typically used for global styles that apply throughout the entire application such as body margins, default fonts, and utility classes. */
-import   App          from './App.tsx';            /** This is the root App component that contains the core routing structure of the application and acts as the container for the router, footer, navigation links and the components that are rendered based on the current URL via React Router. */
-import   store        from './store.tsx';          /** This is the Redux store that is created using Redux Toolkit's configureStore function, which simplifies the state management setup process by abstracting away all of the boilerplate code that is required by Redux (without Toolkit) to handle state management. */
-import { Provider }   from 'react-redux';          /** This is a React component from the React Redux library that makes the Redux store available to any nested components that need to access the Redux store. It is typically used at the root of the component tree to provide the store to all components in the application. */
-import { type Root }  from 'react-dom/client';     /** This is the standard TypeScript type definition for the root DOM node created by React's createRoot function. */
-import   useAppDis    from './hooks/useAppDis.ts'; /** This is the custom React hook that provides access to the Redux store's dispatch function with proper TypeScript typing. */
-import   useAppThu    from './hooks/useAppThu.ts'; /** This is the custom React hook that provides access to the Redux store's dispatch function with proper TypeScript typing, specifically for working with thunk actions. */
+import                  './index.css';          /** This import is the root CSS file where all non module CSS is placed, typically used for global styles that apply throughout the entire application. */
+import   App       from './App.tsx';            /** This import is the root App component that contains the core routing structure of the application, acting as the container for the route, routes, footer, navigation links and the components that are rendered based on the current URL via React Router. */
+import   store     from './store.tsx';          /** This import is the custom React Redux store that is created using the standard React Redux Toolkit configureStore function. */
+import   useAppDis from './hooks/useAppDis.ts'; /** This import is the custom React hook that provides access to the standard React Redux store dispatch function with proper TypeScript typing. */
+import   useAppThu from './hooks/useAppThu.ts'; /** This import is the custom React hook that provides access to the standard React Redux store dispatch function with proper TypeScript typing, specifically for working with thunk actions. */
+
+
+import { createRoot } from 'react-dom/client'; /** This import is the new standard React DOM 18 API for creating a root DOM node to render the application, replacing the older ReactDOM.render method and provides better performance and support for concurrent features. */
+import { Provider   } from 'react-redux';      /** This import is the standard React component from the React Redux library that makes the React Redux store available to any nested components that need to access the React Redux store. */
+import { StrictMode } from 'react';            /** This import is the standard React development only tool for highlighting potential problems in an application, activating additional checks and warnings for its descendants and rendering no visible UI with no impact on the production build acting solely as a passive debugging aid during development. */
+
+
+import { type Root } from 'react-dom/client'; /** This import is the standard TypeScript type definition for the root DOM node created by the standard React DOM createRoot function. */
 
 // #endregion Imports
 
 
 
-/** Root DOM Node      = This creates a root DOM node using the new React 18 API for rendering the application. It targets the HTML element with the id of root, which is typically defined in the public/index.html file of a React application. */
+/** Root DOM Node      = This custom variable stores the root DOM node using the new React DOM 18 API for rendering the application, targeting the HTML element with the id of rooSecEle which is typically defined in the index.html file of a React application to which all React components will be attached to. */
 const rooDomNod : Root = createRoot( document.getElementById( 'rooSecEle' ) as HTMLElement );
 
 
 
 // #region Function Type Definitions
 
-/** Root DOM Node Render = This function will be responsible for rendering the entire site/app to the root DOM node using the render() method of React's {@link createRoot} function. */
+/** Root DOM Node Render = This custom type stores the type that will be used for the custom {@link rooDomNodRender} function. */
 type RooDomNodRender     = () => void;
 
 // #endregion Function Type Definitions
 
 
+
+// #region rooDomNodRender
+
 /**
  * rooDomNodRender = Root DOM Node Render
  * 
  * @summary
- * This renders the entire React application to the root DOM node using the
- * render() method of React's {@link createRoot} function. It wraps the App
- * component with the Provider component from React Redux to make the Redux
- * store available to all components in the application, and also wraps
- * everything in StrictMode for development only checks and warnings. This
- * function is called once to render the application initially, and then it is
- * subscribed to the Redux store so that it will re-render the application
- * whenever the state changes.
+ * This custom function executes the render of the entire React application to
+ * the root DOM node using the standard React DOM {@link createRoot} function.
+ * It wraps the App component with the standard React Redux Provider component
+ * to make the React Redux store available to all components in the
+ * application, and it also wraps everything in the standard React StrictMode
+ * component for development only checks and warnings. This function is called
+ * once to render the application initially, and then it is subscribed to the
+ * React Redux store so that it will re-render the application whenever the
+ * site/app state changes.
  *
  *
  * @author React Create Root <https://react.dev/reference/react-dom/client/createRoot>
@@ -59,51 +67,56 @@ type RooDomNodRender     = () => void;
 const rooDomNodRender : RooDomNodRender = () => {
 
 
-    /** The calls the render() method to display a piece of JSX into the rooDomNod’s browser DOM node. */
+    // #region Render
+
+    /** Root DOM Node Render = This standard React React DOM method executes the attaching of the following JSX to the rooSecEle node in the browser's DOM. */
     rooDomNod.render(
 
 
-        // #region StrictMode Component
+        // #region StrictMode Element
 
-        <  StrictMode > { /** The StrictMode component is a development only tool for highlighting potential problems in an application. It activates additional checks and warnings for its descendants, rendering no visible UI and has no impact on the production build acting solely as a passive debugging aid during development. */ }
-
-
-            { /** Start Provider Component */ }
-
-            <  Provider store={ store } > { /** The Provider component is a React component from the React Redux library that makes the Redux store available to any nested components that need to access the Redux store. It is typically used at the root of the component tree to provide the store to all components in the application. */ }
+        <  StrictMode > { /** Strict Mode = This element is the standard React development only component for highlighting potential problems in an application by activating additional checks and warnings for its descendants, rendering no visible UI with no impact on the production build acting solely as a passive debugging aid during development. */ }
 
 
-                { /** Start App Component */ }
+            { /** Start Provider Element */ }
 
-                { /** The App component is the root component that contains the core routing structure of the application and acts as the container for the router, footer, navigation links and the components that are rendered based on the current URL via React Router. */ }
+            <  Provider store={ store } > { /** Provider = This element is the standard React Redux component that makes the Redux store available to any nested components that need to access the React Redux store. */ }
+
+
+                { /** Start App Element */ }
+
                 < App
                     disFun={ useAppDis }
                     namStr='Tech Geek'
                     staObj={ store.getState() }
                     thuFun={ useAppThu }
-                />
+                /> { /** App = This element is the standard root component that contains the core routing structure of the application, acting as the container for the routes, route, footer, navigation links and the components that are rendered based on the current URL via React Router. */ }
 
-                { /** End App Component */ }
+                { /** End App Element */ }
 
 
             </ Provider >
 
-            { /** End Provider Component */ }
+            { /** End Provider Element */ }
 
 
         </ StrictMode >
 
-        // #endregion StrictMode Component
+        // #endregion StrictMode Element
 
 
   );
 
+  // #endregion Render
+
 
 };
 
+// #endregion rooDomNodRender
 
 
-/** This registers a React Redux listener function that is called every time an action is dispatched and the store's state has potentially changed. It allows the site/app to react to state changes and update the UI or perform side effects. */
+
+/** Store Subscribe = This standard React Redux method executes the listener function that attaches itself to the root DOM node, and it will subsequently be called every time an action is dispatched and the store's state has potentially changed, allowing the site/app to react to state changes and update the UI or perform side effects. */
 store.subscribe( rooDomNodRender );
 
 

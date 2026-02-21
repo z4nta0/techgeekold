@@ -1,10 +1,13 @@
 
 // #region Imports
 
-import { NavLink }    from 'react-router-dom';       /** NavLink is used for navigation links that can apply an active class when the link matches the current URL. */
-import   React        from 'react';                  /** React is the core library for building user interfaces. */
-import   reactLogo    from '../../assets/react.svg'; /** This is the React logo from the default installation that I have reused as the navigation bar's logo Home page link. */
-import   styles       from './NavBarCom.module.css'; /** This imports the custom CSS module for styling the NavBarCom component. */
+import React     from 'react';                  /** This import is the standard React core library, providing the core functionality for building React components and managing their lifecycle. */
+import reactLogo from '../../assets/react.svg'; /** This import is the React logo image that has been repurposed in the this component to display the official React logo in the navigation bar. */
+import styles    from './NavBarCom.module.css'; /** This import is the custom CSS file that contains all of the styling declarations for this component. */
+
+
+import { Link    } from 'react-router-dom'; /** This import is the standard React Router element for navigation links that adds an .active CSS styling class as well as aria atributes when the link matches the current URL. */
+import { NavLink } from 'react-router-dom'; /** This import is the standard React Router element for navigation links without all of the extras from the standard react Router NavLink element. */
 
 // #endregion Imports
 
@@ -12,25 +15,31 @@ import   styles       from './NavBarCom.module.css'; /** This imports the custom
 
 // #region Props Type Definitions
 
+/** On Click Function = This custom type stores the types that will be used for the custom {@link onClickAbo}, {@link onClickCon}, {@link onClickHom} and {@link onClickLog} variables. */
+type OnClickFun       = ( e : React.MouseEvent< HTMLAnchorElement > ) => void; 
+
+
+
 /**
- * NavBarComPro = Navigation Bar Component Props will store all of the props that will be used in the NavBarCom component.
+ * Navigation Bar Component Props = This custom type stores the types that will store the properties and values that will be passed into this component.
+ * 
+ * @property namStr = Name String custom property stores the type that will be used for the custom {@link appNamStr} variable.
  *
- * @property namStr = Name String will store the site/app name that will be displayed in the navigation bar.
+ * @property onClickAbo = On Click About custom property stores the type that will be used for the custom {@link onClickAbo} variable.
+ * @property onClickCon = On Click Contact custom property stores the type that will be used for the custom {@link onClickCon} variable.
+ * @property onClickHom = On Click Home custom property stores the type that will be used for the custom {@link onClickHom} variable.
+ * @property onClickLog = On Click Logo custom property stores the type that will be used for the custom {@link onClickLog} variable.
  *
- * @property onClickAbo = On Click About will store the event handler function that is called when the About page link is clicked. 
- * @property onClickCon = On Click Contact will store the event handler function that is called when the Contact page link is clicked.
- * @property onClickHom = On Click Home will store the event handler function that is called when the Home page link is clicked.
- * @property onClickLog = On Click Logo will store the event handler function that is called when the logo Home page link is clicked.
 */
 
 interface NavBarComPro {
 
     namStr : string;
 
-    onClickAbo : ( e : React.MouseEvent<HTMLAnchorElement> ) => void;
-    onClickCon : ( e : React.MouseEvent<HTMLAnchorElement> ) => void;
-    onClickHom : ( e : React.MouseEvent<HTMLAnchorElement> ) => void;
-    onClickLog : ( e : React.MouseEvent<HTMLAnchorElement> ) => void;
+    onClickAbo : OnClickFun;
+    onClickCon : OnClickFun;
+    onClickHom : OnClickFun;
+    onClickLog : OnClickFun;
 
 };
 
@@ -38,32 +47,38 @@ interface NavBarComPro {
 
 
 
+// #region NavBarCom
+
 /**
  * NavBarCom = Navigation Bar Component
  *
  * @summary
- * This functional component will be responsible for returning all of the HTML
- * content for the navigation bar. All of the click event handlers and state
- * management stuff is completely unnecessary for a simple navigation bar, but
- * this was just for personal learning purposes to gain some experience with
- * using Redux Toolkit alongside React and TypeScript in a more hands on way
- * (instead of just tutorials) before moving on to my next project that will
- * use these concepts in a more practical, realistic way.
+ * This custom functional component executes and renders the JSX of the
+ * navigation bar. Most of the logic for this component is defined in the
+ * NavBarComCon component and then passed as props into this component as on
+ * click handlers. This is then the presentational component and it is
+ * responsible for returning all of the HTML content for the navigation bar
+ * back to the NavBarComCon component. All of the click event handlers and
+ * state management logic is completely unnecessary for a simple navigation
+ * bar, but this was just for personal learning purposes to gain some
+ * experience with using React Redux Toolkit alongside React and TypeScript in
+ * a more hands on way (instead of just tutorials) before moving on to my next
+ * project that will use these concepts in a more practical, realistic way.
  *
- * @author z4ntao <https://github.com/z4nta0>
+ * @author z4nta0 <https://github.com/z4nta0>
  * 
- * @param props.namStr     - {@link NavBarComConPro.namStr}
- * @param props.onClickAbo - {@link NavBarComConPro.onClickAbo}
- * @param props.onClickCon - {@link NavBarComConPro.onClickCon}
- * @param props.onClickHom - {@link NavBarComConPro.onClickHom}
- * @param props.onClickLog - {@link NavBarComConPro.onClickLog}
+ * @param props.namStr     - {@link appNamStr}
+ * @param props.onClickAbo - {@link onClickAbo}
+ * @param props.onClickCon - {@link onClickCon}
+ * @param props.onClickHom - {@link onClickHom}
+ * @param props.onClickLog - {@link onClickLog}
  * 
  * @returns A React JSX element representing the NavBarCom component.
  * @see {@link navBarComJsx}
  * 
  * @example
  * ```tsx
- * <NavBarCom /> // => <section id='navSecEle'> ... </section>
+ * <NavBarCom /> // => navBarComJsx
  * ```
  *
 */
@@ -71,23 +86,21 @@ interface NavBarComPro {
 function NavBarCom ( props : NavBarComPro ) : React.ReactElement {
 
 
-
     // #region Component Scoped Variables
 
 
     // #region Props Variables
 
-    /** Name String  = {@link NavBarComPro.namStr} */
-    const { namStr } = props;
-
-    /** On Click About   = {@link NavBarComPro.onClickAbo} */
-    const { onClickAbo } = props;
-    /** On Click Contact = {@link NavBarComPro.onClickCon} */
-    const { onClickCon } = props;
-    /** On Click Home    = {@link NavBarComPro.onClickHom} */
-    const { onClickHom } = props;
-    /** On Click Logo    = {@link NavBarComPro.onClickLog} */
-    const { onClickLog } = props;
+    /** App Name String           = This custom variable stores the site/app name that will be displayed in various parts of the site/app. */
+    const appNamStr : string      = props.namStr;
+    /** On Click About            = On Click About stores the type of the custom event handler function that will be executed when the About page link is clicked. */
+    const onClickAbo : OnClickFun = props.onClickAbo;
+    /** On Click Contact          = On Click Contact stores the type of the custom event handler function that will be executed when the Contact page link is clicked. */
+    const onClickCon : OnClickFun = props.onClickCon;
+    /** On Click Home             = On Click Home stores the type of the custom event handler function that will be executed when the Home page link is clicked. */
+    const onClickHom : OnClickFun = props.onClickHom;
+    /** On Click Logo             = On Click Logo stores the type of the custom event handler function that will be executed when the logo Home page link is clicked. */
+    const onClickLog : OnClickFun = props.onClickLog;
 
     // #endregion Props Variables
 
@@ -98,69 +111,75 @@ function NavBarCom ( props : NavBarComPro ) : React.ReactElement {
 
     // #region Return Statement
 
-
-    /** Navigation Bar Component Javascript XML = This stores the HTML-like code that the Navigation Bar component will render when called. I prefer to store this in a variable so that the variable can be referenced inside of comments in the other sections of the component. */
+    /** Navigation Bar Component Javascript XML = This custom variable stores the HTML like code that this component will render when called by its parent component. I prefer to store this in a variable before being returned so that it can be referenced inside of comments in the other sections of this component. */
     const navBarComJsx : React.ReactElement     = (
 
 
-        // #region Navigation Section Element
+        // #region Navbar Nav Element
 
-        < section id='navSecEle' className={ styles.navSection } > { /* Navigation Section Element = This is the component wrapping HTML element since React requires components to return a single root element. */ }
-
-
-
-            { /** Start Navigation Nav Element */ }
-
-            < nav id='navNavEle' className={ styles.nav } > { /* Navigation Nav Element = This is the nav HTML element within the navigation section that contains all React Router <NavLink> components for navigation. */ }
+        < nav id='navNavEle' className={ styles.navbarNav } > { /* Navbar Nav Element = This custom nav element is the root HTML element and container for this component since React requires the JSX to return a single root element. */ }
 
 
-                { /** Start Logo Navigation Element */ }
+            { /** Start Navbar Div Element */ }
 
-                < NavLink to='/' id='logNavEle' className={ `${ styles.logoNavLink } ${ styles.navLink}` } onClick={ onClickLog } > { /* Logo NavLink Element = This is the React Router <NavLink> HTML element for the logo home page link. */ }
+            < div id='navDivEle' className={ styles.navbarDiv } > { /* Navbar Div Element = This custom div element is the container for the logo Home page NavLink and for the ul that contains all of the other navbar NavLinks. */ }
 
-                    < img id='logImgEle_NavBarEle' className={ styles.logoImg } src={ reactLogo } alt='React logo' /> { /* Logo Image Element for Navigation Bar Element = This is the site/app logo image HTML element for the logo home page link. The id property uses a modifier in order to distinguish it from any other logo image elements that may be placed across the site/app. */ }
 
-                    < p   id='logParEle'           className={ styles.logoParagraph } >{ namStr }</ p > { /* Logo Paragraph Element = This is the paragraph HTML element that contains the text for the logo home page link. It uses the nameStr prop as the text, which stores the site/app's name. */ }
+                { /** Start Logo Link Element */ }
 
-                </ NavLink >
+                < Link to='/' id='logLinEle' className={ styles.logoLink } onClick={ onClickLog } > { /* Logo Link Element = This standard React Router element is the container for the logo image and text. */ }
 
-                { /** End Logo Navigation Element */ }
+
+                    < img id='logImgEle_NavBarCom' className={ styles.logoImg } src={ reactLogo } alt='React logo' /> { /* Logo Image Element for Navigation Bar Component = This custom img element is the container for the official React logo image that acts as a link to the Home page. The id property uses a modifier in order to distinguish it from any other logo image elements that may be placed across the site/app, such as the one on the Home page. */ }
 
 
 
-                { /** Start Navigation Unordered List Element */ }
+                    < p   id='logParEle'           className={ styles.logoParagraph } >{ appNamStr }</ p > { /* Logo Paragraph Element = This custom paragraph element is the container for the text of the site/app name that acts as a link to the Home page. */ }
 
-                < ul id='navUliEle' className={ styles.unorderedList } > { /* Navigation Unordered List Element = This is the unordered list HTML element within the nav HTML element that contains the Home, About and Contact React Router <NavLink> components for navigation. */ }
 
-                    < li id='homLisEle' className={ styles.listItem } >< NavLink to='/'       id='homNavEle' className={ styles.navLink } onClick={ onClickHom } >Home</    NavLink ></ li > { /* Home List Element    & Home NavLink Element    = This is the list HTML element and the React Router <NavLink> HTML element for the home page link.    These links will automatically have an .active class (properties and their values are defined in the main App.css file) applied to them by React Router when the current route matches the 'to' attribute. */ }
-                    < li id='aboLisEle' className={ styles.listItem } >< NavLink to='about'   id='aboNavEle' className={ styles.navLink } onClick={ onClickAbo } >About</   NavLink ></ li > { /* About List Element   & About NavLink Element   = This is the list HTML element and the React Router <NavLink> HTML element for the about page link.   These links will automatically have an .active class (properties and their values are defined in the main App.css file) applied to them by React Router when the current route matches the 'to' attribute. */ }
-                    < li id='conLisEle' className={ styles.listItem } >< NavLink to='contact' id='conNavEle' className={ styles.navLink } onClick={ onClickCon } >Contact</ NavLink ></ li > { /* Contact List Element & Contact NavLink Element = This is the list HTML element and the React Router <NavLink> HTML element for the contact page link. These links will automatically have an .active class (properties and their values are defined in the main App.css file) applied to them by React Router when the current route matches the 'to' attribute. */ }
+                </ Link >
+
+                { /** End Logo Link Element */ }
+
+
+
+                { /** Start Navbar Unordered List Element */ }
+
+                < ul id='navUliEle' className={ styles.navbarUl } > { /* Navbar Unordered List Element = This custom ul element is the container for the li and anchors of the Home, About and Contact pages. */ }
+
+
+                    < li id='homLisEle' className={ `${ styles.navbarListItems } ${ styles.homeLi    }` } >< NavLink to='/'       id='homNalEle' className={ `${ styles.navbarNavLinks } ${ styles.homeNavLink    }` } onClick={ onClickHom } >Home</    NavLink ></ li > { /* Home List Element    & Home NavLink Element    = These custom li and standard React Router NavLink elements are the containers for the Home page link. These links will automatically have an .active class (properties and their values are defined in the main App.css file) applied to them by React Router when the current route matches the 'to' attribute. */ }
+                    < li id='aboLisEle' className={ `${ styles.navbarListItems } ${ styles.aboutLi   }` } >< NavLink to='about'   id='aboNalEle' className={ `${ styles.navbarNavLinks } ${ styles.aboutNavLink   }` } onClick={ onClickAbo } >About</   NavLink ></ li > { /* About List Element   & About NavLink Element   = These custom li and standard React Router NavLink elements are the containers for the About page link. These links will automatically have an .active class (properties and their values are defined in the main App.css file) applied to them by React Router when the current route matches the 'to' attribute. */ }
+                    < li id='conLisEle' className={ `${ styles.navbarListItems } ${ styles.contactLi }` } >< NavLink to='contact' id='conNalEle' className={ `${ styles.navbarNavLinks } ${ styles.contactNavLink }` } onClick={ onClickCon } >Contact</ NavLink ></ li > { /* Contact List Element & Contact NavLink Element = These custom li and standard React Router NavLink elements are the containers for the Contact page link. These links will automatically have an .active class (properties and their values are defined in the main App.css file) applied to them by React Router when the current route matches the 'to' attribute. */ }
+
 
                 </ ul >
 
-                { /** End Navigation Unordered List Element */ }
+                { /** End Navbar Unordered List Element */ }
 
 
-            </ nav >
+            </ div >
 
-            { /** End Navigation Nav Element */ }
+            { /** End Navbar Div Element */ }
 
 
+        </ nav >
 
-        </ section >
-
-        // #endregion Navigation Section Element
+        // #endregion Navbat Nav Element
 
 
     );
 
 
-    return navBarComJsx;
 
+    return navBarComJsx;
 
     // #endregion Return Statement
 
+
 };
+
+// #endregion NavBarCom
 
 
 

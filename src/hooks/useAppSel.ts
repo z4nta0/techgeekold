@@ -1,42 +1,61 @@
 
 // #region Imports
 
-import { type RooStaObj }            from '../store';    /** This is the custom TypeScript type definition for the Redux store's entire state object. */
-import { useSelector }               from 'react-redux'; /** This is the standard React Redux hook that allows functional components to access the Redux store's state object tree. This is the preferred method for accessing the state object tree (as opposed to accessing it directly via store.getState) for automatic rerendering, performance optimization and integration with React's modern hook ecosystem. */
-import { type TypedUseSelectorHook } from 'react-redux'; /** This is the standard Typescript definition for a typed version of the useSelector hook, which allows for type safe access to the Redux store's state object tree. */
+import { useSelector } from 'react-redux'; /** This import is the standard React Redux hook that allows functional components to access the standard React Redux store state object tree and is the preferred method for accessing the state object tree (as opposed to accessing it directly via store.getState) for automatic rerendering, performance optimization and integration with React's modern hook ecosystem. */
+
+
+import { type RooStaObj            } from '../store';    /** This import is the custom type definition for the entire state object of the custom React Redux Toolkit store, which is inferred by the store's standard getState method. */
+import { type TypedUseSelectorHook } from 'react-redux'; /** This import is the standard Typescript definition for a utility type from React Reduxthat is used to create a pre-typed version of the standard React Redux useSelector hook. */
 
 // #endregion Imports
 
 
 
+// #region useAppSel
+
+
+// #region useAppSel Variables
+
+/** Use App Selector  = This custom type stores the type that will be used for the custom {@link useAppSel} variable and is exported for use in any component that said variable is required. */
+export type UseAppSel = TypedUseSelectorHook< RooStaObj >;
+
+// #endregion useAppSel Variables
+
+
+
 /**
- * useAppThu = Use App Thunk
+ * useAppSel = Use App Selector
  *
  * @summary
- * This is a custom React hook that provides access to the Redux store's
- * selector function. The main benefit for wrapping the {@link useSelector}
- * hook into a custom hook for this site/app is that it provides consistent
- * type checking throughout the application and simplifies type inference. For
- * more complex sites/apps, these custom hooks can also be used for logic
- * reusability (for instance, creating a useCart hook that would be used on
- * multiple pages), better code organization and readability, simplified
- * testing, easier refactoring and maintenance and a flatter component tree.
+ * This custom React hook executes the standard React Redux store's
+ * {@link useSelector} hook. The main benefit for executing said hook inside of
+ * a custom hook is that it provides consistent type checking throughout the
+ * site/app and simplifies type inference. For more complex sites/apps, these
+ * custom hooks can also be used for logic reusability (for instance, creating
+ * a useCart hook that would be used on multiple pages), better code
+ * organization and readability, simplified testing, easier refactoring and
+ * maintenance and a flatter component tree.
  *
- * @author z4ntao <https://github.com/z4nta0>
+ * @author React Redux <https://react-redux.js.org/api/hooks#useselector>
+ * @author z4nta0      <https://github.com/z4nta0>
+ * 
+ * @param void - This function takes no parameters.
+ * 
+ * @returns The standard React Redux useSelector hook.
+ * @see {@link useSelector}
  *
+ * @example
+ * ```ts
+ * useAppSel() // => useSelector;
+ * ```
 */
 
+const useAppSel : UseAppSel = useSelector.withTypes();
 
-
-/** App Selector Function = This stores the standard Typescript type for the Redux store's {@link useSelector} Function, making the {@link useAppSel} definition below appear cleaner and more readable. */
-type AppSelFun            = TypedUseSelectorHook<RooStaObj>;
-/** Use App Selector      = This stores the standard React hook that provides access to the Redux store's selector function but with proper TypeScript typing. */
-const useAppSel           = useSelector.withTypes<AppSelFun>();
-/** Use App Selector      = This stores the type check for use anywhere that the useAppSel hook is passed as a prop. Although this may seem redundant, exporting this type can be useful for type checking and ensuring consistency across the application. */
-export type UseAppSel     = typeof useAppSel;
+// #endregion useAppSel
 
 
 
-export default useAppSel
+export default useAppSel;
 
 

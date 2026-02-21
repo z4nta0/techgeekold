@@ -1,24 +1,96 @@
 
 /* #region Globally Scoped Custom Properties */
 
-:root { /** This is the root element selector, making it a true globally scoped selector. */
+:root { /** Root = This standard root selector contains all elements and is a true globally scoped selector. */
 
 
-    /** The golden ratio is often used as the basis for the vertical rhythm of websites and apps, and is chosen as a favorite since this value can found all throughout nature, art, and architecture. There is no empirical evidence that it is the best choice, but it is aesthetically pleasing to many. Regardless, a value must be chosen for said reasons in order to create a consistent and harmonious design, and I find this value as good as any other. */
+    /* #region Prime Custom Properties */
 
-    --golden-rati : calc( ( 1 + sqrt( 5 ) ) / 2 ); /** ~= 1.618 = Golden Ratio stores the base value, mainly used for establishing a vertical rhythm and sizing property values but it is used pretty much everywhere. */
+
+    /* #region Golden Ratio = This value is often used as the basis for the vertical rhythm of websites and apps (though usually at 1.5 instead of the exact value) and is chosen as a favorite since this value can be found all throughout nature, art, and architecture. There is no empirical evidence that it is the best choice, but it is aesthetically pleasing to many. Regardless, a value must be chosen for said reasons in order to create a consistent and harmonious design, and I find this value as good as any other. */
+
+    --golden-rati : calc( ( 1 + sqrt( 5 ) ) / 2 ); /** Golden Ratio ~= 1.618 = This custom property stores the design system's base value, mainly used for establishing a vertical and horizontal rhythm along with other sizing property values but is used as a base value pretty much everywhere a numerical value is required. */
+
+
+    --gol-rat-max : pow( var( --golden-rati ), 7 ); /** Golden Ratio Maximum     ~= 29.034 = This custom property stores the maximum unit of the golden ratio, with the idea behind this being that it will be used for derivative custom properties like blur radius, box shadow, etc... */
+    --gol-rat-xla : pow( var( --golden-rati ), 6 ); /** Golden Ratio Extra Large ~= 17.944 = This custom property stores the extra large unit of the golden ratio, with the idea behind this being that it will be used for derivative custom properties like blur radius, box shadow, etc... */
+    --gol-rat-lar : pow( var( --golden-rati ), 5 ); /** Golden Ratio Large       ~= 11.090 = This custom property stores the large unit of the golden ratio, with the idea behind this being that it will be used for derivative custom properties like blur radius, box shadow, etc... */
+    --gol-rat-med : pow( var( --golden-rati ), 4 ); /** Golden Ratio Medium      ~=  6.854 = This custom property stores the medium unit of the golden ratio, with the idea behind this being that it will be used for derivative custom properties like blur radius, box shadow, etc... */
+    --gol-rat-sma : pow( var( --golden-rati ), 3 ); /** Golden Ratio Small       ~=  4.236 = This custom property stores the small unit of the golden ratio, with the idea behind this being that it will be used for derivative custom properties like blur radius, box shadow, etc... */
+    --gol-rat-xsm : pow( var( --golden-rati ), 2 ); /** Golden Ratio Extra Small ~=  2.618 = This custom property stores the extra small unit of the golden ratio, with the idea behind this being that it will be used for derivative custom properties like blur radius, box shadow, etc... */
+    --gol-rat-min : pow( var( --golden-rati ), 1 ); /** Golden Ratio Minimum     ~=  1.618 = This custom property stores the minimum unit of the golden ratio, with the idea behind this being that it will be used for derivative custom properties like blur radius, box shadow, etc... */
+
+    /* #endregion Golden Ratio */
+
+
+
+    /* #region Brand Colors */
+
+    --col-bra-acc : hsla( 255.000, 100.000%,  76.013%, 100.000% ); /** Color Brand Accent    = This custom property stores the site/app's accent color, with the idea behind this being that it should be used sparingly but effectively to draw attention to key elements while also complimenting the site/app's main color. */
+    --col-bra-mai : hsla( 199.005, 100.000%,  46.979%, 100.000% ); /** Color Brand Main      = This custom property stores the site/app's main color, with the idea behind this being that it should be used consistently (but not excessively) across the site/app to establish a strong visual identity. */
+    --col-bra-sec : hsla( 122.992,  46.979%,  46.979%, 100.000% ); /** Color Brand Secondary = This custom property stores the site/app's secondary color, with the idea behind this being that... I have not found a use for (yet!). */
+
+    /* #endregion Brand Colors */
+
+
+
+    /* #region UI Colors */
+
+    --col-bac-col : hsla(   0.000,   0.000%,  11.090%, 100.000% ); /** Color Background Color  = This custom property stores the background color, with the idea behind this being that it should provide a dark but not too dark background color that serves as the central point for the dark mode theme and because a true black is not considered natural for user interfaces. */
+    --col-box-sha : hsla(   0.000,   0.000%,  46.979%, 100.000% ); /** Color Box Shadow        = This custom property stores the box shadow color, with the idea behind this being that it should subtly stand out from the background color. */
+    --col-err-sta : hsla(   0.000, 100.000%,  46.979%, 100.000% ); /** Color Error Status      = This custom property stores the color for error status messages, with the idea behind this being that it should evoke danger or warning. */
+    --col-nav-bac : hsla(   0.000,   0.000%,  12.708%, 100.000% ); /** Color Navbar Background = This custom property stores the navbar's background color, with the idea behind this being that it should be just slightly lighter than the background color in order to differentiate it from the rest of the page without starkly contrasting it either. */
+    --col-suc-sta : hsla( 122.992, 100.000%,  46.979%, 100.000% ); /** Color Success Status    = This custom property stores the color for success status messages, with the idea behind this being that it should evoke success or confirmation. */
+    --col-tex-col : hsla(   0.000,   0.000%,  76.013%, 100.000% ); /** Color Text Color        = This custom property stores the text color, with the idea behind this being that it should contrast well against the background color without it being too bright either. */
+    --col-tex-sha : hsla(   0.000,   0.000%,  29.034%, 100.000% ); /** Color Text Shadow       = This custom property stores the text shadow color, with the idea behind this being that it should provide subtle depth to the text. */
+
+    /* #endregion UI Colors */
+
+
+
+    /* #region Paragraph Width */
+
+    --par-wid-max : 80ch; /** Paragraph Width Maximum     = This custom property stores the maximum width of paragraph elements in character units, with the idea behind this being that it should be used for pargraphs that contain more than one line of text in order to make reading easier by limiting line length. */
+    --par-wid-xla : 75ch; /** Paragraph Width Extra Large = This custom property stores the extra large width of paragraph elements in character units, with the idea behind this being that it should be used for pargraphs that contain more than one line of text in order to make reading easier by limiting line length. */
+    --par-wid-lar : 70ch; /** Paragraph Width Large       = This custom property stores the large width of paragraph elements in character units, with the idea behind this being that it should be used for pargraphs that contain more than one line of text in order to make reading easier by limiting line length. */
+    --par-wid-med : 65ch; /** Paragraph Width Base        = This custom property stores the base width of paragraph elements in character units, with the idea behind this being that it should be used for pargraphs that contain more than one line of text in order to make reading easier by limiting line length. */
+    --par-wid-sma : 60ch; /** Paragraph Width Small       = This custom property stores the small width of paragraph elements in character units, with the idea behind this being that it should be used for pargraphs that contain more than one line of text in order to make reading easier by limiting line length. */
+    --par-wid-xsm : 55ch; /** Paragraph Width Extra Small = This custom property stores the extra small width of paragraph elements in character units, with the idea behind this being that it should be used for pargraphs that contain more than one line of text in order to make reading easier by limiting line length. */
+    --par-wid-min : 50ch; /** Paragraph Width Minimum     = This custom property stores the minimum width of paragraph elements in character units, with the idea behind this being that it should be used for pargraphs that contain more than one line of text in order to make reading easier by limiting line length. */
+
+    /* #endregion Paragraph Width */
+
+
+    /* #endregion Prime Custom Properties */
+
+
+
+    /* #region Derivative Custom Properties */
+
+
+    /* #region Blur Radius (Box Shadow, Drop Shadow, Text Shadow) */
+
+    --blu-rad-max : calc( var( --gol-rat-max ) * 1px ); /** Blur Radius Maximum     ~= 29.034px = This custom property stores the blue radius' maximum value, with the idea behind this being to unify the many disparate box shadow, drop shadow and text shadow values that were scattered around the site/app. */
+    --blu-rad-xla : calc( var( --gol-rat-xla ) * 1px ); /** Blur Radius Extra Large ~= 17.944px = This custom property stores the blue radius' extra large value, with the idea behind this being to unify the many disparate box shadow, drop shadow and text shadow values that were scattered around the site/app. */
+    --blu-rad-lar : calc( var( --gol-rat-lar ) * 1px ); /** Blur Radius Large       ~= 11.090px = This custom property stores the blue radius' large value, with the idea behind this being to unify the many disparate box shadow, drop shadow and text shadow values that were scattered around the site/app. */
+    --blu-rad-med : calc( var( --gol-rat-med ) * 1px ); /** Blur Radius Medium      ~=  6.854px = This custom property stores the blue radius' medium value, with the idea behind this being to unify the many disparate box shadow, drop shadow and text shadow values that were scattered around the site/app. */
+    --blu-rad-sma : calc( var( --gol-rat-sma ) * 1px ); /** Blur Radius Small       ~=  4.236px = This custom property stores the blue radius' small value, with the idea behind this being to unify the many disparate box shadow, drop shadow and text shadow values that were scattered around the site/app. */
+    --blu-rad-xsm : calc( var( --gol-rat-xsm ) * 1px ); /** Blur Radius Extra Small ~=  2.618px = This custom property stores the blue radius' extra small value, with the idea behind this being to unify the many disparate box shadow, drop shadow and text shadow values that were scattered around the site/app. */
+    --blu-rad-min : calc( var( --gol-rat-min ) * 1px ); /** Blur Radius Minimum     ~=  1.618px = This custom property stores the blue radius' minimum value, with the idea behind this being to unify the many disparate box shadow, drop shadow and text shadow values that were scattered around the site/app. */
+
+    /* #endregion Blur Radius (Box Shadow, Drop Shadow, Text Shadow) */
 
 
 
     /* #region Border Radius */
 
-    --bor-rad-max : calc( pow( var( --golden-rati ), 7 ) * 1px ); /** ~= 29.034px = Border Radius Maximum stores the border radius' maximum value and is equal to the golden ratio raised to the 7th power. */
-    --bor-rad-xla : calc( pow( var( --golden-rati ), 6 ) * 1px ); /** ~= 17.944px = Border Radius Extra Large stores the border radius' extra large value and is equal to the golden ratio raised to the 6th power. */
-    --bor-rad-lar : calc( pow( var( --golden-rati ), 5 ) * 1px ); /** ~= 11.090px = Border Radius Large stores the border radius' large value and is equal to the golden ratio raised to the 5th power. */
-    --bor-rad-med : calc( pow( var( --golden-rati ), 4 ) * 1px ); /** ~=  6.854px = Border Radius Medium stores the border radius' medium value and is equal to the golden ratio raised to the 4th power. */
-    --bor-rad-sma : calc( pow( var( --golden-rati ), 3 ) * 1px ); /** ~=  4.236px = Border Radius Small stores the border radius' small value and is equal to the golden ratio raised to the 3rd power. */
-    --bor-rad-xsm : calc( pow( var( --golden-rati ), 2 ) * 1px ); /** ~=  2.618px = Border Radius Extra Small stores the border radius' extra small value and is equal to the golden ratio raised to the 2nd power. */
-    --bor-rad-min : calc( pow( var( --golden-rati ), 1 ) * 1px ); /** ~=  1.618px = Border Radius Minimum stores the border radius' minimum value and is equal to the golden ratio raised to the 1st power. */
+    --bor-rad-max : calc( var( --gol-rat-max ) * 1px ); /** Border Radius Maximum     ~= 29.034px = This custom property stores the border radius' maximum value, with the idea behind this being to unify the many disparate border radius values that were scattered around the site/app. */
+    --bor-rad-xla : calc( var( --gol-rat-xla ) * 1px ); /** Border Radius Extra Large ~= 17.944px = This custom property stores the border radius' extra large value, with the idea behind this being to unify the many disparate border radius values that were scattered around the site/app. */
+    --bor-rad-lar : calc( var( --gol-rat-lar ) * 1px ); /** Border Radius Large       ~= 11.090px = This custom property stores the border radius' large value, with the idea behind this being to unify the many disparate border radius values that were scattered around the site/app. */
+    --bor-rad-med : calc( var( --gol-rat-med ) * 1px ); /** Border Radius Medium      ~=  6.854px = This custom property stores the border radius' medium value, with the idea behind this being to unify the many disparate border radius values that were scattered around the site/app. */
+    --bor-rad-sma : calc( var( --gol-rat-sma ) * 1px ); /** Border Radius Small       ~=  4.236px = This custom property stores the border radius' small value, with the idea behind this being to unify the many disparate border radius values that were scattered around the site/app. */
+    --bor-rad-xsm : calc( var( --gol-rat-xsm ) * 1px ); /** Border Radius Extra Small ~=  2.618px = This custom property stores the border radius' extra small value, with the idea behind this being to unify the many disparate border radius values that were scattered around the site/app. */
+    --bor-rad-min : calc( var( --gol-rat-min ) * 1px ); /** Border Radius Minimum     ~=  1.618px = This custom property stores the border radius' minimum value, with the idea behind this being to unify the many disparate border radius values that were scattered around the site/app. */
 
     /* #endregion Border Radius */
 
@@ -26,13 +98,13 @@
 
     /* #region Border Width */
 
-    --bor-wid-max : calc( pow( var( --golden-rati ), 7 ) * 1px ); /** ~= 29.034px = Border Width Maximum stores the border width's maximum value and is equal to the golden ratio raised to the 7th power. */
-    --bor-wid-xla : calc( pow( var( --golden-rati ), 6 ) * 1px ); /** ~= 17.944px = Border Width Extra Large stores the border width's extra large value and is equal to the golden ratio raised to the 6th power. */
-    --bor-wid-lar : calc( pow( var( --golden-rati ), 5 ) * 1px ); /** ~= 11.090px = Border Width Large stores the border width's large value and is equal to the golden ratio raised to the 5th power. */
-    --bor-wid-med : calc( pow( var( --golden-rati ), 4 ) * 1px ); /** ~=  6.854px = Border Width Medium stores the border width's medium value and is equal to the golden ratio raised to the 4th power. */
-    --bor-wid-sma : calc( pow( var( --golden-rati ), 3 ) * 1px ); /** ~=  4.236px = Border Width Small stores the border width's small value and is equal to the golden ratio raised to the 3rd power. */
-    --bor-wid-xsm : calc( pow( var( --golden-rati ), 2 ) * 1px ); /** ~=  2.618px = Border Width Extra Small stores the border width's extra small value and is equal to the golden ratio raised to the 2nd power. */
-    --bor-wid-min : calc( pow( var( --golden-rati ), 1 ) * 1px ); /** ~=  1.618px = Border Width Minimum stores the border width's minimum value and is equal to the golden ratio raised to the 1st power. */
+    --bor-wid-max : calc( var( --gol-rat-max ) * 1px ); /** Border Width Maximum     ~= 29.034px = This custom property stores the border width's maximum value, with the idea behind this being to unify the many disparate border width values that were scattered around the site/app. */
+    --bor-wid-xla : calc( var( --gol-rat-xla ) * 1px ); /** Border Width Extra Large ~= 17.944px = This custom property stores the border width's extra large value, with the idea behind this being to unify the many disparate border width values that were scattered around the site/app. */
+    --bor-wid-lar : calc( var( --gol-rat-lar ) * 1px ); /** Border Width Large       ~= 11.090px = This custom property stores the border width's large value, with the idea behind this being to unify the many disparate border width values that were scattered around the site/app. */
+    --bor-wid-med : calc( var( --gol-rat-med ) * 1px ); /** Border Width Medium      ~=  6.854px = This custom property stores the border width's medium value, with the idea behind this being to unify the many disparate border width values that were scattered around the site/app. */
+    --bor-wid-sma : calc( var( --gol-rat-sma ) * 1px ); /** Border Width Small       ~=  4.236px = This custom property stores the border width's small value, with the idea behind this being to unify the many disparate border width values that were scattered around the site/app. */
+    --bor-wid-xsm : calc( var( --gol-rat-xsm ) * 1px ); /** Border Width Extra Small ~=  2.618px = This custom property stores the border width's extra small value, with the idea behind this being to unify the many disparate border width values that were scattered around the site/app. */
+    --bor-wid-min : calc( var( --gol-rat-min ) * 1px ); /** Border Width Minimum     ~=  1.618px = This custom property stores the border width's minimum value, with the idea behind this being to unify the many disparate border width values that were scattered around the site/app. */
 
     /* #endregion Border Width */
 
@@ -41,70 +113,34 @@
     /* #region Colors */
 
 
-    /* #region Colors for Dark Mode */
+    /* #region Elements that use Brand Colors */
 
-    --col-acc-dar : hsla( 255.000, 100.000%,  76.013%, 100.000% ); /** Color Accent for Dark Mode stores the accent color for dark mode, and its lavender color was chosen in order to complement the color main for dark mode's light blue. */
-    --col-bac-dar : hsla(   0.000,   0.000%,  11.090%, 100.000% ); /** Color Background for Dark Mode stores the background color for dark mode, and its almost black color was chosen in order to provide a dark but not too dark background color since it will be the central point for the dark mode theme and because a true black is not considered natural for user interfaces. */
-    --col-bor-dar : hsla( 255.000, 100.000%,  76.013%, 100.000% ); /** Color Border for Dark Mode stores the border color for dark mode, and its lavender color was chosen in order to match the color accent for dark mode. */
-    --col-bos-dar : hsla(   0.000,   0.000%,  17.944%, 100.000% ); /** Color Box Shadow for Dark Mode stores the box shadow color for dark mode, and its slightly lighter black color was chosen in order to subtly stand out from the slightly darker background color. */
-    --col-but-dar : hsla(   0.000,   0.000%,   6.854%, 100.000% ); /** Color Button for Dark Mode stores the button color for dark mode, and its almost black color was chosen in order to stand out slightly from the color background for dark mode's slightly lighter black. */
-    --col-lin-dar : hsla( 199.005, 100.000%,  76.013%, 100.000% ); /** Color Link for Dark Mode stores the link color for dark mode, and its powder blue color was chosen in order to be a slightly lighter version of the color main for dark mode's light blue. */
-    --col-mai-dar : hsla( 199.005, 100.000%,  46.979%, 100.000% ); /** Color Main for Dark Mode stores the main color for dark mode, and its light blue color was chosen in order to stand out with a little pop from the color background for dark mode's almost black. */
-    --col-sec-dar : hsla(  46.979, 100.000%,  46.979%, 100.000% ); /** Color Secondary for Dark Mode stores the secondary color for dark mode, and its yellow color was chosen in order to complement to the color main for dark mode's light blue. */
-    --col-tex-dar : hsla(   0.000,   0.000%,  76.013%, 100.000% ); /** Color Text for Dark Mode stores the text color for dark mode, and its slightly offset white color was chosen in order to stand out from but not be to bright against the color background for dark mode's almost black. */
+    --col-bor-hov : var( --col-bra-mai ); /** Color Border Hover  = This custom property stores the border color that occurs on hover, with the idea behind this being to highlight what is being hovered using the site/app's accent color. */
+    --col-bor-sta : var( --col-bra-acc ); /** Color Border Static = This custom property stores the border color, with the idea behind this being to add just a touch of color to the UI where appropriate using the site/app's main color. */
 
-    --col-bor_hov-dar : hsla( 199.005, 100.000%,  46.979%, 100.000% ); /** Color Border Hover for Dark Mode stores the border hover color for dark mode, and its color was chosen to match the color main for dark mode's light blue. */
-    --col-but_hov-dar : hsla( 199.005, 100.000%,  46.979%, 100.000% ); /** Color Button Hover for Dark Mode stores the button hover color for dark mode, and its color was chosen to match the color main for dark mode's light blue. */
-    --col-lin_hov-dar : hsla( 199.005, 100.000%,  46.979%, 100.000% ); /** Color Link Hover for Dark Mode stores the link hover color for dark mode, and its color was chosen to match the color main for dark mode's light blue. */
-    /* #endregion Colors for Dark Mode */
+    --col-but-hov : var( --col-bra-acc ); /** Color Button Hover  = This custom property stores the button color that occurs on hover, with the idea behind this being to highlight that the button is being hovered using the site/app's accent color. */
+    --col-but-sta : var( --col-bra-mai ); /** Color Button Static = This custom property stores the button color, with the idea behind this being to use the buttons' larger area to add some much needed color to the UI using the site/app's main color. */
 
+    --col-lin-act : var( --col-bra-acc ); /** Color Link Active = This custom property stores the link color when the .active class applied to it, with the idea behind this being to use the same site/app accent color as the links' hover state since the two states are adjacent (if a navbar link if clicked, it will become the same color) while also adding just a touch of persistent accent color (all other accent colors are hover state only) to the UI. The .active class style will be applied by React Router when the NavLink element's path matches the current page (this technique is typically only used in the navbar, not all site/app links). */
+    --col-lin-hov : var( --col-bra-acc ); /** Color Link Hover  = This custom property stores the link color that occurs on hover, with the idea behind this being to highlight that the link is being hovered using the site/app's accent color. */
+    --col-lin-sta : var( --col-bra-mai ); /** Color Link Static = This custom property stores the link color, with the idea behind this being to use the links to add a touch of color to the UI while also making them stand out from the surrounding content using the site/app's main color. */
 
-    /* #region Colors for Light Mode */
-
-    --col-acc-lig : hsla( 255.000, 100.000%,  46.979%, 100.000% ); /** Color Accent for Light Mode stores the accent color for light mode, and its dark blue color was chosen in order to complement the color main for light mode's teal blue. */
-    --col-bac-lig : hsla(   0.000,   0.000%, 100.000%, 100.000% ); /** Color Background for Light Mode stores the background color for light mode, and its full white color was chosen in order to provide a bright background color since it will be the central point for the light mode theme. */
-    --col-bor-lig : hsla( 255.000, 100.000%,  46.979%, 100.000% ); /** Color Border for Light Mode stores the border color for light mode, and its dark blue color was chosen in order to match the color accent for light mode. */
-    --col-bos-lig : hsla(   0.000,   0.000%,  76.013%, 100.000% ); /** Color Box Shadow for Light Mode stores the box shadow color for light mode, and its slightly offset white color was chosen to stand out slightly from the color background for light mode's full white. */
-    --col-but-lig : hsla(   0.000,   0.000%,  76.013%, 100.000% ); /** Color Button for Light Mode stores the button color for light mode, and its slightly offset white color was chosen in order to stand out slightly from the color background for light mode's full white. */
-    --col-lin-lig : hsla( 199.005, 100.000%,  46.979%, 100.000% ); /** Color Link for Light Mode stores the link color for light mode, and its light blue color was chosen in order to be a slightly lighter version of the color main for light mode's teal blue. */
-    --col-mai-lig : hsla( 199.005, 100.000%,  29.034%, 100.000% ); /** Color Main for Light Mode stores the main color for light mode, and its teal blue color was chosen in order to stand out with good contrast from the color background for light mode's full white. */
-    --col-sec-lig : hsla(  46.979, 100.000%,  20.034%, 100.000% ); /** Color Secondary for Light Mode stores the secondary color for light mode, and its golden yellow color was chosen in order to complement to the color main for light mode's teal blue. */
-    --col-tex-lig : hsla(   0.000,   0.000%,   6.854%, 100.000% ); /** Color Text for Light Mode stores the text color for light mode, and its almost black color was chosen in order to stand out from but not be a true dark against the color background for light mode's full white. */
-
-    --col-bor_hov-lig : hsla( 199.005, 100.000%,  29.034%, 100.000% ); /** Color Border Hover for Light Mode stores the border hover color for light mode, and its color was chosen to match the color main for light mode's teal blue. */
-    --col-but_hov-lig : hsla( 199.005, 100.000%,  29.034%, 100.000% ); /** Color Button Hover for Light Mode stores the button hover color for light mode, and its color was chosen to match the color main for light mode's teal blue. */
-    --col-lin_hov-lig : hsla( 199.005, 100.000%,  29.034%, 100.000% ); /** Color Link Hover for Light Mode stores the link hover color for light mode, and its color was chosen to match the color main for light mode's teal blue. */
-
-    /* #endregion Colors for Light Mode */
+    /* #endregion Elements that use Brand Colors */
 
 
     /* #endregion Colors */
 
 
 
-    /* #region Column Gap */
-
-    --col-gap-max : calc( 100% / pow( var( --golden-rati ),  7 ) ); /** ~= 66.128px @1920px width = Column Gap Maximum stores the maximum column gap width and is equal to 100% parent width divided by the golden ratio raised to the 7th power (~29.034). */
-    --col-gap-xla : calc( 100% / pow( var( --golden-rati ),  8 ) ); /** ~= 40.870px @1920px width = Column Gap Extra Large stores the extra large column gap width and is equal to 100% parent width divided by the golden ratio raised to the 8th power (~46.979). */
-    --col-gap-lar : calc( 100% / pow( var( --golden-rati ),  9 ) ); /** ~= 25.259px @1920px width = Column Gap Large stores the large column gap width and is equal to 100% parent width divided by the golden ratio raised to the 9th power (~76.013). */
-    --col-gap-med : calc( 100% / pow( var( --golden-rati ), 10 ) ); /** ~= 15.611px @1920px width = Column Gap Medium stores the medium column gap width and is equal to 100% parent width divided by the golden ratio raised to the 10th power (~122.992). */
-    --col-gap-sma : calc( 100% / pow( var( --golden-rati ), 11 ) ); /** ~=  9.648px @1920px width = Column Gap Small stores the small column gap width and is equal to 100% parent width divided by the golden ratio raised to the 11th power (~199.005). */
-    --col-gap-xsm : calc( 100% / pow( var( --golden-rati ), 12 ) ); /** ~=  5.963px @1920px width = Column Gap Extra Small stores the extra small column gap width and is equal to 100% parent width divided by the golden ratio raised to the 12th power (~321.997). */
-    --col-gap-min : calc( 100% / pow( var( --golden-rati ), 13 ) ); /** ~=  3.685px @1920px width = Column Gap Minimum stores the minimum column gap width and is equal to 100% parent width divided by the golden ratio raised to the 13th power (~521.002). */
-
-    /* #endregion Column Gap */
-
-
-
     /* #region Font Size */
 
-    --fon-siz-max : calc( pow( var( --golden-rati ),  3 ) * 1rem ); /** ~= 67.777px @16px root font size = Font Size Maximum stores the maximum font size and is equal to the golden ratio raised to the 3rd power (~4.236) multiplied by the root font size. */
-    --fon-siz-xla : calc( pow( var( --golden-rati ),  2 ) * 1rem ); /** ~= 41.889px @16px root font size = Font Size Extra Large stores the extra large font size and is equal to the golden ratio raised to the 2nd power (~2.618) multiplied by the root font size. */
-    --fon-siz-lar : calc( pow( var( --golden-rati ),  1 ) * 1rem ); /** ~= 25.889px @16px root font size = Font Size Large stores the large font size and is equal to the golden ratio raised to the 1st power (~1.618) multiplied by the root font size. */
-    --fon-siz-bas : calc( pow( var( --golden-rati ),  0 ) * 1rem ); /**  = 16.000px @16px root font size = Font Size Base stores the base font size and is equal to the golden ratio raised to the 0th power (1) multiplied by the root font size. */
-    --fon-siz-sma : calc( pow( var( --golden-rati ), -1 ) * 1rem ); /** ~=  9.889px @16px root font size = Font Size Small stores the small font size and is equal to the golden ratio raised to the -1st power (~0.618) multiplied by the root font size. */
-    --fon-siz-xsm : calc( pow( var( --golden-rati ), -2 ) * 1rem ); /** ~=  6.111px @16px root font size = Font Size Extra Small stores the extra small font size and is equal to the golden ratio raised to the -2nd power (~0.382) multiplied by the root font size. */
-    --fon-siz-min : calc( pow( var( --golden-rati ), -3 ) * 1rem ); /** ~=  3.777px @16px root font size = Font Size Minimum stores the minimum font size and is equal to the golden ratio raised to the -3rd power (~0.236) multiplied by the root font size. */
+    --fon-siz-max : calc( pow( var( --golden-rati ),  3 ) * 1rem ); /** Font Size Maximum     ~= 67.777px @16px root font size = This custom property stores the maximum font size, with the idea behind this being to establish a typographical hierarchy by making the maximum font size three levels higher than the base font size. */
+    --fon-siz-xla : calc( pow( var( --golden-rati ),  2 ) * 1rem ); /** Font Size Extra Large ~= 41.889px @16px root font size = This custom property stores the extra large font size, with the idea behind this being to establish a typographical hierarchy by making the extra large font size two levels higher than the base font size. */
+    --fon-siz-lar : calc( pow( var( --golden-rati ),  1 ) * 1rem ); /** Font Size Large       ~= 25.889px @16px root font size = This custom property stores the large font size, with the idea behind this being to establish a typographical hierarchy by making the large font size one level higher than the base font size. */
+    --fon-siz-bas : calc( pow( var( --golden-rati ),  0 ) * 1rem ); /** Font Size Base         = 16.000px @16px root font size = This custom property stores the base font size, with the idea behind this being to anchor the typographical hierarchy around the root font size with three levels above and below it. */
+    --fon-siz-sma : calc( pow( var( --golden-rati ), -1 ) * 1rem ); /** Font Size Small       ~=  9.889px @16px root font size = This custom property stores the small font size, with the idea behind this being to establish a typographical hierarchy by making the small font size one level lower than the base font size. */
+    --fon-siz-xsm : calc( pow( var( --golden-rati ), -2 ) * 1rem ); /** Font Size Extra Small ~=  6.111px @16px root font size = This custom property stores the extra small font size, with the idea behind this being to establish a typographical hierarchy by making the extra small font size two levels lower than the base font size. */
+    --fon-siz-min : calc( pow( var( --golden-rati ), -3 ) * 1rem ); /** Font Size Minimum     ~=  3.777px @16px root font size = This custom property stores the minimum font size, with the idea behind this being to establish a typographical hierarchy by making the minimum font size three levels lower than the base font size. */
 
     /* #endregion Font Size */
 
@@ -112,13 +148,13 @@
 
     /* #region Grid Column */
 
-    --gri-col-max : calc( 100% / pow( var( --golden-rati ), 1 ) ); /** ~= 1,186.625px @1920px width = Grid Column Maximum stores the maximum grid column width and is equal to 100% parent width divided by the golden ratio raised to the 1st power (~1.618). */
-    --gri-col-xla : calc( 100% / pow( var( --golden-rati ), 2 ) ); /** ~=   733.375px @1920px width = Grid Column Extra Large stores the extra large grid column width and is equal to 100% parent width divided by the golden ratio raised to the 2nd power (~2.618). */
-    --gri-col-lar : calc( 100% / pow( var( --golden-rati ), 3 ) ); /** ~=   453.251px @1920px width = Grid Column Large stores the large grid column width and is equal to 100% parent width divided by the golden ratio raised to the 3rd power (~4.236). */
-    --gri-col-med : calc( 100% / pow( var( --golden-rati ), 4 ) ); /** ~=   280.124px @1920px width = Grid Column Medium stores the medium grid column width and is equal to 100% parent width divided by the golden ratio raised to the 4th power (~6.854). */
-    --gri-col-sma : calc( 100% / pow( var( --golden-rati ), 5 ) ); /** ~=   173.126px @1920px width = Grid Column Small stores the small grid column width and is equal to 100% parent width divided by the golden ratio raised to the 5th power (~11.090). */
-    --gri-col-xsm : calc( 100% / pow( var( --golden-rati ), 6 ) ); /** ~=   106.998px @1920px width = Grid Column Extra Small stores the extra small grid column width and is equal to 100% parent width divided by the golden ratio raised to the 6th power (~17.944). */
-    --gri-col-min : calc( 100% / pow( var( --golden-rati ), 7 ) ); /** ~=    66.128px @1920px width = Grid Column Minimum stores the minimum grid column width and is equal to 100% parent width divided by the golden ratio raised to the 7th power (~29.034). */
+    --gri-col-max : calc( 100% / pow( var( --golden-rati ), 1 ) ); /** Grid Column Maximum     ~= 1,186.625px @1920px width = This custom property stores the maximum grid column width, with the idea behind this being that any given box width should be divided by the golden ratio in order to create a golden rectangle and a smaller rectangle with the maximum column width equal to the golden rectangle. */
+    --gri-col-xla : calc( 100% / pow( var( --golden-rati ), 2 ) ); /** Grid Column Extra Large ~=   733.375px @1920px width = This custom property stores the extra large grid column width, with the idea behind this being the same as the maximum column width except one level smaller by using the golden ratio squared. */
+    --gri-col-lar : calc( 100% / pow( var( --golden-rati ), 3 ) ); /** Grid Column Large       ~=   453.251px @1920px width = This custom property stores the large grid column width, with the idea behind this being the same as the maximum column width except two levels smaller by using the golden ratio cubed. */
+    --gri-col-med : calc( 100% / pow( var( --golden-rati ), 4 ) ); /** Grid Column Medium      ~=   280.124px @1920px width = This custom property stores the medium grid column width, with the idea behind this being the same as the maximum column width except three levels smaller by using the golden ratio to the fourth power. */
+    --gri-col-sma : calc( 100% / pow( var( --golden-rati ), 5 ) ); /** Grid Column Small       ~=   173.126px @1920px width = This custom property stores the small grid column width, with the idea behind this being the same as the maximum column width except four levels smaller by using the golden ratio to the fifth power. */
+    --gri-col-xsm : calc( 100% / pow( var( --golden-rati ), 6 ) ); /** Grid Column Extra Small ~=   106.998px @1920px width = This custom property stores the extra small grid column width, with the idea behind this being the same as the maximum column width except five levels smaller by using the golden ratio to the sixth power. */
+    --gri-col-min : calc( 100% / pow( var( --golden-rati ), 7 ) ); /** Grid Column Minimum     ~=    66.128px @1920px width = This custom property stores the minimum grid column width, with the idea behind this being the same as the maximum column width except six levels smaller by using the golden ratio to the seventh power. */
 
     /* #endregion Grid Column */
 
@@ -126,112 +162,145 @@
 
     /* #region Grid Row */
 
-    --gri-row-max : calc( pow( var( --golden-rati ), 8 ) * 1rem ); /** ~= 751.659px @16px root font size = Grid Row Maximum stores the maximum grid row width and is equal to the golden ratio raised to the 8th power (~46.979) multiplied by the root font size. */
-    --gri-row-xla : calc( pow( var( --golden-rati ), 7 ) * 1rem ); /** ~= 464.551px @16px root font size = Grid Row Extra Large stores the extra large grid row width and is equal to the golden ratio raised to the 7th power (~29.034) multiplied by the root font size. */
-    --gri-row-lar : calc( pow( var( --golden-rati ), 6 ) * 1rem ); /** ~= 287.108px @16px root font size = Grid Row Large stores the large grid row width and is equal to the golden ratio raised to the 6th power (~17.944) multiplied by the root font size. */
-    --gri-row-med : calc( pow( var( --golden-rati ), 5 ) * 1rem ); /** ~= 177.443px @16px root font size = Grid Row Medium stores the medium grid row width and is equal to the golden ratio raised to the 5th power (~11.090) multiplied by the root font size. */
-    --gri-row-sma : calc( pow( var( --golden-rati ), 4 ) * 1rem ); /** ~= 109.666px @16px root font size = Grid Row Small stores the small grid row width and is equal to the golden ratio raised to the 4th power (~6.854) multiplied by the root font size. */
-    --gri-row-xsm : calc( pow( var( --golden-rati ), 3 ) * 1rem ); /** ~=  67.777px @16px root font size = Grid Row Extra Small stores the extra small grid row width and is equal to the golden ratio raised to the 3rd power (~4.236) multiplied by the root font size. */
-    --gri-row-min : calc( pow( var( --golden-rati ), 2 ) * 1rem ); /** ~=  41.889px @16px root font size = Grid Row Minimum stores the minimum grid row width and is equal to the golden ratio raised to the 2nd power (~2.618) multiplied by the root font size. */
+    --gri-row-max : calc( pow( var( --golden-rati ), 9 ) * 1rem ); /** Grid Row Maximum     ~= 751.659px @16px root font size = This custom property stores the maximum grid row width, with the idea behind this being to use the same formula as the vertical rhythm but with a much higher maximum value that is roughly equivalent to the maximum column width. */
+    --gri-row-xla : calc( pow( var( --golden-rati ), 8 ) * 1rem ); /** Grid Row Extra Large ~= 464.551px @16px root font size = This custom property stores the extra large grid row width, with the idea behind this being the same as the maximum grid row width except one golden ratio unit smaller. */
+    --gri-row-lar : calc( pow( var( --golden-rati ), 7 ) * 1rem ); /** Grid Row Large       ~= 287.108px @16px root font size = This custom property stores the large grid row width, with the idea behind this being the same as the maximum grid row width except two golden ratio units smaller. */
+    --gri-row-med : calc( pow( var( --golden-rati ), 6 ) * 1rem ); /** Grid Row Medium      ~= 177.443px @16px root font size = This custom property stores the medium grid row width, with the idea behind this being the same as the maximum grid row width except three golden ratio units smaller. */
+    --gri-row-sma : calc( pow( var( --golden-rati ), 5 ) * 1rem ); /** Grid Row Small       ~= 109.666px @16px root font size = This custom property stores the small grid row width, with the idea behind this being the same as the maximum grid row width except four golden ratio units smaller. */
+    --gri-row-xsm : calc( pow( var( --golden-rati ), 4 ) * 1rem ); /** Grid Row Extra Small ~=  67.777px @16px root font size = This custom property stores the extra small grid row width, with the idea behind this being the same as the maximum grid row width except five golden ratio units smaller. */
+    --gri-row-min : calc( pow( var( --golden-rati ), 3 ) * 1rem ); /** Grid Row Minimum     ~=  41.889px @16px root font size = This custom property stores the minimum grid row width, with the idea behind this being the same as the maximum grid row width except six golden ratio units smaller. */
 
     /* #endregion Grid Row */
 
 
 
-    /* #region Grid Template Areas */
-
-
-    /* #region Holy Grail Layout */
-
-    /** The holy grail layout is mostly just design jargon with no real science behind it, but subjectively it is a pleasant and/or practical layout. This is mainly used the site/app main's layout (where page content will be injected by React Router), but it can be used inside of any container. */
-
-    --gta-hol-gra :                /** Grid Template Areas Holy Grail stores the grid template areas property value for the holy grail layout (full width navbar, main area with two sidebars and full width footer). The grid area was chosen as my preferred method of placing grid items, as I find its visual definition and placement provides more clarity. */
-        'navbar   navbar navbar'   /** This layout was chosen to create a grid area for the navigation bar that spans all three columns in the first row, allowing it to stretch across the entire width of the page, though at large screen size its width will probably be constrained to less than the full screnn width. */
-        'sidebar1 main   sidebar2' /** This layout was chosen to create a three column grid area in the second row, where the first column is designated for the first sidebar (sidebar1), the second column is designated for the main content area (main), and the third column is designated for the second sidebar (sidebar2). */
-        'footer   footer footer';  /** This layout was chosen to create a grid area for the footer that spans all three columns in the third row, allowing it to stretch across the entire width of the page, though at large screen size its width will probably be constrained to less than the full screen width. */
-
-    /* #endregion Holy Grail Layout */
-
-
-    /* #endregion Grid Template Areas */
-
-
-
-    /* #region Grid Template Columns */
-
-
-    /* #region Holy Grail Layout */
-
-    /** The holy grail layout is mostly just design jargon with no real science behind it, but subjectively it is a pleasant and/or practical layout. This is mainly used the site/app main's layout (where page content will be injected by React Router), but it can be used inside of any container. */
-
-    --gtc-hol-gra : var( --gtc-sb1-col ) var( --gtc-mai-col ) var( --gtc-sb2-col ); /** Grid Template Columns Holy Grail stores the grid template columns property value for the holy grail layout and is equal to a maximum column width (100% parent width divided by the golden ratio (~1.618)) for the main content area flanked by two sidebars whose widths are half of whatever space is leftover from the screen width minus the maximum column width. */
-    --gtc-mai-col : var( --gri-col-max );                                           /** Grid Template Columns Main Column stores the grid template columns value for the main column content area in the holy grail layout and is equal to the maximum grid column width (100% parent width divided by the golden ratio raised to the 1st power (~1.618)), which is approximately equal to 1,186.625px at a 100% width of 1920px. */
-    --gtc-sb1-col : calc( ( 100% - var( --gri-col-max ) ) / 2 );                    /** Grid Template Columns Sidebar 1 Column stores the grid template columns value for the first sidebar in the holy grail layout and is equal to half of the remaining space after subtracting the maximum grid column width from the total screen width, which allows for two sidebars of equal width to flank the main content area. */
-    --gtc-sb2-col : calc( ( 100% - var( --gri-col-max ) ) / 2 );                    /** Grid Template Columns Sidebar 2 Column stores the grid template columns value for the second sidebar in the holy grail layout and is equal to half of the remaining space after subtracting the maximum grid column width from the total screen width, which allows for two sidebars of equal width to flank the main content area. */
-
-    /* #endregion Holy Grail Layout */
-
-
-    /* #endregion Grid Template Columns */
-
-
-
-    /* #region Grid Template Rows */
-
-
-    /* #region Holy Grail Layout */
-
-    /** The holy grail layout is mostly just design jargon with no real science behind it, but subjectively it is a pleasant and/or practical layout. This is mainly used the site/app main's layout (where page content will be injected by React Router), but it can be used inside of any container. */
-
-    --gtr-foo-row : calc( pow( var( --golden-rati ), 3) * 1rem );                           /** ~= 67.777px @16px root font size = Grid Template Rows Footer Row stores the grid template rows value for the footer in the holy grail layout and is equal to the golden ratio raised to the 3rd power (~4.236) multiplied by the root font size. */
-    --gtr-hol-gra : var( --gtr-nav-row ) var( --gtr-mai-row ) var( --gtr-foo-row );         /** Grid Template Rows Holy Grail stores the grid template rows property value for the holy grail layout and is equal to two fixed height rows (each equal to the golden ratio raised to the 3rd power (~4.236) multipled by the root font size) for the navbar and footer, with the remaining height leftover for the main content area. */
-    --gtr-mai-row : calc( 100% - ( calc( var( --gtr-nav-row ) + var( --gtr-foo-row ) ) ) ); /** Grid Template Rows Main Row stores the grid template rows value for the main content area in the holy grail layout and is equal to the remaining height leftover after subtracting the fixed height rows for the navbar and footer. */
-    --gtr-nav-row : calc( pow( var( --golden-rati ), 3) * 1rem );                           /** ~= 67.777px @16px root font size = Grid Template Rows Navbar Row stores the grid template rows value for the navbar in the holy grail layout and is equal to the golden ratio raised to the 3rd power (~4.236) multiplied by the root font size. */
-
-    /* #endregion Holy Grail Layout */
-
-
-    /* #endregion Grid Template Rows */
-
-
-
-    /* #region Header Sizes */
-
-    --hea-one-siz : calc( pow( var( --golden-rati ),  3 ) * 1rem ); /** ~= 67.777px @16px root font size = Header 1 Size stores the h1 font size and is equal to the golden ratio raised to the 3rd power (~4.236) multiplied by the root font size. */
-    --hea-two-siz : calc( pow( var( --golden-rati ),  2 ) * 1rem ); /** ~= 41.889px @16px root font size = Header 2 Size stores the h2 font size and is equal to the golden ratio raised to the 2nd power (~2.618) multiplied by the root font size. */
-    --hea-thr-siz : calc( pow( var( --golden-rati ),  1 ) * 1rem ); /** ~= 25.889px @16px root font size = Header 3 Size stores the h3 font size and is equal to the golden ratio raised to the 1st power (~1.618) multiplied by the root font size. */
-    --hea-fou-siz : calc( pow( var( --golden-rati ),  0 ) * 1rem ); /**  = 16.000px @16px root font size = Header 4 Size stores the h4 font size and is equal to the golden ratio raised to the 0th power (1) multiplied by the root font size. */
-    --hea-fiv-siz : calc( pow( var( --golden-rati ), -1 ) * 1rem ); /** ~=  9.889px @16px root font size = Header 5 Size stores the h5 font size and is equal to the golden ratio raised to the -1st power (~0.618) multiplied by the root font size. */
-    --hea-six-siz : calc( pow( var( --golden-rati ), -2 ) * 1rem ); /** ~=  6.111px @16px root font size = Header 6 Size stores the h6 font size and is equal to the golden ratio raised to the -2nd power (~0.382) multiplied by the root font size. */
-    --hea-sev-siz : calc( pow( var( --golden-rati ), -3 ) * 1rem ); /** ~=  3.777px @16px root font size = Header 7 Size stores the h7 font size and is equal to the golden ratio raised to the -3rd power (~0.236) multiplied by the root font size. The h7 element technically does not exist, but I wanted to remain consistent with the rest of the custom properties in defining exactly 7 property values and it can still be used if needed regardless. */
-
-    /* #endregion Header Sizes */
-
-
-
     /* #region Horizontal Rhythm */
 
-    --hor-rhy-max : calc( 100vw / pow( var( --golden-rati ),  6 ) ); /** ~= 106.998px @1920px width = Horizontal Rhythm Maximum stores the maximum horizontal rhythm value and is equal to 100% viewport width divided by the golden ratio raised to the 6th power (~17.944). */
-    --hor-rhy-xla : calc( 100vw / pow( var( --golden-rati ),  7 ) ); /** ~=  66.128px @1920px width = Horizontal Rhythm Extra Large stores the extra large horizontal rhythm value and is equal to 100% viewport width divided by the golden ratio raised to the 7th power (~29.034). */
-    --hor-rhy-lar : calc( 100vw / pow( var( --golden-rati ),  8 ) ); /** ~=  40.870px @1920px width = Horizontal Rhythm Large stores the large horizontal rhythm value and is equal to 100% viewport width divided by the golden ratio raised to the 8th power (~46.979). */
-    --hor-rhy-med : calc( 100vw / pow( var( --golden-rati ),  9 ) ); /** ~=  25.259px @1920px width = Horizontal Rhythm Medium stores the medium horizontal rhythm value and is equal to 100% viewport width divided by the golden ratio raised to the 9th power (~76.013). */
-    --hor-rhy-sma : calc( 100vw / pow( var( --golden-rati ), 10 ) ); /** ~=  15.611px @1920px width = Horizontal Rhythm Small stores the small horizontal rhythm value and is equal to 100% viewport width divided by the golden ratio raised to the 10th power (~122.992). */
-    --hor-rhy-xsm : calc( 100vw / pow( var( --golden-rati ), 11 ) ); /** ~=   9.648px @1920px width = Horizontal Rhythm Extra Small stores the extra small horizontal rhythm value and is equal to 100% viewport width divided by the golden ratio raised to the 11th power (~199.005). */
-    --hor-rhy-min : calc( 100vw / pow( var( --golden-rati ), 12 ) ); /** ~=   5.963px @1920px width = Horizontal Rhythm Minimum stores the minimum horizontal rhythm value and is equal to 100% viewport width divided by the golden ratio raised to the 12th power (~321.997). */
+    --hor-rhy-max : calc( 100vw / pow( var( --golden-rati ),  6 ) ); /** Horizontal Rhythm Maximum     ~= 106.998px @1920px width = This custom property stores the maximum horizontal rhythm value, with the idea behind this being to create horizontal rhythm values that are roughly equivalent to the vertical rhythm values using viewport widths instead of the root font size. */
+    --hor-rhy-xla : calc( 100vw / pow( var( --golden-rati ),  7 ) ); /** Horizontal Rhythm Extra Large ~=  66.128px @1920px width = This custom property stores the extra large horizontal rhythm value, with the idea behind this being the same as the maximum horizontal rhythm value except one golden ratio unit smaller. */
+    --hor-rhy-lar : calc( 100vw / pow( var( --golden-rati ),  8 ) ); /** Horizontal Rhythm Large       ~=  40.870px @1920px width = This custom property stores the large horizontal rhythm value, with the idea behind this being the same as the maximum horizontal rhythm value except two golden ratio units smaller. */
+    --hor-rhy-bas : calc( 100vw / pow( var( --golden-rati ),  9 ) ); /** Horizontal Rhythm Medium      ~=  25.259px @1920px width = This custom property stores the medium horizontal rhythm value, with the idea behind this being the same as the maximum horizontal rhythm value except three golden ratio units smaller. */
+    --hor-rhy-sma : calc( 100vw / pow( var( --golden-rati ), 10 ) ); /** Horizontal Rhythm Small       ~=  15.611px @1920px width = This custom property stores the small horizontal rhythm value, with the idea behind this being the same as the maximum horizontal rhythm value except four golden ratio units smaller. */
+    --hor-rhy-xsm : calc( 100vw / pow( var( --golden-rati ), 11 ) ); /** Horizontal Rhythm Extra Small ~=   9.648px @1920px width = This custom property stores the extra small horizontal rhythm value, with the idea behind this being the same as the maximum horizontal rhythm value except five golden ratio units smaller. */
+    --hor-rhy-min : calc( 100vw / pow( var( --golden-rati ), 12 ) ); /** Horizontal Rhythm Minimum     ~=   5.963px @1920px width = This custom property stores the minimum horizontal rhythm value, with the idea behind this being the same as the maximum horizontal rhythm value except six golden ratio units smaller. */
 
     /* #endregion Horizontal Rhythm */
 
 
 
+    /* #region Spread Radius (Box Shadow Only) */
+
+    --spr-rad-max : calc( var( --gol-rat-max ) * 1px ); /** Spread Radius Maximum     ~= 29.034px = This custom property stores the spread radius' maximum value, with the idea behind this being to unify the many disparate box shadow values that were scattered around the site/app. */
+    --spr-rad-xla : calc( var( --gol-rat-xla ) * 1px ); /** Spread Radius Extra Large ~= 17.944px = This custom property stores the spread radius' extra large value, with the idea behind this being to unify the many disparate box shadow values that were scattered around the site/app. */
+    --spr-rad-lar : calc( var( --gol-rat-lar ) * 1px ); /** Spread Radius Large       ~= 11.090px = This custom property stores the spread radius' large value, with the idea behind this being to unify the many disparate box shadow values that were scattered around the site/app. */
+    --spr-rad-med : calc( var( --gol-rat-med ) * 1px ); /** Spread Radius Medium      ~=  6.854px = This custom property stores the spread radius' medium value, with the idea behind this being to unify the many disparate box shadow values that were scattered around the site/app. */
+    --spr-rad-sma : calc( var( --gol-rat-sma ) * 1px ); /** Spread Radius Small       ~=  4.236px = This custom property stores the spread radius' small value, with the idea behind this being to unify the many disparate box shadow values that were scattered around the site/app. */
+    --spr-rad-xsm : calc( var( --gol-rat-xsm ) * 1px ); /** Spread Radius Extra Small ~=  2.618px = This custom property stores the spread radius' extra small value, with the idea behind this being to unify the many disparate box shadow values that were scattered around the site/app. */
+    --spr-rad-min : calc( var( --gol-rat-min ) * 1px ); /** Spread Radius Minimum     ~=  1.618px = This custom property stores the spread radius' minimum value, with the idea behind this being to unify the many disparate box shadow values that were scattered around the site/app. */
+
+    /* #endregion Spread Radius (Box Shadow Only) */
+
+
+
+    /* #region Transition Duration */
+
+    --tra-dur-max : calc( pow( var( --golden-rati ), 15 ) * 1ms ); /** Transition Duration Maximum     ~= 1364.001ms = This custom property stores the maximum transition duration, with the idea behind this being to unify the many disparate transition duration values that were scattered around the site/app. */
+    --tra-dur-xla : calc( pow( var( --golden-rati ), 14 ) * 1ms ); /** Transition Duration Extra Large ~=  842.999ms = This custom property stores the extra large transition duration, with the idea behind this being to unify the many disparate transition duration values that were scattered around the site/app. */
+    --tra-dur-lar : calc( pow( var( --golden-rati ), 13 ) * 1ms ); /** Transition Duration Large       ~=  521.002ms = This custom property stores the large transition duration, with the idea behind this being to unify the many disparate transition duration values that were scattered around the site/app. */
+    --tra-dur-bas : calc( pow( var( --golden-rati ), 12 ) * 1ms ); /** Transition Duration Base        ~=  321.997ms = This custom property stores the base transition duration, with the idea behind this being to unify the many disparate transition duration values that were scattered around the site/app. */
+    --tra-dur-sma : calc( pow( var( --golden-rati ), 11 ) * 1ms ); /** Transition Duration Small       ~=  199.005ms = This custom property stores the small transition duration, with the idea behind this being to unify the many disparate transition duration values that were scattered around the site/app. */
+    --tra-dur-xsm : calc( pow( var( --golden-rati ), 10 ) * 1ms ); /** Transition Duration Extra Small ~=  122.992ms = This custom property stores the extra small transition duration, with the idea behind this being to unify the many disparate transition duration values that were scattered around the site/app. */
+    --tra-dur-min : calc( pow( var( --golden-rati ),  9 ) * 1ms ); /** Transition Duration Minimum     ~=   76.013ms = This custom property stores the minimum transition duration, with the idea behind this being to unify the many disparate transition duration values that were scattered around the site/app. */
+
+    /* #endregion Transition Duration */
+
+
+
+    /* #region Vertical Rhythm (Line Height) */
+
+    --ver-rhy-max : calc( pow( var( --golden-rati ),  4 ) * 1rem ); /** Vertical Rhythm Maximum     ~= 109.666px @16px root font size = This custom property stores the maximum vertical rhythm (line height) value, with the idea behind this being to establish a vertical rhythm by making the maximum line height three levels taller than the base line height. */
+    --ver-rhy-xla : calc( pow( var( --golden-rati ),  3 ) * 1rem ); /** Vertical Rhythm Extra Large ~=  67.777px @16px root font size = This custom property stores the extra large vertical rhythm (line height) value, with the idea behind this being to establish a vertical rhythm by making the extra large line height two levels taller than the base line height. */
+    --ver-rhy-lar : calc( pow( var( --golden-rati ),  2 ) * 1rem ); /** Vertical Rhythm Large       ~=  41.889px @16px root font size = This custom property stores the large vertical rhythm (line height) value, with the idea behind this being to establish a vertical rhythm by making the large line height one level taller than the base line height. */
+    --ver-rhy-bas : calc( pow( var( --golden-rati ),  1 ) * 1rem ); /** Vertical Rhythm Base        ~=  25.889px @16px root font size = This custom property stores the base vertical rhythm (line height) value, with the idea behind this being to anchor the vertical rhythm around the root font size multiplied by one golden ratio unit with three levels above and below it. */
+    --ver-rhy-sma : calc( pow( var( --golden-rati ),  0 ) * 1rem ); /** Vertical Rhythm Small       ~=  16.000px @16px root font size = This custom property stores the small vertical rhythm (line height) value, with the idea behind this being to establish a vertical rhythm by making the small line height one level smaller than the base line height. */
+    --ver-rhy-xsm : calc( pow( var( --golden-rati ), -1 ) * 1rem ); /** Vertical Rhythm Extra Small ~=   9.889px @16px root font size = This custom property stores the extra small vertical rhythm (line height) value, with the idea behind this being to establish a vertical rhythm by making the extra small line height two levels smaller than the base line height. */
+    --ver-rhy-min : calc( pow( var( --golden-rati ), -2 ) * 1rem ); /** Vertical Rhythm Minimum     ~=   6.111px @16px root font size = This custom property stores the minimum vertical rhythm (line height) value, with the idea behind this being to establish a vertical rhythm by making the minimum line height three levels smaller than the base line height. */
+
+    /* #endregion Vertical Rhythm (Line Height) */
+
+
+
+    /* #region X Offset (Box Shadow, Drop Shadow, Text Shadow) */
+
+    --x-offse-max : calc( var( --gol-rat-max ) * 1px ); /** X Offset Maximum     ~= 29.034px = This custom property stores the x offset's maximum value, with the idea behind this being to unify the many disparate box shadow, drop shadow and text shadow values that were scattered around the site/app. */
+    --x-offse-xla : calc( var( --gol-rat-xla ) * 1px ); /** X Offset Extra Large ~= 17.944px = This custom property stores the x offset's extra large value, with the idea behind this being to unify the many disparate box shadow, drop shadow and text shadow values that were scattered around the site/app. */
+    --x-offse-lar : calc( var( --gol-rat-lar ) * 1px ); /** X Offset Large       ~= 11.090px = This custom property stores the x offset's large value, with the idea behind this being to unify the many disparate box shadow, drop shadow and text shadow values that were scattered around the site/app. */
+    --x-offse-med : calc( var( --gol-rat-med ) * 1px ); /** X Offset Medium      ~=  6.854px = This custom property stores the x offset's medium value, with the idea behind this being to unify the many disparate box shadow, drop shadow and text shadow values that were scattered around the site/app. */
+    --x-offse-sma : calc( var( --gol-rat-sma ) * 1px ); /** X Offset Small       ~=  4.236px = This custom property stores the x offset's small value, with the idea behind this being to unify the many disparate box shadow, drop shadow and text shadow values that were scattered around the site/app. */
+    --x-offse-xsm : calc( var( --gol-rat-xsm ) * 1px ); /** X Offset Extra Small ~=  2.618px = This custom property stores the x offset's extra small value, with the idea behind this being to unify the many disparate box shadow, drop shadow and text shadow values that were scattered around the site/app. */
+    --x-offse-min : calc( var( --gol-rat-min ) * 1px ); /** X Offset Minimum     ~=  1.618px = This custom property stores the x offset's minimum value, with the idea behind this being to unify the many disparate box shadow, drop shadow and text shadow values that were scattered around the site/app. */
+
+    /* #endregion X Offset (Box Shadow, Drop Shadow, Text Shadow) */
+
+
+
+    /* #region Y Offset (Box Shadow, Drop Shadow, Text Shadow) */
+
+    --y-offse-max : calc( var( --gol-rat-max ) * 1px ); /** Y Offset Maximum     ~= 29.034px = This custom property stores the y offset's maximum value, with the idea behind this being to unify the many disparate box shadow, drop shadow and text shadow values that were scattered around the site/app. */
+    --y-offse-xla : calc( var( --gol-rat-xla ) * 1px ); /** Y Offset Extra Large ~= 17.944px = This custom property stores the y offset's extra large value, with the idea behind this being to unify the many disparate box shadow, drop shadow and text shadow values that were scattered around the site/app. */
+    --y-offse-lar : calc( var( --gol-rat-lar ) * 1px ); /** Y Offset Large       ~= 11.090px = This custom property stores the y offset's large value, with the idea behind this being to unify the many disparate box shadow, drop shadow and text shadow values that were scattered around the site/app. */
+    --y-offse-med : calc( var( --gol-rat-med ) * 1px ); /** Y Offset Medium      ~=  6.854px = This custom property stores the y offset's medium value, with the idea behind this being to unify the many disparate box shadow, drop shadow and text shadow values that were scattered around the site/app. */
+    --y-offse-sma : calc( var( --gol-rat-sma ) * 1px ); /** Y Offset Small       ~=  4.236px = This custom property stores the y offset's small value, with the idea behind this being to unify the many disparate box shadow, drop shadow and text shadow values that were scattered around the site/app. */
+    --y-offse-xsm : calc( var( --gol-rat-xsm ) * 1px ); /** Y Offset Extra Small ~=  2.618px = This custom property stores the y offset's extra small value, with the idea behind this being to unify the many disparate box shadow, drop shadow and text shadow values that were scattered around the site/app. */
+    --y-offse-min : calc( var( --gol-rat-min ) * 1px ); /** Y Offset Minimum     ~=  1.618px = This custom property stores the y offset's minimum value, with the idea behind this being to unify the many disparate box shadow, drop shadow and text shadow values that were scattered around the site/app. */
+
+    /* #endregion Y Offset (Box Shadow, Drop Shadow, Text Shadow) */
+
+
+    /* #endregion Derivative Custom Properties */
+
+
+
+    /* #region Second Derivative Custom Properties */
+
+
+    /* #region Column Gap */
+
+    --col-gap-max : var( --hor-rhy-max ); /** Column Gap Maximum     ~= 106.998px @1920px width = This custom property stores the maximum column gap width, with the idea behind this being to visually indicate that the columns are as maximally unrelated as possible while maintaining visual rhythm and consistency with other selectors. */
+    --col-gap-xla : var( --hor-rhy-xla ); /** Column Gap Extra Large ~=  66.128px @1920px width = This custom property stores the extra large column gap width, with the idea behind this being to visually indicate that the columns are maximally unrelated while maintaining visual rhythm and consistency with other selectors. */
+    --col-gap-lar : var( --hor-rhy-lar ); /** Column Gap Large       ~=  40.870px @1920px width = This custom property stores the large column gap width, with the idea behind this being to visually indicate that the columns are largely unrelated while maintaining visual rhythm and consistency with other selectors. */
+    --col-gap-med : var( --hor-rhy-bas ); /** Column Gap Medium      ~=  25.259px @1920px width = This custom property stores the medium column gap width, with the idea behind this being to visually indicate that the columns are moderately unrelated while maintaining visual rhythm and consistency with other selectors. */
+    --col-gap-sma : var( --hor-rhy-sma ); /** Column Gap Small       ~=  15.611px @1920px width = This custom property stores the small column gap width, with the idea behind this being to visually indicate that the columns are slightly unrelated while maintaining visual rhythm and consistency with other selectors. */
+    --col-gap-xsm : var( --hor-rhy-xsm ); /** Column Gap Extra Small ~=   9.648px @1920px width = This custom property stores the extra small column gap width, with the idea behind this being to visually indicate that the columns are minimally unrelated while maintaining visual rhythm and consistency with other selectors. */
+    --col-gap-min : var( --hor-rhy-min ); /** Column Gap Minimum     ~=   5.963px @1920px width = This custom property stores the minimum column gap width, with the idea behind this being to visually indicate that the columns are as minimally unrelated as possible while maintaining visual rhythm and consistency with other selectors. */
+
+    /* #endregion Column Gap */
+
+
+
+    /* #region Header Sizes */
+
+    --hea-one-siz : var( --fon-siz-max ); /** Header 1 Size ~= 67.777px @16px root font size = This custom property stores the h1 font size, with the idea behind this being that the header sizes should equal their font size equivalents. */
+    --hea-two-siz : var( --fon-siz-xla ); /** Header 2 Size ~= 41.889px @16px root font size = This custom property stores the h2 font size, with the idea behind this being that the header sizes should equal their font size equivalents. */
+    --hea-thr-siz : var( --fon-siz-lar ); /** Header 3 Size ~= 25.889px @16px root font size = This custom property stores the h3 font size, with the idea behind this being that the header sizes should equal their font size equivalents. */
+    --hea-fou-siz : var( --fon-siz-bas ); /** Header 4 Size ~= 16.000px @16px root font size = This custom property stores the h4 font size, with the idea behind this being that the header sizes should equal their font size equivalents. */
+    --hea-fiv-siz : var( --fon-siz-sma ); /** Header 5 Size ~=  9.889px @16px root font size = This custom property stores the h5 font size, with the idea behind this being that the header sizes should equal their font size equivalents. */
+    --hea-six-siz : var( --fon-siz-xsm ); /** Header 6 Size ~=  6.111px @16px root font size = This custom property stores the h6 font size, with the idea behind this being that the header sizes should equal their font size equivalents. */
+    --hea-sev-siz : var( --fon-siz-min ); /** Header 7 Size ~=  3.777px @16px root font size = This custom property stores the h7 font size, with the idea behind this being that the header sizes should equal their font size equivalents. */
+
+    /* #endregion Header Sizes */
+
+
+
     /* #region Margin Horizontal */
 
-    --mar-hor-max : calc( 100vw / pow( var( --golden-rati ),  6 ) ); /** ~= 109.998px @1920px width = Margin Horizontal Maximum stores the maximum left and/or right margin values and is equal to 100% viewport width divided by the golden ratio raised to the 6th power (~17.944). */
-    --mar-hor-xla : calc( 100vw / pow( var( --golden-rati ),  7 ) ); /** ~=  66.128px @1920px width = Margin Horizontal Extra Large stores the extra large left and/or right margin values and is equal to 100% viewport width divided by the golden ratio raised to the 7th power (~29.034). */
-    --mar-hor-lar : calc( 100vw / pow( var( --golden-rati ),  8 ) ); /** ~=  40.870px @1920px width = Margin Horizontal Large stores the large left and/or right margin values and is equal to 100% viewport width divided by the golden ratio raised to the 8th power (~46.979). */
-    --mar-hor-bas : calc( 100vw / pow( var( --golden-rati ),  9 ) ); /** ~=  25.259px @1920px width = Margin Horizontal Base stores the base left and/or right margin values and is equal to 100% viewport width divided by the golden ratio raised to the 9th power (~76.013). */
-    --mar-hor-sma : calc( 100vw / pow( var( --golden-rati ), 10 ) ); /** ~=  15.611px @1920px width = Margin Horizontal Small stores the small left and/or right margin values and is equal to 100% viewport width divided by the golden ratio raised to the 10th power (~122.992). */
-    --mar-hor-xsm : calc( 100vw / pow( var( --golden-rati ), 11 ) ); /** ~=   9.648px @1920px width = Margin Horizontal Extra Small stores the extra small left and/or right margin values and is equal to 100% viewport width divided by the golden ratio raised to the 11th power (~199.005). */
-    --mar-hor-min : calc( 100vw / pow( var( --golden-rati ), 12 ) ); /** ~=   5.963px @1920px width = Margin Horizontal Minimum stores the minimum left and/or right margin values and is equal to 100% viewport width divided by the golden ratio raised to the 12th power (~321.997). */
+    --mar-hor-max : var( --hor-rhy-max ); /** Margin Horizontal Maximum     ~= 106.998px @1920px width = This custom property stores the maximum left and/or right margin values, with the idea behind this being to visually indicate that the elements are as maximally unrelated as possible while maintaining visual rhythm and consistency with other selectors. */
+    --mar-hor-xla : var( --hor-rhy-xla ); /** Margin Horizontal Extra Large ~=  66.128px @1920px width = This custom property stores the extra large left and/or right margin values, with the idea behind this being to visually indicate that the elements are almost as maximally unrelated as possible while maintaining visual rhythm and consistency with other selectors. */
+    --mar-hor-lar : var( --hor-rhy-lar ); /** Margin Horizontal Large       ~=  40.870px @1920px width = This custom property stores the large left and/or right margin values, with the idea behind this being to visually indicate that the elements are largely unrelated while maintaining visual rhythm and consistency with other selectors. */
+    --mar-hor-bas : var( --hor-rhy-bas ); /** Margin Horizontal Base        ~=  25.259px @1920px width = This custom property stores the base left and/or right margin values, with the idea behind this being to visually indicate that the elements are moderately unrelated while maintaining visual rhythm and consistency with other selectors. */
+    --mar-hor-sma : var( --hor-rhy-sma ); /** Margin Horizontal Small       ~=  15.611px @1920px width = This custom property stores the small left and/or right margin values, with the idea behind this being to visually indicate that the elements are slightly unrelated while maintaining visual rhythm and consistency with other selectors. */
+    --mar-hor-xsm : var( --hor-rhy-xsm ); /** Margin Horizontal Extra Small ~=   9.648px @1920px width = This custom property stores the extra small left and/or right margin values, with the idea behind this being to visually indicate that the elements are minimally unrelated while maintaining visual rhythm and consistency with other selectors. */
+    --mar-hor-min : var( --hor-rhy-min ); /** Margin Horizontal Minimum     ~=   5.963px @1920px width = This custom property stores the minimum left and/or right margin values, with the idea behind this being to visually indicate that the columns are as minimally unrelated as possible while maintaining visual rhythm and consistency with other selectors. */
 
     /* #endregion Margin Horizontal */
 
@@ -239,13 +308,13 @@
 
     /* #region Margin Vertical */
 
-    --mar-ver-max : calc( pow( var( --golden-rati ),  4 ) * 1rem ); /** ~= 109.666px @16px root font size = Margin Vertical Maximum stores the maximum top and/or bottom margin values and is equal to the golden ratio raised to the 4th power (~6.854) multiplied by the root font size. */
-    --mar-ver-xla : calc( pow( var( --golden-rati ),  3 ) * 1rem ); /** ~=  67.777px @16px root font size = Margin Vertical Extra Large stores the extra large top and/or bottom margin values and is equal to the golden ratio raised to the 3rd power (~4.236) multiplied by the root font size. */
-    --mar-ver-lar : calc( pow( var( --golden-rati ),  2 ) * 1rem ); /** ~=  41.889px @16px root font size = Margin Vertical Large stores the large top and/or bottom margin values and is equal to the golden ratio raised to the 2nd power (~2.618) multiplied by the root font size. */
-    --mar-ver-bas : calc( pow( var( --golden-rati ),  1 ) * 1rem ); /** ~=  25.889px @16px root font size = Margin Vertical Base stores the base top and/or bottom margin values and is equal to the golden ratio raised to the 1st power (~1.618) multiplied by the root font size. */
-    --mar-ver-sma : calc( pow( var( --golden-rati ),  0 ) * 1rem ); /**  =  16.000px @16px root font size = Margin Vertical Small stores the small top and/or bottom margin values and is equal to the golden ratio raised to the 0th power (1) multiplied by the root font size. */
-    --mar-ver-xsm : calc( pow( var( --golden-rati ), -1 ) * 1rem ); /** ~=   9.889px @16px root font size = Margin Vertical Extra Small stores the extra small top and/or bottom margin values and is equal to the golden ratio raised to the -1st power (~0.618) multiplied by the root font size. */
-    --mar-ver-min : calc( pow( var( --golden-rati ), -2 ) * 1rem ); /** ~=   6.111px @16px root font size = Margin Vertical Minimum stores the minimum top and/or bottom margin values and is equal to the golden ratio raised to the -2nd power (~0.382) multiplied by the root font size. */
+    --mar-ver-max : var( --ver-rhy-max ); /** Margin Vertical Maximum     ~= 109.666px @16px root font size = This custom property stores the maximum top and/or bottom margin values, with the idea behind this being to visually indicate that the elements are as maximally unrelated as possible while maintaining visual rhythm and consistency with other selectors. */
+    --mar-ver-xla : var( --ver-rhy-xla ); /** Margin Vertical Extra Large ~=  67.777px @16px root font size = This custom property stores the extra large top and/or bottom margin values, with the idea behind this being to visually indicate that the elements are maximally unrelated while maintaining visual rhythm and consistency with other selectors. */
+    --mar-ver-lar : var( --ver-rhy-lar ); /** Margin Vertical Large       ~=  41.889px @16px root font size = This custom property stores the large top and/or bottom margin values, with the idea behind this being to visually indicate that the elements are largely unrelated while maintaining visual rhythm and consistency with other selectors. */
+    --mar-ver-bas : var( --ver-rhy-bas ); /** Margin Vertical Base        ~=  25.889px @16px root font size = This custom property stores the base top and/or bottom margin values, with the idea behind this being to visually indicate that the elements are moderately unrelated while maintaining visual rhythm and consistency with other selectors. */
+    --mar-ver-sma : var( --ver-rhy-sma ); /** Margin Vertical Small       ~=  16.000px @16px root font size = This custom property stores the small top and/or bottom margin values, with the idea behind this being to visually indicate that the elements are slightly unrelated while maintaining visual rhythm and consistency with other selectors. */
+    --mar-ver-xsm : var( --ver-rhy-xsm ); /** Margin Vertical Extra Small ~=   9.889px @16px root font size = This custom property stores the extra small top and/or bottom margin values, with the idea behind this being to visually indicate that the elements are minimally unrelated while maintaining visual rhythm and consistency with other selectors. */
+    --mar-ver-min : var( --ver-rhy-min ); /** Margin Vertical Minimum     ~=   6.111px @16px root font size = This custom property stores the minimum top and/or bottom margin values, with the idea behind this being to visually indicate that the columns are as minimally unrelated as possible while maintaining visual rhythm and consistency with other selectors. */
 
     /* #endregion Margin Vertical */
 
@@ -253,13 +322,13 @@
 
     /* #region Padding Horizontal */
 
-    --pad-hor-max : calc( 100vw / pow( var( --golden-rati ),  6 ) ); /** ~= 109.998px @1920px width = Padding Horizontal Maximum stores the maximum left and/or right padding values and is equal to 100% viewport width divided by the golden ratio raised to the 6th power (~17.944). */
-    --pad-hor-xla : calc( 100vw / pow( var( --golden-rati ),  7 ) ); /** ~=  66.128px @1920px width = Padding Horizontal Extra Large stores the extra large left and/or right padding values and is equal to 100% viewport width divided by the golden ratio raised to the 7th power (~29.034). */
-    --pad-hor-lar : calc( 100vw / pow( var( --golden-rati ),  8 ) ); /** ~=  40.870px @1920px width = Padding Horizontal Large stores the large left and/or right padding values and is equal to 100% viewport width divided by the golden ratio raised to the 8th power (~46.979). */
-    --pad-hor-bas : calc( 100vw / pow( var( --golden-rati ),  9 ) ); /** ~=  25.259px @1920px width = Padding Horizontal Base stores the base left and/or right padding values and is equal to 100% viewport width divided by the golden ratio raised to the 9th power (~76.013). */
-    --pad-hor-sma : calc( 100vw / pow( var( --golden-rati ), 10 ) ); /** ~=  15.611px @1920px width = Padding Horizontal Small stores the small left and/or right padding values and is equal to 100% viewport width divided by the golden ratio raised to the 10th power (~122.992). */
-    --pad-hor-xsm : calc( 100vw / pow( var( --golden-rati ), 11 ) ); /** ~=   9.648px @1920px width = Padding Horizontal Extra Small stores the extra small left and/or right padding values and is equal to 100% viewport width divided by the golden ratio raised to the 11th power (~199.005). */
-    --pad-hor-min : calc( 100vw / pow( var( --golden-rati ), 12 ) ); /** ~=   5.963px @1920px width = Padding Horizontal Minimum stores the minimum left and/or right padding values and is equal to 100% viewport width divided by the golden ratio raised to the 12th power (~321.997). */
+    --pad-hor-max : var( --hor-rhy-max ); /** Padding Horizontal Maximum     ~= 106.998px @1920px width = This custom property stores the maximum left and/or right padding values, with the idea behind this being to visually indicate that the elements are as maximally unrelated as possible while maintaining visual rhythm and consistency with other selectors. */
+    --pad-hor-xla : var( --hor-rhy-xla ); /** Padding Horizontal Extra Large ~=  66.128px @1920px width = This custom property stores the extra large left and/or right padding values, with the idea behind this being to visually indicate that the elements are maximally unrelated while maintaining visual rhythm and consistency with other selectors. */
+    --pad-hor-lar : var( --hor-rhy-lar ); /** Padding Horizontal Large       ~=  40.870px @1920px width = This custom property stores the large left and/or right padding values, with the idea behind this being to visually indicate that the elements are largely unrelated while maintaining visual rhythm and consistency with other selectors. */
+    --pad-hor-bas : var( --hor-rhy-bas ); /** Padding Horizontal Base        ~=  25.259px @1920px width = This custom property stores the base left and/or right padding values, with the idea behind this being to visually indicate that the elements are moderately unrelated while maintaining visual rhythm and consistency with other selectors. */
+    --pad-hor-sma : var( --hor-rhy-sma ); /** Padding Horizontal Small       ~=  15.611px @1920px width = This custom property stores the small left and/or right padding values, with the idea behind this being to visually indicate that the elements are slightly unrelated while maintaining visual rhythm and consistency with other selectors. */
+    --pad-hor-xsm : var( --hor-rhy-xsm ); /** Padding Horizontal Extra Small ~=   9.648px @1920px width = This custom property stores the extra small left and/or right padding values, with the idea behind this being to visually indicate that the elements are minimally unrelated while maintaining visual rhythm and consistency with other selectors. */
+    --pad-hor-min : var( --hor-rhy-min ); /** Padding Horizontal Minimum     ~=   5.963px @1920px width = This custom property stores the minimum left and/or right padding values, with the idea behind this being to visually indicate that the elements are as minimally unrelated as possible while maintaining visual rhythm and consistency with other selectors. */
 
     /* #endregion Padding Horizontal */
 
@@ -267,214 +336,420 @@
 
     /* #region Padding Vertical */
 
-    --pad-ver-max : calc( pow( var( --golden-rati ),  4 ) * 1rem ); /** ~= 109.666px @16px root font size = Padding Vertical Maximum stores the maximum top and/or bottom padding values and is equal to the golden ratio raised to the 4th power (~6.854) multiplied by the root font size. */
-    --pad-ver-xla : calc( pow( var( --golden-rati ),  3 ) * 1rem ); /** ~=  67.777px @16px root font size = Padding Vertical Extra Large stores the extra large top and/or bottom padding values and is equal to the golden ratio raised to the 3rd power (~4.236) multiplied by the root font size. */
-    --pad-ver-lar : calc( pow( var( --golden-rati ),  2 ) * 1rem ); /** ~=  41.889px @16px root font size = Padding Vertical Large stores the large top and/or bottom padding values and is equal to the golden ratio raised to the 2nd power (~2.618) multiplied by the root font size. */
-    --pad-ver-bas : calc( pow( var( --golden-rati ),  1 ) * 1rem ); /** ~=  25.889px @16px root font size = Padding Vertical Base stores the base top and/or bottom padding values and is equal to the golden ratio raised to the 1st power (~1.618) multiplied by the root font size. */
-    --pad-ver-sma : calc( pow( var( --golden-rati ),  0 ) * 1rem ); /**  =  16.000px @16px root font size = Padding Vertical Small stores the small top and/or bottom padding values and is equal to the golden ratio raised to the 0th power (1) multiplied by the root font size. */
-    --pad-ver-xsm : calc( pow( var( --golden-rati ), -1 ) * 1rem ); /** ~=   9.889px @16px root font size = Padding Vertical Extra Small stores the extra small top and/or bottom padding values and is equal to the golden ratio raised to the -1st power (~0.618) multiplied by the root font size. */
-    --pad-ver-min : calc( pow( var( --golden-rati ), -2 ) * 1rem ); /** ~=   6.111px @16px root font size = Padding Vertical Minimum stores the minimum top and/or bottom padding values and is equal to the golden ratio raised to the -2nd power (~0.382) multiplied by the root font size. */
+    --pad-ver-max : var( --ver-rhy-max ); /** Padding Vertical Maximum     ~= 109.666px @16px root font size = This custom property stores the maximum top and/or bottom padding values, with the idea behind this being to visually indicate that the elements are as maximally unrelated as possible while maintaining visual rhythm and consistency with other selectors. */
+    --pad-ver-xla : var( --ver-rhy-xla ); /** Padding Vertical Extra Large ~=  67.777px @16px root font size = This custom property stores the extra large top and/or bottom padding values, with the idea behind this being to visually indicate that the elements are maximally unrelated while maintaining visual rhythm and consistency with other selectors. */
+    --pad-ver-lar : var( --ver-rhy-lar ); /** Padding Vertical Large       ~=  41.889px @16px root font size = This custom property stores the large top and/or bottom padding values, with the idea behind this being to visually indicate that the elements are largely unrelated while maintaining visual rhythm and consistency with other selectors. */
+    --pad-ver-bas : var( --ver-rhy-bas ); /** Padding Vertical Base        ~=  25.889px @16px root font size = This custom property stores the base top and/or bottom padding values, with the idea behind this being to visually indicate that the elements are moderately unrelated while maintaining visual rhythm and consistency with other selectors. */
+    --pad-ver-sma : var( --ver-rhy-sma ); /** Padding Vertical Small       ~=  16.000px @16px root font size = This custom property stores the small top and/or bottom padding values, with the idea behind this being to visually indicate that the elements are slightly unrelated while maintaining visual rhythm and consistency with other selectors. */
+    --pad-ver-xsm : var( --ver-rhy-xsm ); /** Padding Vertical Extra Small ~=   9.889px @16px root font size = This custom property stores the extra small top and/or bottom padding values, with the idea behind this being to visually indicate that the elements are minimally unrelated while maintaining visual rhythm and consistency with other selectors. */
+    --pad-ver-min : var( --ver-rhy-min ); /** Padding Vertical Minimum     ~=   6.111px @16px root font size = This custom property stores the minimum top and/or bottom padding values, with the idea behind this being to visually indicate that the elements are as minimally unrelated as possible while maintaining visual rhythm and consistency with other selectors. */
 
     /* #endregion Padding Vertical */
 
 
 
-    /* #region Paragraph Width */
-
-    --par-wid-max : 80ch; /** Paragraph Width Maximum stores the maximum width of paragraph elements in character units. This is mostly, but not solely, used for pargraphs that contain more than one line of text, and it makes reading easier by limiting line length. */
-    --par-wid-xla : 75ch; /** Paragraph Width Extra Large stores the extra large width of paragraph elements in character units. This is mostly, but not solely, used for pargraphs that contain more than one line of text, and it makes reading easier by limiting line length. */
-    --par-wid-lar : 70ch; /** Paragraph Width Large stores the large width of paragraph elements in character units. This is mostly, but not solely, used for pargraphs that contain more than one line of text, and it makes reading easier by limiting line length. */
-    --par-wid-med : 65ch; /** Paragraph Width Base stores the base width of paragraph elements in character units. This is mostly, but not solely, used for pargraphs that contain more than one line of text, and it makes reading easier by limiting line length. */
-    --par-wid-sma : 60ch; /** Paragraph Width Small stores the small width of paragraph elements in character units. This is mostly, but not solely, used for pargraphs that contain more than one line of text, and it makes reading easier by limiting line length. */
-    --par-wid-xsm : 55ch; /** Paragraph Width Extra Small stores the extra small width of paragraph elements in character units. This is mostly, but not solely, used for pargraphs that contain more than one line of text, and it makes reading easier by limiting line length. */
-    --par-wid-min : 50ch; /** Paragraph Width Minimum stores the minimum width of paragraph elements in character units. This is mostly, but not solely, used for pargraphs that contain more than one line of text, and it makes reading easier by limiting line length. */
-    /* #endregion Paragraph Width */
-
-
-
     /* #region Row Gap */
 
-    --row-gap-max : calc( pow( var( --golden-rati ),  3 ) * 1rem ); /** ~= 67.777px @16px root font size = Row Gap Maximum stores the maximum row gap value and is equal to the golden ratio raised to the 3rd power (~4.236) multiplied by the root font size. */
-    --row-gap-xla : calc( pow( var( --golden-rati ),  2 ) * 1rem ); /** ~= 41.889px @16px root font size = Row Gap Extra Large stores the extra large row gap value and is equal to the golden ratio raised to the 2nd power (~2.618) multiplied by the root font size. */
-    --row-gap-lar : calc( pow( var( --golden-rati ),  1 ) * 1rem ); /** ~= 25.889px @16px root font size = Row Gap Large stores the large row gap value and is equal to the golden ratio raised to the 1st power (~1.618) multiplied by the root font size. */
-    --row-gap-med : calc( pow( var( --golden-rati ),  0 ) * 1rem ); /**  = 16.000px @16px root font size = Row Gap Medium stores the medium row gap value and is equal to the golden ratio raised to the 0th power (1) multiplied by the root font size. */
-    --row-gap-sma : calc( pow( var( --golden-rati ), -1 ) * 1rem ); /** ~=  9.889px @16px root font size = Row Gap Small stores the small row gap value and is equal to the golden ratio raised to the -1st power (~0.618) multiplied by the root font size. */
-    --row-gap-xsm : calc( pow( var( --golden-rati ), -2 ) * 1rem ); /** ~=  6.111px @16px root font size = Row Gap Extra Small stores the extra small row gap value and is equal to the golden ratio raised to the -2nd power (~0.382) multiplied by the root font size. */
-    --row-gap-min : calc( pow( var( --golden-rati ), -3 ) * 1rem ); /** ~=  3.777px @16px root font size = Row Gap Minimum stores the minimum row gap value and is equal to the golden ratio raised to the -3rd power (~0.236) multiplied by the root font size. */
+    --row-gap-max : var( --ver-rhy-max ); /** Row Gap Maximum     ~= 109.666px @16px root font size = This custom property stores the maximum row gap value, with the idea behind this being to visually indicate that the rows are as maximally unrelated as possible while maintaining visual rhythm and consistency with other selectors. */
+    --row-gap-xla : var( --ver-rhy-xla ); /** Row Gap Extra Large ~=  67.777px @16px root font size = This custom property stores the extra large row gap value, with the idea behind this being to visually indicate that the rows are maximally unrelated while maintaining visual rhythm and consistency with other selectors. */
+    --row-gap-lar : var( --ver-rhy-lar ); /** Row Gap Large       ~=  41.889px @16px root font size = This custom property stores the large row gap value, with the idea behind this being to visually indicate that the rows are largely unrelated while maintaining visual rhythm and consistency with other selectors. */
+    --row-gap-med : var( --ver-rhy-bas ); /** Row Gap Medium      ~=  25.889px @16px root font size = This custom property stores the medium row gap value, with the idea behind this being to visually indicate that the rows are moderately unrelated while maintaining visual rhythm and consistency with other selectors. */
+    --row-gap-sma : var( --ver-rhy-sma ); /** Row Gap Small       ~=  16.000px @16px root font size = This custom property stores the small row gap value, with the idea behind this being to visually indicate that the rows are slightly unrelated while maintaining visual rhythm and consistency with other selectors. */
+    --row-gap-xsm : var( --ver-rhy-xsm ); /** Row Gap Extra Small ~=   9.889px @16px root font size = This custom property stores the extra small row gap value, with the idea behind this being to visually indicate that the rows are minimally unrelated while maintaining visual rhythm and consistency with other selectors. */
+    --row-gap-min : var( --ver-rhy-min ); /** Row Gap Minimum     ~=   6.111px @16px root font size = This custom property stores the minimum row gap value, with the idea behind this being to visually indicate that the rows are as minimally unrelated as possible while maintaining visual rhythm and consistency with other selectors. */
 
     /* #endregion Row Gap */
 
 
-
-    /* #region Vertical Rhythm (Line Height) */
-
-    --ver-rhy-max : calc( pow( var( --golden-rati ),  4 ) * 1rem ); /** ~= 109.666px @16px root font size = Vertical Rhythm Maximum stores the maximum vertical rhythm (line height) value and is equal to the golden ratio raised to the 4th power (~6.854) multiplied by the root font size. */
-    --ver-rhy-xla : calc( pow( var( --golden-rati ),  3 ) * 1rem ); /** ~=  67.777px @16px root font size = Vertical Rhythm Extra Large stores the extra large vertical rhythm (line height) value and is equal to the golden ratio raised to the 3rd power (~4.236) multiplied by the root font size. */
-    --ver-rhy-lar : calc( pow( var( --golden-rati ),  2 ) * 1rem ); /** ~=  41.889px @16px root font size = Vertical Rhythm Large stores the large vertical rhythm (line height) value and is equal to the golden ratio raised to the 2nd power (~2.618) multiplied by the root font size. */
-    --ver-rhy-bas : calc( pow( var( --golden-rati ),  1 ) * 1rem ); /** ~=  25.889px @16px root font size = Vertical Rhythm Base stores the base vertical rhythm (line height) value and is equal to the golden ratio raised to the 1st power (~1.618) multiplied by the root font size. */
-    --ver-rhy-sma : calc( pow( var( --golden-rati ),  0 ) * 1rem ); /**  =  16.000px @16px root font size = Vertical Rhythm Small stores the small vertical rhythm (line height) value and is equal to the golden ratio raised to the 0th power (1) multiplied by the root font size. */
-    --ver-rhy-xsm : calc( pow( var( --golden-rati ), -1 ) * 1rem ); /** ~=   9.889px @16px root font size = Vertical Rhythm Extra Small stores the extra small vertical rhythm (line height) value and is equal to the golden ratio raised to the -1st power (~0.618) multiplied by the root font size. */
-    --ver-rhy-min : calc( pow( var( --golden-rati ), -2 ) * 1rem ); /** ~=   6.111px @16px root font size = Vertical Rhythm Minimum stores the minimum vertical rhythm (line height) value and is equal to the golden ratio raised to the -2nd power (~0.382) multiplied by the root font size. */
-
-    /* #endregion Vertical Rhythm (Line Height) */
+    /* #endregion Second Derivative Custom Properties */
 
 
 }
 
-/* #region Media Query for Small Screens */
 
-@media ( max-width : 521.002px ) { /** This is approximately equal to the golden ratio raised to the 13th power. */
 
-    :root { /** This is the root element selector, making it a true globally scoped selector. */
+/* #region Media Query for Light Mode */
 
-        --gtc-sb1-col : 0;                                                              /** Grid Template Columns Sidebar 1 Column overrides the grid template columns property values for both sidebars to 0 width, effectively collapsing the sidebars and creating a single column layout for small screens. */
-        --gtc-sb2-col : 0;                                                              /** Grid Template Columns Sidebar 2 Column overrides the grid template columns property values for both sidebars to 0 width, effectively collapsing the sidebars and creating a single column layout for small screens. */
-        --gtc-mai-col : 100%;                                                           /** Grid Template Columns Main Column overrides the grid template columns property values for the main content area width to 100%, creating a single column layout for small screens. */
-        --gtc-hol-gra : var( --gtc-sb1-col ) var( --gtc-mai-col ) var( --gtc-sb2-col ); /** Grid Template Columns Holy Grail overrides the grid template columns property value for the holy grail layout to set the main content area to 100% width and both sidebars to 0 width, effectively collapsing the sidebars and creating a single column layout for small screens. */
+@media ( prefers-color-scheme : light ) { /** Light Mode = This standard media query selector targets all users who have expressed a preference for the light color scheme and contains all selectors for the light mode color scheme. */
+
+
+    /* #region Root Selector */
+
+    :root { /** Root = This standard root selector contains all elements and is a true globally scoped selector. */
+
+
+        /* #region Prime Custom Properties */
+
+
+        /* #region UI Colors */
+
+        --col-bac-col : hsla(   0.000, 100.000%, 100.000%, 100.000% ); /** Color Background Color  = This custom property stores the background color, with the idea behind this being that it should provide a bright background color that serves as the central point for the light mode theme. */
+        --col-box-sha : hsla(   0.000,   0.000%,  11.090%, 100.000% ); /** Color Box Shadow        = This custom property stores the box shadow color, with the idea behind this being that it should starkly stand out from the background color. */
+        --col-nav-bac : hsla(   0.000,   0.000%,  98.382%, 100.000% ); /** Color Navbar Background = This custom property stores the navbar's background color, with the idea behind this being that it should be just slightly darker than the background color in order to differentiate it from the rest of the page without starkly contrasting it either. */
+        --col-tex-col : hsla(   0.000,   0.000%,  17.944%, 100.000% ); /** Color Text Color        = This custom property stores the text color, with the idea behind this being that it should contrast well against the background color without it being too dark either because a true black is not considered natural for user interfaces. */
+        --col-tex-sha : hsla(   0.000,   0.000%,  76.013%, 100.000% ); /** Color Text Shadow       = This custom property stores the text shadow color, with the idea behind this being that it should provide subtle depth to the text. */
+
+        /* #endregion UI Colors */
+
+
+        /* #endregion Prime Custom Properties */
+
 
     }
 
+    /* #endregion Root Selector */
+
+
 }
 
-/* #endregion Media Query for Small Screens */
+/* #endregion Media Query for Light Mode */
 
 
 /* #endregion Globally Scoped Custom Properties */
 
 
 
-/* #region Root Selector */
+/* #region Root */
 
-:root { /** This is the root element selector, making it a true globally scoped selector. */
+:root { /** Root = This standard root selector contains all elements and is a true globally scoped selector. */
 
-    -webkit-font-smoothing  : antialiased;                             /** This property was chosen by the default React installation and is a non-standard CSS extension that controls how font edges are rendered (anti-aliased) on WebKit browsers (e.g., Safari). It was originally designed to optimize font appearance on macOS systems and primarily affects users of those operating systems. */
-    -moz-osx-font-smoothing : grayscale;                               /** This property was chosen by the default React installation and is non-standard CSS extension that controls how font edges are rendered (anti-aliased) on Firefox browsers. */
-    background-color        : var( --col-bac-dar );                    /** This property is linked to the color background for dark mode CSS Custom Property. See said property definition for more details. */
-    color                   : var( --col-tex-dar );                    /** This property is linked to the color text for dark mode CSS Custom Property. See said property definition for more details. */
-    color-scheme            : light dark;                              /** This property was chosen by the default React installation to indicate that the site/app supports both light and dark color schemes, allowing the browser to apply the appropriate styles based on the user's system preferences with a preference for light if no user preference is set. */
-    font-family             : system-ui, Helvetica, Arial, sans-serif; /** This property was chosen by the default React installation to use the system's default UI font for a more native look and feel, while also providing fallbacks to common sans-serif fonts (Helvetica and Arial) in case the system font is not available. */
-    font-size               : 1rem;                                    /** This property was chosen to set the base font size to 1rem, which is a common and standard value (usually 16px) that allows for easy scaling and consistency across different browsers and devices. This also allows the user to adjust the default font size in their browser settings according to their preferences or accessibility needs. */
-    font-synthesis          : none;                                    /** This property was chosen by the default React installation to control whether the browser is allowed to generate missing font faces (like bold or italic styles) if they are not explicitly provided by the font family's files, disabling this behavior enforces the use of only genuine, designed font faces. */
-    font-weight             : 400;                                     /** This property was chosen by the default React installation and is a standard, common value for the default font weight. */
-    line-height             : var( --ver-rhy-bas );                    /** This property is linked to the vertical rhythm (line height) base CSS Custom Property. See said property definition for more details. */
-    text-rendering          : optimizeLegibility;                      /** This property was chosen by the default React installation to enhance the readability of text by enabling advanced typographic features like ligatures and kerning, which can improve the overall appearance of text especially at larger font sizes. */
-
-}
-
-/* #endregion Root Selector */
-
-
-
-html {
-  box-sizing: border-box;
-}
-*, *::before, *::after {
-  box-sizing: inherit;
-}
-
-
-/* #region Body Selector */
-
-body { /** This is the selector for HTML Body element. */
-
-    box-sizing : border-box; /** This property was chosen to change the box model so that the width and height of elements include padding and borders, making it easier to manage layout and spacing without having to account for additional dimensions. */
-    height     : 100vh;      /** This property was chosen to set the height of the body element to 100% of the viewport height, ensuring that the site/app takes up the full height of the screen regardless of the content inside it. */ 
-    margin     : 0;          /** This property was chosen to remove the default margin around the body element, allowing children elements more precise control over layout and spacing within the page. */
-    max-height : 100vh;      /** This property was chosen to set the maximum height of the body element to 100% of the viewport height, preventing it from growing taller than the visible area of the screen and ensuring that no scrollbars appear. */
-    max-width  : 100vw;      /** This property was chosen to set the maximum width of the body element to 100% of the viewport width, preventing it from growing wider than the visible area of the screen and ensuring that no scrollbars appear. */
-    padding    : 0;          /** This property was chosen to remove the default padding around the body element, allowing children elements more precise control over layout and spacing within the page. */
-    width      : 100vw;      /** This property was chosen to set the width of the body element to 100% of the viewport width, ensuring that the site/app takes up the full width of the screen regardless of the content inside it. */
+    -webkit-font-smoothing  : antialiased;                             /** This value was chosen to be used as a non-standard CSS extension, with the idea behind this being to control how font edges are rendered (anti aliased) on WebKit browsers (e.g., Safari). */
+    -moz-osx-font-smoothing : grayscale;                               /** This value was chosen to be used as a non-standard CSS extension, with the idea behind this being to control how font edges are rendered (anti aliased) on Firefox browsers. */
+    background-color        : var( --col-bac-col );                    /** This value was chosen to be used according to the details of the specified global scoped prime custom property. */
+    color                   : var( --col-tex-col );                    /** This value was chosen to be used according to the details of the specified global scoped prime custom property. */
+    color-scheme            : dark light;                              /** This value was chosen to be used to indicate that the site/app supports both light and dark color schemes, with the idea behind this being to allow the browser to apply the appropriate styles based on the user's system preferences with a preference for dark if no user preference is set. */
+    font-family             : system-ui, Helvetica, Arial, sans-serif; /** This value was chosen to be used for the system's default UI font, with the idea behind this being to provide a more native look and feel while also providing fallbacks to common sans serif fonts (Helvetica and Arial) in case the system font is not available. */
+    font-size               : 1rem;                                    /** This value was chosen to be used to set the base font size for the entire site/app to 1rem, with the idea behind this being to provide a common and standard value (usually 16px) that allows for easy scaling and consistency across different browsers and devices while also allowing the user to adjust the default font size in their browser settings according to their preferences or accessibility needs. */
+    font-synthesis          : none;                                    /** This value was chosen to be used to control whether the browser is allowed to generate missing font faces (like bold or italic styles) if they are not explicitly provided by the font family's files, with the idea behind this being to disable this behavior in order to enforce the use of only genuine, designed font faces. */
+    font-weight             : 400;                                     /** This value was chosen to be used as a standard value for the default font weight. */
+    line-height             : var( --ver-rhy-bas );                    /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    text-rendering          : optimizeLegibility;                      /** This value was chosen to be used to enhance the readability of all site/app text by enabling advanced typographic features like ligatures and kerning, with the idea behind this being to improve the overall appearance of text especially at larger font sizes. */
 
 }
 
-/* #endregion Body Selector */
+/* #endregion Root */
 
 
 
-/* #region Anchor Selector */
+/* #region HTML */
 
-a { /** This is the selector for the HTML Anchor (link) element. */
+html { /** HTML = This standard selector contains all elements except for :root and is marginally more semantic (vs. the :root selector) for controlling the box model of the entire document. */
 
-    color           : var( --col-lin-dar ); /** This property is linked to the color link for dark mode CSS Custom Property. See said property definition for more details. */
-    font-weight     : 500;                  /** This property was chosen by the default React installation to make links slightly bolder than the normal text, which can help them stand out and indicate that they are clickable. */
-    text-decoration : none;                 /** This property was chosen to remove the default underline from links, creating a cleaner and more modern look while relying on color and font weight to indicate interactivity. */
+    box-sizing : border-box; /** This value was chosen to be used to enforce consistent border box sizing, with the idea behind this being to prevent padding and borders from increasing a total element's size.  */
 
 }
 
-a:hover { /** This is the selector for the HTML Anchor:Hover (link:hover) element. */
+/* #endregion HTML */
 
-    color : var( --col-lin_hov-dar ); /** This property is linked to the color link:hover for dark mode CSS Custom Property. See said property definition for more details. */
+
+
+/* #region Universal + Pseudo */
+
+*, *::before, *::after { /** Universal + Pseudo = These standard selectors contain all elements and are the universal selectors of any type in the HTML document along with their ::before and ::after pseudo elements. */
+
+    box-sizing : inherit; /** This value was chosen to be used to ensure all HTML elements and their ::before and ::after pseudo elements inherit the box sizing property from their parent, with the idea behind this being to prevent padding and borders from increasing a total element's size.  */
 
 }
 
-a.active { /** This is the selector for the HTML Anchor (link) + .active class Body element. This declaration is required by React Router for it to be able to automatically apply property values when it detects that the current page is equal to the link's path. It also seems to need to be declared here, in the index.css file, in order for it to work properly. I tried to declare this in the NavBarCom's CSS module file, but I could not get it to work there. */
+/* #endregion Universal + Pseudo */
 
-    color : var( --col-lin_hov-dar ); /** This property is linked to the color link:hover for dark mode CSS Custom Property. See said property definition for more details. */
+
+
+/* #region Body */
+
+body { /** Body = This standard selector contains only itself and is typically used to setup the basic structure of the page as well removing some (or all) of the default browser styling. */
+
+    height     : 100vh; /** This value was chosen to be used to set the height to 100% of the viewport height, with the idea behind this being that this is a fullscreen site/app with no scrolling. */ 
+    margin     : 0;     /** This value was chosen to be used to remove its defaults. */
+    max-height : 100vh; /** This value was chosen to be used to set the maximum height to 100% of the viewport height, with the idea behind this being that this is a fullscreen site/app with no scrolling. */
+    max-width  : 100vw; /** This value was chosen to be used to set the maximum width to 100% of the viewport width, with the idea behind this being that this is a fullscreen site/app with no scrolling. */
+    padding    : 0;     /** This value was chosen to be used to remove its defaults. */
+    width      : 100vw; /** This value was chosen to be used to set the width to 100% of the viewport width, with the idea behind this being that this is a fullscreen site/app with no scrolling. */
+}
+
+/* #endregion Body */
+
+
+
+/* #region H1 - H6 */
+
+h1, h2, h3, h4, h5, h6 { /** Heading 1-6 = These standard selectors contain all of the standard heading elements and are typically used to setup the basic styling for all heading selectors while also leaving room for more specialized styling from custom classes via a component's CSS module file. */
+
+    margin : 0; /** This value was chosen to be used to remove its defaults. */
 
 }
 
-/* #endregion Anchor Selector */
+/* #endregion H1 - H6 */
+
+
+
+/* #region Paragraph */
+
+p {
+
+    margin : 0; /** This value was chosen to be used to remove its defaults. */
+
+}
+
+/* #endregion Paragraph */
+
+
+
+/* #region Anchor */
+
+a { /** Anchor = This standard selector contains only itself and is used to setup basic styling for all anchor selectors while also leaving room for more specialized styling from custom classes via a component's CSS module file. */
+
+    /* #region Selector Scoped Custom Properties */
+
+    --anc-tex-col : var( --col-lin-sta );                         /** Anchor Text Color                 = This custom property stores the text color using the specified global scoped derivative custom property, with the idea behind this being to allow the hover state to change this value dynamically instead of setting the text color directly. */
+    --anc-tex-sha : 0 0 0 var( --col-tex-sha );                   /** Anchor Text Shadow                = This custom property stores all of the text shadow properties using the specified global scoped derivative custom property, with the idea behind this being to allow the hover state to change this value dynamically instead of setting the text shadow directly. */
+    --anc-tra-pro : var( --col-tra-pro ), var( --tes-tra-pro );   /** Anchor Transition Properties      = This custom property stores the multiple transition properties for the hover state using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+    --anc-wil-cha : color, text-shadow;                           /** Anchor Will Change                = This custom property stores all of the properties that will be changing for the hover state, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+    --col-tra-pro : color var( --tra-dur-bas ) ease-in-out;       /** Color Transition Properties       = This custom property stores all of the color transition properties for the hover state using the specified global scoped derivative custom property, with the idea behind this being that this will make it easier to understand and maintain the transition property due to multiple transitions that need to be set. */
+    --tes-tra-pro : text-shadow var( --tra-dur-bas ) ease-in-out; /** Text Shadow Transition Properties = This custom property stores all of the text shadow transition properties for the hover state using the specified global scoped derivative custom property, with the idea behind this being that this will make it easier to understand and maintain the transition property due to multiple transitions that need to be set. */
+
+    /* #endregion Selector Scoped Custom Properties */
+
+
+    color           : var( --anc-tex-col ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    font-weight     : 500;                  /** This value was chosen to be used to make anchor text slightly bolder than the normal text, with the idea behind this being that it can help links stand out from the surrounding text and indicate that they are clickable. */
+    text-decoration : none;                 /** This value was chosen to be used to remove its defaults. */
+    transition      : var( --anc-tra-pro ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    text-shadow     : var( --anc-tex-sha ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    will-change     : var( --anc-wil-cha ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+
+}
+
+
+a:hover { /** Anchor Hover = This standard selector contains only itself and is used to setup basic styling for all anchor selectors that will occur on hover while also leaving room for more specialized styling from custom classes via a component's CSS module file. */
+
+
+    /* #region Selector Scoped Custom Properties */
+
+    --anc-tex-col : var( --col-lin-hov );                          /** Anchor Text Color  = This custom property stores the text color using the specified global scoped derivative custom property, with the idea behind this being to allow the hover state to change this value dynamically instead of setting the text color directly. */
+    --anc-tex-sha : 0 0 var( --blu-rad-xla ) var( --col-lin-hov ); /** Anchor Text Shadow = This custom property stores all of the text shadow properties using the specified global scoped derivative custom properties, with the idea behind this being to allow the hover state to change this value dynamically instead of setting the text shadow directly. */
+
+    /* #endregion Selector Scoped Custom Properties */
+
+
+}
+
+
+a:where( .active ) { /** Anchor Where .active Exists = This standard selector contains only itself and is used by React Router, which automatically applies this class if the current page matches the NavLink element's path. This declaration only seems to work for React Router in the global CSS file. The :where() functional pseudo-class selector's key feature is that it always has a specificity of zero, making it ideal for applying styles that are easy to override. */
+
+
+    /* #region Selector Scoped Custom Properties */
+
+    --anc-tex-col : var( --col-lin-act ); /** Anchor Text Color = This custom property stores the text color using the specified global scoped derivative custom property, with the idea behind this being to allow the active state to change this value dynamically instead of setting the text color directly. */
+
+    /* #endregion Selector Scoped Custom Properties */
+
+
+}
+
+/* #endregion Anchor */
+
+
+
+/* #region Button */
+
+button { /** Button = This standard selector contains only itself and is used to setup basic styling for all button selectors while also leaving room for more specialized styling from custom classes via a component's CSS module file. */
+
+    /* #region Selector Scoped Custom Properties */
+
+    --bac-tra-pro : background-color var( --tra-dur-bas ) ease-in-out; /** Background Color Transition Properties = This custom property stores all of the background color transition properties for the hover state using the specified global scoped derivative custom property, with the idea behind this being that this will make it easier to understand and maintain the transition property due to multiple transitions that need to be set. */
+    --bos-tra-pro : box-shadow var( --tra-dur-bas ) ease-in-out;       /** Box Shadow Transition Properties       = This custom property stores all of the box shadow transition properties for the hover state using the specified global scoped derivative custom property, with the idea behind this being that this will make it easier to understand and maintain the transition property due to multiple transitions that need to be set. */
+    --but-bac-col : var( --col-but-sta );                              /** Button Background Color                = This custom property stores the background color using the specified global scoped derivative custom property, with the idea behind this being to allow the hover state to change this value dynamically instead of setting the background color directly. */
+    --but-box-sha : 0 0 0 0 var( --col-but-sta );                      /** Button Box Shadow                      = This custom property stores all of the box shadow properties using the specified global scoped derivative custom property, with the idea behind this being to allow the hover state to change this value dynamically instead of setting the box shadow directly. */
+    --but-pad-pro : var( --pad-hor-xsm ) var( --pad-ver-bas );         /** Button Padding Properties              = This custom property stores all of the padding properties using the specified global scoped second derivative custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+    --but-tra-pro : var( --bac-tra-pro ), var( --bos-tra-pro );        /** Button Transition Properties           = This custom property stores the multiple transition properties for the hover state using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+    --but-wil-cha : background-color, box-shadow;                      /** Button Will Change                     = This custom property stores all of the properties that will be changing for the hover state, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+
+    /* #endregion Selector Scoped Custom Properties */
+
+
+    background-color : var( --but-bac-col ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    border           : none;                 /** This value was chosen to be used to remove its defaults. */
+    border-radius    : var( --bor-rad-lar ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    box-shadow       : var( --but-box-sha ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    cursor           : pointer;              /** This value was chosen to be used as a common standard for changing the cursor to a pointer when hovering over buttons, with the idea behind this being to provide a visual cue to users that the selector is interactive and can be clicked. */
+    font-family      : inherit;              /** This value was chosen to be used to inherit the site/app's font family, with the idea behind this being that buttons do not automatically inherit the font family from their parent elements. */
+    font-size        : var( --fon-siz-bas ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    font-weight      : 500;                  /** This value was chosen to be used to make button text slightly bolder than the normal text, with the idea behind this being to help it visually stand out as well as be slightly more legible. */
+    height           : var( --ver-rhy-lar ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    padding          : var( --but-pad-pro ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    transition       : var( --but-tra-pro ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    width            : var( --hor-rhy-max ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    will-change      : var( --but-wil-cha ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+
+}
+
+
+button:hover { /** Button Hover = This standard selector contains only itself and is used to setup basic styling for all button selectors that will occur on hover while also leaving room for more specialized styling from custom classes via a component's CSS module file. */
+
+
+    /* #region Selector Scoped Custom Properties */
+
+    --but-bac-col : var( --col-but-hov );                            /** Button Background Color = This custom property stores the background color using the specified global scoped derivative custom property, with the idea behind this being to allow the hover state to change this value dynamically instead of setting the background color directly. */
+    --but-box-sha : 0 0 var( --blu-rad-lar ) 0 var( --col-but-hov ); /** Button Box Shadow       = This custom property stores all of the box shadow properties using the specified global scoped derivative custom properties, with the idea behind this being to allow the hover state to change this value dynamically instead of setting the box shadow directly. */
+
+    /* #endregion Selector Scoped Custom Properties */
+
+
+}
+
+
+/* #endregion Button */
+
+
+
+/* #region UL */
+
+ul { /** Unordered List = This standard selector contains only itself and is used to setup basic styling for all unordered list selectors while also leaving room for more specialized styling from custom classes via a component's CSS module file. */
+
+    list-style : none; /** This value was chosen to be used to remove its defaults. */
+    margin     : 0;    /** This value was chosen to be used to remove its defaults. */
+    padding    : 0;    /** This value was chosen to be used to remove its defaults. */
+
+}
+
+/* #endregion UL */
+
+
+
+/* #region Fieldset */
+
+fieldset { /** Fieldset = This standard selector contains only itself and is used to setup basic styling for all fieldset selectors while also leaving room for more specialized styling from custom classes via a component's CSS module file. */
+
+    border  : none; /** This value was chosen to be used to remove its defaults. */
+    margin  : 0;    /** This value was chosen to be used to remove its defaults. */
+    padding : 0;    /** This value was chosen to be used to remove its defaults. */
+
+}
+
+/* #endregion Fieldset */
 
 
 
 /* #region Root Section Element */
 
-#rooSecEle { /** This is the selector for the ID of the Root Section Element. This is the root element of the site/app, and it will define the layout as such. It uses the holy grail layout where the navbar will be a page persistent component that takes up the entire width of the first row, the middle row will be a three column layout with a sidebar + the main content column where all page content will be loaded in by React Router + another sidebar, and finally the footer will be a page persistent component that takes up the entire width of the last row. */
+#rooSecEle { /** Root Section Element = This custom selector contains all content rendered by React and is used to setup the root grid container for said content. */
 
-    display               : grid;                 /** The CSS Grid property was chosen as the layout method for its powerful layout capabilities. */
-    grid-template-areas   : var( --gta-hol-gra ); /** This property is linked to the grid template areas holy grail CSS Custom Property. See said property definition for more details. */
-    grid-template-columns : var( --gtc-hol-gra ); /** This property is linked to the grid template columns holy grail CSS Custom Property. See said property definition for more details. */
-    grid-template-rows    : var( --gtr-hol-gra ); /** This property is linked to the grid template rows holy grail CSS Custom Property. See said property definition for more details. */
-    height                : 100%;                 /** This property was chosen to set the height of the grid container to 100% of its parent element, allowing it to fill the available vertical space. */
-    margin                : 0;                    /** This property was chosen to remove any default margin around the grid container, allowing children elements more precise control over layout and spacing within the page. */
-    max-height            : 100%;                 /** This property was chosen to set the maximum height of the grid container to 100% of its parent element, preventing it from growing taller than the visible area of the screen and ensuring that no vertical scrollbars appear. */
-    max-width             : 100%;                 /** This property was chosen to set the maximum width of the grid container to 100% of its parent element, preventing it from growing wider than the visible area of the screen and ensuring that no horizontal scrollbars appear. */
-    min-height            : 100%;                 /** This property was chosen to set the minimum height of the grid container to 100% of its parent element, ensuring that it always fills the available vertical space. */
-    min-width             : 100%;                 /** This property was chosen to set the minimum width of the grid container to 100% of its parent element, ensuring that it always fills the available horizontal space. */
-    padding               : 0;                    /** This property was chosen to remove any default padding around the grid container, allowing children elements more precise control over layout and spacing within the page. */
-    width                 : 100%;                 /** This property was chosen to set the width of the grid container to 100% of its parent element, allowing it to fill the available horizontal space. */
+    /* #region Selector Scoped Custom Properties */
+
+
+    /* #region Holy Grail Grid Layout = This term is mostly just design jargon with no real science behind it but subjectively it is a pleasant and/or practical layout. */
+
+
+    /* #region Holy Grail Grid Template Areas */
+
+    --hol-gra-gta :                          /** Holy Grail Grid Template Areas = This custom property stores the grid template areas value for the site/app's root grid, with the idea behind this being that it will use a holy grail layout (full width navbar, main area with two sidebars and full width footer). The grid template areas property was chosen to be used as the preferred method of placing grid items, as I find its visual definition and placement provides more clarity. */
+        'navbarNav   navbarNav   navbarNav'  /** This value was chosen to be used to contain the custom .navbarNav selector within all three columns in the first row, with the idea behind this being that it will be allowed to stretch across the entire width of the viewport. */
+        'sidebar1     appMain    sidebar2 '  /** This value was chosen to be used to contain the sidebar 1, custom .appMain selector and sidebar 2, with the idea behind this being that the app's main content area (where React Router will inject all routed page content) will be centered on the page and flanked by two equally sized sidebar columns. */
+        'footerDiv   footerDiv   footerDiv'; /** This value was chosen to be used to contain the custom .footerDiv selector within all three columns in the third row, with the idea behind this being that it will be allowed to stretch across the entire width of the viewport. */
+
+    /* #endregion Holy Grail Grid Template Areas */
+
+
+
+    /* #region Holy Grail Grid Template Columns */
+
+    --sid-col-wid : calc( ( 100% - ( var( --app-mai-col ) + ( var( --col-gap-max ) * 2 ) ) ) / 2 ); /** Sidebar Column Width ~= 259.689px @1920px width = This custom property stores the width that will be used for both the sidebar one and sidebar two columns, with the idea behind this being that whatever space is left after subtracting the maximum column width for the app main column and two maximum column gaps from the grid's total width should be split evenly between the two sidebar columns. */
+
+    --app-mai-col : var( --gri-col-max ); /** App Main Column  ~= 1,186.625px @1920px width = This custom property stores the width of the custom .appMain selector's column in the holy grail layout within this selector's grid using the specified global scoped derivative custom property, with the idea behind this being that it will equal dividing the total viewport width by one golden ratio value and the rest of the viewport's width will be leftover for the two sidebars. */
+    --sid-one-col : var( --sid-col-wid ); /** Sidebar 1 Column ~=   259.689px @1920px width = This custom property stores the width of the custom .sidebarOne selector's column in the holy grail layout within this selector's grid using the specified selector scoped custom property, with the idea behind this being that it will be equal to half of the remaining viewport's width after subtracting the app's main column and two maximum column gaps which will allow it to flank the left side of the app's main column. */
+    --sid-two-col : var( --sid-col-wid ); /** Sidebar 2 Column ~=   259.689px @1920px width = This custom property stores the width of the custom .sidebarTwo selector's column in the holy grail layout within this selector's grid using the specified selector scoped custom property, with the idea behind this being that it will be equal to half of the remaining viewport's width after subtracting the app's main column and two maximum column gaps which will allow it to flank the right side of the app's main column. */
+
+    --hol-gra-gtc : var( --sid-one-col ) var( --app-mai-col ) var( --sid-two-col ); /** Holy Grail Grid Template Columns = This custom property stores the grid template columns value for the holy grail layout within this selector's grid using the specified selector scoped custom properties, with the idea behind this being that it will use a holy grail layout (a sidebar, a main content area and another sidebar). */
+
+    /* #endregion Holy Grail Grid Template Columns */
+
+
+
+    /* #region Holy Grail Grid Template Rows */
+
+    --com-row-hei : calc( var( --nab-nav-row ) + var( --foo-div-row ) + ( var( --row-gap-max ) * 2 ) ); /** Combined Row Height ~= 354.885px @16px root font size = This custom property stores the combined height of the navbar nav row, footer div row and two maximum row gaps, with the idea behind this being that this value will be subtracted from the grid's total height and the resulting value will be used for the app main row. */
+
+    --app-mai-row : calc( 100% - var( --com-row-hei ) ); /** App Main Row   ~= 725.115px @1080px height       = This custom property stores the height of the custom .appMain selector's row (where React Router will inject all routed page content) in the holy grail layout within this selector's grid using the specified selector scoped custom property, with the idea behind this being that it will equal the remaining height leftover after subtracting all other grid rows and row gaps. */
+    --foo-div-row : var( --gri-row-min );                /** Footer Div Row ~=  67.777px @16px root font size = This custom property stores the height of the custom .footerDiv selector's row in the holy grail layout within this selector's grid using the specified global scoped derivative custom property, with the idea behind this being that there are equal spaces above and below the single line of footer content that are each roughly equal to the content itself. */
+    --nab-nav-row : var( --gri-row-min );                /** Navbar Nav Row ~=  67.777px @16px root font size = This custom property stores the height of the custom .navbarNav selector's row in the holy grail layout within this selector's grid using the specified global scoped derivative custom property, with the idea behind this being that there are equal spaces above and below the single line of navbar content that are each roughly equal to the content itself. */
+
+    --hol-gra-gtr : var( --nab-nav-row ) var( --app-mai-row ) var( --foo-div-row ); /** Holy Grail Grid Template Rows = This custom property stores the grid template rows value for the holy grail layout within this selector's grid using the specified selector scoped custom properties, with the idea behind this being that there will be two fixed height rows with a flexible height row in between them for the main content. */
+
+    /* #endregion Holy Grail Grid Template Rows */
+
+
+    /* #endregion Holy Grail Grid Layout */
+
+
+    /* #endregion Selector Scoped Custom Properties */
+
+
+    column-gap            : var( --col-gap-max ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property. */
+    display               : grid;                 /** This value was chosen to be used as the preferred layout method, with the idea behind this being that it provides powerful element placement and sizing capabilities. */
+    grid-template-areas   : var( --hol-gra-gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-columns : var( --hol-gra-gtc ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-rows    : var( --hol-gra-gtr ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    height                : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the standard body selector. */
+    max-height            : 100%;                 /** This value was chosen to be used to set the maximum height to 100% of its parent selector's height, with the idea behind this being that this is a fullscreen site/app with no scrolling. */
+    max-width             : 100%;                 /** This value was chosen to be used to set the maximum width to 100% of its parent selector's width, with the idea behind this being to ensure that no horizontal scrollbars appear. */
+    row-gap               : var( --row-gap-max ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property. */
+    width                 : 100%;                 /** This value was chosen to be used to fill all available horizontal space as defined by its parent, the standard body selector. */
 
 }
+
+
+
+/* #region Media Query for Small Viewport Widths */
+
+@media ( max-width : 842.999px ) { /** Golden Ratio to the 14th Power = This custom media query selector targets all viewport widths below 843.000px. */
+
+
+    #rooSecEle { /** Root Section Element = This custom selector contains all content rendered by React and is used to setup the root grid container for said content. */
+
+
+        /* #region Selector Scoped Custom Properties */
+
+
+        /* #region Holy Grail Grid Layout = This term is mostly just design jargon with no real science behind it but subjectively it is a pleasant and/or practical layout. */
+
+
+        /* #region Holy Grail Grid Template Areas */
+
+        --hol-gra-gta :  /** Holy Grail Grid Template Areas = This custom property stores the grid template areas value for the site/app's root grid, with the idea behind this being that it will use a holy grail layout (full width navbar, main area with two sidebars and full width footer). The grid template areas property was chosen to be used as the preferred method of placing grid items, as I find its visual definition and placement provides more clarity. */
+            'navbarNav'  /** This value was chosen to contain the custom .navbarNav selector in the first row, with the idea behind this being that it will be allowed to stretch across the entire width of the viewport. */
+            'appMain  '  /** This value was chosen to contain the custom .appMain selector in the second row, with the idea behind this being that it will be allowed to stretch across the entire width of the viewport for small viewport widths. */
+            'footerDiv'; /** This value was chosen to contain the custom .footerDiv selector in the third row, with the idea behind this being that it will be allowed to stretch across the entire width of the viewport. */
+
+        /* #endregion Holy Grail Grid Template Areas */
+
+
+
+        /* #region Holy Grail Grid Template Columns */
+
+        --app-mai-col : 100%; /** App Main Column  = This custom property stores the grid template columns value for the custom .appMain selector's column in the holy grail layout for small viewport widths, with the idea behind this being that it will be allowed to stretch across the entire width of the viewport and the sidebar columns will be collapsed to zero width. */
+        --sid-one-col : 0;    /** Sidebar 1 Column = This custom property stores the grid template columns value for the custom .sidebarOne selector's column in the holy grail layout for small viewport widths, with the idea behind this being to collapse the sidebar to zero width in order to create a single column layout for the app main column. */
+        --sid-two-col : 0;    /** Sidebar 2 Column = This custom property stores the grid template columns value for the custom .sidebarTwo selector's column in the holy grail layout for small viewport widths, with the idea behind this being to collapse the sidebar to zero width in order to create a single column layout for the app main column. */
+
+        --hol-gra-gtc : var( --app-mai-col ); /** Holy Grail Grid Template Columns = This custom property stores the grid template columns value for the holy grail layout, with the idea behing this being to create a single column layout using the app main column for small viewport widths. */
+
+        /* #endregion Holy Grail Grid Template Columns */
+
+
+        /* #endregion Holy Grail Grid Layout */
+
+
+        /* #endregion Selector Scoped Custom Properties */
+
+
+    }
+
+
+}
+
+/* #endregion Media Query for Small Viewport Widths */
+
 
 /* #endregion Root Section Element */
-
-
-
-/* #region Media Query for Light Mode */
-
-@media ( prefers-color-scheme : light ) { /** This is the media query selector for the light mode color scheme. */
-
-
-    :root { /** This is the root element selector, making it a true globally scoped selector. */
-
-        background-color : var( --col-bac-lig ); /** This property is linked to the color background for light mode CSS Custom Property. See said property definition for more details. */
-        color            : var( --col-tex-lig ); /** This property is linked to the color text for light mode CSS Custom Property. See said property definition for more details. */
-
-    }
-
-
-
-    a { /** This is the selector for the HTML Anchor (link) element. */
-
-        color : var( --col-lin-lig ); /** This property is linked to the color link for light mode CSS Custom Property. See said property definition for more details. */
-
-    }
-
-    a:hover { /** This is the selector for the HTML Anchor:Hover (link:hover) element. */
-
-        color : var( --col-lin_hov-lig ); /** This property is linked to the color link:hover for light mode CSS Custom Property. See said property definition for more details. */
-
-    }
-
-    a.active { /** This is the selector for the HTML Anchor (link) + .active class Body element. This declaration is required by React Router for it to be able to automatically apply property values when it detects that the current page is equal to the link's path. It also seems to need to be declared here, in the index.css file, in order for it to work properly. I tried to declare this in the NavBarCom's CSS module file, but I could not get it to work there. */
-
-        color : var( --col-lin_hov-lig ); /** This property is linked to the color link:hover for light mode CSS Custom Property. See said property definition for more details. */
-
-    }
-
-
-}
-
-/* #endregion Media Query for Light Mode */
 
 

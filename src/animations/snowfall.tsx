@@ -1,23 +1,14 @@
 
 // #region Imports
 
-import hasKeyFun from '../utilities/hasKeyFun.tsx'; /** Has Key Function       = This is a custom utility function that will perform a type guard check in order to see if an object has a specific key, and is required for nested type check narrowing by Typescript. */
-import ranNumFun from '../utilities/ranNumFun.tsx'; /** Random Number Function = This is a custom utility function that will generate a random number between a provided minimum and maximum value. */
+import hasKeyFun from '../utilities/hasKeyFun.tsx'; /** This import is the custom has key function utility that will perform a type guard check in order to see if an object has a specific key and is required for nested type check narrowing by Typescript. */
+import ranNumFun from '../utilities/ranNumFun.tsx'; /** This import is the custom random number function utility that will generate a random number between a provided minimum and maximum value. */
 
 // #endregion Imports
 
 
 
-// #region Component Scoped Variables
-
-/**
- * Component Scoped Variables
- *
- * @summary
- * These values are all scoped to the ChristmasCard component function,
- * and are meant to be set and shared between the various functions.
- *
-*/
+// #region File Scoped Variables
 
 
 // #region const Variables
@@ -26,15 +17,14 @@ import ranNumFun from '../utilities/ranNumFun.tsx'; /** Random Number Function =
 // #region aniSetObj
 
 /**
- * AniSetObj = Animation Settings Object will store the customizable settings values for the snowfall animation.
- * @see {@link aniSetObj}
+ * Animation Settings Object = This custom type stores the types that will be used for the custom {@link aniSetObj} object.
  * 
- * @property sizMaxNum = Size Maximum Number will store a snowflake HTML element's maximum size value.
- * @property sizMinNum = Size Minimum Number will store a snowflake HTML element's minimum size value.
- * @property snoColStr = Snowflake Color String will store a snowflake HTML element's color value.
- * @property snoCouNum = Snowflake Count Number will store the number of snowflake HTML elements that will be created.
- * @property speMaxNum = Speed Maximum Number will store a snowflake HTML element's maximum falling speed value.
- * @property speMinNum = Speed Minimum Number will store a snowflake HTML element's minimum falling speed value.
+ * @property sizMaxNum = Size Maximum Number custom property stores the type that will be used for the custom {@link aniSetObj.sizMaxNum} property.
+ * @property sizMinNum = Size Minimum Number custom property stores the type that will be used for the custom {@link aniSetObj.sizMinNum} property.
+ * @property snoColStr = Snowflake Color String custom property stores the type that will be used for the custom {@link aniSetObj.snoColStr} property.
+ * @property snoCouNum = Snowflake Count Number custom property stores the type that will be used for the custom {@link aniSetObj.snoCouNum} property.
+ * @property speMaxNum = Speed Maximum Number custom property stores the type that will be used for the custom {@link aniSetObj.speMaxNum} property.
+ * @property speMinNum = Speed Minimum Number custom property stores the type that will be used for the custom {@link aniSetObj.speMinNum} property.
  *
 */
 
@@ -49,7 +39,19 @@ type AniSetObj = {
 
 };
 
-/** @see {@link AniSetObj} */
+
+/**
+ * Animation Settings Object = This custom object stores the properties that act as the customizable settings for the snowfall animation.
+ * 
+ * @property sizMaxNum = Size Maximum Number custom property stores a snowflake HTML div element's maximum size value.
+ * @property sizMinNum = Size Minimum Number custom property stores a snowflake HTML div element's minimum size value.
+ * @property snoColStr = Snowflake Color String custom property stores a snowflake HTML div element's color value.
+ * @property snoCouNum = Snowflake Count Number custom property stores the number of snowflake HTML div elements that will be created.
+ * @property speMaxNum = Speed Maximum Number custom property stores a snowflake HTML div element's maximum falling speed value.
+ * @property speMinNum = Speed Minimum Number custom property stores a snowflake HTML div element's minimum falling speed value.
+ *
+*/
+
 const aniSetObj : AniSetObj = {
 
     sizMaxNum : 8,
@@ -64,33 +66,35 @@ const aniSetObj : AniSetObj = {
 // #endregion aniSetObj
 
 
-/** Position Snowflake Array    = This will store an array of {@link PosSnoObj} objects, with one being created for each snowflake HTML element. Said objects are push into this array by {@link iniSnoFun}, after they are created by and returned from {@link creSnoFun}. */
+
+/** Position Snowflake Array    = This custom variable stores an array of custom {@link PosSnoObj} objects, with one being created for each snowflake HTML div element inside of the custom {@link creSnoFun} function and once returned by said function they are pushed into this array by the custom {@link iniSnoFun} function. */
 const posSnoArr : PosSnoObj[]   = [];
-/** Position Snowflake Function = This function will be defined inside of {@link creSnoFun} and will handle updating the position of a snowflake HTML element as well as resetting its properties if it has have moved beyond the containing HTML element's dimensions. */
+/** Position Snowflake Function = This custom type stores the type that will be used for the custom {@link PosSnoObj.posSnoFun} function that will be defined and returned inside of the custom {@link creSnoFun} function and will handle updating the position of a snowflake HTML div element as well as resetting its properties if it has have moved beyond the containing HTML element's dimensions. */
 type PosSnoFun                  = () => void;
-/** Position Snowflake Object   = This object will be created by and returned from {@link creSnoFun}, and then pushed into the {@link posSnoArr} array inside of {@link iniSnoFun} which will then be looped through and executed on an interval by {@link aniSnoFun}. */
+/** Position Snowflake Object   = This custom type stores the type that will be created by and returned from the custom {@link creSnoFun} function and then pushed into the custom {@link posSnoArr} array by the custom {@link iniSnoFun} function, which said array will then be looped through and executed on an interval by the custom {@link aniSnoFun} function. */
 type PosSnoObj                  = { posSnoFun : PosSnoFun; };
 
 //#endregion const Variables
 
 
+
 // #region let Variables
 
-/** Container Height Number   = This will store the height value of the snowfall animation's containing HTML element inside of {@link iniSnoFun}, which will then be used inside of both it and {@link creSnoFun} in order to determine a snowflake HTML element's positioning properties. */
+/** Container Height Number   = This custom variable stores the height number of the snowfall animation's containing HTML element inside of the custom {@link iniSnoFun} function, which will then be used inside of both it and the custom {@link creSnoFun} function in order to determine a snowflake HTML div element's positioning properties. */
 let conHeiNum : number        = 0;
-/** Container Section Element = This will store the snowfall animation's containing HTML Section element inside of {@link iniSnoFun}. All created snowflake HTML elements will then be appended to this element inside of {@link creSnoFun}. Its dimensions will also be used inside of both {@link creSnoFun} and {@link posSnoFun} for setting the position properties of all snowflake HTML elements. */
+/** Container Section Element = This custom variable stores the snowfall animation's containing HTML element inside of the custom {@link iniSnoFun} function and to which all created snowflake HTML div elements will then be appended inside of the custom {@link creSnoFun} function. Its dimensions will also be used inside of both the custom {@link creSnoFun} and {@link posSnoFun} functions for setting the position properties of all snowflake HTML div elements. */
 let conSecEle : HTMLElement;
-/** Container Width Number    = This will store the width value of the snowfall animation's containing HTML element inside of {@link iniSnoFun}, which will then be used inside of both it and {@link creSnoFun} in order to determine a snowflake HTML element's positioning properties. */
+/** Container Width Number    = This custom variable stores the width number of the snowfall animation's containing HTML element inside of the custom {@link iniSnoFun} function, which will then be used inside of both it and the custom {@link creSnoFun} function in order to determine a snowflake HTML div element's positioning properties. */
 let conWidNum : number        = 0;
-/** Identifier Counter Number = This will store an incrementing value that will be used inside of {@link iniSnoFun} to give each snowflake HTML element a unique identifier by increasing this number according to the current {@link posSnoArr} array length, which will be increased by one for each new snowflake HTML element that is created. */
+/** Identifier Counter Number = This custom variable stores an incrementing number that will be used inside of the custom {@link iniSnoFun} function to give each snowflake HTML div element a unique identifier by increasing this number according to the current custom {@link posSnoArr} array length, which will be increased by one for each new snowflake HTML div element that is created. */
 let ideCouNum : number        = 0;
-/** Set Timeout Function      = This will store the setTimeout() function that will recursively call {@link aniSnoFun}, in order to create the snowfall animation effect. This variable will store a unqiue identifier given by Javascript that will be used to clear the timeout inside of {@link cleSnoFun}, which itself is called inside of {@link useEffect} when the window is mounted or resized. */
+/** Set Timeout Function      = This custom variable stores the setTimeout() function that will recursively call the custom {@link aniSnoFun} function, in order to create the snowfall animation effect and it will store a unqiue identifier given by Javascript that will be used to clear the timeout inside of the custom {@link cleSnoFun} function, which itself is called inside of the standard React {@link useEffect} hook when the component is mounted or the window is resized. */
 let setTimFun : ReturnType<typeof setTimeout>;
 
 //#endregion let Variables
 
 
-// #endregion Component Scoped Variables
+// #endregion File Scoped Variables
 
 
 
@@ -103,17 +107,17 @@ let setTimFun : ReturnType<typeof setTimeout>;
 // #region CreSnoFunPar
 
 /**
- * CreSnoFunPar = Create Snowflake Function Parameter will store the parameters that were provided to {@link creSnoFun} when it was called via {@link iniSnoFun}, and it will contain values intended to create a single snowflake HTML element.
+ * Create Snowflake Function Parameters = This custom type stores types for the parameters that are provided to the custom {@link creSnoFun} function when it is called via the custom {@link iniSnoFun} function and will contain all the relevant values that are intended to create a single snowflake HTML div element.
  *
- * @property ideNum = Identifier Number will store a unique id number for the to be created snowflake HTML element.
- * @property sizNum = Size Number will store the size for the to be created snowflake HTML element.
- * @property speNum = Speed Number will store the speed for the falling (y position) animation for the to be created snowflake HTML element.
- * @property xpoNum = X Position Number will store the starting x position for the to be created snowflake HTML element.
- * @property ypoNum = Y Position Number will store the starting y position for the to be created snowflake HTML element.
+ * @property ideNum = Identifier Number custom type stores a unique id number for the to be created snowflake HTML div element.
+ * @property sizNum = Size Number custom type stores the type for the to be created snowflake HTML div element.
+ * @property speNum = Speed Number custom type stores the type of the falling speed (y position) animation for the to be created snowflake HTML div element.
+ * @property xpoNum = X Position Number custom type stores the type of the starting x position for the to be created snowflake HTML div element.
+ * @property ypoNum = Y Position Number custom type stores the type of the starting y position for the to be created snowflake HTML div element.
  *
 */
 
-    type CreSnoFunPar = {
+type CreSnoFunPar = {
 
     ideNum : number;
     sizNum : number;
@@ -126,49 +130,49 @@ let setTimFun : ReturnType<typeof setTimeout>;
 // #endregion CreSnoFunPar
 
 
-/** Create Snowflake Function        = This function will create snowflake HTML div element, apply styling via both the static component scoped variable {@link aniSetObj} and the dynamically provided parameters {@link CreSnoFunPar}, and then return the {@link CreSnoFunRet} object containing the snowflake positioning function */
-type CreSnoFun    = ( creSnoFunPar : CreSnoFunPar ) => CreSnoFunRet;
-/** Create Snowflake Function Return = This function will return the {@link PosSnoObj} object containing the position snowflake function, which will be pushed into the component scoped {@link posSnoArr} array by {@link iniSnoFun} which will then call {@link aniSnoFun} that will loop over said array and update the positions of all snowflakes on a set interval, thereby creating the snowfall animation effect. */
-type CreSnoFunRet = { posSnoFun : PosSnoFun; };
+
+/** Create Snowflake Function        = This custom type stores the type that will be used for the custom {@link creSnoFun} function. */
+type CreSnoFun                       = ( creSnoFunPar : CreSnoFunPar ) => CreSnoFunRet;
+/** Create Snowflake Function Return = This custom type stores the type of the return value for the custom {@link creSnoFun} function. */
+type CreSnoFunRet                    = { posSnoFun : PosSnoFun; };
 
 // #endregion Function Type Definitions
 
 
-// #region Function Body
 
 /**
- * creSnoFun = Creat Snowflake Function
- * @see {@link CreSnoFun}
- * @see {@link CreSnoFunRet}
+ * creSnoFun = Create Snowflake Function
  *
  * @summary
- * This will create a single snowflake HTML element, apply styling to and
- * append said elements to the DOM and return the {@link PosSnoObj} object
- * back to the calling function {@link iniSnoFun}, where it will be pushed
- * into the component scoped {@link posSnoArr} array. The calling function
- * will then call {@link aniSnoFun} which will loop over said array and
- * update the positions of all snowflake HTML elements on a set interval,
- * creating the snowfall animation effect.
+ * This custom function executes the logic for creating a single snowflake HTML
+ * div element, applying styling to and appending said element to the DOM and
+ * then returning the custom {@link PosSnoObj} object back to the calling
+ * custom {@link iniSnoFun} function, where it will then be pushed into the
+ * file scoped custom {@link posSnoArr} array. The calling function will then
+ * call the custom {@link aniSnoFun} function which will loop over said array
+ * and update the positions of all snowflake HTML div elements on a set
+ * interval, creating the snowfall animation effect.
  *
- * The original code for the entire snowfall animation came from a very
- * old Codecademy tutorial (minified code linked below) that is no longer
- * available on their site. I have since heavily modified and adapted the
- * code to work inside of a React functional component using Typescript.
+ * The original code for the entire snowfall animation came from a very old
+ * Codecademy tutorial (minified code linked below) that is no longer available
+ * on their site. I have since heavily modified and adapted the code to work
+ * inside of a React functional component using Typescript.
  *
  * @author Original Code <https://s3.amazonaws.com/codecademy-content/courses/holiday-cards/snowfall.min.js>
- * @author z4ntao        <https://github.com/z4nta0>
+ * @author z4nta0        <https://github.com/z4nta0>
  *
- * @param creSnoFunPar - This is an object containing the parameters required to create a single snowflake HTML element.
- * @see {@link CreSnoFunPar}
+ * @param creSnoFunPar.ideNum - {@link CreSnoFunPar.ideNum}
+ * @param creSnoFunPar.sizNum - {@link CreSnoFunPar.sizNum}
+ * @param creSnoFunPar.speNum - {@link CreSnoFunPar.speNum}
+ * @param creSnoFunPar.xpoNum - {@link CreSnoFunPar.xpoNum}
+ * @param creSnoFunPar.ypoNum - {@link CreSnoFunPar.ypoNum}
  *
  * @returns An object containing the position snowflake function.
- * @see {@link CreSnoFunRet}
- * @see {@link PosSnoFun}
- * @see {@link PosSnoObj}
+ * @see {@link creSnoFunRet}
  *
  * @example
  * ```ts
- * creSnoFun( creSnoFunPar ) // => { posSnoFun : posSnoFun }
+ * creSnoFun( creSnoFunPar ) // => creSnoFunRet
  * ```
  *
 */
@@ -182,18 +186,18 @@ const creSnoFun : CreSnoFun = ( creSnoFunPar ) => {
     // #region SnoSetObj
 
     /**
-     * SnoSetObj = Snowflake Settings Object will store all properties and methods related to creating and positioning a single snowflake HTML element.
-     *
-     * @property oscSteNum = Oscillation Step Number will store a randomized number between 0.01 and 1 that will be used to modify the snoOscNum property value with each snowflake HTML element position update.
-     * @property snoDivEle = Snowflake Div Element will store the snowflake HTML div element that will be created for the snowflake.
-     * @property snoIdeNum = Snowflake Identifier Number will store a unique id number for the snowflake HTML element that is created. This value is provided by the {@link CreSnoFunPar} object, and it will be equal to length of the {@link posSnoArr} at the time that it was calculated by the calling function {@link iniSnoFun}.
-     * @property snoOscNum = Snowflake Oscillation Number will store a number that will be updated by the oscSteNum property value and then used to modify the snoXpoNum property with each snowflake HTML element position update.
-     * @property snoSizNum = Snowflake Size Number will store the size number for the snowflake HTML element. This value is provided by the {@link CreSnoFunPar} object, and its value will be randomly calculated between a minimum and maximum (affected by window viewport's width dimension) by the calling function {@link iniSnoFun}.
-     * @property snoSpeNum = Snowflake Speed Number will store the number that will be used to update the snoYpoNum property with each snowflake HTML element position update. This value is provided by the {@link CreSnoFunPar} object, and its value will be randomly calculated between a minimum and maximum (affected by window viewport's height dimension) by the calling function {@link iniSnoFun}.
-     * @property snoXpoNum = Snowflake X Position Number will store a number that will be updated by the snoOscNum property value and is responsible for the oscillating (x position) animation for the snowflake HTML element. This value is increased by using the oscSteNum property value as a parameter for the {@link Math.cos} function, so that as the oscSteNum value is increased the x position value will drift back and forth between -1 and 1 (i.e. oscillate) in the horizontal (x) direction, with its original, starting x position value as its central point. This, combined with the vertical (y) position updates, is what creates the natural falling effect for the animation. The original, starting value is provided by the {@link CreSnoFunPar} object, and its value will be randomly calculated between a minimum (0) and maximum (window viewport width) by the calling function {@link iniSnoFun}.
-     * @property snoYpoNum = Snowflake Y Position Number will store a number that will be updated by the snoSizNum property value and is responsible for the falling (y position) animation for the snowflake HTML element. This value will be increased by the snoYpoNumrty value with each snowflake HTML element position update. This, combined with the horizontal (x) position updates, is what creates the natural falling effect for the animation. The original, starting value is provided by the {@link CreSnoFunPar} object, and its value will be randomly calculated between a minimum (0) and maximum (window viewport height) by the calling function {@link iniSnoFun}.
+     * Snowflake Settings Object = This custom type stores the types that will be used for the custom {@link snoSetObj} object.
      * 
-     * @property snoResFun = Snowflake Reset Function will store the function for that is responsible for resetting each snowflake HTML element's position and other related properties when they progress beyond the containing HTML element's dimensions.
+     * @property oscSteNum = Oscillation Step Number custom property stores the type that will be used for the custom {@link snoSetObj.oscSteNum} property.
+     * @property snoDivEle = Snowflake Div Element custom property stores the type that will be used for the custom {@link snoSetObj.snoDivEle} property.
+     * @property snoIdeNum = Snowflake Identifier Number custom property stores the type that will be used for the custom {@link snoSetObj.snoIdeNum} property.
+     * @property snoOscNum = Snowflake Oscillation Number custom property stores the type that will be used for the custom {@link snoSetObj.snoOscNum} property.
+     * @property snoSizNum = Snowflake Size Number custom property stores the type that will be used for the custom {@link snoSetObj.snoSizNum} property.
+     * @property snoSpeNum = Snowflake Speed Number custom property stores the type that will be used for the custom {@link snoSetObj.snoSpeNum} property.
+     * @property snoXpoNum = Snowflake X Position Number custom property stores the type that will be used for the custom {@link snoSetObj.snoXpoNum} property.
+     * @property snoYpoNum = Snowflake Y Position Number custom property stores the type that will be used for the custom {@link snoSetObj.snoYpoNum} property.
+     * 
+     * @property snoResFun = Snowflake Reset Function custom property stores the type that will be used for the custom {@link snoSetObj.snoResFun} property.
      *
     */
 
@@ -212,7 +216,23 @@ const creSnoFun : CreSnoFun = ( creSnoFunPar ) => {
 
     };
 
-    /** @see {@link SnoSetObj} */
+
+    /**
+     * Snowflake Settings Object = This custom object stores the properties and methods for creating and positioning a single snowflake HTML div element.
+     *
+     * @property oscSteNum = Oscillation Step Number custom property stores a randomized number between 0.01 and 1 that is used to modify the custom {@link snoSetObj.snoOscNum} property value for each snowflake HTML div element position update.
+     * @property snoDivEle = Snowflake Div Element custom property stores the snowflake HTML div element that is created for the snowflake.
+     * @property snoIdeNum = Snowflake Identifier Number custom property stores a unique id number for the snowflake HTML div element that is created and is provided by the custom {@link CreSnoFunPar} object. It will be equal to length of the custom {@link posSnoArr} array at the time that it was calculated by the custom calling {@link iniSnoFun} function.
+     * @property snoOscNum = Snowflake Oscillation Number custom property stores a number that is updated by the custom {@link snoSetObj.oscSteNum} property value and then used to modify the custom {@link snoSetObj.snoXpoNum} property for each snowflake HTML div element position update.
+     * @property snoSizNum = Snowflake Size Number custom property stores the size number for the snowflake HTML div element and is provided by the custom {@link CreSnoFunPar} object. Its value is randomly calculated between a minimum and maximum (affected by the window viewport's width dimension) by the custom calling {@link iniSnoFun} function.
+     * @property snoSpeNum = Snowflake Speed Number custom property stores the number that is used to update the custom {@link snoSetObj.snoYpoNum} property value for each snowflake HTML div element position update and is provided by the custom {@link CreSnoFunPar} object. Its value is randomly calculated between a minimum and maximum (affected by the window viewport's height dimension) by the custom calling {@link iniSnoFun} function.
+     * @property snoXpoNum = Snowflake X Position Number custom property stores a number that is updated by the custom {@link snoSetObj.snoOscNum} property value and is responsible for the oscillating (x position) animation for the snowflake HTML div element. This value is increased by using the custom {@link snoSetObj.oscSteNum} property value as a parameter for the standard JS {@link Math.cos} function, so that as the custom {@link snoSetObj.oscSteNum} property value is increased the x position value will drift back and forth between -1 and 1 (i.e. oscillate) in the horizontal (x) direction, with its original, starting x position value as its central point. This, combined with the vertical (y) position updates, is what creates the natural falling effect for the animation. The original, starting value is provided by the custom {@link CreSnoFunPar} object, and its value will be randomly calculated between a minimum (0) and maximum (window viewport width) by the custom calling {@link iniSnoFun} function.
+     * @property snoYpoNum = Snowflake Y Position Number custom property stores a number that is updated by the custom {@link snoSetObj.snoSizNum} property value and is responsible for the falling (y position) animation for the snowflake HTML div element. This value will be increased by the custom {@link snoSetObj.snoSpeNum} property value with each snowflake HTML div element position update. This, combined with the horizontal (x) position updates, is what creates the natural falling effect for the animation. The original, starting value is provided by the custom {@link CreSnoFunPar} object, and its value will be randomly calculated between a minimum (0) and maximum (window viewport height) by the custom calling {@link iniSnoFun} function.
+     * 
+     * @property snoResFun = Snowflake Reset Function custom property stores the custom function for that is responsible for resetting each snowflake HTML div element's position and other related properties when they progress beyond the containing HTML element's dimensions.
+     *
+    */
+
     const snoSetObj : SnoSetObj = {
 
         oscSteNum : ranNumFun( { maxNum : 10, minNum : 1 } ) / 100,
@@ -226,11 +246,11 @@ const creSnoFun : CreSnoFun = ( creSnoFunPar ) => {
 
         snoResFun : function () {
 
-            snoSetObj.oscSteNum = ranNumFun( { maxNum : 10,                         minNum : 1,                   } ) / 100; /** This will reset the oscillation step size to a new random value between 0.01 and 0.1 */
-            snoSetObj.snoSizNum = ranNumFun( { maxNum : aniSetObj.sizMaxNum,        minNum : aniSetObj.sizMinNum, } );       /** This will reset the snowflake size to a new random value between the animation settings object's defined maximum (affected by window viewport's width dimension) and minimum sizes. */
-            snoSetObj.snoSpeNum = ranNumFun( { maxNum : aniSetObj.speMaxNum,        minNum : aniSetObj.speMinNum, } );       /** This will reset the snowflake falling speed to a new random value between the animation settings object's defined maximum (affected by window viewport's height dimension) and minimum speeds. */
-            snoSetObj.snoXpoNum = ranNumFun( { maxNum : conWidNum - snoSetObj.snoSizNum, minNum : 0,                   } );  /** This will reset the snowflake x (horizontal) position to a new random value between 0 and the containing HTML element's width minus the snowflake HTML element's size. */
-            snoSetObj.snoYpoNum = 0;                                                                                         /** This will reset the snowflake y (vertical) position to 0. */
+            snoSetObj.oscSteNum = ranNumFun( { maxNum : 10,                              minNum : 1,                   } ) / 100; /** This will reset the oscillation step size to a new random value between 0.01 and 0.1 */
+            snoSetObj.snoSizNum = ranNumFun( { maxNum : aniSetObj.sizMaxNum,             minNum : aniSetObj.sizMinNum, } );       /** This will reset the snowflake size to a new random value between the animation settings object's defined maximum (affected by the window viewport's width dimension) and minimum sizes. */
+            snoSetObj.snoSpeNum = ranNumFun( { maxNum : aniSetObj.speMaxNum,             minNum : aniSetObj.speMinNum, } );       /** This will reset the snowflake falling speed to a new random value between the animation settings object's defined maximum (affected by the window viewport's height dimension) and minimum speeds. */
+            snoSetObj.snoXpoNum = ranNumFun( { maxNum : conWidNum - snoSetObj.snoSizNum, minNum : 0,                   } );       /** This will reset the snowflake x (horizontal) position to a new random value between 0 and the containing HTML element's width minus the snowflake HTML div element's size. */
+            snoSetObj.snoYpoNum = 0;                                                                                              /** This will reset the snowflake y (vertical) position to 0. */
 
         },
 
@@ -242,53 +262,68 @@ const creSnoFun : CreSnoFun = ( creSnoFunPar ) => {
     // #endregion Function Variables
 
 
+
     // #region DOM Manipulation and CSS Styling
 
-    snoSetObj.snoDivEle.className = 'snowflakes';                                  /** This sets the class name for each snowflake HTML element, which will enable the {@link cleSnoFun} to more easily grab all snowflake HTML elements and clear them from the DOM should the animation need to be reset (on a window resize event, for example). This could also allow CSS styling to be applied to all snowflake HTML elements, though that is not currently utilized. */
+    /** Class Name                            = This standard JS DOM API sets the class name for each snowflake HTML div element, which will enable the custom {@link cleSnoFun} function to more easily grab all snowflake HTML div elements and then clear them from the DOM should the animation need to be reset (on a window resize event, for example). This could also enable CSS styling to be applied to all snowflake HTML div elements, though that is not currently utilized. */
+    snoSetObj.snoDivEle.className             = 'snowflakes';
+    /** Background Color                      = This standard JS DOM API sets the snowflake HTML div element's color. */
+    snoSetObj.snoDivEle.style.backgroundColor = aniSetObj.snoColStr;
+    /** Border Radius                         = This standard JS DOM API makes the snowflake HTML div element circular. */
+    snoSetObj.snoDivEle.style.borderRadius    = `${aniSetObj.sizMaxNum}px`;
+    /** Font Size                             = This standard JS DOM API ensures that no text properties affect the snowflake HTML div element's size. */
+    snoSetObj.snoDivEle.style.fontSize        = '0px';
+    /** Height                                = This standard JS DOM API sets the snowflake HTML div element's height. */
+    snoSetObj.snoDivEle.style.height          = `${snoSetObj.snoSizNum}px`;
+    /** Left                                  = This standard JS DOM API sets the snowflake HTML div element's starting x (horizontal) position. */
+    snoSetObj.snoDivEle.style.left            = `${snoSetObj.snoXpoNum}px`;
+    /** Position                              = This standard JS DOM API sets the snowflake HTML div element's position to absolute. */
+    snoSetObj.snoDivEle.style.position        = 'absolute';
+    /** Top                                   = This standard JS DOM API sets the snowflake HTML div element's starting y (vertical) position. */
+    snoSetObj.snoDivEle.style.top             = `${snoSetObj.snoYpoNum}px`;
+    /** Width                                 = This standard JS DOM API sets the snowflake HTML div element's width. */
+    snoSetObj.snoDivEle.style.width           = `${snoSetObj.snoSizNum}px`;
 
-    snoSetObj.snoDivEle.setAttribute( 'id', `snowflake${ snoSetObj.snoIdeNum }` ); /** This sets a unique id for each snowflake HTML element by using the length of the {@link posSnoArr} array, which should equal the index number of this snowflake HTML element's {@link posSnoFun} that was pushed into said array. */
 
-    snoSetObj.snoDivEle.style.backgroundColor = aniSetObj.snoColStr;               /** This sets the snowflake HTML element's color. */
-    snoSetObj.snoDivEle.style.borderRadius    = `${aniSetObj.sizMaxNum}px`;        /** This makes the snowflake HTML element circular. */
-    snoSetObj.snoDivEle.style.fontSize        = '0px';                             /** This ensures that no text affects the snowflake HTML element's size. */
-    snoSetObj.snoDivEle.style.height          = `${snoSetObj.snoSizNum}px`;        /** This sets the snowflake HTML element's height. */
-    snoSetObj.snoDivEle.style.left            = `${snoSetObj.snoXpoNum}px`;        /** This sets the snowflake HTML element's starting x (horizontal) position. */
-    snoSetObj.snoDivEle.style.position        = 'absolute';                        /** This sets the snowflake HTML element's position to absolute. */
-    snoSetObj.snoDivEle.style.top             = `${snoSetObj.snoYpoNum}px`;        /** This sets the snowflake HTML element's starting y (vertical) position. */
-    snoSetObj.snoDivEle.style.width           = `${snoSetObj.snoSizNum}px`;        /** This sets the snowflake HTML element's width. */
 
-    conSecEle.appendChild( snoSetObj.snoDivEle );                                  /** This appends the snowflake HTML element to the DOM. */
+    /** Set Attribute = This standard JS DOM API sets a unique id attribute for each snowflake HTML div element by using the length of the custom {@link posSnoArr} array, which should equal the index number of this snowflake HTML div element's custom object that contains its own custom {@link posSnoFun} function that was pushed into said array. */
+    snoSetObj.snoDivEle.setAttribute( 'id', `snowflake${ snoSetObj.snoIdeNum }` );
+    /** Append Child  = This standard JS DOM API appends the snowflake HTML div element to the DOM. */
+    conSecEle.appendChild( snoSetObj.snoDivEle );
 
     // #endregion DOM Manipulation and CSS Styling
+
 
 
     // #region Return Statement
 
     const creSnoFunRet : CreSnoFunRet = {
 
+
         // #region posSnoFun
 
         /**
          * posSnoFun = Position Snowflake Function
-         * @see {@link PosSnoFun}
          *
          * @summary
-         * This will handle updating the newly created snowflake HTML
-         * element's position, as well as handle resetting said position if
-         * its position moves beyond the containing HTML element's
-         * dimensions. It will be returned to the calling function
-         * {@link iniSnoFun} where it will be pushed into the component
-         * scoped {@link posSnoArr} array. The calling function will then
-         * call {@link aniSnoFun} which will loop over said array and
-         * update the positions of all snowflake HTML elements.
+         * This custom function executes the logic for updating the newly
+         * created snowflake HTML div element's position, as well as resetting
+         * said position if its position moves beyond the containing HTML
+         * element's dimensions. This object and function will be returned to
+         * the custom calling {@link iniSnoFun} function where it will then be
+         * pushed into the custom file scoped {@link posSnoArr} array. Said
+         * calling function will then call the custom {@link aniSnoFun}
+         * function which will loop over said array and update the positions of
+         * all snowflake HTML div elements.
          *
          * The original code for the entire snowfall animation came from a very
-         * old Codecademy tutorial (minified code linked below) that is no longer
-         * available on their site. I have since heavily modified and adapted the
-         * code to work inside of a React functional component using Typescript.
+         * old Codecademy tutorial (minified code linked below) that is no
+         * longer available on their site. I have since heavily modified and
+         * adapted the code to work inside of a React functional component
+         * using Typescript.
          *
          * @author Original Code <https://s3.amazonaws.com/codecademy-content/courses/holiday-cards/snowfall.min.js>
-         * @author z4ntao        <https://github.com/z4nta0>
+         * @author z4nta0        <https://github.com/z4nta0>
          *
          * @param void - This function takes no parameters.
          *
@@ -303,43 +338,66 @@ const creSnoFun : CreSnoFun = ( creSnoFunPar ) => {
 
         posSnoFun : () => {
 
-            snoSetObj.snoDivEle.style.left =  `${snoSetObj.snoXpoNum}px`;      /** This updates the horizontal (x) position. */
-            snoSetObj.snoDivEle.style.top  =  `${snoSetObj.snoYpoNum}px`;      /** This updates the vertical (y) position. */
-            snoSetObj.snoOscNum            += snoSetObj.oscSteNum;             /** This updates the oscillation number that is responsible for updating the x (horizontal) position. */
-            snoSetObj.snoXpoNum            += Math.cos( snoSetObj.snoOscNum ); /** This updates the x (horizontal) position and creates the oscillation (horizontal, back and forth) animation because {@link Math.cos} will always return a value between -1 and 1. */
-            snoSetObj.snoYpoNum            += snoSetObj.snoSpeNum;             /** This updates the y (vertical) position and creates the falling animation. */
 
-            /** This check is responsible for the resetting the horizontal (x) position if the snowflake HTML element's current x position is greater than the width of its containing HTML element minus the snowflake HTML element's size (beyond the right edge) OR if the snowflake HTML element's position is less than 0 (beyond the left edge, which can happen due to oscillation effect). */
+            // #region DOM Manipulation and CSS Styling
+
+            /** Left                         = This standard JS DOM API updates the horizontal (x) position. */
+            snoSetObj.snoDivEle.style.left   =  `${snoSetObj.snoXpoNum}px`;
+            /** Top                          = This standard JS DOM API updates the vertical (y) position. */
+            snoSetObj.snoDivEle.style.top    =  `${snoSetObj.snoYpoNum}px`;
+            /** Snowflake Oscillation Number = This custom object property updates the oscillation number that is responsible for updating the x (horizontal) position. */
+            snoSetObj.snoOscNum             += snoSetObj.oscSteNum;
+            /** Snowflake X Position Number  = This custom object property updates the x (horizontal) position and creates the oscillation (horizontal, back and forth) animation because the standard JS {@link Math.cos} function will always return a value between -1 and 1. */
+            snoSetObj.snoXpoNum             += Math.cos( snoSetObj.snoOscNum );
+            /** Snowflake Y Position Number  = This custom object property updates the y (vertical) position and creates the falling animation. */
+            snoSetObj.snoYpoNum             += snoSetObj.snoSpeNum;
+
+            // #endregion DOM Manipulation and CSS Styling
+
+
+
+            // #region Reset Positions
+
+            /** This custom conditional statement performs a check to determine whether a reset is required for the horizontal (x) position if the snowflake HTML div element's current x position is greater than the width of its containing HTML element minus the snowflake HTML div element's size (beyond the right edge) OR if the snowflake HTML div element's position is less than 0 (beyond the left edge, which can happen due to the oscillation effect). */
             if ( snoSetObj.snoXpoNum > ( conWidNum - snoSetObj.snoSizNum)  || snoSetObj.snoXpoNum < 0 ) {
 
+
+                /** Snowflake Reset Function = This custom function executes the logic that is responsible for resetting each snowflake HTML div element's position and other related properties when they progress beyond the containing HTML element's dimensions. */
                 snoSetObj.snoResFun();
+
 
             };
 
 
-            /** This check is responsible for the resetting the vertical (y) position if the snowflake HTML element's current y position is greater than the height of its containing HTML element minus the snowflake HTML element's size (beyond the bottom edge). */
+
+            /** This custom conditional statement performs a check to determine whether a reset is required for the vertical (y) position if the snowflake HTML div element's current y position is greater than the height of its containing HTML element minus the snowflake HTML div element's size (beyond the bottom edge). */
             if ( snoSetObj.snoYpoNum > ( conHeiNum - snoSetObj.snoSizNum ) ) {
 
+
+                /** Snowflake Reset Function = This custom function executes the logic that is responsible for resetting each snowflake HTML div element's position and other related properties when they progress beyond the containing HTML element's dimensions. */
                 snoSetObj.snoResFun();
 
+
             };
+
+            // #endregion Reset Positions
+
 
         },
 
         // #endregion posSnoFun
 
+
     };
 
 
-    /** @see {@link creSnoFunRet} */
+
     return creSnoFunRet;
 
     // #endregion Return Statement
 
+
 };
-
-// #endregion Function Body
-
 
 // #endregion creSnoFun
 
@@ -350,26 +408,24 @@ const creSnoFun : CreSnoFun = ( creSnoFunPar ) => {
 
 // #region Function Type Definitions
 
-/** Animate Snowflake Function = This function will execute each snowflake HTML element's position update function that is stored in the component scoped {@link posSnoArr} array and then recursively call itself at a set interval, thereby creating the snowfall animation effect. */
-type AniSnoFun = () => void;
+/** Animate Snowflake Function = This custom type stores the type that will be used for the custom {@link aniSnoFun} function. */
+type AniSnoFun                 = () => void;
 
 // #endregion Function Type Definitions
 
 
-// #region Function Body
 
 /**
  * aniSnoFun = Animate Snowflake Function
- * @see {@link AniSnoFun}
  *
  * @summary
- * This will create the animation effect by executing the position update
- * function of each snowflake HTML element and then recursively calling
- * itself at a set interval (16.7 ms ~= 60 FPS), which creates both the
- * falling and oscillating motions. This function is called by
- * {@link iniSnoFun} after creating the desired number of snowflake HTML
- * elements, and then pushing said elements into the component scoped
- * {@link posSnoArr} array.
+ * This custom function executes the logic for creating the animation effect by
+ * executing the custom {@link PosSnoFun} function for each snowflake HTML div
+ * element and then recursively calling itself at a set interval (16.7 ms ~= 60
+ * FPS), which creates both the falling and oscillating motions. This function
+ * is called by the custom {@link iniSnoFun} function after creating the
+ * desired number of snowflake HTML div elements and then pushing said elements
+ * into the custom file scoped {@link posSnoArr} array.
  *
  * The original code for the entire snowfall animation came from a very
  * old Codecademy tutorial (minified code linked below) that is no longer
@@ -377,7 +433,7 @@ type AniSnoFun = () => void;
  * code to work inside of a React functional component using Typescript.
  *
  * @author Original Code <https://s3.amazonaws.com/codecademy-content/courses/holiday-cards/snowfall.min.js>
- * @author z4ntao        <https://github.com/z4nta0>
+ * @author z4nta0        <https://github.com/z4nta0>
  *
  * @param void - This function takes no parameters.
  *
@@ -393,22 +449,28 @@ type AniSnoFun = () => void;
 
 const aniSnoFun : AniSnoFun = () => {
 
-    /** This loop will step through each snowflake HTML element's update function that is stored in the component scoped {@link posSnoArr} array. */
+
+    // #region Update Position Array Loop
+
+    /** This custom loop steps through each snowflake HTML div element that is stored in the custom file scoped {@link posSnoArr} array. */
     for ( let indNum : number = 0; indNum < posSnoArr.length; indNum += 1 ) {
 
-        /** This will execute the position update function for each snowflake HTML element. The {@link PosSnoObj} objects are pushed into the component scoped {@link posSnoArr} array by {@link iniSnoFun} as they are returned via executing {@link creSnoFun}. */
+
+        /** Position Snow Array Index Number Position Snowflake Function = This custom function executes the position update function for each snowflake HTML div element. The custom {@link PosSnoObj} objects are pushed into the custom file scoped {@link posSnoArr} array by the custom {@link iniSnoFun} function as they are returned from the custom {@link creSnoFun} function. */
         posSnoArr[ indNum ].posSnoFun();
+
 
     };
 
+    // #endregion Update Position Array Loop
 
-    /** This will recursively call this function every 16.7 ms (~60 FPS), thereby updating each snowflake HTML element's position with each call and creating the desired animation effect. This variable stores a unique identifier given to it by Javascript and will be used to clear the timeout inside of {@link cleSnoFun}, which itself is called inside of {@link useEffect} when the component is first loaded or the window is resized. */
-    setTimFun = setTimeout( function () { aniSnoFun(); }, 16.7 );
+
+
+    /** Set Timeout Function = This custom file scoped variable stores the standard JS timeout function and will recursively call this custom function every 16.7 ms (~60 FPS), thereby updating each snowflake HTML div element's position with each call and creating the desired animation effect. This custom file scoped variable stores a unique identifier given to it by Javascript that will be used to clear the timeout inside of the custom {@link cleSnoFun} function, which itself is called inside of the standard React {@link useEffect} hook when the component is first loaded or the window is resized. */
+    setTimFun                = setTimeout( function () { aniSnoFun(); }, 16.7 );
+
 
 };
-
-// #endregion Function Body
-
 
 // #endregion aniSnoFun
 
@@ -420,10 +482,11 @@ const aniSnoFun : AniSnoFun = () => {
 // #region Function Type Definitions
 
 /**
- * IniSnoFunPar = Initialize Snowfall Function Parameters will store the parameters provided to {@link iniSnoFun} when it was called inside of {@link useEffect}, and it will contain the values that are responsible for setting the component scoped variables {@link conSecEle} and {@link aniSetObj}.
  *
- * @property conEle = Container Element will store the containing HTML element to which all of the created snowflake HTML elements will be appended inside of {@link creSnoFun}.
- * @property setObj = Settings Object will store the settings object that will be used inside of {@link iniSnoFun} to override the default animation settings stored inside of the component scoped {@link aniSetObj} object.
+ * Initialize Snowfall Function Parameters = This custom type stores types for the parameters that are provided to the custom {@link iniSnoFun} function when it is called inside of the standard React {@link useEffect} hook and will contain the values that are responsible for setting the file scoped variables {@link conSecEle} and {@link aniSetObj}.
+ *
+ * @property conEle = Container Element custom type stores the containing HTML element to which all of the created snowflake HTML div elements will be appended to inside of the custom {@link creSnoFun} function.
+ * @property setObj = Settings Object custom types stores the settings object that will be used inside of the custom {@link iniSnoFun} function in order to override the default animation settings stored inside of the custom file scoped {@link aniSetObj} object.
  *
 */
 
@@ -434,37 +497,38 @@ type IniSnoFunPar = {
 
 };
 
-/** Initialize Snowfall Function = This function will check the provided {@link IniSnoFunPar} parameters for valid matching keys, set the component scoped variables accordingly, make the indicated number of calls to {@link creSnoFun} for each snowflake HTML element, push the returned {@link PosSnoObj} object into the component scoped {@link posSnoArr} array, and finally initialize the animation by making a call to {@link aniSnoFun} to loop over said array and update each snowflake HTML element's positions. */
-type IniSnoFun = ( iniSnoFunPar : IniSnoFunPar ) => void;
-/** Settings Object              = This will store the {@link AniSetObj} object that is declared for the {@link useEffect} function block, where {@link iniSnoFun} is called from, and will contain the values that will be used to override the component scoped {@link aniSetObj} object. */
-type SetObj    = AniSetObj;
+
+/** Initialize Snowfall Function = This custom type stores the type that will be used for the custom {@link iniSnoFun} function. */
+type IniSnoFun                   = ( iniSnoFunPar : IniSnoFunPar ) => void;
+/** Settings Object              = This custom type stores the the same type as the custom {@link AniSetObj} type and is provided as a parameter to the custom {@link iniSnoFun} function. */
+type SetObj                      = AniSetObj;
 
 // #endregion Function Type Definitions
 
 
-// #region Function Body
 
 /**
  * iniSnoFun = Initialize Snowfall Function
- * @see {@link IniSnoFun}
  *
  * @summary
- * This will initialize the snowfall animation. It will first perform a
- * check to make sure that the provided {@link SetObj} object contains
- * valid keys that match the component scoped {@link aniSetObj} object's
- * keys, and then override the default values of said object with the
- * provided values. It will then grab the containing HTML element from the
- * {@link conEle} parameter and assign it to the component scoped variable
- * {@link conSecEle} before then setting the component scoped variables
- * {@link conHeiNum} and {@link conWidNum} according to its dimensions. A
- * loop will then be initiated to create the desired number of snowflake
- * HTML elements as specified in the {@link aniSetObj} object's snoCouNum
- * property by making calls to {@link creSnoFun} for each and then pushing
- * the returned {@link PosSnoObj} object from each call into the component
- * scoped {@link posSnoArr} array. Lastly, it will call {@link aniSnoFun}
- * which will loop over said array and call each of the snowflake HTML
- * element {@link PosSnoFun} functions on a set interval thus creating the
- * animation effect.
+ * This custom function executes the logic that will initialize the snowfall
+ * animation. It will first perform a check to make sure that the provided
+ * custom {@link setObj} parameter object object contains valid keys that match
+ * the custom file scoped {@link aniSetObj} object's keys and then override the
+ * default values of said object with the provided values. It will then grab
+ * the containing HTML element from the custom {@link conEle} parameter and
+ * assign it to the custom file scoped {@link conSecEle} variable before then
+ * setting the custom file scoped {@link conHeiNum} and {@link conWidNum}
+ * variables according to its dimensions. A loop will then be initiated in
+ * order to create the desired number of snowflake HTML div elements as
+ * specified in the custom file scoped {@link aniSetObj} object's snoCouNum
+ * property by making calls to the custom {@link creSnoFun} function for each
+ * snowflake and then pushing the returned custom {@link PosSnoObj} object from
+ * each call into the custom file scoped {@link posSnoArr} array. Lastly, it
+ * will call the custom {@link aniSnoFun} function which will loop over said
+ * array and call each of the snowflake HTML div element's custom
+ * {@link PosSnoFun} functions on a set interval thus creating the animation
+ * effect.
  *
  * The original code for the entire snowfall animation came from a very
  * old Codecademy tutorial (minified code linked below) that is no longer
@@ -472,102 +536,125 @@ type SetObj    = AniSetObj;
  * code to work inside of a React functional component using Typescript.
  *
  * @author Original Code <https://s3.amazonaws.com/codecademy-content/courses/holiday-cards/snowfall.min.js>
- * @author z4ntao        <https://github.com/z4nta0>
+ * @author z4nta0        <https://github.com/z4nta0>
  *
- * @param conEle - This is the containing HTML element parameter to which all of the created snowflake HTML elements will be appended and whose dimensions will be used to determine the animation boundaries.
- * @param setObj - This is the settings object parameter that will be used to override the default animation settings that are stored in the component scoped {@link aniSetObj} object.
- * @see {@link SetObj}
- * @see {@link IniSnoFunPar}
+ * @param conEle - This is the containing HTML element parameter to which all of the created snowflake HTML div elements will be appended and whose dimensions will be used to determine the animation settings' boundaries.
+ * @param setObj - This is the settings object parameter that will be used to override the default animation settings that are stored in the custom file scoped {@link aniSetObj} object.
  *
  * @returns This function does not return anything.
  *
  * @example
  * ```ts
- * iniSnoFun( { conEle : containingHTMLElement, setObj : iniSetObj, } ) // => void
+ * iniSnoFun( { conEle, setObj } ) // => void
  * ```
  *
 */
 
 const iniSnoFun : IniSnoFun = ( { conEle, setObj } ) => {
 
+
     // #region setObj Keys Loop
 
-    /** This loops through each key in the provided {@link SetObj} parameter. */
+    /** This custom loop steps through each key in the provided custom {@link setObj} parameter. */
     for ( const key in setObj ) {
 
-        /** Settings Objecy Key = This stores the loop's current {@link SetObj} property key and will help to type narrow said key so that Typescript does not throw an error when indexing into the {@link SetObj} parameter inside of the next 'if' code block. */
-        const setObjKey = key as keyof SetObj;
+
+        /** Settings Objecy Key = This custom variable stores the loop's current custom {@link setObj} parameter property key and will help to type narrow said key so that Typescript does not throw an error when indexing into the custom {@link setObj} parameter inside of the next 'if' code block. */
+        const setObjKey         = key as keyof SetObj;
 
 
-        /** This performs a custom type guard check to ensure that only valid keys are used to override the default animation settings that are stored in the component scoped {@link aniSetObj} object. The custom type guard check is required because of the nested nature of the key variable (the key variable is actually from the {@link SetObj} parameter but will be used to index into the component scoped {@link aniSetObj} object) and Typescript does not allow indexing into an object with a string key without a type assertion or a type guard. */
+
+        /** This custom conditional statement performs a type guard check to ensure that only valid keys from the custom {@link setObj} parameter are used to override the default animation settings that are stored in the custom file scoped {@link aniSetObj} object. The custom type guard {@link hasKeyFun} function is required because of the nested nature of the key variable (the key variable is actually from the custom {@link setObj} parameter but will be used to index into the custom file scoped {@link aniSetObj} object) and Typescript does not allow indexing into an object with a string key without a type assertion or a type guard. */
         if ( hasKeyFun( aniSetObj, key ) === true ) {
 
-            /** This overrides the default animation settings property values inside of the component scoped {@link aniSetObj} object with the provided {@link SetObj} parameter values. */
-            aniSetObj[ key ] = setObj[ setObjKey ];
+
+            /** Animation Settings Object = This overrides the default animation settings property values inside of the custom file scoped {@link aniSetObj} object with the provided custom {@link setObj} parameter values. */
+            aniSetObj[ key ]              = setObj[ setObjKey ];
+
 
         }
 
-        /** This handlea the case where the custom type guard check failed. */
+
+        /** This custom conditional statement handles all cases that do not match the above conditional statement's type guard check. */
         else {
 
-            /** This issues a console warning if invalid keys were provided in the {@link SetObj} parameter. */
+
+            /** Console Warn = This standard JS Web API issues a console warning if an invalid key was provided in the custom {@link setObj} parameter. */
             console.warn( `Snowfall Effect: Invalid setting key '${ key }' provided in the setObj parameter for the iniSnoFun function.` );
 
+
         };
+
 
     };
 
     // #endregion setObj Keys Loop
 
 
+
     // #region Set Container Element and Dimensions
 
-    /** This sets the component scoped {@link conSecEle} variable equal to the containing HTML element {@link conEle} that was provided in the function parameters. */
-    conSecEle = conEle;
-    /** This sets the component scoped {@link conHeiNum} variable equal to the component scoped {@link conSecEle}'s height value. */
-    conHeiNum = conSecEle.clientHeight;
-    /** This sets the component scoped {@link conWidNum} variable equal to the component scoped {@link conSecEle}'s width value. */
-    conWidNum = conSecEle.offsetWidth;
+    /** Container Section Element = This sets the custom file scoped {@link conSecEle} variable equal to the containing HTML element {@link conEle} parameter that was provided to this function. */
+    conSecEle                     = conEle;
+    /** Container Height Number   = This sets the custom file scoped {@link conHeiNum} variable equal to the containing HTML element {@link conEle} parameter' height value that was provided to this function. */
+    conHeiNum                     = conSecEle.clientHeight;
+    /** Container Width Number    = This sets the custom file scoped {@link conWidNum} variable equal to the containing HTML element {@link conEle} parameter's width value that was provided to this function. */
+    conWidNum                     = conSecEle.offsetWidth;
 
     // #endregion Set Container Element and Dimensions
 
 
+
     // #region Create Snowflake Loop
 
-    /** This loop creates the desired number of snowflake HTML elements and their related {@link PosSnoFun} functions according to the component scoped {@link aniSetObj}'s snoCouNum property value, which was provided by and set according to the {@link SetObj} parameter. */
+    /** This custom loop steps through the newly set custom {@link aniSetObj.snoCouNum} property in order to create the desired number of snowflake HTML div elements and their related custom {@link PosSnoFun} functions. */
     for ( let incNum : number = 0; incNum < aniSetObj.snoCouNum; incNum += 1 ) {
 
-        /** This sets the component scoped {@link ideCouNum} variable equal to the current length of the component scoped {@link posSnoArr} array, representing the number of snowflake HTML elements created so far from calling {@link creSnoFun}. This number will then be used inside of {@link creSnoFun} as part of the id value for the newly created snowflake HTML element. */
-        ideCouNum = posSnoArr.length;
 
+        /** Identifier Count Number = This sets the custom file scoped {@link ideCouNum} variable equal to the current length of the custom file scoped {@link posSnoArr} array, representing the number of snowflake HTML div elements that have been created so far from calling the custom {@link creSnoFun} function. This number will then be used inside of the custom {@link creSnoFun} function as part of the HTML id value for the newly created snowflake HTML div element. */
+        ideCouNum                   = posSnoArr.length;
+
+
+
+        // #region creSnoFunPar
 
         /** @see {@link CreSnoFunPar} */
         const creSnoFunPar : CreSnoFunPar = {
 
-            ideNum : ideCouNum,                                                                    /** Identifier Number is set equal to the component scoped ideCouNum, which itself was just previously set according to the component scoped posSnoArr's length at this point in the loop. */
-            sizNum : ranNumFun( { maxNum : aniSetObj.sizMaxNum, minNum : aniSetObj.sizMinNum, } ), /** Size Number is set to a randomly generated number between the component scoped aniSetObj's sizMaxNum and sizMinNum property values. */
-            speNum : ranNumFun( { maxNum : aniSetObj.speMaxNum, minNum : aniSetObj.speMinNum, } ), /** Speed Number is set to a randomly generated number between the component scoped aniSetObj's speMaxNum and speMinNum property values. */
-            xpoNum : ranNumFun( { maxNum : conWidNum,           minNum : 0, } ),                   /** X (horizontal) Position Number is set to a randomly generated number between 0 and the component scoped conWidNum's value. */
-            ypoNum : ranNumFun( { maxNum : conHeiNum,           minNum : 0, } ),                   /** Y (vertical) Position Number is set to a randomly generated number between 0 and the component scoped conHeiNum's value. */
+
+            /** Identifier Number = This custom property is set equal to the custom file scoped {@link ideCouNum} variable which was just previously set according to the length of the custom file scoped {@link posSnoArr} array at this point in the loop. */
+            ideNum                : ideCouNum,
+            /** Size Number       = This custom property is set equal to a randomly generated number between the custom file scoped {@link aniSetObj} object's custom {@link aniSetObj.sizMaxNum} and {@link aniSetObj.sizMinNum} property values. */
+            sizNum                : ranNumFun( { maxNum : aniSetObj.sizMaxNum, minNum : aniSetObj.sizMinNum, } ),
+            /** Speed Number      = This custom property is set equal to a randomly generated number between the custom file scoped {@link aniSetObj} object's custom {@link aniSetObj.speMaxNum} and {@link aniSetObj.speMinNum} property values. */
+            speNum                : ranNumFun( { maxNum : aniSetObj.speMaxNum, minNum : aniSetObj.speMinNum, } ),
+            /** X Position Number = This custom property is set equal to a randomly generated number between 0 and the custom file scoped {@link conWidNum} variable's value. */
+            xpoNum                : ranNumFun( { maxNum : conWidNum,           minNum : 0, } ),
+            /** Y Position Number = This custom property is set equal to a randomly generated number between 0 and the custom file scoped {@link conHeiNum} variable's value. */
+            ypoNum                : ranNumFun( { maxNum : conHeiNum,           minNum : 0, } ),
+
 
         };
 
+        // #endregion creSnoFunPar
 
-        /** This pushes the {@link PosSnoObj} that is return from calling {@link creSnoFun} into the component scoped {@link posSnoArr} array. After the current loop is finished, {@link aniSnoFun} will be called and this array will be looped over in order to update each snowflake HTML element's position in order to create the snowfall animation effect. */
+
+
+        /** Position Snowflake Array = This standard JS array method pushes the custom {@link PosSnoObj} object that is returned from calling the custom {@link creSnoFun} function, into the custom file scoped {@link posSnoArr} array. After the current loop is finished, the custom {@link aniSnoFun} function will be called and this array will be looped over in order to update each snowflake HTML div element's position which will create the snowfall animation effect. */
         posSnoArr.push( creSnoFun( creSnoFunPar ) );
+
 
     };
 
     // #endregion Create Snowflake Loop
 
 
-    /** This will loop through the component scoped {@link posSnoArr} array, execute each snowflake HTML element's {@link PosSnoFun}, and then recursively call itself on a set interval in order to create the snowfall animation effect. */
+
+    /** Animate Snowflake Function = This custom function will loop through the custom file scoped {@link posSnoArr} array, execute each snowflake HTML div element's custom {@link PosSnoFun} function, and then recursively call itself on a set interval in order to create the snowfall animation effect. */
     aniSnoFun();
 
+
 };
-
-// #endregion Function Body
-
 
 // #endregion iniSnoFun
 
@@ -578,25 +665,24 @@ const iniSnoFun : IniSnoFun = ( { conEle, setObj } ) => {
 
 // #region Function Type Definitions
 
-/** Clear Snowfall Function = This function will grab and turn into an array all snowflake HTML elements there were created from the previous snowfall animation, remove each of them from the DOM, empty the component scoped {@link posSnoArr} array, and then clear the previous animation's interval timeout that is stored in the component scoped {@link setTimFun}. */
+/** Clear Snowfall Function = This custom type stores the type that will be used for the custom {@link cleSnoFun} function. */
 type CleSnoFun = () => void;
 
 // #endregion Function Type Definitions
 
 
-// #region Function Body
 
 /**
  * cleSnoFun = Clear Snowfall Function
- * @see {@link CleSnoFun}
  *
  * @summary
- * This will remove all snowflake HTML elements from the DOM that were
- * created from the previous snowfall animation, empty the component scoped
- * {@link posSnoArr} array and then clear the previous animation's timeout
- * interval that is stored in the component scoped {@link setTimFun}. This
- * function is called inside of {@link useEffect}, which itself is called
- * when the component is first mounted and whenever the window is resized.
+ * This custom function executes the logic that will remove all snowflake HTML
+ * div elements from the DOM that were created from the previous snowfall
+ * animation, empty the custom file scoped {@link posSnoArr} array and then
+ * clear the previous animation's timeout interval that is stored in the custom
+ * file scoped {@link setTimFun} variable. This function is called inside of
+ * the standard React {@link useEffect} hook, which itself is called when the
+ * component is first mounted and whenever the window is resized.
  *
  * The original code for the entire snowfall animation came from a very
  * old Codecademy tutorial (minified code linked below) that is no longer
@@ -604,7 +690,7 @@ type CleSnoFun = () => void;
  * code to work inside of a React functional component using Typescript.
  *
  * @author Original Code <https://s3.amazonaws.com/codecademy-content/courses/holiday-cards/snowfall.min.js>
- * @author z4ntao        <https://github.com/z4nta0>
+ * @author z4nta0        <https://github.com/z4nta0>
  *
  * @param void - This function takes no parameters.
  *
@@ -619,41 +705,54 @@ type CleSnoFun = () => void;
 
 export const cleSnoFun : CleSnoFun = () => {
 
-    /** Snowflake Element Array = This stores an array of all snowflake HTML elements grabbed from the DOM via their shared class name of snowflakes. These snowflake HTML elements were previously created by and attached to the DOM via {@link creSnoFun} when the snowfall animation was initialized by calling {@link iniSnoFun}. */
+
+    /** Snowflake Element Array = This custom variable stores an array of all snowflake HTML div elements contained in the DOM via their shared class name of snowflakes, which were previously created by and attached to the DOM via the custom {@link creSnoFun} function when the snowfall animation was initialized by calling the custom {@link iniSnoFun} function. */
     const snoEleArr : Element[] = Array.from( document.getElementsByClassName( 'snowflakes' ) );
 
 
-    /** This check is needed to prevent errors in case this function is called before any snowflake HTML elements have been created, typically when the component is first mounted. */
+
+    /** This custom conditional statement performs a check that is needed to prevent errors in case this function is called before any snowflake HTML div elements have been created, typically when the component is first mounted. */
     if ( snoEleArr.length === 0 ) {
+
 
         return;
 
+
     };
 
 
-    /** This loops through each snowflake HTML element from the above defined {@link snoEleArr} array. */
+
+    // #region Remove Snowflake Divs Loop
+
+    /** This custom loop steps through each snowflake HTML div element from the above defined custom {@link snoEleArr} array. */
     for ( let indNum : number = 0; indNum < snoEleArr.length; indNum++ ) {
 
-        /** This removes the loop's current snowflake HTML element that is stored in the {@link snoEleArr} array from the DOM. */
+
+        /** Snowflake Element Array = This standard JS array method removes the loop's current snowflake HTML div element that is stored in the custom {@link snoEleArr} array from the DOM. */
         snoEleArr[ indNum ].remove();
+
 
     };
 
+    // #endregion Remove Snowflake Divs Loop
 
-    /** This empties the component scoped {@link posSnoArr} array that contains each snowflake HTML element's {@link PosSnoFun}. */
+
+
+    /** Position Snowflake Array = This standard JS array property empties the custom file scoped {@link posSnoArr} array that contains each snowflake HTML div element's custom {@link PosSnoFun} function. */
     posSnoArr.length = 0;
 
+
     
-    /** This clears the setTimeout function stored in the component scoped {@link setTimFun} that is used for recursively calling the {@link aniSnoFun} function in order to update all snowflake HTML elements' positions which creates the snowfall animation effect. */
+    /** Clear Timeout = This standard JS function clears the setTimeout function that is stored in the custom file scoped {@link setTimFun} variable that is used for recursively calling the custom {@link aniSnoFun} function in order to update all snowflake HTML div elements' positions which creates the snowfall animation effect. */
     clearTimeout( setTimFun );
 
+
 };
-
-// #endregion Function Body
-
 
 // #endregion cleSnoFun
 
 
 
 export default iniSnoFun;
+
+

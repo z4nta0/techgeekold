@@ -1,9 +1,11 @@
 
 // #region Imports
 
-import   React      from 'react';                  /** React is the core library for building user interfaces. */
-import   styles     from './ConPagCom.module.css'; /** This imports the custom CSS module for styling the ConPagCom component. */
-import { useState } from 'react';                  /** This is the React hook that allows functional components to have state variables. */
+import React  from 'react';                  /** This import is the standard React core library, providing the core functionality for building React components and managing their lifecycle. */
+import styles from './ConPagCom.module.css'; /** This import is the custom CSS file that contains all of the styling declarations for this component. */
+
+
+import { useState } from 'react'; /** This import is the standard React hook that enables state management in functional components. */
 
 // #endregion Imports
 
@@ -12,9 +14,9 @@ import { useState } from 'react';                  /** This is the React hook th
 // #region Props Type Definitions
 
 /**
- * ConPagComPro = Contact Page Component Props will store all of the props that will be used in the ConPagCom component.
+ * Contact Page Component Props = This custom type stores the types that will be used for the custom props that are passed into this custom component.
  *
- * @property namStr = Name String will store the site/app name that will be displayed in various parts of the site/app.
+ * @property namStr = Name String custom property stores the type that will be used for the custom {@link appNamStr} variable.
  *
 */
 
@@ -28,28 +30,31 @@ type ConPagComPro = {
 
 
 
+// #region ConPagCom
+
 /**
  * ConPagCom = Contact Page Component
  *
  * @summary
- * This functional component will be responsible for returning all of the HTML
- * content for the Contact page. This form is more of a mock form as it does
- * not actually send the data anywhere and instead just logs it to the console
- * as well as showing an alert. This was just for personal learning purposes to
- * gain some experience with using React state handling alongside TypeScript in
- * a more hands on way (instead of just tutorials) before moving on to my next
- * project that will use these concepts in a more practical, realistic way.
+ * This custom functional component executes the logic of and renders the JSX
+ * of the Contact page. The form functionality and returned JSX act as more of
+ * a mock form, as it does not actually send the data offsite anywhere and
+ * instead just logs it to the console as well as showing an alert to the user.
+ * This was just for personal learning purposes to gain some experience with
+ * using React state handling alongside TypeScript in a more hands on way
+ * (instead of just tutorials) before moving on to my next project that will
+ * use these concepts in a more practical, realistic way.
  *
- * @author z4ntao <https://github.com/z4nta0>
+ * @author z4nta0 <https://github.com/z4nta0>
  * 
- * @param props.namStr - {@link ConPagComPro.namStr}
+ * @param props.namStr - {@link appNamStr}
  * 
  * @returns A React JSX element representing the ConPagCom component.
  * @see {@link conPagComJsx}
  * 
  * @example
  * ```tsx
- * <ConPagCom /> // => <form id='conForEle'> ... </form>
+ * <ConPagCom /> // => conPagComJsx
  * ```
  *
 */
@@ -57,14 +62,13 @@ type ConPagComPro = {
 function ConPagCom ( props : ConPagComPro ) : React.ReactElement {
 
 
-
     // #region Component Scoped Variables
 
 
     // #region Props Variables
 
-    /** Name String  = {@link ConPagComPro.namStr} */
-    const { namStr } = props;
+    /** App Name String      = This custom variable stores the site/app name that will be displayed in various parts of the site/app. */
+    const appNamStr : string = props.namStr;
 
     // #endregion Props Variables
 
@@ -81,12 +85,15 @@ function ConPagCom ( props : ConPagComPro ) : React.ReactElement {
 
     // #region Type Definitions
 
+
+    // #region ForDatObj
+
     /**
-     * ForDatObj = Form Data Object will store all of the input and textarea HTML element values from the contact form.
-     *
-     * @property namStr = Name String will store the namInpEle input's value.
-     * @property emaStr = Email String will store the emaInpEle input's value.
-     * @property mesStr = Message String will store the mesTeaEle textarea's value.
+     * Form Data Object = This custom type stores the types that will be used for the custom {@link iniStaObj} and {@link forDatObj} objects.
+     * 
+     * @property namStr = Name String custom property stores the type that will be used for the custom {@link iniStaObj.namStr} and {@link forDatObj.namStr} properties.
+     * @property emaStr = Email String custom property stores the type that will be used for the custom {@link iniStaObj.emaStr} and {@link forDatObj.emaStr} properties.
+     * @property mesStr = Message String custom property stores the type that will be used for the custom {@link iniStaObj.mesStr} and {@link forDatObj.mesStr} properties.
      *
     */
 
@@ -98,25 +105,47 @@ function ConPagCom ( props : ConPagComPro ) : React.ReactElement {
 
     };
 
-    /** Set Form Data Object = This is the type definition for the set state function that will be used to update the {@link forDatObj} state variable. */
-    type SetForDatObj        = React.Dispatch< React.SetStateAction< ForDatObj > >;
 
-    // #endregion Type Definitions
+    /** Initial State Object = This custom type stores the custom {@link ForDatObj} type. I mirrored this type here because I wanted to make it clear in the declared types below that this object represents the initial state for the custom {@link forDatObj} state variable. */
+    type IniStaObj           = ForDatObj;
 
 
-    // #region State Initialization
+    /**
+     * Initial State Object = This custom object stores all of the custom input and textarea HTML element values from the contact form.
+     *
+     * @property namStr = Name String custom property stores the namInpEle HTML input element's value.
+     * @property emaStr = Email String custom property stores the emaInpEle HTML input element's value.
+     * @property mesStr = Message String custom property stores the mesTeaEle HTML textarea element's value.
+     *
+    */
 
-    /** Form Data Object              = This state variable will storea the current values of the contact form's inputs and textarea HTML elements. */
-    /** Set Form Data Object          = This stores the set state function that will be used to update the {@link forDatObj} state variable. */
-    const [ forDatObj, setForDatObj ] = useState< ForDatObj >({
+    const iniStaObj : IniStaObj = {
 
         namStr : '',
         emaStr : '',
         mesStr : '',
 
-    }) as [ ForDatObj, SetForDatObj ];
+    };
 
-    // #endregion State Initialization
+    // #endregion ForDatObj
+
+
+    /** Set Form Data Object      = This custom type stores the type that will be used for the custom {@link setForDatObj} state setter function. */
+    type SetForDatObj             = React.Dispatch< React.SetStateAction< IniStaObj > >;
+    /** Use State Function Return = This custom type stores the types that will be returned from the standard React {@link useState} hook. */
+    type UseStaFunRet             = [ ForDatObj, SetForDatObj ];
+
+    // #endregion Type Definitions
+
+
+
+    // #region State Initialization
+
+    /** Form Data Object                             = This custom object stores the custom state variable that mirrors the custom {@link iniStaObj} object and is returned by the standard React {@link useState} hook. */
+    /** Set Form Data Object                         = This custom variable stores the custom state setter function returned by the standard React {@link useState} hook, and it is used to execute updates to the custom {@link forDatObj} state variable whenever the form inputs change. */
+    const [ forDatObj, setForDatObj ] : UseStaFunRet = useState< ForDatObj >( iniStaObj );
+
+    // #endregion Form State Initialization
 
 
     // #endregion State Variables
@@ -128,33 +157,33 @@ function ConPagCom ( props : ConPagComPro ) : React.ReactElement {
 
     // #region Function Type Definitions
 
-    /** Input/Textarea Change Event Class = This will store an event class instance for either an input or textarea HTML element that will be passed to the {@link handleInpChaFun} function. */
-    type InpTeaChaEveCla                  = React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
-    /** Handle Input Change Function      = This function will handle input and textarea change events and set the {@link forDatObj} state variable accordingly. */
+    /** Input/Textarea Change Event Class = This custom type stores the type that will be used for the standard event parameter inside of the custom {@link handleInpChaFun} function. */
+    type InpTeaChaEveCla                  = React.ChangeEvent< HTMLInputElement | HTMLTextAreaElement >;
+    /** Handle Input Change Function      = This custom type stores the type that will be used for the custom {@link handleInpChaFun} function. */
     type HandleInpChaFun                  = ( event : InpTeaChaEveCla ) => void;
 
     // #endregion Function Type Definitions
 
 
-    // #region Function Body
 
     /**
      * handleInpChaFun = Handle Input Change Function
      * @see {@link HandleInpChaFun}
      *
      * @summary
-     * This will handle the contact form's input change events from the form's
-     * name input, email input and message textarea HTML elements. It will
-     * first grab the id and value property values from the event class
-     * instance of whichever input or textarea HTML element triggered the
-     * event. Then it will match the id value to one of the state object's
-     * property names before it then uses said value to immutably set the
-     * correct state object property value using the previously declared
-     * event's value variable.
+     * This custom function executes the handling of the form's input and
+     * textarea on change events for the name input, email input and message
+     * textarea HTML elements. It will first grab the id and value property
+     * values from the event class instance of whichever input or textarea HTML
+     * element triggered the event. Then it will match the id property value to
+     * one of the custom {@link forDatObj} state variable's property names, before it
+     * then uses said property name to immutably set the correct state variable
+     * property value using the previously declared on change event's value
+     * variable.
      *
-     * @author z4ntao <https://github.com/z4nta0>
+     * @author z4nta0 <https://github.com/z4nta0>
      *
-     * @param event - This is the JS event class instance for an input or textarea change event.
+     * @param event - This is the JS event class instance for an input or textarea on change event.
      * @see {@link InpTeaChaEveCla}
      *
      * @returns This function does not return anything.
@@ -169,27 +198,32 @@ function ConPagCom ( props : ConPagComPro ) : React.ReactElement {
     const handleInpChaFun : HandleInpChaFun = ( event ) => {
 
 
-        /** Identifier      = This stores id property's value string of the input or textarea HTML element that triggered the change event. */
-        /** Value           = This stores value property's value string of the input or textarea HTML element that triggered the change event. */
-        const { id, value } = event.target as { id : string; value : string; };
+        // #region Function Variables
 
-        /** Input Name String    = This stores the state property name that needs to be updated by matching it to the name of the input or textarea HTML element that it corresponds to. */
+        /** Identifier       = This custom variable stores the event class instance's id property value string of the input or textarea HTML element that triggered the on change event. */
+        const id    : string = event.target.id;
+        /** Value            = This custom variable stores the event class instance's value property value string of the input or textarea HTML element that triggered the on change event. */
+        const value : string = event.target.value;
+
+
+
+        /** Input Name String    = This custom variable stores the custom {@link forDatObj} state variable's property name that is intended to be updated by matching it to the event class instance's id property value of the input or textarea HTML element that triggered the on change event and that it corresponds to. */
         const inpNamStr : string = id === 'namInpEle' ? 'namStr' : id === 'emaInpEle' ? 'emaStr' : 'mesStr';
 
+        // #endregion Function Variables
 
-        /** Set Form Data Object will immutably set the {@link forDatObj} state variable using the input or textarea HTML element's value. */
+
+
+        /** Set Form Data Object = This custom function will immutably set the intended state variable property value using the input or textarea HTML element's value. */
         setForDatObj({
 
-            ...forDatObj,
-            [inpNamStr] : value
+            ...forDatObj,         /** ...Form Data Object = This custom property stores the non updated state variable properties and values by using the spread operator on the existing form data object in order to immutably update the state variable. */
+            [ inpNamStr ] : value /** Input Name String   = This custom property stores the custom {@link forDatObj} state variable's property that corresponds to the input or textarea HTML element's value that triggered the on change event. */
 
         });
 
 
     };
-
-    // #endregion Function Body
-
 
     // #endregion handleInpChaFun
 
@@ -200,32 +234,31 @@ function ConPagCom ( props : ConPagComPro ) : React.ReactElement {
 
     // #region Function Type Definitions
 
-    /** Form Submit Event Class     = This will store the event class instance that is triggered when submitting an HTML form element. */
-    type ForSubEveCla               = React.FormEvent<HTMLFormElement>;
-    /** Handle Submit Form Function = This function will handle the form submission event and process the form data accordingly. This would normally handle sending the form's data to a backend service or API, but is instead just logged to the console along with sending an alert because this is just a demonstration. */
+    /** Form Submit Event Class     = This custom type stores the type that will be used for the standard event parameter inside of the custom {@link handleSubForFun} function. */
+    type ForSubEveCla               = React.FormEvent< HTMLFormElement >;
+    /** Handle Submit Form Function = This custom type stores the type that will be used for the custom {@link handleSubForFun} function. */
     type HandleSubForFun            = ( event : ForSubEveCla ) => void;
 
     // #endregion Function Type Definitions
 
 
-    // #region Function Body
 
     /**
      * handleSubForFun = Handle Submit Form Function
      * @see {@link HandleSubForFun}
      *
      * @summary
-     * This will handle the contact form's submission event from the ConPagCom
-     * component's HTML form element.Normally, this would involve sending the
-     * {@link forDatObj} state variable's data to a backend service or API, but
-     * since this is just a demonstration, it will instead just log said data
-     * to the console and show an alert thanking the user for their submission.
-     * After which it will then reset the form fields by setting the
-     * {@link forDatObj} state variable back to its initial state.
+     * This custom function executes the handling the form's on submit event.
+     * Normally, this would involve sending the custom {@link forDatObj} state variable
+     * variable's data to a backend service or API, but since this is just for
+     * personal learning reasons, it will instead just log said data to the
+     * console and show an alert thanking the user for their submission. After
+     * which it will then reset the form fields by setting the
+     * {@link forDatObj} state variable variable back to its initial state.
      *
-     * @author z4ntao <https://github.com/z4nta0>
+     * @author z4nta0 <https://github.com/z4nta0>
      *
-     * @param event - This is the JS event class instance for submitting an HTML form element.
+     * @param event - This is the JS event class instance for a form on submit event.
      * @see {@link ForSubEveCla}
      *
      * @returns This function does not return anything.
@@ -240,34 +273,28 @@ function ConPagCom ( props : ConPagComPro ) : React.ReactElement {
     const handleSubForFun : HandleSubForFun = ( event ) => {
 
 
-        /** This will prevent the default browser page reload behavior when submitting the form. */
+        /** Event Prevent Default = This standard JS class instance method executes the prevention of the default browser page reload behavior when submitting a form. */
         event.preventDefault();
 
 
-        /** This will log the form data to the console for demonstration purposes, and to check that the data was handled properly. For a real contact form this would typically involve sending the data to a backend service or API instead of logging it to the console, although logging it to the console would still not be a bad idea just to double check that the process is working correctly. */
+
+        /** Console Log = This standard JS Web API function executes the logging of the state variable variable to the console for demonstration purposes, and to check that the data was handled properly. For a real form this would typically involve sending said data to a backend service or API instead of logging it to the console, although logging it to the console would still not be a bad idea just to double check that the process is working correctly. */
         console.log( 'Form data submitted: ', forDatObj );
 
 
-        /** This will show an alert thanking the user for their submission. For a real contact form this would probably instead replace the form with new HTML content instead of using an alert. */
+
+        /** Alert = This standard JS Window object method executes the pop up modal in order to thank the user for their form submission. For a real form this would instead replace the form with new HTML content instead of using an alert. */
         alert( `Thank you for your message, ${ forDatObj.namStr }!` );
 
 
-        /** Set Form Data Object will reset the form fields by setting the {@link forDatObj} state variable back to its initial state. For a real contact form this should still be done. */
-        setForDatObj({
 
-            namStr : '',
-            emaStr : '',
-            mesStr : '',
-
-        });
+        /** Set Form Data Object = This custom function executes the resetting the form fields by setting the state variable variable back to its initial state. For a real form this should still be done, even if the form is replaced with new HTML content. */
+        setForDatObj( iniStaObj );
 
 
     };
 
-    // #region Function Body
-
-
-    // #endregion handleSubForEve
+    // #endregion handleSubForFun
 
 
     // #endregion Form Handling
@@ -276,33 +303,34 @@ function ConPagCom ( props : ConPagComPro ) : React.ReactElement {
 
     // #region Return Statement
 
-
-    /** Contact Page Component Javascript XML = This stores the HTML-like code that the Contact Page component will render when called. I prefer to store this in a variable so that the variable can be referenced inside of comments in the other sections of the component. */
+    /** Contact Page Component Javascript XML = This custom variable stores the HTML like code that this component will render when called by its parent component. I prefer to store this in a variable before being returned so that it can be referenced inside of comments in the other sections of this component. */
     const conPagComJsx : React.ReactElement   = (
 
 
-        // #region Component Form Element
+        // #region Contact Form Element
 
-       <  form id='comForEle' className={ styles.componentForm } onSubmit={ handleSubForFun } > { /* Component Form Element = This is the main form for the Contact Page Component, and it is the component wrapping HTML element since React requires components to return a single root element. */ }
+       <  form id='conForEle' className={ styles.contactForm } onSubmit={ handleSubForFun } > { /* Contact Form Element = This custom form element is the root HTML element and container for this component since React requires the JSX to return a single root element. */ }
 
 
             { /** Start Form Fieldset Element  */ }
 
-            <  fieldset id='forFieEle' className={ styles.formFieldset } > { /* Form Fieldset Element = This is the main fieldset for the Contact Page Component form, containing the legend, all form inputs and the submit button. */ }
+            <  fieldset id='forFieEle' className={ styles.formFieldset } > { /* Form Fieldset Element = This custom fieldset element is the container for the legend, name, email, message and submit divs. */ }
 
 
-                < legend id='fieLegEle' className={ styles.fieldsetLegend } >{ namStr } Contact Form</ legend > { /* Fieldset Legend Element = This is the legend for the main (and only) fieldset of the Contact Page Component form, serving as a sort of main heading but with special placement on the form's top left border. */ }
+                < legend id='fieLegEle' className={ styles.fieldsetLegend } >{ appNamStr } Contact Form</ legend > { /* Fieldset Legend Element = This custom legend element is the container for the main heading (or title) of the form. */ }
 
 
 
-                <  div id='forDivEle' className={ styles.formDiv } >
+                <  div id='forDivEle' className={ styles.formDiv } > { /* Form Div Element = This custom div element is the container for the name, email, message and submit divs. */ }
                 
+
                     { /** Start Name Div Element  */ }
 
-                    <  div id='namDivEle' className={ styles.nameDiv } > { /* Name Div Element = This is the div containing the name label and input for the Contact Page Component form. */ }
+                    <  div id='namDivEle' className={ styles.nameDiv } > { /* Name Div Element = This custom div element is the container for the name's label and input. */ }
 
 
-                        < label id='namLabEle' className={ styles.nameLabel } htmlFor='namInpEle' >Name :</ label > { /* Name Label Element = This is the label for the name input in the Contact Page Component form. */ }
+                        < label id='namLabEle' className={ `${styles.nameLabel} ${styles.formLabels}` } htmlFor='namInpEle' >Name :</ label > { /* Name Label Element = This custom label element is the container for the name's label text. */ }
+
 
 
                         { /** Start Name Input Element  */ }
@@ -310,7 +338,7 @@ function ConPagCom ( props : ConPagComPro ) : React.ReactElement {
                         < input
 
                             id='namInpEle'
-                            className={ styles.nameInput }
+                            className={ `${styles.nameInput} ${styles.formInputs}` }
                             name='name'
                             onChange={ handleInpChaFun }
                             placeholder='John Smith'
@@ -318,7 +346,7 @@ function ConPagCom ( props : ConPagComPro ) : React.ReactElement {
                             type='text'
                             value={ forDatObj.namStr }
 
-                        /> { /* Name Input Element = This is the input for the name in the Contact Page Component form. */ }
+                        /> { /* Name Input Element = This custom input element is the container for the name's input field. */ }
 
                         { /** End Name Input Element  */ }
 
@@ -331,10 +359,11 @@ function ConPagCom ( props : ConPagComPro ) : React.ReactElement {
 
                     { /** Start Email Div Element  */ }
 
-                    <  div id='emaDivEle' className={ styles.emailDiv } > { /* Email Div Element = This is the div containing the email label and input for the Contact Page Component form. */ }
+                    <  div id='emaDivEle' className={ styles.emailDiv } > { /* Email Div Element = This custom div element is the container for the email's label and input. */ }
 
 
-                        < label id='emaLabEle' className={ styles.emailLabel } htmlFor='emaInpEle' >Email :</ label > { /* Email Label Element = This is the label for the email input in the Contact Page Component form. */ }
+                        < label id='emaLabEle' className={ `${styles.emailLabel} ${styles.formLabels}` } htmlFor='emaInpEle' >Email :</ label > { /* Email Label Element = This custom label element is the container for the email's label text. */ }
+
 
 
                         { /** Start Email Input Element  */ }
@@ -342,7 +371,7 @@ function ConPagCom ( props : ConPagComPro ) : React.ReactElement {
                         < input
 
                             id='emaInpEle'
-                            className={ styles.emailInput }
+                            className={ `${styles.emailInput} ${styles.formInputs}` }
                             name='email'
                             onChange={ handleInpChaFun }
                             placeholder='myemail@email.com'
@@ -350,7 +379,7 @@ function ConPagCom ( props : ConPagComPro ) : React.ReactElement {
                             type='email'
                             value={ forDatObj.emaStr }
 
-                        /> { /* Email Input Element = This is the input for the email in the Contact Page Component form. */ }
+                        /> { /* Email Input Element = This custom input element is the container for the email's input field. */ }
 
                         { /** End Email Input Element  */ }
 
@@ -363,10 +392,11 @@ function ConPagCom ( props : ConPagComPro ) : React.ReactElement {
 
                     { /** Start Message Div Element  */ }
 
-                    <  div id='mesDivEle' className={ styles.messageDiv } > { /* Message Div Element = This is the div containing the message label and textarea for the Contact Page Component form. */ }
+                    <  div id='mesDivEle' className={ styles.messageDiv } > { /* Message Div Element = This custom div element is the container for the message's label and textarea. */ }
 
 
-                        < label id='mesLabEle' className={ styles.messageLabel } htmlFor='mesTeaEle' >Message :</ label > { /* Message Label Element = This is the label for the message textarea in the Contact Page Component form. */ }
+                        < label id='mesLabEle' className={ `${styles.messageLabel} ${styles.formLabels}` } htmlFor='mesTeaEle' >Message :</ label > { /* Message Label Element = This custom label element is the container for the message's label text. */ }
+
 
 
                         { /** Start Message Textarea Element  */ }
@@ -374,7 +404,7 @@ function ConPagCom ( props : ConPagComPro ) : React.ReactElement {
                         < textarea
 
                             id='mesTeaEle'
-                            className={ styles.messageTextarea }
+                            className={ `${styles.messageTextarea} ${styles.formInputs}` }
                             maxLength={ 1000 }
                             name='message'
                             onChange={ handleInpChaFun }
@@ -383,7 +413,7 @@ function ConPagCom ( props : ConPagComPro ) : React.ReactElement {
                             spellCheck={ true }
                             value={ forDatObj.mesStr }
 
-                        /> { /* Message Textarea Element = This is the textarea for the message in the Contact Page Component form. */ }
+                        /> { /* Message Textarea Element = This custom textarea element is the container for the message's textarea field. */ }
 
                         { /** End Message Textarea Element  */ }
 
@@ -396,14 +426,17 @@ function ConPagCom ( props : ConPagComPro ) : React.ReactElement {
 
                     { /** Start Submit Div Element  */ }
 
-                    <  div id='subDivEle' className={ styles.submitDiv } > { /* Submit Div Element = This is the div containing the submit button for the Contact Page Component form. */ }
+                    <  div id='subDivEle' className={ styles.submitDiv } > { /* Submit Div Element = This custom div element is the container for the submit button. */ }
 
-                        < button id='subButEle' className={ styles.submitButton } type='submit' >Submit</ button > { /* Submit Button Element = This is the submit button for the Contact Page Component form. */ }
+
+                        < button id='subButEle' className={ styles.submitButton } type='submit' >Submit</ button > { /* Submit Button Element = This custom button element is the container for the submit button's text. */ }
+
 
                     </ div >
 
                     { /** End Submit Div Element  */ }
-                
+
+
                 </ div >
 
 
@@ -414,19 +447,22 @@ function ConPagCom ( props : ConPagComPro ) : React.ReactElement {
 
         </ form >
 
-        // #endregion Component Form Element
+        // #endregion Contact Form Element
 
 
     );
 
 
-    return conPagComJsx;
 
+
+    return conPagComJsx;
 
     // #endregion Return Statement
 
 
 };
+
+// #endregion ConPagCom
 
 
 
