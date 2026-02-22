@@ -297,12 +297,14 @@
 
     /* #region Selector Scoped Custom Properties */
 
-    --sno-img-rot : rotateZ( calc( pow( var( --golden-rati ), 4 ) * 1deg ) ); /** Snowfall Image Rotate ~= 6.854deg = This custom property stores the rotation of this selector's transform using the specified global scoped prime custom property, with the idea behind this being that a small rotation adds a touch of whimsy which pairs well with the fun, festive theme of this component. */
+    --sno-img-drs : drop-shadow( 0 var( --y-offse-lar ) var( --blu-rad-med ) var( --col-tex-sha ) ); /** Snowfall Image Drop Shadow        = This custom property stores all of the drop shadow properties using the specified global scoped derivative and global scoped prime custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+    --sno-img-rot : rotateZ( calc( pow( var( --golden-rati ), 4 ) * 1deg ) );                        /** Snowfall Image Rotate ~= 6.854deg = This custom property stores the rotation of this selector's transform using the specified global scoped prime custom property, with the idea behind this being that a small rotation adds a touch of whimsy which pairs well with the fun, festive theme of this component. */
 
     /* #endregion Selector Scoped Custom Properties */
 
 
     bottom    : 0;                    /** This value was chosen to be used to position this selector in the very bottom left hand corner of the viewport, with the idea behind this being that this digital card works best in fullscreen. */
+    filter    : var( --sno-img-drs ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
     left      : 0;                    /** This value was chosen to be used to position this selector in the very bottom left hand corner of the viewport, with the idea behind this being that this digital card works best in fullscreen. */
     margin    : var( --sel-sha-mar ); /** This value was chosen to be used according to the details of the specified component scoped custom property. */
     position  : absolute;             /** This value was chosen to be used to position this selector in the very bottom left hand corner of the viewport, with the idea behind this being that this digital card works best in fullscreen. */
@@ -313,7 +315,7 @@
 
 /* #endregion Snowfall Image */
 
-
+ 
 
 /* #region Snowfall Paragraph */
 
