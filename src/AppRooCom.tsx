@@ -1,13 +1,13 @@
 
 // #region Imports
 
-import About         from './components/AboPagCom/AboPagCom.tsx';     /** This import is the custom component that will return the About page when navigated to by React Router. */
-import ChristmasCard from './components/ChristmasCard/ChrCarCom.tsx'; /** This import is the custom component that will return the Christmas Card page when navigated to by React Router. */
-import Contact       from './components/ConPagCom/ConPagCom.tsx';     /** This import is the custom component that will return the Contact page when navigated to by React Router. */
-import FooBarCom     from './components/FooBarCom/FooBarCom.tsx';     /** This import is the custom component that will return the Footer Bar, which is rendered on every page and contains the copyright information. */
-import Home          from './components/HomPagCom/HomPagCom.tsx';     /** This import is the custom component that will return the Home page when navigated to by React Router. */
-import NavBarComCon  from './components/NavBar/NavBarComCon.tsx';     /** This import is the custom component that will return the Navigation Bar, which is rendered on every page and contains the links to navigate between pages. */
-import styles        from './App.module.css';                         /** This import is the custom CSS file that contains all of the styling declarations for this component. */
+import About         from './components/AboPagCom/AboPagCom.tsx'; /** This import is the custom component that will return the About page when navigated to by React Router. */
+import ChristmasCard from './components/ChrCarCom/ChrCarCom.tsx'; /** This import is the custom component that will return the Christmas Card page when navigated to by React Router. */
+import Contact       from './components/ConPagCom/ConPagCom.tsx'; /** This import is the custom component that will return the Contact page when navigated to by React Router. */
+import FooBarCom     from './components/FooBarCom/FooBarCom.tsx'; /** This import is the custom component that will return the Footer Bar, which is rendered on every page and contains the copyright information. */
+import Home          from './components/HomPagCom/HomPagCom.tsx'; /** This import is the custom component that will return the Home page when navigated to by React Router. */
+import NavBarComCon  from './components/NavBar/NavBarComCon.tsx'; /** This import is the custom component that will return the Navigation Bar, which is rendered on every page and contains the links to navigate between pages. */
+import styles        from './AppRooCom.module.css';               /** This import is the custom CSS file that contains all of the styling declarations for this component. */
 
 
 import { BrowserRouter } from 'react-router-dom'; /** This import is the standard React Router element for the DOM's routing components, using the HTML5 history API (pushState, replaceState, etc.) to keep the UI in sync with the URL resulting in clean, standard URLs. */
@@ -15,7 +15,7 @@ import { Route         } from 'react-router-dom'; /** This import is the standar
 import { Routes        } from 'react-router-dom'; /** This import is the standard React Router element that acts as a container for all route definitions, ensuring only one route is rendered at a time. */
 
 
-import { type RooStaObj } from './store.tsx';          /** This import is the custom type definition for the entire state object of the custom React Redux Toolkit store, which is inferred by the store's standard getState method. */
+import { type RooStaObj } from './store.ts';           /** This import is the custom type definition for the entire state object of the custom React Redux Toolkit store, which is inferred by the store's standard getState method. */
 import { type UseAppDis } from './hooks/useAppDis.ts'; /** This import is the custom type definition for the custom React hook that acts as a wrapper around the standard React Redux store dispatch function. */
 import { type UseAppThu } from './hooks/useAppThu.ts'; /** This import is the custom type definition for the custom React hook that acts as a wrapper around the standard React Redux store dispatch function, this one designed specifically for working with thunk actions. */
 

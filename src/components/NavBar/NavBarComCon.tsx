@@ -1,15 +1,15 @@
 
 // #region Imports
 
-import NavBarCom from './NavBarCom';     /** This import is the custom component that contains the JSX for the navigation bar. */
-import React     from 'react';           /** This import is the standard React core library, providing the core functionality for building React components and managing their lifecycle. */
-import store     from '../../store.tsx'; /** This import is the custom React Redux store that is created using the standard React Redux Toolkit configureStore function. */
+import NavBarCom from './NavBarCom';    /** This import is the custom component that contains the JSX for the navigation bar. */
+import React     from 'react';          /** This import is the standard React core library, providing the core functionality for building React components and managing their lifecycle. */
+import store     from '../../store.ts'; /** This import is the custom React Redux store that is created using the standard React Redux Toolkit configureStore function. */
 
 
-import { aboCouRed } from './clickCountArrSlice.tsx'; /** This import is the custom reducer function for managing the click count number state array value for the About page link. */
-import { conCouRed } from './clickCountArrSlice.tsx'; /** This import is the custom reducer function for managing the click count number state array value for the Contact page link. */
-import { homCouRed } from './clickCountObjSlice.tsx'; /** This import is the custom reducer function for managing the click count number state object value for the Home page logo link. */
-import { logCouRed } from './clickCountObjSlice.tsx'; /** This import is the custom reducer function for managing the click count number state object value for the Home page link. */
+import { aboCouRed } from './cliCouArrSlice.ts'; /** This import is the custom reducer function for managing the click count number state array value for the About page link. */
+import { conCouRed } from './cliCouArrSlice.ts'; /** This import is the custom reducer function for managing the click count number state array value for the Contact page link. */
+import { homCouRed } from './cliCouObjSlice.ts'; /** This import is the custom reducer function for managing the click count number state object value for the Home page logo link. */
+import { logCouRed } from './cliCouObjSlice.ts'; /** This import is the custom reducer function for managing the click count number state object value for the Home page link. */
 
 
 import { type UseAppDis } from '../../hooks/useAppDis.ts'; /** This import is the custom type definition for the custom React hook that acts as a wrapper around the standard React Redux store dispatch function. */

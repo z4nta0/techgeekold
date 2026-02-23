@@ -2,8 +2,8 @@
 // #region Imports
 
 import                  './index.css';          /** This import is the root CSS file where all non module CSS is placed, typically used for global styles that apply throughout the entire application. */
-import   App       from './App.tsx';            /** This import is the root App component that contains the core routing structure of the application, acting as the container for the route, routes, footer, navigation links and the components that are rendered based on the current URL via React Router. */
-import   store     from './store.tsx';          /** This import is the custom React Redux store that is created using the standard React Redux Toolkit configureStore function. */
+import   AppRooCom from './AppRooCom.tsx';      /** This import is the root App component that contains the core routing structure of the application, acting as the container for the route, routes, footer, navigation links and the components that are rendered based on the current URL via React Router. */
+import   store     from './store.ts';           /** This import is the custom React Redux store that is created using the standard React Redux Toolkit configureStore function. */
 import   useAppDis from './hooks/useAppDis.ts'; /** This import is the custom React hook that provides access to the standard React Redux store dispatch function with proper TypeScript typing. */
 import   useAppThu from './hooks/useAppThu.ts'; /** This import is the custom React hook that provides access to the standard React Redux store dispatch function with proper TypeScript typing, specifically for working with thunk actions. */
 
@@ -83,16 +83,16 @@ const rooDomNodRender : RooDomNodRender = () => {
             <  Provider store={ store } > { /** Provider = This element is the standard React Redux component that makes the Redux store available to any nested components that need to access the React Redux store. */ }
 
 
-                { /** Start App Element */ }
+                { /** Start AppRooCom Element */ }
 
-                < App
+                < AppRooCom
                     disFun={ useAppDis }
                     namStr='Tech Geek'
                     staObj={ store.getState() }
                     thuFun={ useAppThu }
-                /> { /** App = This element is the standard root component that contains the core routing structure of the application, acting as the container for the routes, route, footer, navigation links and the components that are rendered based on the current URL via React Router. */ }
+                /> { /** App Root Component = This element is the standard root component that contains the core routing structure of the application, acting as the container for the routes, route, footer, navigation links and the components that are rendered based on the current URL via React Router. */ }
 
-                { /** End App Element */ }
+                { /** End AppRooCom Element */ }
 
 
             </ Provider >

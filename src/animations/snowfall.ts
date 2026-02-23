@@ -1,8 +1,8 @@
 
 // #region Imports
 
-import hasKeyFun from '../utilities/hasKeyFun.tsx'; /** This import is the custom has key function utility that will perform a type guard check in order to see if an object has a specific key and is required for nested type check narrowing by Typescript. */
-import ranNumFun from '../utilities/ranNumFun.tsx'; /** This import is the custom random number function utility that will generate a random number between a provided minimum and maximum value. */
+import hasKeyFun from '../utilities/hasKeyFun.ts'; /** This import is the custom has key function utility that will perform a type guard check in order to see if an object has a specific key and is required for nested type check narrowing by Typescript. */
+import ranNumFun from '../utilities/ranNumFun.ts'; /** This import is the custom random number function utility that will generate a random number between a provided minimum and maximum value. */
 
 // #endregion Imports
 

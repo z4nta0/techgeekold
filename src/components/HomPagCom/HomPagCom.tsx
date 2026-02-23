@@ -8,15 +8,15 @@ import useAppSel from '../../hooks/useAppSel.ts'; /** This import is the custom 
 import viteLogo  from '../../assets/vite.svg';    /** This import is the Vite logo image that is used in this component to display the official Vite logo. */
 
 
-import { decNumRed    } from '../../features/counterSlice.tsx'; /** This import is the custom counter state number reducer's action creator function that will be used to dispatch an action to decrement the counter number state in the this component. */
-import { getMocDatJso } from '../../api/dataSlice.tsx';         /** This import is the custom mock data JSON reducer's thunk action creator function that will be used to dispatch an action to retrieve the mock data JSON state in the this component. */
-import { incNumRed    } from '../../features/counterSlice.tsx'; /** This import is the custom counter state number reducer's action creator function that will be used to dispatch an action to increment the counter number state in the this component. */
-import { useEffect    } from 'react';                           /** This import is the standard React hook that enables side effects for components. */
+import { decNumRed    } from '../../features/couStaNumSlice.ts'; /** This import is the custom counter state number reducer's action creator function that will be used to dispatch an action to decrement the counter number state in the this component. */
+import { getMocDatJso } from '../../api/mocDatJsoSlice.ts';      /** This import is the custom mock data JSON reducer's thunk action creator function that will be used to dispatch an action to retrieve the mock data JSON state in the this component. */
+import { incNumRed    } from '../../features/couStaNumSlice.ts'; /** This import is the custom counter state number reducer's action creator function that will be used to dispatch an action to increment the counter number state in the this component. */
+import { useEffect    } from 'react';                            /** This import is the standard React hook that enables side effects for components. */
 
 
 import { type Action        } from '@reduxjs/toolkit';         /** This import is the standard Typescript definition for an object used in React Redux management patterns that describes an intention to change the application state. */
 import { type Dispatch      } from '@reduxjs/toolkit';         /** This import is the standard Typescript definition for a standard React Redux Toolkit dispatch function that accepts an action as an argument and returns void. */
-import { type RooStaObj     } from '../../store.tsx';          /** This import is the custom type definition for the entire state object of the custom React Redux Toolkit store, which is inferred by the store's standard getState method. */
+import { type RooStaObj     } from '../../store.ts';           /** This import is the custom type definition for the entire state object of the custom React Redux Toolkit store, which is inferred by the store's standard getState method. */
 import { type ThunkDispatch } from '@reduxjs/toolkit';         /** This import is the standard Typescript definition for an interface provided by the standard React Redux thunk middleware that describes a dispatch function capable of accepting both standard React Redux action objects and thunk functions. */
 import { type UseAppDis     } from '../../hooks/useAppDis.ts'; /** This import is the custom type definition for the custom React hook that acts as a wrapper around the standard React Redux store dispatch function. */
 import { type UseAppThu     } from '../../hooks/useAppThu.ts'; /** This import is the custom type definition for the custom React hook that acts as a wrapper around the standard React Redux store dispatch function, this one designed specifically for working with thunk actions. */
