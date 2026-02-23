@@ -1,7 +1,18 @@
 
+/* #region Navbar Header */
+
+.navbarHeader { /** Navbar Header = This custom selector contains the custom .navbarNav selector, is the custom #rooDivEle selector's first grid row, all three grid columns and is this component's root selector. */
+
+    grid-area : navbarNav; /** This value was chosen to be used to place this selector within the custom #rooDivEle selector grid area's first row, all three columns. */
+    height    : 100%;      /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom #rooDivEle selector. */
+
+}
+
+
+
 /* #region Navbar Nav */
 
-.navbarNav { /** Navbar Nav = This custom selector contains the custom .navbarDiv selector, is the custom #rooSecEle selector's first grid row, all three grid columns and is this component's root selector. */
+.navbarNav { /** Navbar Nav = This custom selector contains the custom .navbarDiv selector and is the custom .navbarHeader selector's only child. */
 
     /* #region Selector Scoped Custom Properties */
 
@@ -16,11 +27,10 @@
     background-color      : var( --col-nav-bac ); /** This value was chosen to be used according to the details of the specified global scoped prime custom property. */
     column-gap            : var( --col-gap-max ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property, with the idea behind this being that these gaps need to align precisely with the site/app's main grid column gaps. */
     display               : grid;                 /** This value was chosen to be used as the preferred layout method, with the idea behind this being that it provides powerful element placement and sizing capabilities. */
-    grid-area             : navbarNav;            /** This value was chosen to be used to place this selector within the custom #rooSecEle selector grid area's first row, all three columns. */
     grid-template-areas   : var( --nab-nav-gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
     grid-template-columns : var( --nab-nav-gtc ); /** This value was chosen to be used according to the details of the specified selector scoped custom property, with the idea behind this being that these columns need to align precisely with the site/app's main grid columns. */
-    grid-template-rows    : 100%;                 /** This value was chosen to be used to fill columns using all available vertical space as defined by its parent, the custom #rooSecEle selector. */
-    height                : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom #rooSecEle selector. */
+    grid-template-rows    : 100%;                 /** This value was chosen to be used to fill columns using all available vertical space as defined by its parent, the custom .navbarHeader selector. */
+    height                : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .navbarHeader selector. */
 
 }
 
@@ -31,7 +41,7 @@
 @media ( max-width : 842.999px ) { /** Golden Ratio to the 14th Power = This custom media query selector targets all viewport widths below 843.000px. */
 
 
-    .navbarNav { /** Navbar Nav = This custom selector contains the custom .navbarDiv selector, is the custom #rooSecEle selector's first grid row, all three grid columns and is this component's root selector. */
+    .navbarNav { /** Navbar Nav = This custom selector contains the custom .navbarDiv selector, and is the custom .navbarHeader selector's only child. */
 
 
         /* #region Selector Scoped Custom Properties */
@@ -229,5 +239,8 @@
 
 
 /* #endregion Navbar Nav */
+
+
+/* #endregion Navbar Header */
 
 

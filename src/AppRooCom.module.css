@@ -1,11 +1,11 @@
 
 /* #region App Main */
 
-.appMain { /** App Main = This custom selector contains the standard React Router Routes selector where all routed components will be rendered and is the custom #rooSecEle selector's second row, second column. */
+.appMain { /** App Main = This custom selector contains the standard React Router Routes selector where all routed components will be rendered and is the custom #rooDivEle selector's second row, second column. */
 
-    grid-area : appMain; /** This value was chosen to be used to place this selector within the custom #rooSecEle selector grid area's second row, second column (for small viewports it will be the second row, 100% width column). */
-    height    : 100%;    /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom #rooSecEle selector. */
-    width     : 100%;    /** This value was chosen to be used to fill all available horizontal space as defined by its parent, the custom #rooSecEle selector. */
+    grid-area : appMain; /** This value was chosen to be used to place this selector within the custom #rooDivEle selector grid area's second row, second column (for small viewports it will be the second row, 100% width column). */
+    height    : 100%;    /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom #rooDivEle selector. */
+    width     : 100%;    /** This value was chosen to be used to fill all available horizontal space as defined by its parent, the custom #rooDivEle selector. */
 
 }
 

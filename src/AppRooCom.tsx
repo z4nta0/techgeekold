@@ -74,8 +74,8 @@ function AppRooCom( props : AppRooComPro ) : React.ReactElement {
 
     // #region Props Variables
 
-    /** Name String       = This custom variable stores the site/app name that will be displayed in various parts of the site/app. */
-    const namStr : string = props.namStr;
+    /** App Name String      = This custom variable stores the site/app name that will be displayed in various parts of the site/app. */
+    const appNamStr : string = props.namStr;
 
     // #endregion Props Variables
 
@@ -97,7 +97,7 @@ function AppRooCom( props : AppRooComPro ) : React.ReactElement {
 
             { /* Start NavBarComCon Element */ }
 
-            < NavBarComCon namStr={ namStr } /> { /* Navigation Bar Component Container = This custom element is the container for the Navigation Bar Component and contains all of the logic and JSX for said component. */ }
+            < NavBarComCon namStr={ appNamStr } /> { /* Navigation Bar Component Container = This custom element is the container for the Navigation Bar Component and contains all of the logic and JSX for said component. */ }
 
             { /* End NavBarComCon Element */ }
 
@@ -113,9 +113,9 @@ function AppRooCom( props : AppRooComPro ) : React.ReactElement {
                 <  Routes > { /** Routes = This standard React Router element is the container for all of the Route elements, and it ensures only the first matching route is rendered based on the current URL path. */ }
 
 
-                    < Route path='/'              element={ < Home    namStr={ namStr } /> } /> { /** Route -> Home = This standard React Router element will render the Home page component. */ }
-                    < Route path='/about'         element={ < About   namStr={ namStr } /> } /> { /** Route -> About         = This standard React Router element will render the About page component.          */ }
-                    < Route path='/contact'       element={ < Contact namStr={ namStr } /> } /> { /** Route -> Contact       = This standard React Router element will render the Contact page component.        */ }
+                    < Route path='/'              element={ < Home    namStr={ appNamStr } /> } /> { /** Route -> Home = This standard React Router element will render the Home page component. */ }
+                    < Route path='/about'         element={ < About   namStr={ appNamStr } /> } /> { /** Route -> About         = This standard React Router element will render the About page component.          */ }
+                    < Route path='/contact'       element={ < Contact namStr={ appNamStr } /> } /> { /** Route -> Contact       = This standard React Router element will render the Contact page component.        */ }
                     < Route path='/christmascard' element={ < ChristmasCard             /> } /> { /** Route -> ChristmasCard = This standard React Router element will render the Christmas Card page component. */ }
 
 
@@ -132,7 +132,7 @@ function AppRooCom( props : AppRooComPro ) : React.ReactElement {
 
             { /* Start FooBarCom Element */ }
 
-            < FooBarCom namStr='Tech Geek' /> { /* Footer Bar Component = This custom element is the container for all of the logic and JSX of the Footer Bar Component. */ }
+            < FooBarCom namStr={ appNamStr } /> { /* Footer Bar Component = This custom element is the container for all of the logic and JSX of the Footer Bar Component. */ }
 
             { /* End FooBarCom Element */ }
 

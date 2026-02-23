@@ -80,10 +80,10 @@ const stoOptObj : StoOptObj = {
 
 
 
-// #region Store
+// #region appStoIns
 
 /**
- * store = Store
+ * appStoIns = App Store Instance
  *
  * @summary
  * This custom object stores the result of a custom React Redux store object
@@ -113,17 +113,17 @@ const stoOptObj : StoOptObj = {
  *
 */
 
-const store = configureStore( stoOptObj );
+const appStoIns = configureStore( stoOptObj );
 
 
 
 /** Root State Object = This custom type stores the standard Typescript inference of the entire custom state object from the store itself and is exported for use as a type check anywhere that the state object is passed as a prop. Please refer to the individual slice state objects for more specific information on their respective parts of the state. */
-export type RooStaObj = ReturnType< typeof store.getState >;
+export type RooStaObj = ReturnType< typeof appStoIns.getState >;
 
-// #endregion Store
+// #endregion appStoIns
 
 
 
-export default store;
+export default appStoIns;
 
 

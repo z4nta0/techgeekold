@@ -100,7 +100,7 @@
 
 /* #region Hacked Section */
 
-.hackedSection { /** Hacked section = This custom selector contains the custom .hackedH1 and .hackedParagraph selectors and is the second child of the custom .christmasCardDiv selector. */
+.hackedSection { /** Hacked section = This custom selector contains the custom .hackedHeader selector and is the second child of the custom .christmasCardDiv selector. */
 
     /* #region Selector Scoped Custom Properties */
 
@@ -123,6 +123,17 @@
     text-align          : center;               /** This value was chosen to be used to horizontally center all of this selector's text, with the idea behind this being that it is more aesthetically pleasing when centered. */
     top                 : 0;                    /** This value was chosen to be used to position this selector in the very top left hand corner of the viewport, with the idea behind this being that this digital card works best in fullscreen. */
     width               : 100vw;                /** This value was chosen to be used to set the width to 100% of the viewport width, with the idea behind this being that this digital card works best in fullscreen. */
+
+}
+
+
+
+/* #region Hacked Header */
+
+.hackedHeader { /** Hacked Header = This custom selector contains the custom .hackedH1 and .hackedParagraph selectors and is the only child of the custom .hackedSection selector. */
+
+    height : 100%; /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .hackedSection selector. */
+    width  : 100%; /** This value was chosen to be used to fill all available horizontal space as defined by its parent, the custom .hackedSection selector. */
 
 }
 
@@ -201,6 +212,9 @@
 /* #endregion Hacked Paragraph */
 
 
+/* #endregion Hacked Header */
+
+
 /* #endregion Hacked Section */
 
 
@@ -252,6 +266,18 @@
 }
 
 /* #endregion Media Query for Small Viewport Widths */
+
+
+
+/* #region Snowfall Header */
+
+.snowfallHeader { /** Snowfall Header = This custom selector contains the custom .snowfallH1, .snowfallImg and .snowfallParagraph selectors and is the only child of the custom .snowfallSection selector. */
+
+    height : 100%; /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .snowfallSection selector. */
+    width  : 100%; /** This value was chosen to be used to fill all available horizontal space as defined by its parent, the custom .snowfallSection selector. */
+
+}
+
 
 
 
@@ -388,6 +414,9 @@
 
 
 /* #endregion Snowfall Paragraph */
+
+
+/* #endregion Snowfall Header */
 
 
 /* #endregion Snowfall Section */

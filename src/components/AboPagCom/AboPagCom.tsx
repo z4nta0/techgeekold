@@ -83,19 +83,25 @@ function AboPagCom ( props : AboPagComPro ) : React.ReactElement {
         <  section id='aboSecEle' className={ styles.aboutSection } > { /* About Section Element = This custom section element is the root HTML element and container for this component since React requires the JSX to return a single root element. */ }
 
 
-            < h1 id='aboHe1Ele' className={ styles.aboutH1 } >{ appNamStr } About Page</ h1 > { /* About H1 Element = This custom h1 element is the container for the title text of the page. */ }
+            <  header id='aboHeaEle' className={ styles.aboutHeader } > { /* About Header Element = This custom header element is just a a semantic container. */ }
+
+
+                < h1 id='aboHe1Ele' className={ styles.aboutH1 } >{ appNamStr } About Page</ h1 > { /* About H1 Element = This custom h1 element is the container for the title text of the page. */ }
 
 
 
-            { /** Start About Paragraph Element */ }
+                { /** Start About Paragraph Element */ }
 
-            < p  id='aboParEle' className={ styles.aboutParagraph } > { /* About Paragraph Element = This custom paragraph element is the container for the text explaining the purpose and background of this site/app. */ }
+                < p  id='aboParEle' className={ styles.aboutParagraph } > { /* About Paragraph Element = This custom paragraph element is the container for the text explaining the purpose and background of this site/app. */ }
 
-                This is the { appNamStr }'s About page. This is more of a test site/app project more than an actual, useful site/app. I followed along with some Codecademy tutorials about React, React Router, Redux and Typescript to create the skeleton. Then after finishing said tutorials I went through and customized all of the resulting code in order to get a feel for how I wanted to handle all of the various parts (structure, commenting, formatting, variable names, CSS styling, etc...) before moving on to the real, production ready site/app that I will be building next.
+                    This is the { appNamStr }'s About page. This is more of a test site/app project more than an actual, useful site/app. I followed along with some Codecademy tutorials about React, React Router, Redux and Typescript to create the skeleton. Then after finishing said tutorials I went through and customized all of the resulting code in order to get a feel for how I wanted to handle all of the various parts (structure, commenting, formatting, variable names, CSS styling, etc...) before moving on to the real, production ready site/app that I will be building next.
 
-            </ p >
+                </ p >
 
-            { /** End About Paragraph Element */ }
+                { /** End About Paragraph Element */ }
+
+
+            </ header >
 
 
         </ section >
