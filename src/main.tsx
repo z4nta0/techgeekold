@@ -1,11 +1,9 @@
 
 // #region Imports
 
-import                  './index.css';          /** This import is the root CSS file where all non module CSS is placed, typically used for global styles that apply throughout the entire application. */
-import   AppRooCom from './AppRooCom.tsx';      /** This import is the root App component that contains the core routing structure of the application, acting as the container for the route, routes, footer, navigation links and the components that are rendered based on the current URL via React Router. */
-import   store     from './store.ts';           /** This import is the custom React Redux store that is created using the standard React Redux Toolkit configureStore function. */
-import   useAppDis from './hooks/useAppDis.ts'; /** This import is the custom React hook that provides access to the standard React Redux store dispatch function with proper TypeScript typing. */
-import   useAppThu from './hooks/useAppThu.ts'; /** This import is the custom React hook that provides access to the standard React Redux store dispatch function with proper TypeScript typing, specifically for working with thunk actions. */
+import                './index.css';     /** This import is the root CSS file where all non module CSS is placed, typically used for global styles that apply throughout the entire application. */
+import AppRooCom from './AppRooCom.tsx'; /** This import is the root App component that contains the core routing structure of the application, acting as the container for the route, routes, footer, navigation links and the components that are rendered based on the current URL via React Router. */
+import store     from './store.ts';      /** This import is the custom React Redux store that is created using the standard React Redux Toolkit configureStore function. */
 
 
 import { createRoot } from 'react-dom/client'; /** This import is the new standard React DOM 18 API for creating a root DOM node to render the application, replacing the older ReactDOM.render method and provides better performance and support for concurrent features. */
@@ -85,12 +83,7 @@ const rooDomNodRender : RooDomNodRender = () => {
 
                 { /** Start AppRooCom Element */ }
 
-                < AppRooCom
-                    disFun={ useAppDis }
-                    namStr='Tech Geek'
-                    staObj={ store.getState() }
-                    thuFun={ useAppThu }
-                /> { /** App Root Component = This element is the standard root component that contains the core routing structure of the application, acting as the container for the routes, route, footer, navigation links and the components that are rendered based on the current URL via React Router. */ }
+                < AppRooCom namStr='Tech Geek' /> { /** App Root Component = This element is the standard root component that contains the core routing structure of the application, acting as the container for the routes, route, footer, navigation links and the components that are rendered based on the current URL via React Router. */ }
 
                 { /** End AppRooCom Element */ }
 

@@ -6,7 +6,6 @@ import { useDispatch } from 'react-redux'; /** This import is the standard React
 
 import { type Dispatch      } from '@reduxjs/toolkit'; /** This import is the standard Typescript definition for a standard React Redux Toolkit dispatch function that accepts an action as an argument and returns void. */
 import { type UnknownAction } from '@reduxjs/toolkit'; /** This import is the standard Typescript definition for an object that has a type property of type string and all other fields are of the TypeScript unknown type. */
-import { type UseDispatch   } from 'react-redux';      /** This import is the standard Typescript definition for the standard React Redux useDispatch hook. */
 
 // #endregion Imports
 
@@ -18,7 +17,7 @@ import { type UseDispatch   } from 'react-redux';      /** This import is the st
 // #region useAppDis Variables
 
 /** Use App Dispatch  = This custom type stores the type that will be used for the custom {@link useAppDis} variable and is exported for use in any component that said variable is required. */
-export type UseAppDis = UseDispatch< Dispatch< UnknownAction > >;
+export type UseAppDis = Dispatch< UnknownAction >;
 
 // #endregion useAppDis Variables
 
@@ -51,7 +50,7 @@ export type UseAppDis = UseDispatch< Dispatch< UnknownAction > >;
  * ```
 */
 
-const useAppDis : UseAppDis = useDispatch.withTypes();
+const useAppDis = useDispatch.withTypes< UseAppDis >();
 
 // #endregion useAppDis
 

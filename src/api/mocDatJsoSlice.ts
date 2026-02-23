@@ -65,7 +65,7 @@ const payCreFun : PayCreFun = async () => {
     /** Fetch Response Object   = This custom type stores the standard return type that will be returned by the standard JS Fetch API call to the mock backend data.json file. */
     type FetResObj              = Awaited< Promise< Response > >;
     /** Fetch Response Object   = This custom variable stores the standard Response object that is returned from the standard JS Fetch API call, in this case it is a call to the mock backend data.json file. */
-    const fetResObj : FetResObj = await fetch( '../../mock-backend/data.json' );
+    const fetResObj : FetResObj = await fetch( '../../mock-backend/mocDatObj.json' );
     /** JSON Data Object        = This custom JSON object stores the parsed JSON data from the previously defined fetch response object, which will mirror the structure of the custom {@link MocDatJso} type. */
     const jsoDatObj : MocDatJso = await fetResObj.json();
 

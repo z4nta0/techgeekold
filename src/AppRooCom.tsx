@@ -14,11 +14,6 @@ import { BrowserRouter } from 'react-router-dom'; /** This import is the standar
 import { Route         } from 'react-router-dom'; /** This import is the standard React Router element that is used to declaratively render specific UI components when the application's current URL matches a defined path, acting as a bridge between the URL and the user interface. */
 import { Routes        } from 'react-router-dom'; /** This import is the standard React Router element that acts as a container for all route definitions, ensuring only one route is rendered at a time. */
 
-
-import { type RooStaObj } from './store.ts';           /** This import is the custom type definition for the entire state object of the custom React Redux Toolkit store, which is inferred by the store's standard getState method. */
-import { type UseAppDis } from './hooks/useAppDis.ts'; /** This import is the custom type definition for the custom React hook that acts as a wrapper around the standard React Redux store dispatch function. */
-import { type UseAppThu } from './hooks/useAppThu.ts'; /** This import is the custom type definition for the custom React hook that acts as a wrapper around the standard React Redux store dispatch function, this one designed specifically for working with thunk actions. */
-
 // #endregion Imports
 
 
@@ -28,19 +23,13 @@ import { type UseAppThu } from './hooks/useAppThu.ts'; /** This import is the cu
 /**
  * App Root Component Props = This custom type stores the types that will be used for the custom props that are passed into this custom component.
  *
- * @property disFun = Dispatch Function custom property stores the type that will be used for the custom {@link disFun} variable.
  * @property namStr = Name String custom property stores the type that will be used for the custom {@link namStr} variable.
- * @property staObj = State Object custom property stores the type that will be used for the custom {@link staObj} variable.
- * @property thuFun = Thunk Function custom property stores the type that will be used for the custom {@link thuFun} variable.
  *
 */
 
 type AppRooComPro = {
 
-    disFun : UseAppDis;
     namStr : string;
-    staObj : RooStaObj;
-    thuFun : UseAppThu;
 
 };
 
@@ -65,10 +54,7 @@ type AppRooComPro = {
  * @author React Router <https://reactrouter.com/>
  * @author z4nta0       <https://github.com/z4nta0>
  * 
- * @param props.disFun - {@link disFun}
  * @param props.namStr - {@link namStr}
- * @param props.staObj - {@link staObj}
- * @param props.thuFun - {@link thuFun}
  * 
  * @returns A React JSX element representing the App component.
  * @see {@link appRooComJsx}
@@ -88,14 +74,8 @@ function AppRooCom( props : AppRooComPro ) : React.ReactElement {
 
     // #region Props Variables
 
-    /** Dispatch Function    = This custom variable stores the custom React hook from the utilities directory that wraps the standard React Redux store dispatch function. */
-    const disFun : UseAppDis = props.disFun;
-    /** Name String          = This custom variable stores the site/app name that will be displayed in various parts of the site/app. */
-    const namStr : string    = props.namStr;
-    /** State Object         = This custom variable stores the entire state object of the site/app as inferred by the standard React Redux store getState method. */
-    const staObj : RooStaObj = props.staObj;
-    /** Thunk Function       = This custom variable stores the custom React hook from the utilities directory that wraps the standard React Redux store dispatch function but with proper typing specifically for thunk actions. */
-    const thuFun : UseAppThu = props.thuFun;
+    /** Name String       = This custom variable stores the site/app name that will be displayed in various parts of the site/app. */
+    const namStr : string = props.namStr;
 
     // #endregion Props Variables
 
@@ -117,7 +97,7 @@ function AppRooCom( props : AppRooComPro ) : React.ReactElement {
 
             { /* Start NavBarComCon Element */ }
 
-            < NavBarComCon namStr={ namStr } disFun={ disFun } /> { /* Navigation Bar Component Container = This custom element is the container for the Navigation Bar Component and contains all of the logic and JSX for said component. */ }
+            < NavBarComCon namStr={ namStr } /> { /* Navigation Bar Component Container = This custom element is the container for the Navigation Bar Component and contains all of the logic and JSX for said component. */ }
 
             { /* End NavBarComCon Element */ }
 
@@ -133,7 +113,7 @@ function AppRooCom( props : AppRooComPro ) : React.ReactElement {
                 <  Routes > { /** Routes = This standard React Router element is the container for all of the Route elements, and it ensures only the first matching route is rendered based on the current URL path. */ }
 
 
-                    < Route path='/'              element={ < Home    namStr={ namStr } staObj={ staObj } disFun={ disFun } thuFun={ thuFun } /> } /> { /** Route -> Home = This standard React Router element will render the Home page component. */ }
+                    < Route path='/'              element={ < Home    namStr={ namStr } /> } /> { /** Route -> Home = This standard React Router element will render the Home page component. */ }
                     < Route path='/about'         element={ < About   namStr={ namStr } /> } /> { /** Route -> About         = This standard React Router element will render the About page component.          */ }
                     < Route path='/contact'       element={ < Contact namStr={ namStr } /> } /> { /** Route -> Contact       = This standard React Router element will render the Contact page component.        */ }
                     < Route path='/christmascard' element={ < ChristmasCard             /> } /> { /** Route -> ChristmasCard = This standard React Router element will render the Christmas Card page component. */ }
