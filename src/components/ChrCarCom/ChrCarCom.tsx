@@ -1,23 +1,23 @@
 
 // #region Imports
 
-import iniSnoFun from '../../animations/snowfall.tsx'; /** This import is the custom function that will initialize and start the snowfall animation effect. */
-import React     from 'react';                         /** This import is the standard React core library, providing the core functionality for building React components and managing their lifecycle. */
-import snowman   from '../../assets/snowman.png';      /** This import is the custom snowman image asset that will be used in the .snowfallSection HTML element. */
-import styles    from './ChrCarCom.module.css';        /** This import is the custom CSS file that contains all of the styling declarations for this component. */
-import useWinSiz from '../../hooks/useWinSiz.tsx';     /** This import is the custom React hook that will provide the current window viewport dimensions and will also be used to trigger the useEffect hook on window resize events, as well as altering certain animation settings based on how small or big its dimensions are. */
+import iniSnoFun from '../../animations/snowfall.ts'; /** This import is the custom function that will initialize and start the snowfall animation effect. */
+import React     from 'react';                        /** This import is the standard React core library, providing the core functionality for building React components and managing their lifecycle. */
+import snowman   from '../../assets/snowman.png';     /** This import is the custom snowman image asset that will be used in the .snowfallSection HTML element. */
+import styles    from './ChrCarCom.module.css';       /** This import is the custom CSS file that contains all of the styling declarations for this component. */
+import useWinSiz from '../../hooks/useWinSiz.ts';     /** This import is the custom React hook that will provide the current window viewport dimensions and will also be used to trigger the useEffect hook on window resize events, as well as altering certain animation settings based on how small or big its dimensions are. */
 
 
-import { cleSnoFun          } from '../../animations/snowfall.tsx'; /** This import is the custom function that will clear and stop the snowfall animation effect. */
-import { gsap               } from 'gsap';                          /** This import is the standard Green Socks Animation Platform core library. */
-import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';       /** This import is the standard Green Socks Animation Platform plugin that will handle text scrambling animations. */
-import { SplitText          } from 'gsap/SplitText';                /** This import is the standard Green Socks Animation Platform plugin that will handle text splitting animations (single character, word or line animations). */
-import { useEffect          } from 'react';                         /** This import is the standard React hook that enables side effects for components. */
-import { useGSAP            } from '@gsap/react';                   /** This import is the standard Green Socks Animation Platform custom React hook that will handle GSAP functionality in React components. */
-import { useLocation        } from 'react-router-dom';              /** This import is the standard React Router DOM hook that will provide access to the current URL properties and parameters. */
+import { cleSnoFun          } from '../../animations/snowfall.ts'; /** This import is the custom function that will clear and stop the snowfall animation effect. */
+import { gsap               } from 'gsap';                         /** This import is the standard Green Socks Animation Platform core library. */
+import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';      /** This import is the standard Green Socks Animation Platform plugin that will handle text scrambling animations. */
+import { SplitText          } from 'gsap/SplitText';               /** This import is the standard Green Socks Animation Platform plugin that will handle text splitting animations (single character, word or line animations). */
+import { useEffect          } from 'react';                        /** This import is the standard React hook that enables side effects for components. */
+import { useGSAP            } from '@gsap/react';                  /** This import is the standard Green Socks Animation Platform custom React hook that will handle GSAP functionality in React components. */
+import { useLocation        } from 'react-router-dom';             /** This import is the standard React Router DOM hook that will provide access to the current URL properties and parameters. */
 
 
-import { type WinSizObj } from '../../hooks/useWinSiz.tsx'; /** This import is the custom type definition for the custom state variable that is generated from the custom useWinSiz React Hook and stores the current viewport dimensions. */
+import { type WinSizObj } from '../../hooks/useWinSiz.ts'; /** This import is the custom type definition for the custom state variable that is generated from the custom useWinSiz React Hook and stores the current viewport dimensions. */
 
 // #endregion Imports
 
