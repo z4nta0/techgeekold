@@ -1,9 +1,9 @@
 
 // #region Imports
 
-import NavBarCom from './NavBarCom';    /** This import is the custom component that contains the JSX for the navigation bar. */
-import React     from 'react';          /** This import is the standard React core library, providing the core functionality for building React components and managing their lifecycle. */
-import store     from '../../store.ts'; /** This import is the custom React Redux store that is created using the standard React Redux Toolkit configureStore function. */
+import NavBarCom from './NavBarCom';              /** This import is the custom component that contains the JSX for the navigation bar. */
+import React     from 'react';                    /** This import is the standard React core library, providing the core functionality for building React components and managing their lifecycle. */
+import appStoIns from '../../appStoIns.ts';       /** This import is the custom React Redux store that is created using the standard React Redux Toolkit configureStore function. */
 import useAppDis from '../../hooks/useAppDis.ts'; /** This import is the custom React hook that provides access to the standard React Redux store dispatch function with proper TypeScript typing. */
 
 
@@ -151,8 +151,8 @@ function NavBarComCon ( props : NavBarComConPro ) : React.ReactElement {
 
 
 
-        /** About Count Number   = This custom variable stores the state array's about count variable which is equal to the number of times that the navigation bar's About page link has been clicked. These variables must use the standard React Redux Toolkit {@link store.getState} method instead of the {@link staObj} prop or it will use an outdated value. Also, the useSelector method is not needed here because this is simply for console logging purposes and is not for use directly in a React component or hook (i.e. no rerendering is required). */
-        const aboCouNum : number = store.getState().cliCouArr[0];
+        /** About Count Number   = This custom variable stores the state array's about count variable which is equal to the number of times that the navigation bar's About page link has been clicked. The useSelector method is not needed here because this is simply for console logging purposes and is not for use directly in a React component or hook (i.e. no rerendering is required). */
+        const aboCouNum : number = appStoIns.getState().cliCouArr[0];
 
 
 
@@ -216,8 +216,8 @@ function NavBarComCon ( props : NavBarComConPro ) : React.ReactElement {
 
 
 
-        /** Contact Count Number = This custom variable stores the state array's contact count variable which is equal to the number of times that the navigation bar's Contact page link has been clicked. These variables must use the standard React Redux Toolkit {@link store.getState} method instead of the {@link staObj} prop or it will use an outdated value. Also, the useSelector method is not needed here because this is simply for console logging purposes and is not for use directly in a React component or hook (i.e. no rerendering is required). */
-        const conCouNum : number = store.getState().cliCouArr[1];
+        /** Contact Count Number = This custom variable stores the state array's contact count variable which is equal to the number of times that the navigation bar's Contact page link has been clicked. The useSelector method is not needed here because this is simply for console logging purposes and is not for use directly in a React component or hook (i.e. no rerendering is required). */
+        const conCouNum : number = appStoIns.getState().cliCouArr[1];
 
 
 
@@ -281,8 +281,8 @@ function NavBarComCon ( props : NavBarComConPro ) : React.ReactElement {
 
 
 
-        /** Home Count Number    = This custom variable stores the state object's home count variable which is equal to the number of times that the navigation bar's Home page link has been clicked. These variables must use the standard React Redux Toolkit {@link store.getState} method instead of the {@link staObj} prop or it will use an outdated value. Also, the useSelector method is not needed here because this is simply for console logging purposes and is not for use directly in a React component or hook (i.e. no rerendering is required). */
-        const homCouNum : number = store.getState().cliCouObj.homCouNum;
+        /** Home Count Number    = This custom variable stores the state object's home count variable which is equal to the number of times that the navigation bar's Home page link has been clicked. The useSelector method is not needed here because this is simply for console logging purposes and is not for use directly in a React component or hook (i.e. no rerendering is required). */
+        const homCouNum : number = appStoIns.getState().cliCouObj.homCouNum;
 
 
 
@@ -346,8 +346,8 @@ function NavBarComCon ( props : NavBarComConPro ) : React.ReactElement {
 
 
 
-        /** Logo Count Number    = This custom variable stores the state object's logo count variable which is equal to the number of times that the navigation bar's logo Home page link has been clicked. These variables must use the standard React Redux Toolkit {@link store.getState} method instead of the {@link staObj} prop or it will use an outdated value. Also, the useSelector method is not needed here because this is simply for console logging purposes and is not for use directly in a React component or hook (i.e. no rerendering is required). */
-        const logCouNum : number = store.getState().cliCouObj.logCouNum;
+        /** Logo Count Number    = This custom variable stores the state object's logo count variable which is equal to the number of times that the navigation bar's logo Home page link has been clicked. The useSelector method is not needed here because this is simply for console logging purposes and is not for use directly in a React component or hook (i.e. no rerendering is required). */
+        const logCouNum : number = appStoIns.getState().cliCouObj.logCouNum;
 
 
 

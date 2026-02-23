@@ -115,57 +115,63 @@ function NavBarCom ( props : NavBarComPro ) : React.ReactElement {
     const navBarComJsx : React.ReactElement     = (
 
 
-        // #region Navbar Nav Element
+        // #region Navbar Header Element
 
-        < nav id='navNavEle' className={ styles.navbarNav } > { /* Navbar Nav Element = This custom nav element is the root HTML element and container for this component since React requires the JSX to return a single root element. */ }
+        <  header id='navHeaEle' className={ styles.navbarHeader } > { /* Navbar Header Element = This custom header element is the root HTML element, semantic container and root container for this component since React requires the JSX to return a single root element. */ }
+        
 
-
-            { /** Start Navbar Div Element */ }
-
-            < div id='navDivEle' className={ styles.navbarDiv } > { /* Navbar Div Element = This custom div element is the container for the logo Home page NavLink and for the ul that contains all of the other navbar NavLinks. */ }
+            < nav id='navNavEle' className={ styles.navbarNav } > { /* Navbar Nav Element = This custom nav element is a semantic container and will define the root grid for this component. */ }
 
 
-                { /** Start Logo Link Element */ }
+                { /** Start Navbar Div Element */ }
 
-                < Link to='/' id='logLinEle' className={ styles.logoLink } onClick={ onClickLog } > { /* Logo Link Element = This standard React Router element is the container for the logo image and text. */ }
-
-
-                    < img id='logImgEle_NavBarCom' className={ styles.logoImg } src={ reactLogo } alt='React logo' /> { /* Logo Image Element for Navigation Bar Component = This custom img element is the container for the official React logo image that acts as a link to the Home page. The id property uses a modifier in order to distinguish it from any other logo image elements that may be placed across the site/app, such as the one on the Home page. */ }
+                < div id='navDivEle' className={ styles.navbarDiv } > { /* Navbar Div Element = This custom div element is the container for the logo Home page NavLink and for the ul that contains all of the other navbar NavLinks. */ }
 
 
+                    { /** Start Logo Link Element */ }
 
-                    < p   id='logParEle'           className={ styles.logoParagraph } >{ appNamStr }</ p > { /* Logo Paragraph Element = This custom paragraph element is the container for the text of the site/app name that acts as a link to the Home page. */ }
+                    < Link to='/' id='logLinEle' className={ styles.logoLink } onClick={ onClickLog } > { /* Logo Link Element = This standard React Router element is the container for the logo image and text. */ }
 
 
-                </ Link >
-
-                { /** End Logo Link Element */ }
+                        < img id='logImgEle_NavBarCom' className={ styles.logoImg } src={ reactLogo } alt='React logo' /> { /* Logo Image Element for Navigation Bar Component = This custom img element is the container for the official React logo image that acts as a link to the Home page. The id property uses a modifier in order to distinguish it from any other logo image elements that may be placed across the site/app, such as the one on the Home page. */ }
 
 
 
-                { /** Start Navbar Unordered List Element */ }
-
-                < ul id='navUliEle' className={ styles.navbarUl } > { /* Navbar Unordered List Element = This custom ul element is the container for the li and anchors of the Home, About and Contact pages. */ }
+                        < p   id='logParEle'           className={ styles.logoParagraph } >{ appNamStr }</ p > { /* Logo Paragraph Element = This custom paragraph element is the container for the text of the site/app name that acts as a link to the Home page. */ }
 
 
-                    < li id='homLisEle' className={ `${ styles.navbarListItems } ${ styles.homeLi    }` } >< NavLink to='/'       id='homNalEle' className={ `${ styles.navbarNavLinks } ${ styles.homeNavLink    }` } onClick={ onClickHom } >Home</    NavLink ></ li > { /* Home List Element    & Home NavLink Element    = These custom li and standard React Router NavLink elements are the containers for the Home page link. These links will automatically have an .active class (properties and their values are defined in the main App.css file) applied to them by React Router when the current route matches the 'to' attribute. */ }
-                    < li id='aboLisEle' className={ `${ styles.navbarListItems } ${ styles.aboutLi   }` } >< NavLink to='about'   id='aboNalEle' className={ `${ styles.navbarNavLinks } ${ styles.aboutNavLink   }` } onClick={ onClickAbo } >About</   NavLink ></ li > { /* About List Element   & About NavLink Element   = These custom li and standard React Router NavLink elements are the containers for the About page link. These links will automatically have an .active class (properties and their values are defined in the main App.css file) applied to them by React Router when the current route matches the 'to' attribute. */ }
-                    < li id='conLisEle' className={ `${ styles.navbarListItems } ${ styles.contactLi }` } >< NavLink to='contact' id='conNalEle' className={ `${ styles.navbarNavLinks } ${ styles.contactNavLink }` } onClick={ onClickCon } >Contact</ NavLink ></ li > { /* Contact List Element & Contact NavLink Element = These custom li and standard React Router NavLink elements are the containers for the Contact page link. These links will automatically have an .active class (properties and their values are defined in the main App.css file) applied to them by React Router when the current route matches the 'to' attribute. */ }
+                    </ Link >
+
+                    { /** End Logo Link Element */ }
 
 
-                </ ul >
 
-                { /** End Navbar Unordered List Element */ }
+                    { /** Start Navbar Unordered List Element */ }
 
-
-            </ div >
-
-            { /** End Navbar Div Element */ }
+                    < ul id='navUliEle' className={ styles.navbarUl } > { /* Navbar Unordered List Element = This custom ul element is the container for the li and anchors of the Home, About and Contact pages. */ }
 
 
-        </ nav >
+                        < li id='homLisEle' className={ `${ styles.navbarListItems } ${ styles.homeLi    }` } >< NavLink to='/'       id='homNalEle' className={ `${ styles.navbarNavLinks } ${ styles.homeNavLink    }` } onClick={ onClickHom } >Home</    NavLink ></ li > { /* Home List Element    & Home NavLink Element    = These custom li and standard React Router NavLink elements are the containers for the Home page link. These links will automatically have an .active class (properties and their values are defined in the main App.css file) applied to them by React Router when the current route matches the 'to' attribute. */ }
+                        < li id='aboLisEle' className={ `${ styles.navbarListItems } ${ styles.aboutLi   }` } >< NavLink to='about'   id='aboNalEle' className={ `${ styles.navbarNavLinks } ${ styles.aboutNavLink   }` } onClick={ onClickAbo } >About</   NavLink ></ li > { /* About List Element   & About NavLink Element   = These custom li and standard React Router NavLink elements are the containers for the About page link. These links will automatically have an .active class (properties and their values are defined in the main App.css file) applied to them by React Router when the current route matches the 'to' attribute. */ }
+                        < li id='conLisEle' className={ `${ styles.navbarListItems } ${ styles.contactLi }` } >< NavLink to='contact' id='conNalEle' className={ `${ styles.navbarNavLinks } ${ styles.contactNavLink }` } onClick={ onClickCon } >Contact</ NavLink ></ li > { /* Contact List Element & Contact NavLink Element = These custom li and standard React Router NavLink elements are the containers for the Contact page link. These links will automatically have an .active class (properties and their values are defined in the main App.css file) applied to them by React Router when the current route matches the 'to' attribute. */ }
 
-        // #endregion Navbat Nav Element
+
+                    </ ul >
+
+                    { /** End Navbar Unordered List Element */ }
+
+
+                </ div >
+
+                { /** End Navbar Div Element */ }
+
+
+            </ nav >
+
+        
+        </ header >
+
+        // #endregion Navbar Header Element
 
 
     );

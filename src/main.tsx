@@ -3,7 +3,7 @@
 
 import                './index.css';     /** This import is the root CSS file where all non module CSS is placed, typically used for global styles that apply throughout the entire application. */
 import AppRooCom from './AppRooCom.tsx'; /** This import is the root App component that contains the core routing structure of the application, acting as the container for the route, routes, footer, navigation links and the components that are rendered based on the current URL via React Router. */
-import store     from './store.ts';      /** This import is the custom React Redux store that is created using the standard React Redux Toolkit configureStore function. */
+import appStoIns from './appStoIns.ts';  /** This import is the custom React Redux store that is created using the standard React Redux Toolkit configureStore function. */
 
 
 import { createRoot } from 'react-dom/client'; /** This import is the new standard React DOM 18 API for creating a root DOM node to render the application, replacing the older ReactDOM.render method and provides better performance and support for concurrent features. */
@@ -17,8 +17,8 @@ import { type Root } from 'react-dom/client'; /** This import is the standard Ty
 
 
 
-/** Root DOM Node      = This custom variable stores the root DOM node using the new React DOM 18 API for rendering the application, targeting the HTML element with the id of rooSecEle which is typically defined in the index.html file of a React application to which all React components will be attached to. */
-const rooDomNod : Root = createRoot( document.getElementById( 'rooSecEle' ) as HTMLElement );
+/** Root DOM Node      = This custom variable stores the root DOM node using the new React DOM 18 API for rendering the application, targeting the HTML element with the id of rooDivEle which is typically defined in the index.html file of a React application to which all React components will be attached to. */
+const rooDomNod : Root = createRoot( document.getElementById( 'rooDivEle' ) as HTMLElement );
 
 
 
@@ -67,7 +67,7 @@ const rooDomNodRender : RooDomNodRender = () => {
 
     // #region Render
 
-    /** Root DOM Node Render = This standard React React DOM method executes the attaching of the following JSX to the rooSecEle node in the browser's DOM. */
+    /** Root DOM Node Render = This standard React React DOM method executes the attaching of the following JSX to the rooDivEle node in the browser's DOM. */
     rooDomNod.render(
 
 
@@ -78,7 +78,7 @@ const rooDomNodRender : RooDomNodRender = () => {
 
             { /** Start Provider Element */ }
 
-            <  Provider store={ store } > { /** Provider = This element is the standard React Redux component that makes the Redux store available to any nested components that need to access the React Redux store. */ }
+            <  Provider store={ appStoIns } > { /** Provider = This element is the standard React Redux component that makes the Redux store available to any nested components that need to access the React Redux store. */ }
 
 
                 { /** Start AppRooCom Element */ }
@@ -109,8 +109,8 @@ const rooDomNodRender : RooDomNodRender = () => {
 
 
 
-/** Store Subscribe = This standard React Redux method executes the listener function that attaches itself to the root DOM node, and it will subsequently be called every time an action is dispatched and the store's state has potentially changed, allowing the site/app to react to state changes and update the UI or perform side effects. */
-store.subscribe( rooDomNodRender );
+/** App Store Instance Subscribe = This standard React Redux method executes the listener function that attaches itself to the root DOM node, and it will subsequently be called every time an action is dispatched and the store's state has potentially changed, allowing the site/app to react to state changes and update the UI or perform side effects. */
+appStoIns.subscribe( rooDomNodRender );
 
 
 

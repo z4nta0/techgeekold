@@ -631,9 +631,9 @@ fieldset { /** Fieldset = This standard selector contains only itself and is use
 
 
 
-/* #region Root Section Element */
+/* #region Root Div Element */
 
-#rooSecEle { /** Root Section Element = This custom selector contains all content rendered by React and is used to setup the root grid container for said content. */
+#rooDivEle { /** Root Div Element = This custom selector contains all content rendered by React and is used to setup the root grid container for said content. */
 
     /* #region Selector Scoped Custom Properties */
 
@@ -705,7 +705,7 @@ fieldset { /** Fieldset = This standard selector contains only itself and is use
 @media ( max-width : 842.999px ) { /** Golden Ratio to the 14th Power = This custom media query selector targets all viewport widths below 843.000px. */
 
 
-    #rooSecEle { /** Root Section Element = This custom selector contains all content rendered by React and is used to setup the root grid container for said content. */
+    #rooDivEle { /** Root Div Element = This custom selector contains all content rendered by React and is used to setup the root grid container for said content. */
 
 
         /* #region Selector Scoped Custom Properties */
@@ -750,6 +750,6 @@ fieldset { /** Fieldset = This standard selector contains only itself and is use
 /* #endregion Media Query for Small Viewport Widths */
 
 
-/* #endregion Root Section Element */
+/* #endregion Root Div Element */
 
 

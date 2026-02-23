@@ -1,26 +1,36 @@
 
 /* #region About Section */
 
-.aboutSection { /** About Section = This custom selector contains the custom .aboutH1 and.aboutParagraph selectors, is the custom .appMain selector's only child and is this component's root selector. */
+.aboutSection { /** About Section = This custom selector is the custom .appMain selector's only child and is this component's root selector. */
 
-    /* #region Selector Scoped Custom Properties = These are technically component scoped but placing and labelling them here makes my intention clear that these are intended for use in this selector only. */
+    height : 100%; /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .appMain selector. */
 
-    --abo-sec-gta :       /** About Section Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+}
+
+
+
+/* #region About Header */
+
+.aboutHeader { /** About Header = This custom selector contains the custom .aboutH1 and .aboutParagraph selectors and is the custom .aboutSection selector's only child. */
+
+    /* #region Selector Scoped Custom Properties */
+
+    --abo-hea-gta :       /** About Header Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
         '    aboutH1   '  /** This value was chosen to be used to contain the custom .aboutH1 selector within this selector grid's first row, full width column. */
         'aboutParagraph'; /** This value was chosen to be used to contain the custom .aboutParagraph selector within this selector grid's second row, full width column. */
 
     --abo-h1--row : calc( 30% - ( var( --row-gap-max ) / 2 ) ); /** About H1 Row                     ~=  67.783px @1080px height = This custom property stores the height of the custom .aboutH1 selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
     --abo-par-row : calc( 70% - ( var( --row-gap-max ) / 2 ) ); /** About Paragraph Row              ~= 452.733px @1080px height = This custom property stores the height of the custom .aboutParagraph selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
-    --abo-sec-gtr : var( --abo-h1--row ) var( --abo-par-row );  /** About Section Grid Template Rows ~= 725.100px @1080px height = This custom property stores the grid template rows value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+    --abo-hea-gtr : var( --abo-h1--row ) var( --abo-par-row );  /** About Header Grid Template Rows  ~= 725.100px @1080px height = This custom property stores the grid template rows value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
 
     /* #endregion Selector Scoped Custom Properties */
 
 
     display               : grid;                 /** This value was chosen to be used as the preferred layout method, with the idea behind this being that it provides powerful element placement and sizing capabilities. */
-    grid-template-areas   : var( --abo-sec-gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
-    grid-template-columns : 100%;                 /** This value was chosen to be used to fill columns using all available horizontal space as defined by its parent, the custom .appMain selector. */
-    grid-template-rows    : var( --abo-sec-gtr ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
-    height                : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .appMain selector. */
+    grid-template-areas   : var( --abo-hea-gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-columns : 100%;                 /** This value was chosen to be used to fill columns using all available horizontal space as defined by its parent, the custom .aboutSection selector. */
+    grid-template-rows    : var( --abo-hea-gtr ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    height                : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .aboutSection selector. */
     justify-items         : center;               /** This value was chosen to be used to horizontally center the custom .aboutH1 and .aboutParagraph selectors within their grid areas, with the idea behind this being that this page's content is more aesthetically pleasing when aligned to the middle of the viewport. */
     row-gap               : var( --row-gap-xla ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property. */
 
@@ -30,10 +40,10 @@
 
 /* #region About H1 */
 
-.aboutH1 { /** About H1 = This custom selector contains the custom h1 text and is the custom .aboutSection selector's first grid row, only grid column. */
+.aboutH1 { /** About H1 = This custom selector contains the custom h1 text and is the custom .aboutHeader selector's first grid row, only grid column. */
 
     align-self  : center;               /** This value was chosen to be used to vertically center this selector within its grid area, with the idea behind this being to more evenly distribute the space between them and the elements below them and creating a better visual, aesthetic balance. */
-    grid-area   : aboutH1;              /** This value was chosen to be used to place this selector within the custom .aboutSection selector grid area's first row, full width column. */
+    grid-area   : aboutH1;              /** This value was chosen to be used to place this selector within the custom .aboutHeader selector grid area's first row, full width column. */
     font-size   : var( --hea-one-siz ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property. */
     line-height : var( --hea-one-siz ); /** This value was chosen to be used to set the line height equal to its corresponding font size, with the idea behind this being that it makes for better visual asthetics when used with short, one line text (headers especially). */
 
@@ -45,9 +55,9 @@
 
 /* #region About Paragraph */
 
-.aboutParagraph { /** About Paragraph = This custom selector contains the custom paragraph text and is the custom .aboutSection selector's second grid row, only grid column. */
+.aboutParagraph { /** About Paragraph = This custom selector contains the custom paragraph text and is the custom .aboutHeader selector's second grid row, only grid column. */
 
-    grid-area   : aboutParagraph;       /** This value was chosen to be used to place this selector within the custom .aboutSection selector grid area's second row, full width column. */
+    grid-area   : aboutParagraph;       /** This value was chosen to be used to place this selector within the custom .aboutHeader selector grid area's second row, full width column. */
     font-size   : var( --fon-siz-bas ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
     line-height : var( --ver-rhy-bas ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
     max-width   : var( --par-wid-xla ); /** This value was chosen to be used according to the details of the specified global scoped prime custom property. */
@@ -55,6 +65,9 @@
 }
 
 /* #endregion About Paragraph */
+
+
+/* #endregion About Header */
 
 
 /* #endregion About Section */

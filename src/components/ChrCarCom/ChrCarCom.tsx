@@ -1119,11 +1119,17 @@ function ChrCarCom () : React.ReactElement {
             <  section id='hacSecEle'  className={ styles.hackedSection } > { /* Hacked Section Element = This custom section element is the container for the hacked h1 heading, the hacked paragraph and has a cartoony pirate skull and crossbones background image that will be shown after the initial pixelated transition effect animation has finished running, and it will then be hidden by another pixelated transition effect animation after which the snowfall section will be overlaid on top of it thereby hiding this section until the page is reloaded. */ }
 
 
-                < h1 id='hacHe1Ele'  className={ styles.hackedH1 } ></ h1 > { /* Hacked Header 1 Element = This custom h1 element is the container for the text that will first have a standard GSAP scramble text animation applied to it, then two more custom glitch text animations applied to it as defined inside of the standard GSAP useGSAP custom React hook. */ }
+                <  header id='hacHeaEle'  className={ styles.hackedHeader } > { /* Hacked Header Element = This custom header element is a semantic container for the hacked h1 heading, the hacked paragraph. */ }
+
+
+                    < h1 id='hacHe1Ele'  className={ styles.hackedH1 } ></ h1 > { /* Hacked Header 1 Element = This custom h1 element is the container for the text that will first have a standard GSAP scramble text animation applied to it, then two more custom glitch text animations applied to it as defined inside of the standard GSAP useGSAP custom React hook. */ }
 
 
 
-                < p  id='hacParEle'  className={ ` ${ styles.hackedParagraph } hackedSplitText ` } >Just kidding! But it just goes to show you that you should never trust a QR code! Christmas present incoming...</ p > { /* Hacked Paragraph Element = This custom paragraph element is the container for text that will first have a standard GSAP split text animation applied to it, then a custom glitch text animation applied to it as defined inside of the standard GSAP useGSAP custom React hook. */ }
+                    < p  id='hacParEle'  className={ ` ${ styles.hackedParagraph } hackedSplitText ` } >Just kidding! But it just goes to show you that you should never trust a QR code! Christmas present incoming...</ p > { /* Hacked Paragraph Element = This custom paragraph element is the container for text that will first have a standard GSAP split text animation applied to it, then a custom glitch text animation applied to it as defined inside of the standard GSAP useGSAP custom React hook. */ }
+
+                
+                </ header >
 
 
             </ section >
@@ -1137,15 +1143,22 @@ function ChrCarCom () : React.ReactElement {
             <  section id='snoSecEle'  className={ `${ styles.snowfallSection } snowfallSplitText` } > { /* Snowfall Section Element = This custom section element is the container for snowy h1 heading, snowman img, snowy paragraph and has a cartoony snowy cabin with evergreen trees background image that will be shown after the three pixelated transition effect animations have completed and after the hacked section animations have finished running. It will have a custom defined (i.e. not a GSAP animation) snowfall animation overlaid on top of it, and it will continue to be shown until the page is reloaded. */ }
 
 
-                < h1  id='snoHe1Ele'  className={ styles.snowfallH1 } >Merry Christmas, { namParStr }!</ h1 > { /* Snowfall Header 1 Element = This custom h1 element is the container for the text that will have a standard GSAP split text animation applied to it as defined inside of the standard GSAP useGSAP custom React hook. The name text will be dynamically set on page load by grabbing the URL name parameter. */ }
+                <  header id='snoHeaEle'  className={ styles.snowfallHeader } > { /* Snowfall Header Element = This custom header element is a semantic container for the snowy h1 heading, the snowman img, and the snowy paragraph. */ }
+
+
+                    < h1  id='snoHe1Ele'  className={ styles.snowfallH1 } >Merry Christmas, { namParStr }!</ h1 > { /* Snowfall Header 1 Element = This custom h1 element is the container for the text that will have a standard GSAP split text animation applied to it as defined inside of the standard GSAP useGSAP custom React hook. The name text will be dynamically set on page load by grabbing the URL name parameter. */ }
 
 
 
-                < img id='snoImgEle'  className={ styles.snowfallImg } src={ snowman } /> { /* Snowfall Image Element = This custom img element is the container for the cartoony image of the snowman that will be displayed in the lower left corner of this section. */ }
+                    < img id='snoImgEle'  className={ styles.snowfallImg } src={ snowman } /> { /* Snowfall Image Element = This custom img element is the container for the cartoony image of the snowman that will be displayed in the lower left corner of this section. */ }
 
 
 
-                < p   id='snoParEle'  className={ styles.snowfallParagraph } >< span id='snoSpaEle' className={ styles.snowfallSpan } >From,</ span > Mr. Awesome</ p > { /* Snowfall Paragraph Element = This custom paragraph element is the container for text that will have a standard GSAP split text animation applied to it as defined inside of the standard GSAP useGSAP custom React hook. */ }
+                    < p   id='snoParEle'  className={ styles.snowfallParagraph } >< span id='snoSpaEle' className={ styles.snowfallSpan } >From,</ span > Mr. Awesome</ p > { /* Snowfall Paragraph Element = This custom paragraph element is the container for text that will have a standard GSAP split text animation applied to it as defined inside of the standard GSAP useGSAP custom React hook. */ }
+
+                
+                </ header >
+
 
             </ section >
 
