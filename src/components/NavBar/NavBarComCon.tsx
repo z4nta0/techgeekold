@@ -4,6 +4,7 @@
 import NavBarCom from './NavBarCom';    /** This import is the custom component that contains the JSX for the navigation bar. */
 import React     from 'react';          /** This import is the standard React core library, providing the core functionality for building React components and managing their lifecycle. */
 import store     from '../../store.ts'; /** This import is the custom React Redux store that is created using the standard React Redux Toolkit configureStore function. */
+import useAppDis from '../../hooks/useAppDis.ts'; /** This import is the custom React hook that provides access to the standard React Redux store dispatch function with proper TypeScript typing. */
 
 
 import { aboCouRed } from './cliCouArrSlice.ts'; /** This import is the custom reducer function for managing the click count number state array value for the About page link. */
@@ -13,7 +14,6 @@ import { logCouRed } from './cliCouObjSlice.ts'; /** This import is the custom r
 
 
 import { type UseAppDis } from '../../hooks/useAppDis.ts'; /** This import is the custom type definition for the custom React hook that acts as a wrapper around the standard React Redux store dispatch function. */
-import { type Dispatch  } from '@reduxjs/toolkit';         /** This import is the standard Typescript definition for a standard React Redux Toolkit dispatch function that accepts an action as an argument and returns void. */
 
 // #endregion Imports
 
@@ -31,7 +31,6 @@ import { type Dispatch  } from '@reduxjs/toolkit';         /** This import is th
 
 type NavBarComConPro = {
 
-    disFun : UseAppDis;
     namStr : string;
 
 };
@@ -63,7 +62,6 @@ type NavBarComConPro = {
  *
  * @author z4nta0 <https://github.com/z4nta0>
  * 
- * @param props.disFun - {@link appDisFun}
  * @param props.namStr - {@link appNamStr}
  * 
  * @returns A React JSX element representing the NavBarCom component.
@@ -84,12 +82,19 @@ function NavBarComCon ( props : NavBarComConPro ) : React.ReactElement {
 
     // #region Props Variables
 
-    /** App Dispatch Function  = This custom variable stores the custom React hook from the utilities directory that wraps the standard React Redux store dispatch function. This must be executed as a function in order to obtain access the the standard React Redux store dispatch function that this custom hook wraps. */
-    const appDisFun : Dispatch = props.disFun();
-    /** App Name String        = This custom variable stores the site/app name that will be displayed in various parts of the site/app. */
-    const appNamStr : string   = props.namStr;
+    /** App Name String         = This custom variable stores the site/app name that will be displayed in various parts of the site/app. */
+    const appNamStr : string    = props.namStr;
 
     // #endregion Props Variables
+
+
+
+    // #region State Variables
+
+    /** App Dispatch Function   = This custom variable stores the custom React hook from the utilities directory that wraps the standard React Redux store dispatch function. This must be executed as a function in order to obtain access the the standard React Redux store dispatch function that this custom hook wraps. */
+    const appDisFun : UseAppDis = useAppDis();
+
+    // #endregion State Variables
 
 
     // #endregion Component Scoped Variables

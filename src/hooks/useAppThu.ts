@@ -5,9 +5,7 @@ import { useDispatch } from 'react-redux'; /** This import is the standard React
 
 
 import { type Action        } from 'redux';       /** This import is the standard Typescript definition for an object used in React Redux management patterns that describes an intention to change the application state. */
-import { type RooStaObj     } from '../store.ts'; /** This import is the custom type definition for the entire state object of the custom React Redux Toolkit store, which is inferred by the store's standard getState method. */
 import { type ThunkDispatch } from 'redux-thunk'; /** This import is the standard Typescript definition for an interface provided by the standard React Redux thunk middleware that describes a dispatch function capable of accepting both standard React Redux action objects and thunk functions. */
-import { type UseDispatch   } from 'react-redux'; /** This import is the standard Typescript definition for the standard React Redux useDispatch hook. */
 
 // #endregion Imports
 
@@ -19,7 +17,7 @@ import { type UseDispatch   } from 'react-redux'; /** This import is the standar
 // #region useAppThu Variables
 
 /** Use App Thunk     = This custom type stores the type that will be used for the custom {@link useAppThu} variable and is exported for use in any component that said variable is required. */
-export type UseAppThu = UseDispatch< ThunkDispatch< RooStaObj, any, Action > >;
+export type UseAppThu = ThunkDispatch< any, any, Action >;
 
 // #endregion useAppThu Variables
 
@@ -53,7 +51,7 @@ export type UseAppThu = UseDispatch< ThunkDispatch< RooStaObj, any, Action > >;
  * ```
 */
 
-const useAppThu : UseAppThu = useDispatch.withTypes();
+const useAppThu = useDispatch.withTypes< UseAppThu >();
 
 // #endregion useAppThu
 

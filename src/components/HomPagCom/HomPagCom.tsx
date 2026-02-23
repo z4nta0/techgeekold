@@ -6,6 +6,8 @@ import reactLogo from '../../assets/react.svg';   /** This import is the React l
 import styles    from './HomPagCom.module.css';   /** This import is the custom CSS file that contains all of the styling declarations for this component. */
 import useAppSel from '../../hooks/useAppSel.ts'; /** This import is the custom React hook that provides access to the Redux store's state with the additional advantage of applying proper type definitions. */
 import viteLogo  from '../../assets/vite.svg';    /** This import is the Vite logo image that is used in this component to display the official Vite logo. */
+import useAppDis from '../../hooks/useAppDis.ts'; /** This import is the custom React hook that provides access to the standard React Redux store dispatch function with proper TypeScript typing. */
+import useAppThu from '../../hooks/useAppThu.ts'; /** This import is the custom React hook that provides access to the standard React Redux store dispatch function with proper TypeScript typing, specifically for working with thunk actions. */
 
 
 import { decNumRed    } from '../../features/couStaNumSlice.ts'; /** This import is the custom counter state number reducer's action creator function that will be used to dispatch an action to decrement the counter number state in the this component. */
@@ -14,12 +16,9 @@ import { incNumRed    } from '../../features/couStaNumSlice.ts'; /** This import
 import { useEffect    } from 'react';                            /** This import is the standard React hook that enables side effects for components. */
 
 
-import { type Action        } from '@reduxjs/toolkit';         /** This import is the standard Typescript definition for an object used in React Redux management patterns that describes an intention to change the application state. */
-import { type Dispatch      } from '@reduxjs/toolkit';         /** This import is the standard Typescript definition for a standard React Redux Toolkit dispatch function that accepts an action as an argument and returns void. */
-import { type RooStaObj     } from '../../store.ts';           /** This import is the custom type definition for the entire state object of the custom React Redux Toolkit store, which is inferred by the store's standard getState method. */
-import { type ThunkDispatch } from '@reduxjs/toolkit';         /** This import is the standard Typescript definition for an interface provided by the standard React Redux thunk middleware that describes a dispatch function capable of accepting both standard React Redux action objects and thunk functions. */
-import { type UseAppDis     } from '../../hooks/useAppDis.ts'; /** This import is the custom type definition for the custom React hook that acts as a wrapper around the standard React Redux store dispatch function. */
-import { type UseAppThu     } from '../../hooks/useAppThu.ts'; /** This import is the custom type definition for the custom React hook that acts as a wrapper around the standard React Redux store dispatch function, this one designed specifically for working with thunk actions. */
+import { type RooStaObj } from '../../store.ts';           /** This import is the custom type definition for the entire state object of the custom React Redux Toolkit store, which is inferred by the store's standard getState method. */
+import { type UseAppDis } from '../../hooks/useAppDis.ts'; /** This import is the custom type definition for the custom React hook that acts as a wrapper around the standard React Redux store dispatch function. */
+import { type UseAppThu } from '../../hooks/useAppThu.ts'; /** This import is the custom type definition for the custom React hook that acts as a wrapper around the standard React Redux store dispatch function, this one designed specifically for working with thunk actions. */
 
 // #endregion Imports
 
@@ -30,19 +29,13 @@ import { type UseAppThu     } from '../../hooks/useAppThu.ts'; /** This import i
 /**
  * Home Page Component Props = This custom type stores the types that will be used for the custom props that are passed into this custom component.
  *
- * @property disFun = Dispatch Function custom property stores the type that will be used for the custom {@link appDisFun} variable.
  * @property namStr = Name String custom property stores the type that will be used for the custom {@link appNamStr} variable.
- * @property staObj = State Object custom property stores the type that will be used for the custom {@link appStaObj} variable.
- * @property thuFun = Thunk Function custom property stores the type that will be used for the custom {@link appThuFun} variable.
  *
 */
 
 type HomPagComPro = {
 
-    disFun : UseAppDis;
     namStr : string;
-    staObj : RooStaObj;
-    thuFun : UseAppThu;
 
 };
 
@@ -68,10 +61,7 @@ type HomPagComPro = {
  *
  * @author z4nta0 <https://github.com/z4nta0>
  * 
- * @param props.disFun - {@link appDisFun}
  * @param props.namStr - {@link appNamStr}
- * @param props.staObj - {@link appStaObj}
- * @param props.thuFun - {@link appThuFun}
  * 
  * @returns A React JSX element representing the Home component.
  * @see {@link homPagComJsx}
@@ -91,14 +81,8 @@ function HomPagCom ( props : HomPagComPro ) : React.ReactElement {
 
     // #region Props Variables
 
-    /** App Dispatch Function   = This custom variable stores the custom React hook from the utilities directory that wraps the standard React Redux store dispatch function. This must be executed as a function in order to obtain access the the standard React Redux store dispatch function that this custom hook wraps. */
-    const appDisFun : Dispatch = props.disFun();
-    /** App Name String         = This custom variable stores the site/app name that will be displayed in various parts of the site/app. */
-    const appNamStr : string    = props.namStr;
-    /** App Thunk Function      = This custom type stores the type that will be used for the custom {@link appThuFun} variable. */
-    type AppThuFun              = ThunkDispatch< any, any, Action >;
-    /** Thunk Dispatch Function = This custom variable stores the custom React hook from the utilities directory that wraps the standard React Redux store dispatch function but with proper typing specifically for thunk actions. This must be executed as a function in order to obtain access the the standard React Redux store dispatch function that this custom hook wraps. */
-    const appThuFun : AppThuFun = props.thuFun();
+    /** App Name String      = This custom variable stores the site/app name that will be displayed in various parts of the site/app. */
+    const appNamStr : string = props.namStr;
 
     // #endregion Props Variables
 
@@ -129,6 +113,10 @@ function HomPagCom ( props : HomPagComPro ) : React.ReactElement {
     // #endregion AppSelObj
 
 
+    /** App Dispatch Function       = This custom variable stores the custom React hook from the utilities directory that wraps the standard React Redux store dispatch function. This must be executed as a function in order to obtain access the the standard React Redux store dispatch function that this custom hook wraps. */
+    const   appDisFun   : UseAppDis = useAppDis();
+    /** Thunk Dispatch Function     = This custom variable stores the custom React hook from the utilities directory that wraps the standard React Redux store dispatch function but with proper typing specifically for thunk actions. This must be executed as a function in order to obtain access the the standard React Redux store dispatch function that this custom hook wraps. */
+    const   appThuFun   : UseAppThu = useAppThu();
     /** Currently Loading Boolean   = This custom state variable stores the boolean value that indicates whether the mock data JSON is currently being fetched from the API, and it will be used to conditionally render a loading message in the component while the data is being fetched. */
     const { curLoaBoo } : AppSelObj = useAppSel( ( state : RooStaObj ) => state.mocDatJso );
     /** Encountered Error Boolean   = This custom state variable stores the boolean value that indicates whether an error was encountered while fetching the mock data JSON from the API, and it will be used to conditionally render an error message in the component if an error occurs during data fetching. */
