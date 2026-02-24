@@ -1,0 +1,94 @@
+
+/* #region Digital Cards Section */
+
+.digitalCardsSection { /** Digital Cards Section = This custom selector is the custom .appMain selector's only child and is this component's root selector. */
+
+    height : 100%; /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .appMain selector. */
+
+}
+
+
+
+/* #region Digital Cards Header */
+
+.digitalCardsHeader { /** Digital Cards Header = This custom selector contains the custom .digitalCardsH1, .digitalCardsParagraph and .digitalCardsUl selectors and is the custom .digitalCardsSection selector's only child. */
+
+    /* #region Selector Scoped Custom Properties */
+
+    --dic-hea-gta :              /** Digital Cards Header Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+        '    digitalCardsH1   '  /** This value was chosen to be used to contain the custom .digitalCardsH1 selector within this selector grid's first row, full width column. */
+        'digitalCardsParagraph'  /** This value was chosen to be used to contain the custom .digitalCardsParagraph selector within this selector grid's second row, full width column. */
+        '   digitalCardsUl    '; /** This value was chosen to be used to contain the custom .digitalCardsUl selector within this selector grid's third row, full width column. */
+
+    --hga-com-hei : calc( ( var( --row-gap-xla ) + ( var( --dic-h1--row ) * 2 ) ) / 2 ); /** H1 Row Gap Combined Height              ~= 303.066px @1080px height = This custom property stores the combined heights of the custom .digitalCardsH1 selectors row plus the two extra large row gaps for this selector's grid using the specified selector scoped and global scoped second derivative custom properties, with the idea behind this being to make it easier to calculate the height of the custom .digitalCardsParagraph and .digitalCardsUl selectors' rows. */
+    --dic-h1--row : var( --hea-one-siz );                                                /** Digital Cards H1 Row                    ~=  67.783px @1080px height = This custom property stores the height of the custom .digitalCardsH1 selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --dic-par-row : calc( 30% - var( --hga-com-hei ) );                                  /** Digital Cards Paragraph Row             ~=  51.767px @1080px height = This custom property stores the height of the custom .digitalCardsParagraph selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --dic-ul--row : calc( 70% - var( --hga-com-hei ) );                                  /** Digital Cards Unordered List Row        ~= 312/800px @1080px height = This custom property stores the height of the custom .digitalCardsUl selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --dic-hea-gtr : var( --dic-h1--row ) var( --dic-par-row ) var( --dic-ul--row );      /** Digital Cards Header Grid Template Rows ~= 591.100px @1080px height = This custom property stores the grid template rows value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+
+    /* #endregion Selector Scoped Custom Properties */
+
+
+    display               : grid;                 /** This value was chosen to be used as the preferred layout method, with the idea behind this being that it provides powerful element placement and sizing capabilities. */
+    grid-template-areas   : var( --dic-hea-gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-columns : 100%;                 /** This value was chosen to be used to fill columns using all available horizontal space as defined by its parent, the custom .digitalCardsSection selector. */
+    grid-template-rows    : var( --dic-hea-gtr ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    height                : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .digitalCardsSection selector. */
+    row-gap               : var( --row-gap-xla ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property. */
+
+}
+
+
+
+/* #region Digital Cards H1 */
+
+.digitalCardsH1 { /** Digital Cards H1 = This custom selector contains the custom h1 text and is the custom .digitalCardsHeader selector's first grid row, only grid column. */
+
+    align-self   : center;               /** This value was chosen to be used to vertically center this selector within its grid area, with the idea behind this being to more evenly distribute the space between them and the elements below them and creating a better visual, aesthetic balance. */
+    grid-area    : digitalCardsH1;       /** This value was chosen to be used to place this selector within the custom .digitalCardsHeader selector grid area's first row, full width column. */
+    font-size    : var( --hea-one-siz ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property. */
+    justify-self : center;               /** This value was chosen to be used to horizontally center this selector within its grid area, with the idea behind this being that headers are more aesthetically pleasing when horizontally centered to the middle of the viewport. */;
+    line-height  : var( --hea-one-siz ); /** This value was chosen to be used to set the line height equal to its corresponding font size, with the idea behind this being that it makes for better visual asthetics when used with short, one line text (headers especially). */
+
+}
+
+/* #endregion Digital Cards H1 */
+
+
+
+/* #region Digital Cards Paragraph */
+
+.digitalCardsParagraph { /** Digital Cards Paragraph = This custom selector contains the custom paragraph text and is the custom .digitalCardsHeader selector's second grid row, only grid column. */
+
+    align-self   : center;                /** This value was chosen to be used to vertically center this selector within its grid area, with the idea behind this being to more evenly distribute the space between them and the elements below them and creating a better visual, aesthetic balance. */
+    grid-area    : digitalCardsParagraph; /** This value was chosen to be used to place this selector within the custom .digitalCardsHeader selector grid area's second row, full width column. */
+    font-size    : var( --fon-siz-bas );  /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    justify-self : center;                /** This value was chosen to be used to horizontally center this selector within its grid area, with the idea behind this being that with so little content it is more aesthetically pleasing to be horizontally centered to the middle of the viewport. */;
+    line-height  : var( --ver-rhy-bas );  /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    max-width    : var( --par-wid-xla );  /** This value was chosen to be used according to the details of the specified global scoped prime custom property. */
+
+}
+
+/* #endregion Digital Cards Paragraph */
+
+
+
+/* #region Digital Cards Unordered List */
+
+.digitalCardsUl { /** Digital Cards Unordered List = This custom selector contains the custom list items and standard React Links for all of the digital cards and is the custom .digitalCardsHeader selector's third grid row, only grid column. */
+
+    grid-area   : digitalCardsUl;       /** This value was chosen to be used to place this selector within the custom .digitalCardsHeader selector grid area's third row, full width column. */
+    font-size   : var( --fon-siz-bas ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    line-height : var( --ver-rhy-bas ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+
+}
+
+/* #endregion Digital Cards Paragraph */
+
+
+/* #endregion Digital Cards Header */
+
+
+/* #endregion Digital Cards Section */
+
+

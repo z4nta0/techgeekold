@@ -157,14 +157,14 @@
 
 /* #region Navbar Ul */
 
-.navbarUl { /** Navbar Unordered List = This custom selector contains the custom .homeLi, .aboutLi and .contactLi selectors and is the custom .navbarDiv selector's second grid column, only grid row. */
+.navbarUl { /** Navbar Unordered List = This custom selector contains the custom .homeLi, .cardsLi, .aboutLi and .contactLi selectors and is the custom .navbarDiv selector's second grid column, only grid row. */
 
     /* #region Selector Scoped Custom Properties */
 
-    --nav-ul--gta :                     /** Navbar UL Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
-        'homeLi   aboutLi   contactLi'; /** This value was chosen to be used to contain the custom .homeLi, .aboutLi and .contactLi selectors within this selector grid's full height row, three columns. */
+    --nav-ul--gta :                               /** Navbar UL Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+        'homeLi   cardsLi   aboutLi   contactLi'; /** This value was chosen to be used to contain the custom .homeLi, .cardsLi, .aboutLi and .contactLi selectors within this selector grid's full height row, four columns. */
 
-    --nav-ul--gtc : repeat( 3, calc( 33.333% - var( --col-gap-lar ) ) ); /** Navbar Ul Grid Template Columns ~= 904.217px @1920px width = This custom property stores the grid template columns value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+    --nav-ul--gtc : repeat( 4, calc( 25% - var( --col-gap-lar ) ) ); /** Navbar Ul Grid Template Columns ~= 904.217px @1920px width = This custom property stores the grid template columns value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
 
     /* #endregion Selector Scoped Custom Properties */
 
@@ -206,11 +206,23 @@
 
 
 
+/* #region Cards List Item */
+
+.cardsLi { /** Cards List Item = This custom selector contains the custom .cardsLi selector and is the custom .navbarUl selector's second grid column, only grid row. */
+
+    grid-area : cardsLi; /** This value was chosen to place this selector within the custom .navbarUl selector grid area's second column, full height row. */
+
+}
+
+/* #endregion Cards List Item */
+
+
+
 /* #region About List Item */
 
-.aboutLi { /** About List Item = This custom selector contains the custom .aboutLi selector and is the custom .navbarUl selector's second grid column, only grid row. */
+.aboutLi { /** About List Item = This custom selector contains the custom .aboutLi selector and is the custom .navbarUl selector's third grid column, only grid row. */
 
-    grid-area : aboutLi; /** This value was chosen to place this selector within the custom .navbarUl selector grid area's second column, full height row. */
+    grid-area : aboutLi; /** This value was chosen to place this selector within the custom .navbarUl selector grid area's third column, full height row. */
 
 }
 
@@ -220,9 +232,9 @@
 
 /* #region Contact List Item */
 
-.contactLi { /** Contact List Item = This custom selector contains the custom .contactLi selector and is the custom .navbarUl selector's third grid column, only grid row. */
+.contactLi { /** Contact List Item = This custom selector contains the custom .contactLi selector and is the custom .navbarUl selector's fourth grid column, only grid row. */
 
-    grid-area : contactLi; /** This value was chosen to place this selector within the custom .navbarUl selector grid area's third column, full height row. */
+    grid-area : contactLi; /** This value was chosen to place this selector within the custom .navbarUl selector grid area's fourth column, full height row. */
 
 }
 
