@@ -75,7 +75,7 @@ function ChrCarCom () : React.ReactElement {
     /** Search Parameters Instance             = This custom variable stores the standard Web API class instance of URLSearchParams that uses the previously defined {@link search} variable and provides methods for interacting with the query parameters. */
     const seaParIns  : URLSearchParams         = new URLSearchParams( search );
     /** Name Parameter String                  = This custom variable stores the name query parameter (or null) which will be used to customize the Christmas Card component's h1 element that is inside of the {@link chrCarJsx}, and it is acquired using the get method on the previously defined {@link seaParIns} URLSearchParams class instance. */
-    const namParStr  : string | null           = seaParIns.get( 'name' );
+    const namParStr  : string                  = seaParIns.get( 'name' ) !== null ? `, ${seaParIns.get( 'name' )}` as string : '';
 
     // #endregion State Variables
 
@@ -1146,7 +1146,7 @@ function ChrCarCom () : React.ReactElement {
                 <  header id='snoHeaEle'  className={ styles.snowfallHeader } > { /* Snowfall Header Element = This custom header element is a semantic container for the snowy h1 heading, the snowman img, and the snowy paragraph. */ }
 
 
-                    < h1  id='snoHe1Ele'  className={ styles.snowfallH1 } >Merry Christmas, { namParStr }!</ h1 > { /* Snowfall Header 1 Element = This custom h1 element is the container for the text that will have a standard GSAP split text animation applied to it as defined inside of the standard GSAP useGSAP custom React hook. The name text will be dynamically set on page load by grabbing the URL name parameter. */ }
+                    < h1  id='snoHe1Ele'  className={ styles.snowfallH1 } >Merry Christmas{ namParStr }!</ h1 > { /* Snowfall Header 1 Element = This custom h1 element is the container for the text that will have a standard GSAP split text animation applied to it as defined inside of the standard GSAP useGSAP custom React hook. The name text will be dynamically set on page load by grabbing the URL name parameter. */ }
 
 
 
