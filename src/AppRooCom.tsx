@@ -8,6 +8,7 @@ import ChristmasCard from './components/DigCarCom/ChrCarCom/ChrCarCom.tsx';    /
 import FooBarCom     from './components/FooBarCom/FooBarCom.tsx';    /** This import is the custom component that will return the Footer Bar, which is rendered on every page and contains the copyright information. */
 import Home          from './components/HomPagCom/HomPagCom.tsx';    /** This import is the custom component that will return the Home page when navigated to by React Router. */
 import NavBarComCon  from './components/NavBarCom/NavBarComCon.tsx'; /** This import is the custom component that will return the Navigation Bar, which is rendered on every page and contains the links to navigate between pages. */
+import SidOneCom     from './components/SidOneCom/SidOneCom.tsx'; /** This import is the custom component that will return the Navigation Bar, which is rendered on every page and contains the links to navigate between pages. */
 import styles        from './AppRooCom.module.css';                  /** This import is the custom CSS file that contains all of the styling declarations for this component. */
 
 
@@ -101,6 +102,10 @@ function AppRooCom( props : AppRooComPro ) : React.ReactElement {
             < NavBarComCon namStr={ appNamStr } /> { /* Navigation Bar Component Container = This custom element is the container for the Navigation Bar Component and contains all of the logic and JSX for said component. */ }
 
             { /* End NavBarComCon Element */ }
+
+
+
+            < SidOneCom namStr={ appNamStr } />
 
 
 
