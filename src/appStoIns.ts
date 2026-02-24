@@ -1,19 +1,19 @@
 
 // #region Imports
 
-import cliCouArrReducer from './components/NavBar/cliCouArrSlice.ts'; /** This import is the custom reducer responsible for handling the state of the click count array for the About and Contact page links in the navigation bar component. */
-import cliCouObjReducer from './components/NavBar/cliCouObjSlice.ts'; /** This import is the custom reducer responsible for handling the state of the click count object for the logo and Home page links in the navigation bar component. */
-import couStaNumReducer from './features/couStaNumSlice.ts';          /** This import is the custom reducer responsible for handling the state of the counter number for the counter feature in the Home page component. */
-import mocDatJsoReducer from './api/mocDatJsoSlice.ts';               /** This import is the custom reducer responsible for handling the mock (backend) data json that is show in the Home page compoenent. */
+import cliCouArrReducer from './components/NavBarCom/cliCouArrSlice.ts'; /** This import is the custom reducer responsible for handling the state of the click count array for the About and Contact page links in the navigation bar component. */
+import cliCouObjReducer from './components/NavBarCom/cliCouObjSlice.ts'; /** This import is the custom reducer responsible for handling the state of the click count object for the logo and Home page links in the navigation bar component. */
+import couStaNumReducer from './features/couStaNumSlice.ts';             /** This import is the custom reducer responsible for handling the state of the counter number for the counter feature in the Home page component. */
+import mocDatJsoReducer from './api/mocDatJsoSlice.ts';                  /** This import is the custom reducer responsible for handling the mock (backend) data json that is show in the Home page compoenent. */
 
 
 import { configureStore } from '@reduxjs/toolkit'; /** This import is the standard React Redux Toolkit's method for creating a Redux store using the low level standard React Redux createStore method internally but wrapping that to provide good defaults to the store setup for a better development experience. */
 
 
-import { type CliCouArrReducer } from './components/NavBar/cliCouArrSlice.ts'; /** This import is the custom type definition for the custom click count array reducer. */
-import { type CliCouObjReducer } from './components/NavBar/cliCouObjSlice.ts'; /** This import is the custom type definition for the custom click count object reducer. */
-import { type CouStaNumReducer } from './features/couStaNumSlice.ts';          /** This import is the custom type definition for the custom click count object reducer. */
-import { type MocDatJsoReducer } from './api/mocDatJsoSlice.ts';               /** This import is the custom type definition for the custom mock (backend) data json reducer. */
+import { type CliCouArrReducer } from './components/NavBarCom/cliCouArrSlice.ts'; /** This import is the custom type definition for the custom click count array reducer. */
+import { type CliCouObjReducer } from './components/NavBarCom/cliCouObjSlice.ts'; /** This import is the custom type definition for the custom click count object reducer. */
+import { type CouStaNumReducer } from './features/couStaNumSlice.ts';             /** This import is the custom type definition for the custom click count object reducer. */
+import { type MocDatJsoReducer } from './api/mocDatJsoSlice.ts';                  /** This import is the custom type definition for the custom mock (backend) data json reducer. */
 
 // #endregion Imports
 

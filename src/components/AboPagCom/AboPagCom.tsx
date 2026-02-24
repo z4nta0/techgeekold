@@ -83,7 +83,7 @@ function AboPagCom ( props : AboPagComPro ) : React.ReactElement {
         <  section id='aboSecEle' className={ styles.aboutSection } > { /* About Section Element = This custom section element is the root HTML element and container for this component since React requires the JSX to return a single root element. */ }
 
 
-            <  header id='aboHeaEle' className={ styles.aboutHeader } > { /* About Header Element = This custom header element is just a a semantic container. */ }
+            <  header id='aboHeaEle' className={ styles.aboutHeader } > { /* About Header Element = This custom header element is a semantic container and will define the root grid for this component. */ }
 
 
                 < h1 id='aboHe1Ele' className={ styles.aboutH1 } >{ appNamStr } About Page</ h1 > { /* About H1 Element = This custom h1 element is the container for the title text of the page. */ }

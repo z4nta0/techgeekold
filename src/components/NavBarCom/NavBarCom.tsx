@@ -6,8 +6,8 @@ import reactLogo from '../../assets/react.svg'; /** This import is the React log
 import styles    from './NavBarCom.module.css'; /** This import is the custom CSS file that contains all of the styling declarations for this component. */
 
 
-import { Link    } from 'react-router-dom'; /** This import is the standard React Router element for navigation links that adds an .active CSS styling class as well as aria atributes when the link matches the current URL. */
-import { NavLink } from 'react-router-dom'; /** This import is the standard React Router element for navigation links without all of the extras from the standard react Router NavLink element. */
+import { Link    } from 'react-router-dom'; /** This import is the standard React Router element for navigation links without all of the extras from the standard react Router NavLink element. */
+import { NavLink } from 'react-router-dom'; /** This import is the standard React Router element for navigation links that adds an .active CSS styling class as well as aria atributes when the link matches the current URL. */
 
 // #endregion Imports
 
@@ -148,10 +148,11 @@ function NavBarCom ( props : NavBarComPro ) : React.ReactElement {
 
                     { /** Start Navbar Unordered List Element */ }
 
-                    < ul id='navUliEle' className={ styles.navbarUl } > { /* Navbar Unordered List Element = This custom ul element is the container for the li and anchors of the Home, About and Contact pages. */ }
+                    < ul id='navUliEle' className={ styles.navbarUl } > { /* Navbar Unordered List Element = This custom ul element is the container for the custom li and anchor elements of the Home, Cards, About and Contact pages. */ }
 
 
                         < li id='homLisEle' className={ `${ styles.navbarListItems } ${ styles.homeLi    }` } >< NavLink to='/'       id='homNalEle' className={ `${ styles.navbarNavLinks } ${ styles.homeNavLink    }` } onClick={ onClickHom } >Home</    NavLink ></ li > { /* Home List Element    & Home NavLink Element    = These custom li and standard React Router NavLink elements are the containers for the Home page link. These links will automatically have an .active class (properties and their values are defined in the main App.css file) applied to them by React Router when the current route matches the 'to' attribute. */ }
+                        < li id='carLisEle' className={ `${ styles.navbarListItems } ${ styles.cardsLi   }` } >< NavLink to='cards'   id='carNalEle' className={ `${ styles.navbarNavLinks } ${ styles.cardsNavLink   }` } onClick={ onClickHom } >Cards</   NavLink ></ li > { /* Cards List Element   & Cards NavLink Element   = These custom li and standard React Router NavLink elements are the containers for the Cards page link. These links will automatically have an .active class (properties and their values are defined in the main App.css file) applied to them by React Router when the current route matches the 'to' attribute. */ }
                         < li id='aboLisEle' className={ `${ styles.navbarListItems } ${ styles.aboutLi   }` } >< NavLink to='about'   id='aboNalEle' className={ `${ styles.navbarNavLinks } ${ styles.aboutNavLink   }` } onClick={ onClickAbo } >About</   NavLink ></ li > { /* About List Element   & About NavLink Element   = These custom li and standard React Router NavLink elements are the containers for the About page link. These links will automatically have an .active class (properties and their values are defined in the main App.css file) applied to them by React Router when the current route matches the 'to' attribute. */ }
                         < li id='conLisEle' className={ `${ styles.navbarListItems } ${ styles.contactLi }` } >< NavLink to='contact' id='conNalEle' className={ `${ styles.navbarNavLinks } ${ styles.contactNavLink }` } onClick={ onClickCon } >Contact</ NavLink ></ li > { /* Contact List Element & Contact NavLink Element = These custom li and standard React Router NavLink elements are the containers for the Contact page link. These links will automatically have an .active class (properties and their values are defined in the main App.css file) applied to them by React Router when the current route matches the 'to' attribute. */ }
 

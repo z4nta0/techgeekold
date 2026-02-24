@@ -1,13 +1,14 @@
 
 // #region Imports
 
-import About         from './components/AboPagCom/AboPagCom.tsx'; /** This import is the custom component that will return the About page when navigated to by React Router. */
-import ChristmasCard from './components/ChrCarCom/ChrCarCom.tsx'; /** This import is the custom component that will return the Christmas Card page when navigated to by React Router. */
-import Contact       from './components/ConPagCom/ConPagCom.tsx'; /** This import is the custom component that will return the Contact page when navigated to by React Router. */
-import FooBarCom     from './components/FooBarCom/FooBarCom.tsx'; /** This import is the custom component that will return the Footer Bar, which is rendered on every page and contains the copyright information. */
-import Home          from './components/HomPagCom/HomPagCom.tsx'; /** This import is the custom component that will return the Home page when navigated to by React Router. */
-import NavBarComCon  from './components/NavBar/NavBarComCon.tsx'; /** This import is the custom component that will return the Navigation Bar, which is rendered on every page and contains the links to navigate between pages. */
-import styles        from './AppRooCom.module.css';               /** This import is the custom CSS file that contains all of the styling declarations for this component. */
+import About         from './components/AboPagCom/AboPagCom.tsx';    /** This import is the custom component that will return the About page when navigated to by React Router. */
+import Cards         from './components/DigCarCom/DigCarCom.tsx';    /** This import is the custom component that will return the Cards page when navigated to by React Router. */
+import Contact       from './components/ConPagCom/ConPagCom.tsx';    /** This import is the custom component that will return the Contact page when navigated to by React Router. */
+import ChristmasCard from './components/DigCarCom/ChrCarCom/ChrCarCom.tsx';    /** This import is the custom component that will return a dynamic digital card when navigated to by React Router via the Cards page. */
+import FooBarCom     from './components/FooBarCom/FooBarCom.tsx';    /** This import is the custom component that will return the Footer Bar, which is rendered on every page and contains the copyright information. */
+import Home          from './components/HomPagCom/HomPagCom.tsx';    /** This import is the custom component that will return the Home page when navigated to by React Router. */
+import NavBarComCon  from './components/NavBarCom/NavBarComCon.tsx'; /** This import is the custom component that will return the Navigation Bar, which is rendered on every page and contains the links to navigate between pages. */
+import styles        from './AppRooCom.module.css';                  /** This import is the custom CSS file that contains all of the styling declarations for this component. */
 
 
 import { BrowserRouter } from 'react-router-dom'; /** This import is the standard React Router element for the DOM's routing components, using the HTML5 history API (pushState, replaceState, etc.) to keep the UI in sync with the URL resulting in clean, standard URLs. */
@@ -113,10 +114,11 @@ function AppRooCom( props : AppRooComPro ) : React.ReactElement {
                 <  Routes > { /** Routes = This standard React Router element is the container for all of the Route elements, and it ensures only the first matching route is rendered based on the current URL path. */ }
 
 
-                    < Route path='/'              element={ < Home    namStr={ appNamStr } /> } /> { /** Route -> Home = This standard React Router element will render the Home page component. */ }
-                    < Route path='/about'         element={ < About   namStr={ appNamStr } /> } /> { /** Route -> About         = This standard React Router element will render the About page component.          */ }
-                    < Route path='/contact'       element={ < Contact namStr={ appNamStr } /> } /> { /** Route -> Contact       = This standard React Router element will render the Contact page component.        */ }
-                    < Route path='/christmascard' element={ < ChristmasCard             /> } /> { /** Route -> ChristmasCard = This standard React Router element will render the Christmas Card page component. */ }
+                    < Route path='/'                element={ < Home    namStr={ appNamStr } /> } /> { /** Route -> Home        = This standard React Router element will render the Home page component. */ }
+                    < Route path='/about'           element={ < About   namStr={ appNamStr } /> } /> { /** Route -> About       = This standard React Router element will render the About page component. */ }
+                    < Route path='/contact'         element={ < Contact namStr={ appNamStr } /> } /> { /** Route -> Contact     = This standard React Router element will render the Contact page component. */ }
+                    < Route path='/cards'           element={ < Cards   namStr={ appNamStr } /> } /> { /** Route -> Cards       = This standard React Router element will render the Cards page component. */ }
+                    < Route path='/cards/ChristmasCard' element={ < ChristmasCard                  /> } /> { /** Route -> DynamicCard = This standard React Router element will render the DynamicCard page component based on the cardName parameter. */ }
 
 
                 </ Routes >

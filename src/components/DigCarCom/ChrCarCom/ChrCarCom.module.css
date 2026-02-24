@@ -3,22 +3,22 @@
 
 @font-face { /** This standard selector contains a custom font family along with its source and allows web developers to use custom fonts not installed on a user's computer. */
 
-    font-family : 'Rubik Glitch';                                      /** This value was chosen to be used as the font family for the custom .hackedH1 and .hackedParagraph selectors. */
-    src         : url( '../../assets/fonts/RubikGlitch-Regular.ttf' ); /** This value was chosen to be used in order to host the font file locally. */
+    font-family : 'Rubik Glitch';                                         /** This value was chosen to be used as the font family for the custom .hackedH1 and .hackedParagraph selectors. */
+    src         : url( '../../../assets/fonts/RubikGlitch-Regular.ttf' ); /** This value was chosen to be used in order to host the font file locally. */
 
 }
 
 @font-face { /** This standard selector contains a custom font family along with its source and allows web developers to use custom fonts not installed on a user's computer. */
 
-    font-family : 'Gloria Hallelujah';                                      /** This value was chosen to be used as the font family for the custom .snowfallParagraph selector. */
-    src         : url( '../../assets/fonts/GloriaHallelujah-Regular.ttf' ); /** This value was chosen to be used in order to host the font file locally. */
+    font-family : 'Gloria Hallelujah';                                         /** This value was chosen to be used as the font family for the custom .snowfallParagraph selector. */
+    src         : url( '../../../assets/fonts/GloriaHallelujah-Regular.ttf' ); /** This value was chosen to be used in order to host the font file locally. */
 
 }
 
 @font-face { /** This standard selector contains a custom font family along with its source and allows web developers to use custom fonts not installed on a user's computer. */
 
-    font-family : 'Mountains of Christmas';                                  /** This value was chosen to be used as the font family for the custom .snowfallH1 and .snowfallParagraph selectors. */
-    src         : url( '../../assets/fonts/MountainsofChristmas-Bold.ttf' ); /** This value was chosen to be used in order to host the font file locally. */
+    font-family : 'Mountains of Christmas';                                     /** This value was chosen to be used as the font family for the custom .snowfallH1 and .snowfallParagraph selectors. */
+    src         : url( '../../../assets/fonts/MountainsofChristmas-Bold.ttf' ); /** This value was chosen to be used in order to host the font file locally. */
 
 }
 
@@ -106,8 +106,8 @@
 
     /** These are technically section scoped but placing and labelling them here makes my intention clear that these are intended for use in this selector only. */
 
-    --bac-img-url : url( '../../assets/pirate-background.jpg' ); /** Background Image URL      = This custom property stores the cartoony, pirate skull and crossbones image on a black background, with the idea behind this being that the image matches the hacked theme (pirate <-> hacker) of this section. */
-    --has-tex-col : var( --col-err-sta );                        /** Hacked Section Text Color = This custom property stores the red text color for this section using the specified global scoped prime custom property, with the idea behind this being that it matches the hacked theme (danger, warning, etc...) of this section. */
+    --bac-img-url : url( '../../../assets/pirate-background.jpg' ); /** Background Image URL      = This custom property stores the cartoony, pirate skull and crossbones image on a black background, with the idea behind this being that the image matches the hacked theme (pirate <-> hacker) of this section. */
+    --has-tex-col : var( --col-err-sta );                           /** Hacked Section Text Color = This custom property stores the red text color for this section using the specified global scoped prime custom property, with the idea behind this being that it matches the hacked theme (danger, warning, etc...) of this section. */
 
     /* #endregion Selector Scoped Custom Properties */
 
@@ -227,8 +227,8 @@
 
     /** These are technically section scoped but placing and labelling them here makes my intention clear that these are intended for use in this selector only. */
 
-    --bac-img-url : url( '../../assets/snowy-background.jpg' ); /** Background Image URL        = This custom property stores the cartoony, snowy cabin in the woods image, with the idea behind this being that the image matches the snowfall theme of this section. */
-    --sns-tex-col : var( --col-bac-lig );                       /** Snowfall Section Text Color = This custom property stores the white text color for this section using the specified global scoped prime custom property (for the light theme), with the idea behind this being that it matches the snowfall theme (snow <-> white) of this section. */
+    --bac-img-url : url( '../../../assets/snowy-background.jpg' ); /** Background Image URL        = This custom property stores the cartoony, snowy cabin in the woods image, with the idea behind this being that the image matches the snowfall theme of this section. */
+    --sns-tex-col : var( --col-bac-lig );                          /** Snowfall Section Text Color = This custom property stores the white text color for this section using the specified global scoped prime custom property (for the light theme), with the idea behind this being that it matches the snowfall theme (snow <-> white) of this section. */
 
     /* #endregion Selector Scoped Custom Properties */
 
