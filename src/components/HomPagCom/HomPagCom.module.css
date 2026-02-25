@@ -400,11 +400,10 @@
     --con-div-gta :       /** Content Div Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
         '  buttonDiv   '  /** This value was chosen to be used to contain the custom .buttonDiv selector within this selector grid's first row, full width column. */
         'editParagraph '  /** This value was chosen to be used to contain the custom .editParagraph selector within this selector grid's second row, full width column. */
-        'learnParagraph'  /** This value was chosen to be used to contain the custom .learnParagraph selector within this selector grid's third row, full width column. */
-        'dataParagraph '; /** This value was chosen to be used to contain the custom .dataParagraph selector within this selector grid's fourth row, full width column. */
+        'learnParagraph'; /** This value was chosen to be used to contain the custom .learnParagraph selector within this selector grid's third row, full width column. */
 
-    --con-div-gtr : repeat( 4, var( --gri-rep-row ) );                  /** Content Div Grid Template Rows ~= 1186.620px @1080px height = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
-    --gri-rep-row : calc( 25% - ( ( var( --row-gap-lar ) * 3 ) / 4 ) ); /** Grid Repeat Rows               ~=   59.800px @1080px height = This custom property stores the height of the custom .buttonDiv, .editParagraph, .learnParagraph and .dataParagraph selectors' rows within this selector's grid, with the idea behind this being that all four rows are one line only and have the exact same line height which means that all available vertical space should be distributed evenly between them. */
+    --con-div-gtr : repeat( 3, var( --gri-rep-row ) );                      /** Content Div Grid Template Rows ~= 1186.620px @1080px height = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+    --gri-rep-row : calc( 33.333% - ( ( var( --row-gap-lar ) * 2 ) / 3 ) ); /** Grid Repeat Rows               ~=   59.800px @1080px height = This custom property stores the height of the custom .buttonDiv, .editParagraph, .learnParagraph and .dataParagraph selectors' rows within this selector's grid, with the idea behind this being that all four rows are one line only and have the exact same line height which means that all available vertical space should be distributed evenly between them. */
 
     /* #endregion Selector Scoped Custom Properties */
 
@@ -494,9 +493,10 @@
 
 .editParagraph { /** Edit Paragraph = This custom selector contains the custom .editCode selector and is the .contentDiv selector's second grid row, only grid column. */
 
-    grid-area   : editParagraph;        /** This value was chosen to be used to place this selector within the custom .contentDiv selector grid area's second row, full width column. */
-    height      : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .contentDiv selector. */
-    line-height : var( --ver-rhy-bas ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    align-content : center;               /** This value was chosen to be used to vertically center this selector within its grid area, with the idea behind this being that with so little content it is more aesthetically pleasing to be centered within its grid area. */
+    grid-area     : editParagraph;        /** This value was chosen to be used to place this selector within the custom .contentDiv selector grid area's second row, full width column. */
+    height        : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .contentDiv selector. */
+    line-height   : var( --ver-rhy-bas ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
 
 }
 
@@ -522,27 +522,14 @@
 
 .learnParagraph { /** Learn Paragraph = This custom selector contains the custom paragraph text and is the .contentDiv selector's third grid row, only grid column. */
 
-    grid-area   : learnParagraph;       /** This value was chosen to be used to place this selector within the custom .contentDiv selector grid area's third row, full width column. */
-    height      : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .contentDiv selector. */
-    line-height : var( --ver-rhy-bas ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    align-content : center;               /** This value was chosen to be used to vertically center this selector within its grid area, with the idea behind this being that with so little content it is more aesthetically pleasing to be centered within its grid area. */
+    grid-area     : learnParagraph;       /** This value was chosen to be used to place this selector within the custom .contentDiv selector grid area's third row, full width column. */
+    height        : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .contentDiv selector. */
+    line-height   : var( --ver-rhy-bas ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
 
 }
 
 /* #endregion Learn Paragraph */
-
-
-
-/* #region Data Paragraph */
-
-.dataParagraph { /** Data Paragraph = This custom selector contains the custom paragraph text and is the .contentDiv selector's fourth grid row, only grid column. */
-
-    grid-area   : dataParagraph;        /** This value was chosen to be used to place this selector within the custom .contentDiv selector grid area's fourth row, full width column. */
-    height      : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .contentDiv selector. */
-    line-height : var( --ver-rhy-bas ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
-
-}
-
-/* #endregion Data Paragraph */
 
 
 /* #endregion Content Div */
