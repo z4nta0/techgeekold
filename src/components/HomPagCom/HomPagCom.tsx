@@ -6,19 +6,15 @@ import reactLogo from '../../assets/react.svg';   /** This import is the React l
 import styles    from './HomPagCom.module.css';   /** This import is the custom CSS file that contains all of the styling declarations for this component. */
 import useAppDis from '../../hooks/useAppDis.ts'; /** This import is the custom React hook that provides access to the standard React Redux store dispatch function with proper TypeScript typing. */
 import useAppSel from '../../hooks/useAppSel.ts'; /** This import is the custom React hook that provides access to the Redux store's state with the additional advantage of applying proper type definitions. */
-import useAppThu from '../../hooks/useAppThu.ts'; /** This import is the custom React hook that provides access to the standard React Redux store dispatch function with proper TypeScript typing, specifically for working with thunk actions. */
 import viteLogo  from '../../assets/vite.svg';    /** This import is the Vite logo image that is used in this component to display the official Vite logo. */
 
 
 import { decNumRed    } from '../../features/couStaNumSlice.ts'; /** This import is the custom counter state number reducer's action creator function that will be used to dispatch an action to decrement the counter number state in the this component. */
-import { getMocDatJso } from '../../api/mocDatJsoSlice.ts';      /** This import is the custom mock data JSON reducer's thunk action creator function that will be used to dispatch an action to retrieve the mock data JSON state in the this component. */
 import { incNumRed    } from '../../features/couStaNumSlice.ts'; /** This import is the custom counter state number reducer's action creator function that will be used to dispatch an action to increment the counter number state in the this component. */
-import { useEffect    } from 'react';                            /** This import is the standard React hook that enables side effects for components. */
 
 
 import { type RooStaObj } from '../../appStoIns.ts';       /** This import is the custom type definition for the entire state object of the custom React Redux Toolkit store, which is inferred by the store's standard getState method. */
 import { type UseAppDis } from '../../hooks/useAppDis.ts'; /** This import is the custom type definition for the custom React hook that acts as a wrapper around the standard React Redux store dispatch function. */
-import { type UseAppThu } from '../../hooks/useAppThu.ts'; /** This import is the custom type definition for the custom React hook that acts as a wrapper around the standard React Redux store dispatch function, this one designed specifically for working with thunk actions. */
 
 // #endregion Imports
 
@@ -90,93 +86,13 @@ function HomPagCom ( props : HomPagComPro ) : React.ReactElement {
 
     // #region State Variables
 
-
-    // #region AppSelObj
-
-    /**
-     * App Selector Object = This custom type stores the types that will be used for the return values from the custom {@link useAppSel} React hook.
-     * 
-     * @property curLoaBoo = Currently Loading Boolean custom property stores the type that will be used for the custom {@link curLoaBoo} variable.
-     * @property encErrBoo = Encountered Error Boolean custom property stores the type that will be used for the custom {@link encErrBoo} variable.
-     * @property mocDatObj = Mock Data String custom property stores the type that will be used for the custom {@link mocDatObj} variable.
-     *
-    */
-
-    type AppSelObj = {
-
-        curLoaBoo : boolean;
-        encErrBoo : boolean;
-        mocDatObj : { mocDatStr : string; };
-
-    };
-
-    // #endregion AppSelObj
-
-
-    /** App Dispatch Function       = This custom variable stores the custom React hook from the utilities directory that wraps the standard React Redux store dispatch function. This must be executed as a function in order to obtain access the the standard React Redux store dispatch function that this custom hook wraps. */
-    const   appDisFun   : UseAppDis = useAppDis();
-    /** Thunk Dispatch Function     = This custom variable stores the custom React hook from the utilities directory that wraps the standard React Redux store dispatch function but with proper typing specifically for thunk actions. This must be executed as a function in order to obtain access the the standard React Redux store dispatch function that this custom hook wraps. */
-    const   appThuFun   : UseAppThu = useAppThu();
-    /** Currently Loading Boolean   = This custom state variable stores the boolean value that indicates whether the mock data JSON is currently being fetched from the API, and it will be used to conditionally render a loading message in the component while the data is being fetched. */
-    const { curLoaBoo } : AppSelObj = useAppSel( ( state : RooStaObj ) => state.mocDatJso );
-    /** Encountered Error Boolean   = This custom state variable stores the boolean value that indicates whether an error was encountered while fetching the mock data JSON from the API, and it will be used to conditionally render an error message in the component if an error occurs during data fetching. */
-    const { encErrBoo } : AppSelObj = useAppSel( ( state : RooStaObj ) => state.mocDatJso );
-    /** Mock Data Object            = This custom state variable stores the actual mock data JSON object fetched from the API, and it will be used to display some of the content on the Home page. */
-    const { mocDatObj } : AppSelObj = useAppSel( ( state : RooStaObj ) => state.mocDatJso );
-
-
-
-    /* Data Paragraph Content = This custom variable stores the string that will be displayed in this component's .dataParagraph HTML element based on the current state of the mock data fetching process. If the data is currently being fetched, it will display a loading message. If an error was encountered during fetching, it will display an error message. Otherwise, it will display the actual mock back end JSON data string. */
-    const datParCon : string  = curLoaBoo ? 'Fetching data from API...' : encErrBoo ? 'Error fetching data' : mocDatObj.mocDatStr;
+    /** App Dispatch Function   = This custom variable stores the custom React hook from the utilities directory that wraps the standard React Redux store dispatch function. This must be executed as a function in order to obtain access the the standard React Redux store dispatch function that this custom hook wraps. */
+    const appDisFun : UseAppDis = useAppDis();
 
     // #endregion State Variables
 
 
     // #endregion Component Scoped Variables
-
-
-
-    // #region useEffect
-
-    /**
-     * useEffect
-     *
-     * @summary
-     * The standard React useEffect hook executes side effects for functional
-     * components, such as data fetching, subscriptions or manual DOM
-     * manipulation. Its main purpose is to synchronize a component with
-     * external systems. The custom inner code block of this hook handles the
-     * fetching of the mock back end JSON data using the custom React hook that
-     * wraps the standard React Redux Toolkit useDispatch hook. The empty
-     * dependency array ensures that this only runs once when the component is
-     * first rendered.
-     *
-     * @author React  <https://react.dev/reference/react/useEffect>
-     * @author z4nta0 <https://github.com/z4nta0>
-     *
-     * @param void - This function takes no parameters.
-     *
-     * @returns This function does not return anything.
-     *
-     * @example
-     * ```ts
-     * This function is not called directly, but rather it is run on component
-     * mount and on changes to whatever variables are specified in the
-     * dependency array.
-     * ```
-     *
-    */
-
-    useEffect( () => {
-
-
-        /** App Thunk Function = This custom React hook executes the standard Redux Toolkit useDispatch hook in order to execute the async thunk action which fetches the mock back end JSON data. */
-        appThuFun( getMocDatJso() );
-
-
-    }, []); /** Empty Aray = This custom dependency array stores the values that define when useEffect should be run, with an empty dependency array ensuring that this hook will run only once when the component mounts. */
-
-    // #endregion useEffect
 
 
 
@@ -302,18 +218,6 @@ function HomPagCom ( props : HomPagComPro ) : React.ReactElement {
                 </ p >
 
                 { /** End Learn Paragraph Element */ }
-
-
-
-                { /** Start Data Paragraph Element */ }
-
-                <  p id='datParEle' className={ styles.dataParagraph } > { /* Data Paragraph Element = This custom paragraph element is the container for the mock backend JSON data text or for the placeholder text if the data is either loading or it encountered an error. */ }
-
-                    { datParCon === undefined ? 'Data should go here' : datParCon } ~ { appNamStr }
-
-                </ p >
-
-                { /** End Data Paragraph Element */ }
 
 
             </ div >

@@ -1,14 +1,16 @@
 
 // #region Imports
 
-import About         from './components/AboPagCom/AboPagCom.tsx';    /** This import is the custom component that will return the About page when navigated to by React Router. */
-import Cards         from './components/DigCarCom/DigCarCom.tsx';    /** This import is the custom component that will return the Cards page when navigated to by React Router. */
-import Contact       from './components/ConPagCom/ConPagCom.tsx';    /** This import is the custom component that will return the Contact page when navigated to by React Router. */
-import ChristmasCard from './components/DigCarCom/ChrCarCom/ChrCarCom.tsx';    /** This import is the custom component that will return a dynamic digital card when navigated to by React Router via the Cards page. */
-import FooBarCom     from './components/FooBarCom/FooBarCom.tsx';    /** This import is the custom component that will return the Footer Bar, which is rendered on every page and contains the copyright information. */
-import Home          from './components/HomPagCom/HomPagCom.tsx';    /** This import is the custom component that will return the Home page when navigated to by React Router. */
-import NavBarComCon  from './components/NavBarCom/NavBarComCon.tsx'; /** This import is the custom component that will return the Navigation Bar, which is rendered on every page and contains the links to navigate between pages. */
-import styles        from './AppRooCom.module.css';                  /** This import is the custom CSS file that contains all of the styling declarations for this component. */
+import About         from './components/AboPagCom/AboPagCom.tsx';           /** This import is the custom component that will return the About page when navigated to by React Router. */
+import Cards         from './components/DigCarCom/DigCarCom.tsx';           /** This import is the custom component that will return the Cards page when navigated to by React Router. */
+import Contact       from './components/ConPagCom/ConPagCom.tsx';           /** This import is the custom component that will return the Contact page when navigated to by React Router. */
+import ChristmasCard from './components/DigCarCom/ChrCarCom/ChrCarCom.tsx'; /** This import is the custom component that will return a dynamic digital card when navigated to by React Router via the Cards page. */
+import FooBarCom     from './components/FooBarCom/FooBarCom.tsx';           /** This import is the custom component that will return the Footer Bar, which is rendered on every page and contains the copyright information. */
+import Home          from './components/HomPagCom/HomPagCom.tsx';           /** This import is the custom component that will return the Home page when navigated to by React Router. */
+import NavBarComCon  from './components/NavBarCom/NavBarComCon.tsx';        /** This import is the custom component that will return the Navigation Bar, which is rendered on every page and contains the links to navigate between pages. */
+import SidOneCom     from './components/SidOneCom/SidOneCom.tsx';           /** This import is the custom component that will return the Sidebar One, which is rendered on every page and contains the mock backend JSON data. */
+import SidTwoCom     from './components/SidTwoCom/SidTwoCom.tsx';           /** This import is the custom component that will return the Sidebar Two, which is rendered on every page and contains the mock backend JSON data. */
+import styles        from './AppRooCom.module.css';                         /** This import is the custom CSS file that contains all of the styling declarations for this component. */
 
 
 import { BrowserRouter } from 'react-router-dom'; /** This import is the standard React Router element for the DOM's routing components, using the HTML5 history API (pushState, replaceState, etc.) to keep the UI in sync with the URL resulting in clean, standard URLs. */
@@ -24,7 +26,7 @@ import { Routes        } from 'react-router-dom'; /** This import is the standar
 /**
  * App Root Component Props = This custom type stores the types that will be used for the custom props that are passed into this custom component.
  *
- * @property namStr = Name String custom property stores the type that will be used for the custom {@link namStr} variable.
+ * @property namStr = Name String custom property stores the type that will be used for the custom {@link appNamStr} variable.
  *
 */
 
@@ -104,6 +106,10 @@ function AppRooCom( props : AppRooComPro ) : React.ReactElement {
 
 
 
+            < SidOneCom namStr={ appNamStr } />
+
+
+
             { /* Start Main Element */ }
 
             <  main id='appMaiEle' className={ styles.appMain } > { /* App Main Element = This custom main element is the container for the main element, and it is where the components that correspond to the current URL will be rendered by React Router. */ }
@@ -129,6 +135,10 @@ function AppRooCom( props : AppRooComPro ) : React.ReactElement {
             </ main >
 
             { /* End Main Element */ }
+
+
+
+            < SidTwoCom namStr={ appNamStr } />
 
 
 

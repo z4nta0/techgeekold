@@ -1,0 +1,47 @@
+
+/* #region Sidebar Two Div */
+
+.sidebarTwoDiv { /** Sidebar Two Div = This custom selector contains the custom .sidebarTwoParagraph selector and is the custom #rooDivEle selector's second grid row, third grid column. */
+
+    /* #region Selector Scoped Custom Properties */
+
+    --sid-two-gta :            /** Sidebar Two Div Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+        'sidebarTwoParagraph'; /** This value was chosen to be used to contain the custom .sidebarTwoParagraph selector within this selector grid's full height row, full width column. */
+
+    --sb2-par-row : 100%;                  /** Sidebar Two Paragraph Row           ~= 592.100px @1080px height = This custom property stores the height of the custom .sidebarTwoParagraph selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --sid-two-gtr : var( --sb2-par-row );  /** Sidebar Two Div Grid Template Rows  ~= 592.100px @1080px height = This custom property stores the grid template rows value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+
+    /* #endregion Selector Scoped Custom Properties */
+
+
+    align-items           : center;               /** This value was chosen to be used to vertically center the custom .sidebarTwoParagraph selector within its grid area, with the idea behind this being that with so little content it is more aesthetically pleasing to be centered within its grid area. */
+    display               : grid;                 /** This value was chosen to be used as the preferred layout method, with the idea behind this being that it provides powerful element placement and sizing capabilities. */
+    grid-area             : sidebar2;             /** This value was chosen to be used to place this selector within the custom #rooDivEle selector grid area's second row, third column. */
+    grid-template-areas   : var( --sid-two-gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-columns : 100%;                 /** This value was chosen to be used to fill columns using all available horizontal space as defined by its parent, the custom #rooDivEle selector. */
+    grid-template-rows    : var( --sid-two-gtr ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    height                : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom #rooDivEle selector. */
+    justify-items         : center;               /** This value was chosen to be used to horizontally center the custom .sidebarTwoParagraph selector within its grid area, with the idea behind this being that with so little content it is more aesthetically pleasing to be centered within its grid area. */
+    text-align            : center;               /** This value was chosen to be used to center the text for this selector, with the idea behind this being that with so little content it is more aesthetically pleasing to be centered. */
+
+}
+
+
+
+/* #region Sidebar Two Paragraph */
+
+.sidebarTwoParagraph { /** Sidebar Two Paragraph = This custom selector contains the custom mock backend JSON data text and is the custom .sidebarTwoDiv selector's only grid row, only grid column. */
+
+    grid-area   : sidebarTwoParagraph;  /** This value was chosen to be used to place this selector within the custom .sidebarTwoDiv selector grid area's only row, only column. */
+    font-size   : var( --fon-siz-bas ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    line-height : var( --ver-rhy-bas ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    max-width   : 80%;                  /** This value was chosen to limit the maximum width of the text for this selector, with the idea behind this being that it seemed more logical to use this property over using margin or padding. */
+
+}
+
+/* #endregion Sidebar Two Paragraph */
+
+
+/* #endregion Sidebar Two Div */
+
+

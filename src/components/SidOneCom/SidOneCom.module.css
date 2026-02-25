@@ -1,0 +1,47 @@
+
+/* #region Sidebar One Div */
+
+.sidebarOneDiv { /** Sidebar One Div = This custom selector contains the custom .sidebarOneParagraph selector and is the custom #rooDivEle selector's second grid row, first grid column. */
+
+    /* #region Selector Scoped Custom Properties */
+
+    --sid-one-gta :            /** Sidebar One Div Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+        'sidebarOneParagraph'; /** This value was chosen to be used to contain the custom .sidebarOneParagraph selector within this selector grid's full height row, full width column. */
+
+    --sb1-par-row : 100%;                  /** Sidebar One Paragraph Row           ~= 592.100px @1080px height = This custom property stores the height of the custom .sidebarOneParagraph selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --sid-one-gtr : var( --sb1-par-row );  /** Sidebar One Div Grid Template Rows  ~= 592.100px @1080px height = This custom property stores the grid template rows value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+
+    /* #endregion Selector Scoped Custom Properties */
+
+
+    align-items           : center;               /** This value was chosen to be used to vertically center the custom .sidebarOneParagraph selector within its grid area, with the idea behind this being that with so little content it is more aesthetically pleasing to be centered within its grid area. */
+    display               : grid;                 /** This value was chosen to be used as the preferred layout method, with the idea behind this being that it provides powerful element placement and sizing capabilities. */
+    grid-area             : sidebar1;             /** This value was chosen to be used to place this selector within the custom #rooDivEle selector grid area's second row, first column. */
+    grid-template-areas   : var( --sid-one-gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-columns : 100%;                 /** This value was chosen to be used to fill columns using all available horizontal space as defined by its parent, the custom #rooDivEle selector. */
+    grid-template-rows    : var( --sid-one-gtr ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    height                : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom #rooDivEle selector. */
+    justify-items         : center;               /** This value was chosen to be used to horizontally center the custom .sidebarOneParagraph selector within its grid area, with the idea behind this being that with so little content it is more aesthetically pleasing to be centered within its grid area. */
+    text-align            : center;               /** This value was chosen to be used to center the text for this selector, with the idea behind this being that with so little content it is more aesthetically pleasing to be centered. */
+
+}
+
+
+
+/* #region Sidebar One Paragraph */
+
+.sidebarOneParagraph { /** Sidebar One Paragraph = This custom selector contains the custom mock backend JSON data text and is the custom .sidebarOneDiv selector's only grid row, only grid column. */
+
+    grid-area   : sidebarOneParagraph;  /** This value was chosen to be used to place this selector within the custom .sidebarOneDiv selector grid area's only row, only column. */
+    font-size   : var( --fon-siz-bas ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    line-height : var( --ver-rhy-bas ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    max-width   : 80%;                  /** This value was chosen to limit the maximum width of the text for this selector, with the idea behind this being that it seemed more logical to use this property over using margin or padding. */
+
+}
+
+/* #endregion Sidebar One Paragraph */
+
+
+/* #endregion Sidebar One Div */
+
+
