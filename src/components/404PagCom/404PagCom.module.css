@@ -1,0 +1,280 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap');
+
+
+
+.notFoundSection {
+
+    /* #region Selector Scoped Custom Properties = These are technically component scoped but placing and labelling them here makes my intention clear that these are intended for use in this selector only. */
+
+    --nof-sec-gta :   /** Home Section Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+        'notFoundHeader'  /** This value was chosen to be used to contain the custom .homeHeader selector within this selector grid's first row, full width column. */
+        'contentDiv'; /** This value was chosen to be used to contain the custom .contentDiv selector within this selector grid's second row, full width column. */
+
+    --con-div-row : calc( 60% - ( var( --row-gap-xla ) / 2 ) ); /** Content Div Row                 ~= 292.400px @1080px height = This custom property stores the height of the custom .contentDiv selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --nof-hea-row : calc( 40% - ( var( --row-gap-xla ) / 2 ) ); /** Home Header Row                 ~= 364.900px @1080px height = This custom property stores the height of the custom .homeHeader selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --nof-sec-gtr : var(  --nof-hea-row ) var( --con-div-row ); /** Home Section Grid Template Rows ~= 725.100px @1080px height = This custom property stores the grid template rows value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+
+    /* #endregion Selector Scoped Custom Properties */
+
+
+    align-items           : center;
+    background            : var( --col-bac-col );
+    display               : grid;
+    font-family           : 'Pathway Gothic One', Impact, sans-serif;
+    grid-template-areas   : var( --nof-sec-gta );
+    grid-template-columns : 100%;
+    grid-template-rows    : var( --nof-sec-gtr );
+    height                : 100%;
+    justify-content       : center;
+    row-gap               : var( --row-gap-xla );
+
+}
+
+
+
+.notFoundHeader {
+
+    /* #region Selector Scoped Custom Properties = These are technically component scoped but placing and labelling them here makes my intention clear that these are intended for use in this selector only. */
+
+    --nof-hea-gta :   /** Home Section Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+        'headerH1'  /** This value was chosen to be used to contain the custom .homeHeader selector within this selector grid's first row, full width column. */
+        'headerParagraph'; /** This value was chosen to be used to contain the custom .contentDiv selector within this selector grid's second row, full width column. */
+
+    --hea-h1--row : calc( 60% - ( var( --row-gap-lar ) / 2 ) ); /** Content Div Row                 ~= 292.400px @1080px height = This custom property stores the height of the custom .contentDiv selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --hea-par-row : calc( 40% - ( var( --row-gap-lar ) / 2 ) ); /** Home Header Row                 ~= 364.900px @1080px height = This custom property stores the height of the custom .homeHeader selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --nof-hea-gtr : var(  --hea-h1--row ) var( --hea-par-row ); /** Home Section Grid Template Rows ~= 725.100px @1080px height = This custom property stores the grid template rows value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+
+    /* #endregion Selector Scoped Custom Properties */
+
+
+    align-items           : center;
+    display               : grid;
+    grid-area             : notFoundHeader;
+    grid-template-areas   : var( --nof-hea-gta );
+    grid-template-columns : 100%;
+    grid-template-rows    : var( --nof-hea-gtr );
+    height                : 100%;
+    justify-items         : center;
+    row-gap               : var( --row-gap-lar );
+
+}
+
+
+
+.headerh1 {
+
+    align-content : center;
+    color         : #fff;
+    font-size     : var( --hea-one-siz );
+    font-weight   : 900;
+    grid-area     : headerH1;
+    height        : 100%;
+    line-height   : var( --hea-one-siz );
+    text-shadow   :
+        0 0 30px rgba(255,255,255,0.8),
+        0 0 60px rgba(255,255,255,0.5),
+        0 0 100px rgba(255,255,255,0.3),
+        0 0 200px rgba(255,255,255,0.15);
+
+}
+
+
+
+.h1Span {
+
+    animation : spin 20s linear infinite;
+    display   : inline-block;
+
+}
+
+
+
+@keyframes spin {
+
+
+    from {
+        
+        transform : rotate( 0deg );
+    
+    }
+
+
+
+    to {
+        
+        transform : rotate( 360deg );
+    
+    }
+
+
+}
+
+
+
+.headerParagraph {
+
+    align-content : center;
+    color         : #fff;
+    font-size     : var( --fon-siz-xla );
+    grid-area     : headerParagraph;
+    height        : 100%;
+    line-height   : var( --fon-siz-xla );
+    text-shadow   : 0 0 20px rgba(255,255,255,0.3);
+
+}
+
+
+
+.contentDiv {
+
+    /* #region Selector Scoped Custom Properties = These are technically component scoped but placing and labelling them here makes my intention clear that these are intended for use in this selector only. */
+
+    --con-div-gta :   /** Content Div Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+        'contentParagraph'  /** This value was chosen to be used to contain the custom .contentParagraph selector within this selector grid's first row, full width column. */
+        'wheelButton'; /** This value was chosen to be used to contain the custom .wheelButton selector within this selector grid's second row, full width column. */
+
+    --con-par-row : calc( 40% - ( var( --row-gap-lar ) / 2 ) ); /** Content Div Row                 ~= 292.400px @1080px height = This custom property stores the height of the custom .contentDiv selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --whe-but-row : calc( 60% - ( var( --row-gap-lar ) / 2 ) ); /** Wheel Button Row                 ~= 364.900px @1080px height = This custom property stores the height of the custom .wheelButton selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --con-div-gtr : var(  --con-par-row ) var( --whe-but-row ); /** Content Div Grid Template Rows ~= 725.100px @1080px height = This custom property stores the grid template rows value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+
+    /* #endregion Selector Scoped Custom Properties */
+
+
+    align-items           : center;
+    display               : grid;
+    grid-area             : contentDiv;
+    grid-template-areas   : var( --con-div-gta );
+    grid-template-columns : 100%;
+    grid-template-rows    : var( --con-div-gtr );
+    height                : 100%;
+    justify-items         : center;
+    row-gap               : var( --row-gap-lar );
+
+}
+
+
+
+.contentParagraph {
+
+    font-size      : clamp(14px, 2vw, 20px);
+    color          : rgba(255,255,255,0.5);
+    grid-area             : contentParagraph;
+    letter-spacing : 0.25em;
+    text-align     : center;
+    animation      : flicker 6s ease-in-out infinite;
+    max-width      : var( --par-wid-max );
+    padding        : 0 20px;
+
+}
+
+
+
+@keyframes flicker {
+
+
+    0% {
+
+        opacity : 1;
+
+    }
+
+
+
+    50% {
+
+        opacity : 0;
+
+    }
+
+
+
+    100% {
+
+        opacity : 1;
+
+    }
+
+
+}
+
+
+
+.wheelButton {
+
+    background     : none;
+    border         : none;
+    cursor         : pointer;
+    grid-area      : wheelButton;
+    height         : var( --ver-rhy-max );
+    padding        : 0;
+    display        : flex;
+    flex-direction : column;
+    align-items    : center;
+    gap            : 12px;
+
+}
+
+
+
+.wheelButton:hover {
+
+    background-color : none;
+    box-shadow       : none;
+
+}
+
+
+
+.wheelLabel {
+
+    color          : rgba(255,255,255,0.4);
+    font-size      : 11px;
+    letter-spacing : 0.3em;
+    text-transform : uppercase;
+    font-family    : 'Pathway Gothic One', Impact, sans-serif;
+
+}
+
+
+
+.wheelSVG {
+
+    animation  : none;
+    transition : filter 0.3s;
+
+}
+
+
+
+.wheelButton:hover .wheelSVG {
+
+    animation : wheelSpin 20s linear infinite;
+    filter    : drop-shadow(0 0 12px rgba( 199.005, 199.005, 2.618, 1 ) );
+
+}
+
+
+
+@keyframes wheelSpin {
+
+
+    from {
+ 
+        transform : rotate( 0deg );
+
+    }
+
+
+
+    to {
+
+        transform : rotate( 360deg );
+
+    }
+
+
+}
+
+
+
