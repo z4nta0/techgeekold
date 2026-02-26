@@ -1,5 +1,36 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap');
+/* #region Font Face Declarations */
+
+@font-face { /** This standard selector contains a custom font family along with its source and allows web developers to use custom fonts not installed on a user's computer. */
+
+    font-family : 'Pathway Gothic One';                                     /** This value was chosen to be used as the font family for all of this component's text, except for the word LOST which uses Impact instead. */
+    src         : url( '../../assets/fonts/PathwayGothicOne-Regular.ttf' ); /** This value was chosen to be used in order to host the font file locally. */
+
+}
+
+@font-face { /** This standard selector contains a custom font family along with its source and allows web developers to use custom fonts not installed on a user's computer. */
+
+    font-family : 'Impact';                               /** This value was chosen to be used as the font family for the custom .impactFont selector, which is applied anywhere the word LOST appears. */
+    src         : url( '../../assets/fonts/Impact.ttf' ); /** This value was chosen to be used in order to host the font file locally. */
+
+}
+
+/* #endregion Font Face Declarations */
+
+
+
+/* #region Impact Font */
+
+.impactFont {
+
+    font-family    : 'Impact', sans-serif;
+    font-weight    : 900;
+    letter-spacing : 0;
+
+}
+
+/* #endregion Impact Font */
+
 
 
 
@@ -21,7 +52,7 @@
     align-items           : center;
     background            : var( --col-bac-col );
     display               : grid;
-    font-family           : 'Pathway Gothic One', Impact, sans-serif;
+    font-family           : 'Pathway Gothic One', sans-serif;
     grid-template-areas   : var( --nof-sec-gta );
     grid-template-columns : 100%;
     grid-template-rows    : var( --nof-sec-gtr );
@@ -67,7 +98,6 @@
     align-content : center;
     color         : #fff;
     font-size     : var( --hea-one-siz );
-    font-weight   : 900;
     grid-area     : headerH1;
     height        : 100%;
     line-height   : var( --hea-one-siz );
@@ -93,18 +123,28 @@
 @keyframes spin {
 
 
-    from {
-        
-        transform : rotate( 0deg );
-    
+    0% {
+
+        scale     : 1;
+        transform : scale(1), rotate( 0deg );
+
     }
 
 
 
-    to {
-        
+    50% {
+
+        scale : 0.3;
+
+    }
+
+
+
+    100% {
+
+        scale     : 1;
         transform : rotate( 360deg );
-    
+
     }
 
 
@@ -162,7 +202,7 @@
     grid-area             : contentParagraph;
     letter-spacing : 0.25em;
     text-align     : center;
-    animation      : flicker 6s ease-in-out infinite;
+    animation      : flicker 20s ease-in-out infinite;
     max-width      : var( --par-wid-max );
     padding        : 0 20px;
 
@@ -232,7 +272,7 @@
     font-size      : 11px;
     letter-spacing : 0.3em;
     text-transform : uppercase;
-    font-family    : 'Pathway Gothic One', Impact, sans-serif;
+    font-family    : 'Pathway Gothic One', sans-serif;
 
 }
 
@@ -241,7 +281,7 @@
 .wheelSVG {
 
     animation  : none;
-    transition : filter 0.3s;
+    transition : filter 6s;
 
 }
 

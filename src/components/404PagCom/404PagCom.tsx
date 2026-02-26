@@ -127,11 +127,11 @@ function SidOneCom ( props : SidOneComPro ) : React.ReactElement {
             <  header className={ styles.notFoundHeader } >
 
 
-                < h1 className={ styles.headerh1 } >< span className={ styles.h1Span } >404</ span ></ h1 >
+                < h1 className={ styles.headerh1 } >< span className={ ` ${ styles.h1Span } ${ styles.impactFont }` } >404</ span ></ h1 >
 
 
 
-                < p className={ styles.headerParagraph } >You are LOST</ p >
+                < p className={ styles.headerParagraph } >You are < span className={ ` ${ styles.headerSpan } ${ styles.impactFont }` } >LOST</ span ></ p >
 
 
             </ header >
@@ -143,7 +143,7 @@ function SidOneCom ( props : SidOneComPro ) : React.ReactElement {
 
                 < p className={ styles.contentParagraph } >
 
-                    The page you're looking for is LOST... or was it ever really there? If you want to leave, you will need to take your chances and turn the wheel below
+                    The page you're looking for is < span className={ ` ${ styles.contentSpan } ${ styles.impactFont }` } >LOST</ span >... or was it ever really there? If you want to leave, you will need to take your chances and turn the wheel below.
 
                 </ p >
 
