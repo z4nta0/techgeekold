@@ -160,7 +160,7 @@ function HomPagCom ( props : HomPagComPro ) : React.ReactElement {
 
             { /** Start Content Div Element */ }
 
-            <  div id='conDivEle' className={ styles.contentDiv } > { /* Content Div Element = This custom div element is the container for the content of this component, including the buttons to increment and decrement the counter state, and the paragraphs that display instructions for editing the site/app, instructions to click on the logos to learn more and the mock backend JSON data. */ }
+            <  div id='conDivEle' className={ styles.contentDiv } > { /* Content Div Element = This custom div element is the container for the content of this component, including the buttons to increment and decrement the counter state, and the paragraphs that display instructions for editing the site/app, and the instructions to click on the logos to learn more. */ }
 
 
                 { /** Start Button Div Element */ }

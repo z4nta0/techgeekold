@@ -14,13 +14,13 @@ import { useEffect } from 'react'; /** This import is the standard React hook th
 // #region Props Type Definitions
 
 /**
- * Sidebar One Component Props = This custom type stores the types that will be used for the custom props that are passed into this custom component.
+ * 404 Page Component Props = This custom type stores the types that will be used for the custom props that are passed into this custom component.
  *
  * @property namStr = Name String custom property stores the type that will be used for the custom {@link appNamStr} variable.
  *
 */
 
-type SidOneComPro = {
+type FofPagComPro = {
 
     namStr : string;
 
@@ -30,34 +30,40 @@ type SidOneComPro = {
 
 
 
-// #region SidOneCom
+// #region FofPagCom
 
 /**
- * SidOneCom = Sidebar One Component
+ * FofPagCom = 404 Page Component
  *
  * @summary
  * This custom functional component executes the logic of and renders the JSX
- * of the Sidebar 1. There is no complex logic or functionality for this page.
- * This was all done for personal learning purposes to gain some experience
- * with using React and TypeScript in a more hands on way (instead of just
- * tutorials) before moving on to my next project that will use these concepts
- * in a more practical, realistic way.
+ * of the 404 page. This page will be rendered by React Router anytime a route
+ * does not match any defined paths. Most 404 pages tend to have fun with their
+ * content, which makes sense since it can be frustrating for users and by
+ * giving them something fun or whimsical it can alleviate that frustration. I
+ * went with the TV show 'LOST' theme, with the idea behind that being that
+ * requesting a page that does not exist is a lot like how the island was lost
+ * in time and space, as well as with the characters being lost from
+ * civilization and/or their normal lives. This was all done for personal
+ * learning purposes to gain some experience with using React and TypeScript in
+ * a more hands on way (instead of just tutorials) before moving on to my next
+ * project that will use these concepts in a more practical, realistic way.
  *
  * @author z4nta0 <https://github.com/z4nta0>
  * 
  * @param props.namStr - {@link appNamStr}
  * 
- * @returns A React JSX element representing the SidOneCom component.
- * @see {@link sidOneComJsx}
+ * @returns A React JSX element representing the FofPagCom component.
+ * @see {@link fofPagComJsx}
  * 
  * @example
  * ```tsx
- * <SidOneCom /> // => sidOneComJsx
+ * <FofPagCom /> // => fofPagComJsx
  * ```
  *
 */
 
-function SidOneCom ( props : SidOneComPro ) : React.ReactElement {
+function FofPagCom ( props : FofPagComPro ) : React.ReactElement {
 
 
     // #region Component Scoped Variables
@@ -107,7 +113,10 @@ function SidOneCom ( props : SidOneComPro ) : React.ReactElement {
     */
 
     useEffect(() => {return;
-  }, []); /** Empty Aray = This custom dependency array stores the values that define when useEffect should be run, with an empty dependency array ensuring that this hook will run only once when the component mounts. */
+
+
+
+    }, []); /** Empty Aray = This custom dependency array stores the values that define when useEffect should be run, with an empty dependency array ensuring that this hook will run only once when the component mounts. */
 
     // #endregion useEffect
 
@@ -115,48 +124,61 @@ function SidOneCom ( props : SidOneComPro ) : React.ReactElement {
 
     // #region Return Statement
 
-    /** Sidebar One Component Javascript XML = This custom variable stores the HTML like code that this component will render when called by its parent component. I prefer to store this in a variable before being returned so that it can be referenced inside of comments in the other sections of this component. */
-    const sidOneComJsx : React.ReactElement = (
+    /** 404 Page Component Javascript XML  = This custom variable stores the HTML like code that this component will render when called by its parent component. I prefer to store this in a variable before being returned so that it can be referenced inside of comments in the other sections of this component. */
+    const fofPagComJsx : React.ReactElement = (
 
 
-        // #region Sidebar One Div Element
+        // #region 404 Section Element
 
-        <  section className={ styles.notFoundSection } >
-
-
-            <  header className={ styles.notFoundHeader } >
+        <  section id='fofSecEle' className={ styles.notFoundSection } > { /* 404 Section Element = This custom section element is the root HTML element and container for this component since React requires the JSX to return a single root element. */ }
 
 
-                < h1 className={ styles.headerh1 } >< span className={ ` ${ styles.h1Span } ${ styles.impactFont }` } >404</ span ></ h1 >
+            { /** Start 404 Header Element */ }
+
+            <  header id='fofHeaEle' className={ styles.notFoundHeader } > { /* 404 Header Element = This custom header element is the container for the h1 heading and the paragraph. */ }
+
+
+                < h1 id='heaHe1Ele' className={ styles.headerh1 } >< span id='he1SpaEle' className={ ` ${ styles.h1Span } ${ styles.impactFont }` } >404</ span ></ h1 > { /* Header H1 Element = This custom h1 element is the container for the title text of the page. H1 Span Element = This custom span element was added in order to make the CSS spinning and scaling animation work properly. */ }
 
 
 
-                < p className={ styles.headerParagraph } >The page you're looking for is < span className={ ` ${ styles.contentSpan } ${ styles.impactFont }` } >LOST</ span >... or was it ever really there?</ p >
+                < p id='heaParEle' className={ styles.headerParagraph } >The page you're looking for is < span id='hepSpaEle' className={ styles.impactFont } >LOST</ span >... or was it ever really there?</ p > { /* Header Paragraph Element = This custom paragraph element is the container for the custom text of the header. Header Paragraph Span Element = This custom span element was added in order to style the 'LOST' text properly. */ }
 
 
             </ header >
 
+            { /** End 404 Header Element */ }
 
 
-            <  div className={ styles.contentDiv } >
+
+            { /** Start Content Div Element */ }
+
+            <  div id='conDivEle' className={ styles.contentDiv } > { /* Content Div Element = This custom div element is the container for the content of this component, including the paragraph explaining the page and the wheel button SVG. */ }
 
 
-                < p className={ styles.contentParagraph } >
+                { /** Start Content Paragraph Element */ }
+
+                < p id='conParEle' className={ styles.contentParagraph } > { /* Content Paragraph Element = This custom paragraph element is the container for the text instructions on editing the code to test hot module replacement (HMR) functionality. */ }
 
                     The { appNamStr }'s' scientists are hard at work on the problem and our best theory is that you have fallen into some sort of temporal anomaly. If you wish to leave, you will need to take your chances and turn the wheel below.
 
                 </ p >
 
+                { /** End Content Paragraph Element */ }
 
 
-                {/* Frozen Donkey Wheel Button */}
-                <  button className={ styles.wheelButton }  >
+
+                { /** Start Wheel Button Element */ }
+
+                <  button id='wheButEle' className={ styles.wheelButton }  > { /* Wheel Button Element = This custom button element is the container for the wheel SVG and the span element. */ }
 
 
-                    <  svg className={ styles.wheelSVG } width='110' height='110' viewBox='0 0 110 110' fill='none' xmlns='http://www.w3.org/2000/svg' >
+                    { /** Start Wheel SVG Element */ }
+
+                    <  svg id='wheSvGEle' className={ styles.wheelSVG } width='110' height='110' viewBox='0 0 110 110' fill='none' xmlns='http://www.w3.org/2000/svg' > { /* Wheel SVG Element = This custom SVG element is the container for the wheel SVG code. */ }
 
 
-                        { /* Outer ring */ }
+                        { /** Start Outer Ring */ }
 
                         < circle cx='55' cy='55' r='50' stroke='hsl( 29.034, 46.979%, 46.979% )' strokeWidth='6.854' fill='none' />
 
@@ -164,9 +186,11 @@ function SidOneCom ( props : SidOneComPro ) : React.ReactElement {
 
                         < circle cx='55' cy='55' r='44' stroke='hsl( 29.034, 46.979%, 29.034% )' strokeWidth='2.618' fill='none' strokeDasharray='4.236 2.618' />
 
+                        { /** End Outer Ring */ }
 
 
-                        { /* Inner hub */ }
+
+                        { /** Start Inner Hub */ }
 
                         < circle cx='55' cy='55' r='10' stroke='hsl( 29.034, 46.979%, 46.979% )' strokeWidth='4.236' fill='hsl( 29.034, 76.013%, 11.090% )' />
 
@@ -174,9 +198,11 @@ function SidOneCom ( props : SidOneComPro ) : React.ReactElement {
 
                         < circle cx='55' cy='55' r='5' fill='hsl( 29.034, 46.979%, 46.979% )' />
 
+                        { /** End Inner Hub */ }
 
 
-                        { /* 8 spokes */ }
+
+                        { /** Start Eight Spokes */ }
 
                         { [ 0, 45, 90, 135, 180, 225, 270, 315 ].map( ( degNum, indNum ) => {
 
@@ -194,9 +220,11 @@ function SidOneCom ( props : SidOneComPro ) : React.ReactElement {
 
                         } ) }
 
+                        { /** End Eight Spokes */ }
 
 
-                        { /* Grip pegs on outer ring */ }
+
+                        { /** Start Grip Pegs on Outer Ring */ }
 
                         { [ 0, 45, 90, 135, 180, 225, 270, 315 ].map( ( degNum, indNum ) => {
 
@@ -212,40 +240,48 @@ function SidOneCom ( props : SidOneComPro ) : React.ReactElement {
 
                         } ) }
 
+                        { /** End Grip Pegs on Outer Ring */ }
+
 
                     </ svg >
 
+                    { /** End Wheel SVG Element */ }
 
 
-                    < span className={ styles.wheelSpan } >Turn the wheel</ span >
+
+                    < span id='wheSpaEle' className={ styles.wheelSpan } >Turn the wheel</ span > { /* Wheel Span Element = This custom span element is the container for the text inside of the wheel button. */ }
 
 
                 </ button >
 
+                { /** End Wheel Button Element */ }
+
 
             </ div >
+
+            { /** End Content Div Element */ }
 
 
         </ section >
 
-        // #endregion Sidebar One Div Element
+        // #endregion 404 Section Element
 
 
     );
 
 
 
-    return sidOneComJsx;
+    return fofPagComJsx;
 
     // #endregion Return Statement
 
 
 };
 
-// #endregion SidOneCom
+// #endregion FofPagCom
 
 
 
-export default SidOneCom;
+export default FofPagCom;
 
 
