@@ -8,9 +8,11 @@
 
 }
 
+
+
 @font-face { /** This standard selector contains a custom font family along with its source and allows web developers to use custom fonts not installed on a user's computer. */
 
-    font-family : 'Impact';                               /** This value was chosen to be used as the font family for the custom .impactFont selector, which is applied anywhere the word LOST appears. */
+    font-family : 'Impact';                               /** This value was chosen to be used as the font family for the custom .impactFont selector, which is applied anywhere the word LOST (and the 404 header) appears. */
     src         : url( '../../assets/fonts/Impact.ttf' ); /** This value was chosen to be used in order to host the font file locally. */
 
 }
@@ -21,11 +23,11 @@
 
 /* #region Impact Font */
 
-.impactFont {
+.impactFont { /** Impact Font = These custom selectors contain the shared styles for the custom span selectors that contain the word 'LOST' (and the 404 header) and are used inside of the custom .headerh1, .headerParagraph and .contentParagraph selectors. */
 
-    font-family    : 'Impact', sans-serif;
-    font-weight    : 900;
-    letter-spacing : 0;
+    color          : var( --col-tex-col ); /** This value was chosen to be used according to the details of the specified global scoped prime custom property. */
+    font-family    : 'Impact', sans-serif; /** This value was chosen to be used because this font was identified as being used by the TV show 'LOST', with the idea behind this being that the word 'LOST' (and the 404 header) should be styled in a way that is visually consistent with said show's branding. */
+    font-weight    : 900;                  /** This value was chosen to be used because this font weight (thick, blocky) combined with the font family Impact was identified as being used by the TV show 'LOST', with the idea behind this being that the word 'LOST' (and the 404 header) should be styled in a way that is visually consistent with said show's branding. */
 
 }
 
@@ -33,288 +35,503 @@
 
 
 
+/* #region Component Scoped Custom Properties */
 
-.notFoundSection {
+.notFoundSection { /** Not Found Section = This custom selector contains the custom .notFoundHeader and .contentDiv selectors, is the custom .appMain selector's only child and is this custom component's root selector. */
+
+
+    --nof-sec-col : hsla( 0.000, 0.000%, 76.013%, 46.979% );  /** Not Found Section Color = This custom property stores the color value for this selector, with the idea behind this being to lighten all non Impact text in order for the 'LOST' (and the 404 header) text to pop a little bit more. */
+
+
+}
+
+/* #endregion Component Scoped Custom Properties */
+
+
+
+/* #region Not Found Section */
+
+.notFoundSection { /** Not Found Section = This custom selector contains the custom .notFoundHeader and .contentDiv selectors, is the custom .appMain selector's only child and is this custom component's root selector. */
 
     /* #region Selector Scoped Custom Properties = These are technically component scoped but placing and labelling them here makes my intention clear that these are intended for use in this selector only. */
 
-    --nof-sec-gta :   /** Home Section Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
-        'notFoundHeader'  /** This value was chosen to be used to contain the custom .homeHeader selector within this selector grid's first row, full width column. */
-        'contentDiv'; /** This value was chosen to be used to contain the custom .contentDiv selector within this selector grid's second row, full width column. */
+    --nof-sec-gta :       /** Not Found Section Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+        'notFoundHeader'  /** This value was chosen to be used to contain the custom .notFoundHeader selector within this selector grid's first row, full width column. */
+        '  contentDiv  '; /** This value was chosen to be used to contain the custom .contentDiv selector within this selector grid's second row, full width column. */
 
-    --con-div-row : calc( 60% - ( var( --row-gap-xla ) / 2 ) ); /** Content Div Row                 ~= 292.400px @1080px height = This custom property stores the height of the custom .contentDiv selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
-    --nof-hea-row : calc( 40% - ( var( --row-gap-xla ) / 2 ) ); /** Home Header Row                 ~= 364.900px @1080px height = This custom property stores the height of the custom .homeHeader selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
-    --nof-sec-gtr : var(  --nof-hea-row ) var( --con-div-row ); /** Home Section Grid Template Rows ~= 725.100px @1080px height = This custom property stores the grid template rows value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+    --con-div-row : calc( 60% - ( var( --row-gap-xla ) / 2 ) ); /** Content Div Row                      ~= 401.167px @1080px height = This custom property stores the height of the custom .contentDiv selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --nof-hea-row : calc( 40% - ( var( --row-gap-xla ) / 2 ) ); /** Not Found Header Row                 ~= 256.150px @1080px height = This custom property stores the height of the custom .notFoundHeader selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --nof-sec-gtr : var(  --nof-hea-row ) var( --con-div-row ); /** Not Found Section Grid Template Rows ~= 725.100px @1080px height = This custom property stores the grid template rows value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
 
     /* #endregion Selector Scoped Custom Properties */
 
 
-    align-items           : center;
-    background            : var( --col-bac-col );
-    display               : grid;
-    font-family           : 'Pathway Gothic One', sans-serif;
-    grid-template-areas   : var( --nof-sec-gta );
-    grid-template-columns : 100%;
-    grid-template-rows    : var( --nof-sec-gtr );
-    height                : 100%;
-    justify-content       : center;
-    row-gap               : var( --row-gap-xla );
+    align-items           : center;                           /** This value was chosen to be used to vertically center the custom .notFoundHeader and .contentDiv selectors within their grid areas, with the idea behind this being to more evenly distribute the space between them and the elements below them and creating a better visual, aesthetic balance. */
+    color                 : var( --nof-sec-col );             /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    display               : grid;                             /** This value was chosen to be used as the preferred layout method, with the idea behind this being that it provides powerful element placement and sizing capabilities. */
+    font-family           : 'Pathway Gothic One', sans-serif; /** This value was chosen to be used because of this font's precise, geometric aesthetic, with the idea behind this being that subjectively it fits with the 'LOST' theme. */
+    grid-template-areas   : var( --nof-sec-gta );             /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-columns : 100%;                             /** This value was chosen to be used to fill columns using all available horizontal space as defined by its parent, the custom .appMain selector. */
+    grid-template-rows    : var( --nof-sec-gtr );             /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    height                : 100%;                             /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .appMain selector. */
+    justify-content       : center;                           /** This value was chosen to be used to horizontally center the custom .notFoundHeader and .contentDiv selectors within their grid areas, with the idea behind this being that this page's content is aesthetically more pleasant when centered in the page. */
+    row-gap               : var( --row-gap-xla );             /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property. */
+    text-align            : center;                           /** This value was chosen to be used to horizontally center all text, with the idea behind this being that each section contains only small amounts line of text and is more aesthetically appealing when centered. */
 
 }
 
 
 
-.notFoundHeader {
+/* #region Not Found Header */
 
-    /* #region Selector Scoped Custom Properties = These are technically component scoped but placing and labelling them here makes my intention clear that these are intended for use in this selector only. */
+.notFoundHeader { /** Not Found Header = This custom selector contains the custom .headerH1 and .headerParagraph selectors and is the custom .notFoundSection selector's first grid row, only grid column. */
 
-    --nof-hea-gta :   /** Home Section Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
-        'headerH1'  /** This value was chosen to be used to contain the custom .homeHeader selector within this selector grid's first row, full width column. */
-        'headerParagraph'; /** This value was chosen to be used to contain the custom .contentDiv selector within this selector grid's second row, full width column. */
+    /* #region Selector Scoped Custom Properties */
 
-    --hea-h1--row : calc( 60% - ( var( --row-gap-lar ) / 2 ) ); /** Content Div Row                 ~= 292.400px @1080px height = This custom property stores the height of the custom .contentDiv selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
-    --hea-par-row : calc( 40% - ( var( --row-gap-lar ) / 2 ) ); /** Home Header Row                 ~= 364.900px @1080px height = This custom property stores the height of the custom .homeHeader selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
-    --nof-hea-gtr : var(  --hea-h1--row ) var( --hea-par-row ); /** Home Section Grid Template Rows ~= 725.100px @1080px height = This custom property stores the grid template rows value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+    --nof-hea-gta :        /** Not Found Header Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+        '   headerH1    '  /** This value was chosen to be used to contain the custom .headerH1 selector within this selector grid's first row, full width column. */
+        'headerParagraph'; /** This value was chosen to be used to contain the custom .headerParagraph selector within this selector grid's second row, full width column. */
+
+    --hea-h1--row : calc( 60% - ( var( --row-gap-lar ) / 2 ) ); /** Header H1 Row                       ~= 132.733px @1080px height = This custom property stores the height of the custom .headerH1 selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --hea-par-row : calc( 40% - ( var( --row-gap-lar ) / 2 ) ); /** Header Paragraph Row                ~=  81.500px @1080px height = This custom property stores the height of the custom .headerParagraph selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --nof-hea-gtr : var(  --hea-h1--row ) var( --hea-par-row ); /** Not Found Header Grid Template Rows ~= 256.150px @1080px height = This custom property stores the grid template rows value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
 
     /* #endregion Selector Scoped Custom Properties */
 
 
-    align-items           : center;
-    display               : grid;
-    grid-area             : notFoundHeader;
-    grid-template-areas   : var( --nof-hea-gta );
-    grid-template-columns : 100%;
-    grid-template-rows    : var( --nof-hea-gtr );
-    height                : 100%;
-    justify-items         : center;
-    row-gap               : var( --row-gap-lar );
+    display               : grid;                 /** This value was chosen to be used as the preferred layout method, with the idea behind this being that it provides powerful element placement and sizing capabilities. */
+    grid-area             : notFoundHeader;       /** This value was chosen to be used to place this selector within the custom .notFoundSection selector grid area's first row, full width column. */
+    grid-template-areas   : var( --nof-hea-gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-columns : 100%;                 /** This value was chosen to be used to fill columns using all available horizontal space as defined by its parent, the custom .notFoundSection selector. */
+    grid-template-rows    : var( --nof-hea-gtr ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    height                : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .notFoundSection selector. */
+    justify-items         : center;               /** This value was chosen to be used to horizontally center the custom .headerH1 and .headerParagraph selectors within their grid areas, with the idea behind this being that this page's content is aesthetically more pleasant when centered in the page. */
+    row-gap               : var( --row-gap-lar ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property. */
 
 }
 
 
 
-.headerh1 {
+/* #region Header H1 */
 
-    align-content : center;
-    color         : #fff;
-    font-size     : var( --hea-one-siz );
-    grid-area     : headerH1;
-    height        : 100%;
-    line-height   : var( --hea-one-siz );
-    text-shadow   :
-        0 0 30px rgba(255,255,255,0.8),
-        0 0 60px rgba(255,255,255,0.5),
-        0 0 100px rgba(255,255,255,0.3),
-        0 0 200px rgba(255,255,255,0.15);
+.headerh1 { /** Header H1 = This custom selector contains the custom .h1Span selector and is the custom .notFoundHeader selector's first grid row, only grid column. */
+
+    /* #region Selector Scoped Custom Properties */
+
+    --tex-sha-inn : 0 0 calc( pow( var( --golden-rati ),  7 ) * 1px ) var( --col-tex-col ); /** Text Shadow Inner        ~=  29.034px = This custom property stores the inner (smallest) text shadow value for this selector selector using the specified global scoped prime custom properties, with the idea behind this being that by using a custom property to store this value it makes the --hea-h1--tes custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --tex-sha-inm : 0 0 calc( pow( var( --golden-rati ),  9 ) * 1px ) var( --col-tex-sha ); /** Text Shadow Inner Middle ~=  76.013px = This custom property stores the inner middle (next to smallest) text shadow value for this selector selector using the specified global scoped prime custom properties, with the idea behind this being that by using a custom property to store this value it makes the --hea-h1--tes custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --tex-sha-oum : 0 0 calc( pow( var( --golden-rati ), 10 ) * 1px ) var( --col-box-sha ); /** Text Shadow Outer Middle ~= 122.992px = This custom property stores the outer middle (next to largest) text shadow value for this selector selector using the specified global scoped prime custom properties, with the idea behind this being that by using a custom property to store this value it makes the --hea-h1--tes custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --tex-sha-out : 0 0 calc( pow( var( --golden-rati ), 11 ) * 1px ) var( --col-nav-bac ); /** Text Shadow Outer        ~= 199.005px = This custom property stores the outer (largest) text shadow value for this selector selector using the specified global scoped prime custom properties, with the idea behind this being that by using a custom property to store this value it makes the --hea-h1--tes custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+
+    --hea-h1--tes : var( --tex-sha-inn ), var( --tex-sha-inm ), var( --tex-sha-oum ), var( --tex-sha-out ); /** Header H1 Text Shadow = This custom property stores the text shadow value for this selector selector using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+
+    /* #endregion Selector Scoped Custom Properties */
+
+
+    align-content : center;               /** This value was chosen to be used to vertically center the custom .h1Span selector within its grid area, with the idea behind this being to more evenly distribute the space between them and the elements below them and creating a better visual, aesthetic balance. */
+    font-size     : var( --hea-one-siz ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property. */
+    grid-area     : headerH1;             /** This value was chosen to be used to place this selector within the custom .notFoundHeader selector grid area's first row, full width column. */
+    height        : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .notFoundHeader selector. */
+    line-height   : var( --hea-one-siz ); /** This value was chosen to be used to set the line height equal to its corresponding font size, with the idea behind this being that it makes for better visual asthetics when used with short, one line text (headers especially). */
+    text-shadow   : var( --hea-h1--tes ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
 
 }
 
 
 
-.h1Span {
+/* #region H1 Span */
 
-    animation : spin 20s linear infinite;
-    display   : inline-block;
+.h1Span { /** H1 Span = This custom selector contains the custom '404' text and is the custom .headerH1 selector's only child. */
+
+    display : inline-block; /** This value was chosen to be used to allow the element to be transformed and animated properly since inline only elements cannot be animated. */
 
 }
 
 
 
-@keyframes spin {
+/* #region H1 Span Animation */
+
+@keyframes he1-spa-spi { /** H1 Span Spin = This custom keyframes stores the animation for the custom .h1Span selector, with the idea behind this being that it will continously spin the H1 Span in a complete 360 degree rotation while also scaling the text up and down which is consistent with the design of the TV show 'LOST' into and outro. */
 
 
-    0% {
+    0% { /** Zero Percent = This standard selector defines the starting state of the animation. */
 
-        scale     : 1;
-        transform : scale(1), rotate( 0deg );
+        scale     : 1;              /** This value was chosen to be used to start the animation from a completely unscaled state. */
+        transform : rotate( 0deg ); /** This value was chosen to be used to start the animation from a completely unrotated state. */
+
+    }
+
+    50% { /** Fifty Percent = This standard selector defines the midpoint state of the animation. */
+
+        scale : 0.3; /** This value was chosen to be used to scale the element down to 30% of its original size at the midpoint of the animation, with the idea behind this being that it instead of ending the animation at this state it would be better to do this at the midway point and therefore allow the end scaling state to be back to its original value. */
 
     }
 
 
 
-    50% {
 
-        scale : 0.3;
+    100% { /** One Hundred Percent = This standard selector defines the ending state of the animation. */
 
-    }
-
-
-
-    100% {
-
-        scale     : 1;
-        transform : rotate( 360deg );
+        scale     : 1;                /** This value was chosen to be used to end the animation at an unscaled state, with the idea behind this being that it will create a continuous shrinking-expanding effect when the animation loops back to the 0% selector. */
+        transform : rotate( 360deg ); /** This value was chosen to be used to end the animation at a full rotation, with the idea behind this being that it will create a continuous spinning effect when the animation loops back to the 0% selector. */
 
     }
 
 
 }
 
+/* #endregion H1 Span Animation */
 
 
-.headerParagraph {
 
-    align-content : center;
-    color         : #fff;
-    font-size     : var( --fon-siz-xla );
-    grid-area     : headerParagraph;
-    height        : 100%;
-    line-height   : var( --fon-siz-xla );
-    text-shadow   : 0 0 20px rgba(255,255,255,0.3);
+/* #region Media Query for Reduced Motion */
+
+@media ( prefers-reduced-motion : no-preference ) { /** Reduced Motion = This standard media query selector targets users who have not expressed a preference for reduced motion, with the idea behind this being that it will allow animations to run normally for said users. */
+
+
+    /* #region H1 Span */
+
+    .h1Span { /** H1 Span = This custom selector contains the custom '404' text and is the custom .headerH1 selector's only child. */
+
+        /* #region Selector Scoped Custom Properties */
+
+        --hss-ani-dur : calc( pow( var( --golden-rati ), 6 ) * 1s ); /** ~= 17.944s = H1 Span Spin Animation Duration = This custom property stores the duration in seconds for the custom H1 Span Spin animation's total duration for a single complete 360 degree spin while also scaling up and down, with the idea behind this being to create a duration based on the golden ratio that is not too fast and not too slow. */
+
+        /* #endregion Selector Scoped Custom Properties */
+
+
+        animation : he1-spa-spi var( --hss-ani-dur ) infinite linear; /** This value was chosen to be used to apply the custom H1 Span Spin animation using the specified selector scoped custom property. */
+
+    }
+
+
+    /* #endregion H1 Span */
+
+
+}
+
+/* #endregion Media Query for Reduced Motion */
+
+
+/* #endregion H1 Span */
+
+
+/* #endregion Header H1 */
+
+
+
+/* #region Header Paragraph */
+
+.headerParagraph { /** Header Paragraph = This custom selector contains the custom text with the custom hea-par-fli animation and is the custom .notFoundHeader selector's second grid row, only grid column. */
+
+    /* #region Selector Scoped Custom Properties */
+
+    --hea-par-tes : 0 0 var( --blu-rad-xla ) var( --col-tex-sha ); /** Header Paragraph Text Shadow = This custom property stores the text shadow value for this selector selector using the specified global scoped derivative and global scoped prime custom properties, with the idea behind this being that since this is connected to the custom .headerH1 selector it should maintain visual consistency with the header's styling albeit with only one and a much smaller text shadow. */
+
+    /* #endregion Selector Scoped Custom Properties */
+
+
+    align-content : center;               /** This value was chosen to be used to vertically center the custom text and custom .impactFont selector within its grid area, with the idea behind this being to more evenly distribute the space between them and the elements below them and creating a better visual, aesthetic balance. */
+    font-size     : var( --fon-siz-xla ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    grid-area     : headerParagraph;      /** This value was chosen to be used to place this selector within the custom .notFoundHeader selector grid area's second row, full width column. */
+    height        : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .notFoundHeader selector. */
+    line-height   : var( --fon-siz-xla ); /** This value was chosen to be used to set the line height equal to its corresponding font size, with the idea behind this being that it makes for better visual asthetics when used with short, one line text (headers especially). */
+    max-width     : var( --par-wid-max ); /** This value was chosen to be used according to the details of the specified global scoped prime custom property. */
+    text-shadow   : var( --hea-par-tes ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
 
 }
 
 
 
-.contentDiv {
+/* #region Header Paragraph Animation */
 
-    /* #region Selector Scoped Custom Properties = These are technically component scoped but placing and labelling them here makes my intention clear that these are intended for use in this selector only. */
+@keyframes hea-par-fli { /** Header Paragraph Flicker = This custom keyframes stores the animation for the custom .headerParagraph selector, with the idea behind this being that it will continuously flicker the text to create a visual effect consistent with the design of the TV show 'LOST' and the text 'or was it ever really there?'. */
 
-    --con-div-gta :   /** Content Div Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+
+    0% { /** Zero Percent = This standard selector defines the starting state of the animation. */
+
+        opacity : 1; /** This value was chosen to be used to start the animation from a completely opaque state, with the idea behind this being that since this is a continuous animation then the starting and ending states of the animation should be the same. */
+
+    }
+
+
+
+    33% { /** Thirty Three Percent = This standard selector defines the state of the animation at one third of its duration. */
+
+        opacity : 1; /** This value was chosen to be used to maintain the animation at a completely opaque state until one third of its duration is complete, with the idea behind this being to keep the text opaque for most of the animation with a quick flicker effect in the middle. */
+
+    }
+
+
+
+    50% { /** Fifty Percent = This standard selector defines the midpoint state of the animation. */
+
+        opacity : 0; /** This value was chosen to be used to make the animation completely transparent at the midpoint of its duration, with the idea behind this being to create a flickering effect. */
+
+    }
+
+
+
+    66% { /** Sixty Six Percent = This standard selector defines the state of the animation at two thirds of its duration. */
+
+        opacity : 1; /** This value was chosen to be used to make the animation completely opaque at two thirds of its duration, with the idea behind this being to keep the text opaque for most of the animation with a quick flicker effect in the middle. */
+
+    }
+
+
+
+    100% { /** One Hundred Percent = This standard selector defines the ending state of the animation. */
+
+        opacity : 1; /** This value was chosen to be used to end the animation at a completely opaque state, with the idea behind this being that since this is a continuous animation then the ending state of the animation should be the same as its starting state. */
+
+    }
+
+
+}
+
+/* #endregion Header Paragraph Animation */
+
+
+
+/* #region Media Query for Reduced Motion */
+
+@media ( prefers-reduced-motion : no-preference ) { /** Reduced Motion = This standard media query selector targets users who have not expressed a preference for reduced motion, with the idea behind this being that it will allow animations to run normally for said users. */
+
+
+    /* #region Header Paragraph */
+
+    .headerParagraph { /** Header Paragraph = This custom selector contains the custom text with the custom hea-par-fli animation and is the custom .notFoundHeader selector's second grid row, only grid column. */
+
+        /* #region Selector Scoped Custom Properties */
+
+        --hea-par-dur : calc( pow( var( --golden-rati ), 6 ) * 1s ); /** ~= 17.944s = Header Paragraph Flicker Animation Duration = This custom property stores the duration in seconds for the custom Header Paragraph Flicker animation's total duration for a single complete cycle, with the idea behind this being to create a duration based on the golden ratio that is not too fast and not too slow. */
+
+        /* #endregion Selector Scoped Custom Properties */
+
+
+        animation : hea-par-fli var( --hea-par-dur ) infinite linear; /** This value was chosen to be used to apply the custom Header Paragraph Flicker animation using the specified selector scoped custom property. */
+
+    }
+
+
+    /* #endregion Header Paragraph */
+
+
+}
+
+/* #endregion Media Query for Reduced Motion */
+
+
+/* #endregion Header Paragraph */
+
+
+/* #endregion Not Found Header */
+
+
+
+/* #region Content Div */
+
+.contentDiv { /** Content Div = This custom selector contains the custom .contentParagraph and .wheelButton selectors and is the custom .notFoundSection selector's second grid row, only grid column. */
+
+    /* #region Selector Scoped Custom Properties */
+
+    --con-div-gta :         /** Content Div Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
         'contentParagraph'  /** This value was chosen to be used to contain the custom .contentParagraph selector within this selector grid's first row, full width column. */
-        'wheelButton'; /** This value was chosen to be used to contain the custom .wheelButton selector within this selector grid's second row, full width column. */
+        '  wheelButton   '; /** This value was chosen to be used to contain the custom .wheelButton selector within this selector grid's second row, full width column. */
 
-    --con-par-row : calc( 40% - ( var( --row-gap-lar ) / 2 ) ); /** Content Div Row                 ~= 292.400px @1080px height = This custom property stores the height of the custom .contentDiv selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
-    --whe-but-row : calc( 60% - ( var( --row-gap-lar ) / 2 ) ); /** Wheel Button Row                 ~= 364.900px @1080px height = This custom property stores the height of the custom .wheelButton selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
-    --con-div-gtr : var(  --con-par-row ) var( --whe-but-row ); /** Content Div Grid Template Rows ~= 725.100px @1080px height = This custom property stores the grid template rows value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+    --con-div-gtr : var(  --con-par-row ) var( --whe-but-row ); /** Content Div Grid Template Rows ~= 401.167px @1080px height = This custom property stores the grid template rows value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+    --con-par-row : calc( 40% - ( var( --row-gap-lar ) / 2 ) ); /** Content Div Row                ~=  51.767px @1080px height = This custom property stores the height of the custom .contentDiv selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --whe-but-row : calc( 60% - ( var( --row-gap-lar ) / 2 ) ); /** Wheel Button Row               ~= 109.667px @1080px height = This custom property stores the height of the custom .wheelButton selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
 
     /* #endregion Selector Scoped Custom Properties */
 
 
-    align-items           : center;
-    display               : grid;
-    grid-area             : contentDiv;
-    grid-template-areas   : var( --con-div-gta );
-    grid-template-columns : 100%;
-    grid-template-rows    : var( --con-div-gtr );
-    height                : 100%;
-    justify-items         : center;
-    row-gap               : var( --row-gap-lar );
+    align-items           : center;               /** This value was chosen to be used to vertically center the custom .contentParagraph and .wheelButton selectors within their grid areas, with the idea behind this being to more evenly distribute the space between them and the elements below them and creating a better visual, aesthetic balance. */
+    display               : grid;                 /** This value was chosen to be used as the preferred layout method, with the idea behind this being that it provides powerful element placement and sizing capabilities. */
+    grid-area             : contentDiv;           /** This value was chosen to be used to place this selector within the custom .notFoundSection selector grid area's second row, full width column. */
+    grid-template-areas   : var( --con-div-gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-columns : 100%;                 /** This value was chosen to be used to fill columns using all available horizontal space as defined by its parent, the custom .notFoundSection selector. */
+    grid-template-rows    : var( --con-div-gtr ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    height                : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .notFoundSection selector. */
+    justify-items         : center;               /** This value was chosen to be used to horizontally center the custom .headerH1 and .headerParagraph selectors within their grid areas, with the idea behind this being that this page's content is aesthetically more pleasant when centered in the page. */
+    row-gap               : var( --row-gap-lar ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property. */
 
 }
 
 
 
-.contentParagraph {
+/* #region Content Paragraph */
 
-    font-size      : clamp(14px, 2vw, 20px);
-    color          : rgba(255,255,255,0.5);
-    grid-area             : contentParagraph;
-    letter-spacing : 0.25em;
-    text-align     : center;
-    animation      : flicker 20s ease-in-out infinite;
-    max-width      : var( --par-wid-max );
-    padding        : 0 20px;
+.contentParagraph { /** Content Paragraph = This custom selector contains the custom text 'The Tech Geek's scientists...' and is the custom .contentDiv selector's first grid row, only grid column. */
+
+    font-size      : var( --fon-siz-lar ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    grid-area      : contentParagraph;     /** This value was chosen to be used to place this selector within the custom .contentDiv selector grid area's first row, full width column. */
+    line-height    : var( --fon-siz-lar ); /** This value was chosen to be used to set the line height equal to its corresponding font size, with the idea behind this being that it makes for better visual asthetics when used with short, one line text (headers especially). */
+    max-width      : var( --par-wid-lar ); /** This value was chosen to be used according to the details of the specified global scoped prime custom property. */
+
+}
+
+/* #endregion Content Paragraph */
+
+
+
+/* #region Wheel Button */
+
+.wheelButton { /** Wheel Button = This custom selector contains the custom .wheelSVG and .wheelSpan selectors and is the custom .contentDiv selector's second grid row, only grid column. */
+
+    /* #region Selector Scoped Custom Properties */
+
+    --whe-but-gta :  /** Wheel Button Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+        'wheelSVG '  /** This value was chosen to be used to contain the custom .wheelSVG selector within this selector grid's first row, full width column. */
+        'wheelSpan'; /** This value was chosen to be used to contain the custom .wheelSpan selector within this selector grid's second row, full width column. */
+
+    --whe-but-gtr : var( --whe-svg-row ) var( --whe-spa-row );  /** Content Div Grid Template Rows ~= 401.167px @1080px height = This custom property stores the grid template rows value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+    --whe-spa-row : calc( 20% - ( var( --row-gap-min ) / 2 ) ); /** Content Div Row                ~=  51.767px @1080px height = This custom property stores the height of the custom .contentDiv selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --whe-svg-row : calc( 80% - ( var( --row-gap-min ) / 2 ) ); /** Wheel Button Row               ~= 109.667px @1080px height = This custom property stores the height of the custom .wheelButton selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+
+    /* #endregion Selector Scoped Custom Properties */
+
+
+    align-items           : center;               /** This value was chosen to be used to vertically center the custom .contentParagraph and .wheelButton selectors within their grid areas, with the idea behind this being to more evenly distribute the space between them and the elements below them and creating a better visual, aesthetic balance. */
+    background            : none;                 /** This value was chosen to be used to remove the custom styling on the standard button selector that was declared in the index.css file, with the idea behind this being that this is a specialty button and not a normal site/app button. */
+    border-radius         : 0;                    /** This value was chosen to be used to remove the custom styling on the standard button selector that was declared in the index.css file, with the idea behind this being that this is a specialty button and not a normal site/app button. */
+    box-shadow            : none;                 /** This value was chosen to be used to remove the custom styling on the standard button selector that was declared in the index.css file, with the idea behind this being that this is a specialty button and not a normal site/app button. */
+    display               : grid;                 /** This value was chosen to be used as the preferred layout method, with the idea behind this being that it provides powerful element placement and sizing capabilities. */
+    grid-area             : wheelButton;          /** This value was chosen to be used to place this selector within the custom .contentDiv selector grid area's second row, full width column. */
+    grid-template-areas   : var( --whe-but-gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-columns : 100%;                 /** This value was chosen to be used to fill columns using all available horizontal space as defined by its parent, the custom .contentDiv selector. */
+    grid-template-rows    : var( --whe-but-gtr ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    height                : var( --ver-rhy-max ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    padding               : 0;                    /** This value was chosen to be used to remove the custom styling on the standard button selector that was declared in the index.css file, with the idea behind this being that this is a specialty button and not a normal site/app button. */
+    row-gap               : var( --row-gap-min ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property. */
+    transition            : none;                 /** This value was chosen to be used to remove the custom styling on the standard button selector that was declared in the index.css file, with the idea behind this being that this is a specialty button and not a normal site/app button. */
+    width                 : var( --hor-rhy-max ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
 
 }
 
 
 
-@keyframes flicker {
+.wheelButton:hover { /** Wheel Button Hover = This custom selector contains the custom .wheelSVG and .wheelSpan selectors and is the custom .contentDiv selector's second grid row, only grid column. */
 
-
-    0% {
-
-        opacity : 1;
-
-    }
-
-
-
-    50% {
-
-        opacity : 0;
-
-    }
-
-
-
-    100% {
-
-        opacity : 1;
-
-    }
-
+    background : none; /** This value was chosen to be used to remove the custom styling on the standard button selector that was declared in the index.css file, with the idea behind this being that this is a specialty button and not a normal site/app button. */
+    box-shadow : none; /** This value was chosen to be used to remove the custom styling on the standard button selector that was declared in the index.css file, with the idea behind this being that this is a specialty button and not a normal site/app button. */
 
 }
 
 
 
-.wheelButton {
+/* #region Wheel SVG */
 
-    background     : none;
-    border         : none;
-    cursor         : pointer;
-    grid-area      : wheelButton;
-    height         : var( --ver-rhy-max );
-    padding        : 0;
-    display        : flex;
-    flex-direction : column;
-    align-items    : center;
-    gap            : 12px;
+.wheelSVG { /** Wheel SVG = This custom selector contains the custom SVG image of the donkey wheel from the TV show 'LOST' and is the custom .wheelButton selector's first grid row, only grid column. */
 
-}
+    grid-area : wheelSVG; /** This value was chosen to be used to place this selector within the custom .wheelButton selector grid area's first row, full width column. */
+    height    : 100%;     /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .wheelButton selector. */
+    max-width : 100%;     /** This value was chosen to be used to set the maximum width to 100% of its parent's width, with the idea behind this being to limit the SVG's viewBox properties and rely on the .wheelButton selector for sizing. */
+    width     : 100%;     /** This value was chosen to be used to fill all available horizontal space as defined by its parent, the custom .wheelButton selector. */
 
 
 
-.wheelButton:hover {
-
-    background-color : none;
-    box-shadow       : none;
-
-}
-
-
-
-.wheelLabel {
-
-    color          : rgba(255,255,255,0.4);
-    font-size      : 11px;
-    letter-spacing : 0.3em;
-    text-transform : uppercase;
-    font-family    : 'Pathway Gothic One', sans-serif;
-
-}
-
-
-
-.wheelSVG {
-
-    animation  : none;
     transition : filter 6s;
 
 }
 
 
 
-.wheelButton:hover .wheelSVG {
+/* #region Wheel SVG Animation */
 
-    animation : wheelSpin 20s linear infinite;
-    filter    : drop-shadow(0 0 12px rgba( 199.005, 199.005, 2.618, 1 ) );
-
-}
+@keyframes whe-svg-spi { /** Wheel SVG Spin = This custom keyframes stores the animation for the custom .wheelSVG selector, with the idea behind this being that it will continously spin the wheel SVG in a complete 360 degree rotation. */
 
 
+    from { /** From = This standard selector defines the starting state of the animation. */
 
-@keyframes wheelSpin {
-
-
-    from {
- 
-        transform : rotate( 0deg );
+        transform : rotate( 0deg ); /** This value was chosen to be used to start the animation from a completely unrotated state. */
 
     }
 
 
 
-    to {
+    to { /** To = This standard selector defines the ending state of the animation. */
 
-        transform : rotate( 360deg );
+        transform : rotate( 360deg ); /** This value was chosen to be used to end the animation at a full rotation, with the idea behind this being that it will create a continuous spinning effect when the animation loops back to the from selector. */
 
     }
 
 
 }
+
+/* #endregion Wheel SVG Animation */
+
+
+
+/* #region Media Query for Reduced Motion */
+
+@media ( prefers-reduced-motion : no-preference ) { /** Reduced Motion = This standard media query selector targets users who have not expressed a preference for reduced motion, with the idea behind this being that it will allow animations to run normally for said users. */
+
+
+    /* #region Wheel Button Wheel SVG */
+
+    .wheelButton:hover .wheelSVG { /** Wheel Button Hover Wheel SVG = This custom selector contains the custom SVG image of the donkey wheel from the TV show 'LOST' and is the custom .wheelButton selector's first grid row, only grid column. */
+
+        /* #region Selector Scoped Custom Properties */
+
+        --wss-ani-dur : calc( pow( var( --golden-rati ), 6 ) * 1s ); /** ~= 17.944s = Wheel SVG Spin Animation Duration = This custom property stores the duration in seconds for the custom Wheel SVG Spin animation's total duration for a single complete 360 degree spin, with the idea behind this being to create a duration based on the golden ratio that is not too fast and not too slow. */
+
+        /* #endregion Selector Scoped Custom Properties */
+
+
+        animation : whe-svg-spi var( --wss-ani-dur ) linear infinite; /** This value was chosen to be used to apply the custom Wheel SVG Spin animation using the specified selector scoped custom property. */
+
+
+
+        filter : drop-shadow(0 0 12px rgba( 199.005, 199.005, 2.618, 1 ) );
+
+    }
+
+    /* #endregion Wheel Button Wheel SVG */
+
+
+}
+
+/* #endregion Media Query for Reduced Motion */
+
+
+/* #endregion Wheel SVG */
+
+
+
+/* #region Wheel Span */
+
+.wheelSpan { /** Wheel Span = This custom selector contains the custom text 'TURN THE WHEEL' and is the custom .wheelButton selector's second grid row, only grid column. */
+
+
+    /* #region Selector Scoped Custom Properties */
+
+    --whs-let-spa : calc( var( --fon-siz-min ) / pow( var( --golden-rati ), 1) ); /** Wheel Span Letter Spacing    ~= 2.334px @16px root font size = This custom property stores the letter spacing value for the custom .wheelSpan selector using the specified global scoped derivative and global scoped prime custom properties, with the idea behind this being that this particular font at this particular size has way too much white space between the letters and looks extremely awkward. */
+    --whs-pad-pro : var( --pad-hor-min ) 0 0 var( --pad-hor-min );                /** Wheel Span Padding Properties = This custom property stores all of the padding properties using the specified global scoped second derivative custom properties, with the idea behind this being that I tried everything (and I do mean EVERYTHING) to center this text but nothing else worked so I had to resort to this hack. */
+
+    /* #endregion Selector Scoped Custom Properties */
+
+
+    color          : var( --nof-sec-col ); /** This value was chosen to be used according to the details of the specified component scoped custom property, with the idea behind this being that the property value 'inherit' does not work here. */
+    font-size      : var( --fon-siz-sma ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    grid-area      : wheelSpan;            /** This value was chosen to be used to place this selector within the custom .wheelButton selector grid area's second row, full width column. */
+    letter-spacing : var( --whs-let-spa ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    line-height    : var( --fon-siz-sma ); /** This value was chosen to be used to set the line height equal to its corresponding font size, with the idea behind this being that it makes for better visual asthetics when used with short, one line text (headers especially). */
+    padding        : var( --whs-pad-pro ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    text-transform : uppercase;            /** This value was chosen to be used to transform the text to uppercase, with the idea behind this being that it makes the text more visually prominent and is fairly common behavior for button text. */
+
+}
+
+/* #endregion Wheel Span */
+
+
+/* #endregion Wheel Button */
+
+
+/* #endregion Content Div */
+
+
+/* #endregion Not Found Section */
 
 
 

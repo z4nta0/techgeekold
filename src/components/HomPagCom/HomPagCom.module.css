@@ -362,18 +362,22 @@
 @media ( prefers-reduced-motion : no-preference ) { /** Reduced Motion = This standard media query selector targets users who have not expressed a preference for reduced motion, with the idea behind this being that it will allow animations to run normally for said users. */
 
 
+    /* #region React Anchor React Image */
+
     .reactAnchor .reactImg { /** React Anchor React Image = This custom selector contains the custom .reactImg selector and the official React logo and is the custom .headerDiv selector's second grid column, only row and the custom .reactAnchor selector's only grid column, only grid row. */
 
         /* #region Selector Scoped Custom Properties */
 
-        --rls-ani-dur : calc( pow( var( --golden-rati ), 6 ) * 1s ); /** ~= 17.944s = React Logo Spin Animation Duration = This custom property stores the duration in seconds for the custom React Logo Spin animation's total duration for a single complete 360 degree spin, with the idea behind this being to create a duration based on the golden ratio that is not too fast and not too slow. */
+        --rls-ani-dur : calc( pow( var( --golden-rati ), 6 ) * 1s ); /**React Logo Spin Animation Duration ~= 17.944s = This custom property stores the duration in seconds for the custom React Logo Spin animation's total duration for a single complete 360 degree spin, with the idea behind this being to create a duration based on the golden ratio that is not too fast and not too slow. */
 
         /* #endregion Selector Scoped Custom Properties */
 
 
-        animation : rea-log-spi infinite var( --rls-ani-dur ) linear; /** This value was chosen to be used to apply the custom React Logo Spin animation using the specified selector scoped custom property. */
+        animation : rea-log-spi var( --rls-ani-dur ) infinite linear; /** This value was chosen to be used to apply the custom React Logo Spin animation using the specified selector scoped custom property. */
 
     }
+
+    /* #endregion React Anchor React Image */
 
 
 }

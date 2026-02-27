@@ -131,7 +131,7 @@ function SidOneCom ( props : SidOneComPro ) : React.ReactElement {
 
 
 
-                < p className={ styles.headerParagraph } >You are < span className={ ` ${ styles.headerSpan } ${ styles.impactFont }` } >LOST</ span ></ p >
+                < p className={ styles.headerParagraph } >The page you're looking for is < span className={ ` ${ styles.contentSpan } ${ styles.impactFont }` } >LOST</ span >... or was it ever really there?</ p >
 
 
             </ header >
@@ -143,7 +143,7 @@ function SidOneCom ( props : SidOneComPro ) : React.ReactElement {
 
                 < p className={ styles.contentParagraph } >
 
-                    The page you're looking for is < span className={ ` ${ styles.contentSpan } ${ styles.impactFont }` } >LOST</ span >... or was it ever really there? If you want to leave, you will need to take your chances and turn the wheel below.
+                    The { appNamStr }'s' scientists are hard at work on the problem and our best theory is that you have fallen into some sort of temporal anomaly. If you wish to leave, you will need to take your chances and turn the wheel below.
 
                 </ p >
 
@@ -217,7 +217,7 @@ function SidOneCom ( props : SidOneComPro ) : React.ReactElement {
 
 
 
-                    < span className={ styles.wheelLabel } >Turn the wheel</ span >
+                    < span className={ styles.wheelSpan } >Turn the wheel</ span >
 
 
                 </ button >
