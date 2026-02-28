@@ -429,70 +429,11 @@
     max-width : 100%;     /** This value was chosen to be used to set the maximum width to 100% of its parent's width, with the idea behind this being to limit the SVG's viewBox properties and rely on the .wheelButton selector for sizing. */
     width     : 100%;     /** This value was chosen to be used to fill all available horizontal space as defined by its parent, the custom .wheelButton selector. */
 
-
-
-    transition : filter 6s;
-
 }
 
 
 
-/* #region Wheel SVG Animation */
 
-@keyframes whe-svg-spi { /** Wheel SVG Spin = This custom keyframes stores the animation for the custom .wheelSVG selector, with the idea behind this being that it will continously spin the wheel SVG in a complete 360 degree rotation. */
-
-
-    from { /** From = This standard selector defines the starting state of the animation. */
-
-        transform : rotate( 0deg ); /** This value was chosen to be used to start the animation from a completely unrotated state. */
-
-    }
-
-
-
-    to { /** To = This standard selector defines the ending state of the animation. */
-
-        transform : rotate( 360deg ); /** This value was chosen to be used to end the animation at a full rotation, with the idea behind this being that it will create a continuous spinning effect when the animation loops back to the from selector. */
-
-    }
-
-
-}
-
-/* #endregion Wheel SVG Animation */
-
-
-
-/* #region Media Query for Reduced Motion */
-
-@media ( prefers-reduced-motion : no-preference ) { /** Reduced Motion = This standard media query selector targets users who have not expressed a preference for reduced motion, with the idea behind this being that it will allow animations to run normally for said users. */
-
-
-    /* #region Wheel Button Wheel SVG */
-
-    .wheelButton:hover .wheelSVG { /** Wheel Button Hover Wheel SVG = This custom selector contains the custom SVG image of the donkey wheel from the TV show 'LOST' and is the custom .wheelButton selector's first grid row, only grid column. */
-
-        /* #region Selector Scoped Custom Properties */
-
-        --wss-ani-dur : calc( pow( var( --golden-rati ), 6 ) * 1s ); /** ~= 17.944s = Wheel SVG Spin Animation Duration = This custom property stores the duration in seconds for the custom Wheel SVG Spin animation's total duration for a single complete 360 degree spin, with the idea behind this being to create a duration based on the golden ratio that is not too fast and not too slow. */
-
-        /* #endregion Selector Scoped Custom Properties */
-
-
-        animation : whe-svg-spi var( --wss-ani-dur ) linear infinite; /** This value was chosen to be used to apply the custom Wheel SVG Spin animation using the specified selector scoped custom property. */
-
-
-
-        filter : drop-shadow(0 0 12px rgba( 199.005, 199.005, 2.618, 1 ) );
-
-    }
-
-    /* #endregion Wheel Button Wheel SVG */
-
-
-}
-
-/* #endregion Media Query for Reduced Motion */
 
 
 /* #endregion Wheel SVG */
@@ -533,5 +474,8 @@
 
 /* #endregion Not Found Section */
 
+
+
+/* #region Wheel Button Wheel SVG */
 
 

@@ -753,3 +753,209 @@ fieldset { /** Fieldset = This standard selector contains only itself and is use
 /* #endregion Root Div Element */
 
 
+body.rumble { /** Wheel Button Hover Wheel SVG = This custom selector contains the custom SVG image of the donkey wheel from the TV show 'LOST' and is the custom .wheelButton selector's first grid row, only grid column. */
+
+        /* #region Selector Scoped Custom Properties */
+
+        --wss-ani-dur : calc( pow( var( --golden-rati ), 2 ) * 1s ); /** ~= 17.944s = Wheel SVG Spin Animation Duration = This custom property stores the duration in seconds for the custom Wheel SVG Spin animation's total duration for a single complete 360 degree spin, with the idea behind this being to create a duration based on the golden ratio that is not too fast and not too slow. */
+
+        /* #endregion Selector Scoped Custom Properties */
+
+
+        animation : rumble var( --wss-ani-dur ) linear infinite; /** This value was chosen to be used to apply the custom Wheel SVG Spin animation using the specified selector scoped custom property. */
+
+    }
+
+    /* #endregion Wheel Button Wheel SVG */
+
+@keyframes rumble {
+          0%   { transform: translate(0, 0) rotate(0deg); }
+          10%  { transform: translate(-6px, -4px) rotate(-0.5deg); }
+          20%  { transform: translate(6px, 4px) rotate(0.5deg); }
+          30%  { transform: translate(-8px, 3px) rotate(-0.3deg); }
+          40%  { transform: translate(8px, -5px) rotate(0.4deg); }
+          50%  { transform: translate(-5px, 6px) rotate(-0.5deg); }
+          60%  { transform: translate(7px, -3px) rotate(0.3deg); }
+          70%  { transform: translate(-6px, 5px) rotate(-0.4deg); }
+          80%  { transform: translate(5px, -6px) rotate(0.5deg); }
+          90%  { transform: translate(-4px, 4px) rotate(-0.2deg); }
+          100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+
+
+:root {
+
+    --whe-svg-xco : 0;
+    --whe-svg-yco : 0;
+
+}
+
+
+
+@keyframes glow {
+
+
+    0% {
+
+        background: radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), rgba( 199.005, 199.005, 2.618, 0.000 ) 20%, rgba( 199.005, 199.005, 2.618, 0.000 ) 40%, rgba( 199.005, 199.005, 2.618, 0.000 ) 60%, rgba( 199.005, 199.005, 2.618, 0.000 ) 80%, rgba( 199.005, 199.005, 2.618, 0.000 ) 100% );
+
+     }
+
+
+
+    10% {
+
+        background: radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), rgba( 199.005, 199.005, 2.618, 0.110 ) 20%, rgba( 199.005, 199.005, 2.618, 0.685 ) 40%, rgba( 199.005, 199.005, 2.618, 0.423 ) 60%, rgba( 199.005, 199.005, 2.618, 0.261 ) 80%, rgba( 199.005, 199.005, 2.618, 0.161 ) 100% );
+
+    }
+
+
+
+    20% {
+
+        background: radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), rgba( 199.005, 199.005, 2.618, 0.179 ) 20%, rgba( 199.005, 199.005, 2.618, 0.110 ) 40%, rgba( 199.005, 199.005, 2.618, 0.685 ) 60%, rgba( 199.005, 199.005, 2.618, 0.423 ) 80%, rgba( 199.005, 199.005, 2.618, 0.261 ) 100% );
+
+    }
+
+
+
+    30% {
+
+        background: radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), rgba( 199.005, 199.005, 2.618, 0.290 ) 20%, rgba( 199.005, 199.005, 2.618, 0.179 ) 40%, rgba( 199.005, 199.005, 2.618, 0.110 ) 60%, rgba( 199.005, 199.005, 2.618, 0.685 ) 80%, rgba( 199.005, 199.005, 2.618, 0.423 ) 100% );
+
+    }
+
+
+
+    40% {
+
+        background: radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), rgba( 199.005, 199.005, 2.618, 0.469 ) 20%, rgba( 199.005, 199.005, 2.618, 0.290 ) 40%, rgba( 199.005, 199.005, 2.618, 0.179 ) 60%, rgba( 199.005, 199.005, 2.618, 0.110 ) 80%, rgba( 199.005, 199.005, 2.618, 0.685 ) 100% );
+
+    }
+
+
+
+    50% {
+
+        background: radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), rgba( 199.005, 199.005, 2.618, 0.760 ) 20%, rgba( 199.005, 199.005, 2.618, 0.469 ) 40%, rgba( 199.005, 199.005, 2.618, 0.290 ) 60%, rgba( 199.005, 199.005, 2.618, 0.179 ) 80%, rgba( 199.005, 199.005, 2.618, 0.110 ) 100% );
+
+    }
+
+
+
+    60% {
+
+        background: radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), rgba( 199.005, 199.005, 2.618, 1.000 ) 20%, rgba( 199.005, 199.005, 2.618, 0.760 ) 40%, rgba( 199.005, 199.005, 2.618, 0.469 ) 60%, rgba( 199.005, 199.005, 2.618, 0.290 ) 80%, rgba( 199.005, 199.005, 2.618, 0.179 ) 100% );
+
+    }
+
+
+
+    70% {
+
+        background: radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), rgba( 199.005, 199.005, 2.618, 1.000 ) 20%, rgba( 199.005, 199.005, 2.618, 1.000 ) 40%, rgba( 199.005, 199.005, 2.618, 0.760 ) 60%, rgba( 199.005, 199.005, 2.618, 0.469 ) 80%, rgba( 199.005, 199.005, 2.618, 0.290 ) 100% );
+
+    }
+
+
+
+    80% {
+
+        background: radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), rgba( 199.005, 199.005, 2.618, 1.000 ) 20%, rgba( 199.005, 199.005, 2.618, 1.000 ) 40%, rgba( 199.005, 199.005, 2.618, 1.000 ) 60%, rgba( 199.005, 199.005, 2.618, 0.760 ) 80%, rgba( 199.005, 199.005, 2.618, 0.469 ) 100% );
+
+    }
+
+
+
+    90% {
+
+        background: radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), rgba( 199.005, 199.005, 2.618, 1.000 ) 20%, rgba( 199.005, 199.005, 2.618, 1.000 ) 40%, rgba( 199.005, 199.005, 2.618, 1.000 ) 60%, rgba( 199.005, 199.005, 2.618, 1.000) 80%, rgba( 199.005, 199.005, 2.618, 0.760 ) 100% );
+
+    }
+
+
+
+    100% {
+
+        background: radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), rgba( 199.005, 199.005, 2.618, 1.000 ) 20%, rgba( 199.005, 199.005, 2.618, 1.000 ) 40%, rgba( 199.005, 199.005, 2.618, 1.000 ) 60%, rgba( 199.005, 199.005, 2.618, 1.000 ) 80%, rgba( 199.005, 199.005, 2.618, 1.000 ) 100% );
+
+    }
+
+
+}
+
+
+.yellowGlowOverlay {
+
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+
+    background: radial-gradient(circle at var( --whe-svg-xco ) var( --whe-svg-yco ), rgba(255,220,50,0) 0%, rgba(255,180,0,0) 0%, rgba(255,140,0,0) 0%, rgba(255,140,0,0) 0%);
+    animation: glow 6s ease-in-out forwards;
+
+}
+
+
+
+/* #region Wheel SVG Animation */
+
+@keyframes whe-svg-spi { /** Wheel SVG Spin = This custom keyframes stores the animation for the custom .wheelSVG selector, with the idea behind this being that it will continously spin the wheel SVG in a complete 360 degree rotation. */
+
+
+    from { /** From = This standard selector defines the starting state of the animation. */
+
+        transform : rotate( 0deg ); /** This value was chosen to be used to start the animation from a completely unrotated state. */
+
+    }
+
+
+
+    to { /** To = This standard selector defines the ending state of the animation. */
+
+        transform : rotate( 360deg ); /** This value was chosen to be used to end the animation at a full rotation, with the idea behind this being that it will create a continuous spinning effect when the animation loops back to the from selector. */
+
+    }
+
+
+}
+
+/* #endregion Wheel SVG Animation */
+
+
+
+/* #region Media Query for Reduced Motion */
+
+@media ( prefers-reduced-motion : no-preference ) { /** Reduced Motion = This standard media query selector targets users who have not expressed a preference for reduced motion, with the idea behind this being that it will allow animations to run normally for said users. */
+
+
+    /* #region Wheel Button Wheel SVG */
+
+    .wheelSpin { /** Wheel Button Hover Wheel SVG = This custom selector contains the custom SVG image of the donkey wheel from the TV show 'LOST' and is the custom .wheelButton selector's first grid row, only grid column. */
+
+        /* #region Selector Scoped Custom Properties */
+
+        --wss-ani-dur : calc( pow( var( --golden-rati ), 4 ) * 1s ); /** ~= 17.944s = Wheel SVG Spin Animation Duration = This custom property stores the duration in seconds for the custom Wheel SVG Spin animation's total duration for a single complete 360 degree spin, with the idea behind this being to create a duration based on the golden ratio that is not too fast and not too slow. */
+
+        /* #endregion Selector Scoped Custom Properties */
+
+
+        animation : whe-svg-spi var( --wss-ani-dur ) linear infinite; /** This value was chosen to be used to apply the custom Wheel SVG Spin animation using the specified selector scoped custom property. */
+
+    }
+
+    /* #endregion Wheel Button Wheel SVG */
+
+
+}
+
+/* #endregion Media Query for Reduced Motion */
+
+

@@ -1,7 +1,7 @@
 
 // #region Imports
 
-import React  from 'react';                  /** This import is the standard React core library, providing the core functionality for building React components and managing their lifecycle. */
+import React, { useState }  from 'react';                  /** This import is the standard React core library, providing the core functionality for building React components and managing their lifecycle. */
 import styles from './404PagCom.module.css'; /** This import is the custom CSS file that contains all of the styling declarations for this component. */
 
 
@@ -77,6 +77,77 @@ function FofPagCom ( props : FofPagComPro ) : React.ReactElement {
     // #endregion Props Variables
 
 
+
+    const [ rumbling, setRumbling ] = useState( false );
+
+
+
+    const handleWheelClick = () => {
+
+
+        if ( rumbling === true ) {
+
+
+            return;
+
+
+        };
+
+
+
+        /** Pixels Container Div             = This custom variable stores the containing HTML element which contains all of the square div HTML elements that are used for the pixelated transition effect animation. */
+        const wheSvgEle : HTMLElement | null = document.getElementById( 'wheSvGEle' );
+
+        const wseXcoNum = wheSvgEle?.getBoundingClientRect().left ?? 0;
+        const wseYcoNum = wheSvgEle?.getBoundingClientRect().top ?? 0;
+
+        const wseMidXcoNum = wseXcoNum + ( wheSvgEle?.getBoundingClientRect().width ?? 0 ) / 2;
+        const wseMidYcoNum = wseYcoNum + ( wheSvgEle?.getBoundingClientRect().height ?? 0 ) / 2;
+
+        const root = document.documentElement;
+        root.style.setProperty( '--whe-svg-xco', `${ wseMidXcoNum }px` );
+        root.style.setProperty( '--whe-svg-yco', `${ wseMidYcoNum }px` );
+
+
+
+        setRumbling( true );
+
+
+
+        document.body.classList.add( 'rumble' );
+
+
+        /** Snowfall Section Element  = This custom variable stores a newly created containing HTML section element to which all snowflake HTML div elements will be attached and whose dimensions will be used to update and contain each snowflake HTML div element's position. */
+        const yelGloOve : HTMLElement = document.createElement( 'div' );
+
+        document.body.appendChild( yelGloOve );
+
+        yelGloOve.classList.add( 'yellowGlowOverlay' );
+
+
+        wheSvgEle?.classList.add( 'wheelSpin' );
+
+
+
+        setTimeout( () => {
+
+
+            setRumbling( false );
+
+
+
+            document.body.classList.remove( 'rumble' );
+
+            wheSvgEle?.classList.remove( 'wheelSpin' );
+
+            document.body.removeChild( yelGloOve );
+
+        }, 6000);
+
+
+    };
+
+
     // #endregion Component Scoped Variables
 
 
@@ -112,8 +183,9 @@ function FofPagCom ( props : FofPagComPro ) : React.ReactElement {
      *
     */
 
-    useEffect(() => {return;
+    useEffect(() => {
 
+        return;
 
 
     }, []); /** Empty Aray = This custom dependency array stores the values that define when useEffect should be run, with an empty dependency array ensuring that this hook will run only once when the component mounts. */
@@ -130,7 +202,11 @@ function FofPagCom ( props : FofPagComPro ) : React.ReactElement {
 
         // #region 404 Section Element
 
-        <  section id='fofSecEle' className={ styles.notFoundSection } > { /* 404 Section Element = This custom section element is the root HTML element and container for this component since React requires the JSX to return a single root element. */ }
+        <  section id='fofSecEle' className={ `${ styles.notFoundSection } ${ rumbling ? styles.rumble : "" }` } > { /* 404 Section Element = This custom section element is the root HTML element and container for this component since React requires the JSX to return a single root element. */ }
+
+
+            {/* Yellow glow overlay */}
+        <div className={ styles.yellowGlowOverlay }/>
 
 
             { /** Start 404 Header Element */ }
@@ -170,7 +246,7 @@ function FofPagCom ( props : FofPagComPro ) : React.ReactElement {
 
                 { /** Start Wheel Button Element */ }
 
-                <  button id='wheButEle' className={ styles.wheelButton }  > { /* Wheel Button Element = This custom button element is the container for the wheel SVG and the span element. */ }
+                <  button id='wheButEle' className={ styles.wheelButton } onClick={ handleWheelClick } > { /* Wheel Button Element = This custom button element is the container for the wheel SVG and the span element. */ }
 
 
                     { /** Start Wheel SVG Element */ }
