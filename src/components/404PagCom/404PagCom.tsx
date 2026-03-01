@@ -80,81 +80,198 @@ function FofPagCom ( props : FofPagComPro ) : React.ReactElement {
 
 
 
-    const [ rumbling, setRumbling ] = useState( false );
+    // #region State Variables
+
+
+    // #region Type Definitions
+
+    /** Wheel Animation Boolean     = This custom type stores the type that will be used for the custom {@link wheAniBoo} state variable. */
+    type WheAniBoo                  = boolean;
+    /** Set Wheel Animation Boolean = This custom type stores the type that will be used for the custom {@link setWheAniBoo} state setter function. */
+    type SetWheAniBoo               = React.Dispatch< React.SetStateAction< WheAniBoo > >;
+    /** Use State Function Return   = This custom type stores the types that will be returned from the standard React {@link useState} hook. */
+    type UseStaFunRet               = [ WheAniBoo, SetWheAniBoo ];
+
+    // #endregion Type Definitions
 
 
 
-    const handleWheelClick = () => {
+    // #region State Initialization
+
+    /** Wheel Animation Boolean                      = This custom variable stores the boolean value that indicates whether the wheel animations are currently active. */
+    /** Set Wheel Animation Boolean                  = This custom variable stores the custom state setter function returned by the standard React {@link useState} hook, and it is used to execute updates to the custom {@link wheAniBoo} state variable whenever the wheel animation state changes. */
+    const [ wheAniBoo, setWheAniBoo ] : UseStaFunRet = useState< WheAniBoo >( false );
+
+    // #endregion State Initialization
 
 
-        if ( rumbling === true ) {
+    // #endregion State Variables
 
 
-            return;
+    // #endregion Component Scoped Variables
+
+
+
+    // #region handleWheCliFun
+
+    /**
+     * handleWheCliFun = Handle Wheel Click Function
+     * @see {@link handleWheCliFun}
+     *
+     * @summary
+     * This custom function executes the handling the custom wheButEle HTML
+     * element's on click event. It first checks if the wheel animation is
+     * already active, and if so it returns early to prevent multiple rapid
+     * clicks from causing issues. If the animation is not active, it proceeds
+     * to execute the logic for the wheel click event. This includes
+     * calculating the clocks (one normal clock and one for the page),
+     * calculating the position of the custom wheSvgEle HTML element (which is
+     * needed for the wheel glow effect CSS animation's custom properties),
+     * playing the wheel sound effect, creating HTML elements and adding CSS
+     * classes to trigger the aforementioned wheel glow effect animation, wheel
+     * SVG spin animation and the body selector's wheel turn rumble CSS
+     * animation. Finally, it will set a timeout to reset the custom wheAniBoo
+     * state variable, remove any attached classes and created elements, and
+     * then lastly redirecting the user to a random page.
+     *
+     * @author z4nta0 <https://github.com/z4nta0>
+     *
+     * @param void - This function takes no parameters.
+     *
+     * @returns This function does not return anything.
+     *
+     * @example
+     * ```ts
+     * handleWheCliFun() // => void
+     * ```
+     *
+    */
+
+    const handleWheCliFun = () => {
+
+
+        // #region Animation Already Running check
+
+        /** This custom conditional statement performs a check to make sure that any animations related to the custom wheButEle HTML element's click event are not already running via checking the state variable value. */
+        if ( wheAniBoo === true ) {
+
+
+            return; /** Return Statement = This standard Javascript return statement will short circuit the function and prevent any further code from running. */
 
 
         };
 
-
-
-        /** Pixels Container Div             = This custom variable stores the containing HTML element which contains all of the square div HTML elements that are used for the pixelated transition effect animation. */
-        const wheSvgEle : HTMLElement | null = document.getElementById( 'wheSvGEle' );
-
-        const wseXcoNum = wheSvgEle?.getBoundingClientRect().left ?? 0;
-        const wseYcoNum = wheSvgEle?.getBoundingClientRect().top ?? 0;
-
-        const wseMidXcoNum = wseXcoNum + ( wheSvgEle?.getBoundingClientRect().width ?? 0 ) / 2;
-        const wseMidYcoNum = wseYcoNum + ( wheSvgEle?.getBoundingClientRect().height ?? 0 ) / 2;
-
-        const root = document.documentElement;
-        root.style.setProperty( '--whe-svg-xco', `${ wseMidXcoNum }px` );
-        root.style.setProperty( '--whe-svg-yco', `${ wseMidYcoNum }px` );
+        // #endregion Animation Already Running check
 
 
 
-        setRumbling( true );
+        // #region Function Scoped Variables
+
+        /** Root Document Element     = This custom variable stores the root HTML element which is where any CSS custom properties that need to be accessed or manipulated by Javascript need to reside. */
+        const rooDocEle : HTMLElement = document.documentElement;
+
+        /** Wheel SVG Element                           = This custom variable stores the SVG HTML element which contains the image of the frozen donkey wheel from the TV show 'LOST' and whose coordinates and dimensions are used inside of the CSS wheel glow effect animation. This custom element will also have a class attached to it in order to trigger the wheel SVG spin CSS animation. */
+        const wheSvgEle : HTMLElement | null            = document.getElementById( 'wheSvGEle' );
+        /** Wheel SVG Element Bounding Client Rectangle = This custom variable stores the bounding client rectangle of the wheel SVG element, which provides the element's size and position relative to the viewport for use in determining the values for the wheel glow effect animation's custom properties. */
+        const wseBrcNum : DOMRect                       = wheSvgEle !== null ? wheSvgEle.getBoundingClientRect() : { bottom : 1, height : 1, left : 1, right : 1, top : 1, x : 1, width : 1,  y : 1, toJSON : () => { return { bottom : 1, height : 1, left : 1, right : 1, top : 1, x : 1, width : 1, y : 1 } } };
+
+        /** Wheel SVG Element Left Number = This custom variable stores the leftmost X coordinate of the wheel SVG element's bounding client rectangle, which is used to calculate the center position for the radial gradient that is used inside of the wheel glow effect CSS animation. */
+        const wseLefNum : number          = wseBrcNum.left;
+        /** Wheel SVG Element Top Number  = This custom variable stores the topmost Y coordinate of the wheel SVG element's bounding client rectangle, which is used to calculate the center position for the radial gradient that is used inside of the wheel glow effect CSS animation. */
+        const wseTopNum : number          = wseBrcNum.top;
+
+        /** Wheel SVG Element Center X Coordinate = This custom variable stores the X coordinate of the center of the wheel SVG element, which is used to calculate the value for the --whe-svg-xco CSS custom property that is used inside of the wheel glow effect CSS animation. */
+        const wheSvgXco : number = wseLefNum + ( wseBrcNum.width  / 2 );
+        /** Wheel SVG Element Center Y Coordinate = This custom variable stores the Y coordinate of the center of the wheel SVG element, which is used to calculate the value for the --whe-svg-yco CSS custom property that is used inside of the wheel glow effect CSS animation. */
+        const wheSvgYco : number = wseTopNum + ( wseBrcNum.height / 2 );
+
+        // #endregion Function Scoped Variables
 
 
-        const audio = new Audio(wheelSound);
-        audio.play();
+
+        // #region Set CSS Custom Properties
+
+        /** Root Document Element = This standard Javascript DOM API will set the CSS custom property that is used inside of the wheel glow effect CSS animation, which will center the radial gradient horizontally in the center of the wheel SVG element in order to radiate the glow effect outwards and eventually cover the entire viewport. */
+        rooDocEle.style.setProperty( '--whe-svg-xco', `${ wheSvgXco }px` );
+        /** Root Document Element = This standard Javascript DOM API will set the CSS custom property that is used inside of the wheel glow effect CSS animation, which will center the radial gradient vertically in the center of the wheel SVG element in order to radiate the glow effect outwards and eventually cover the entire viewport. */
+        rooDocEle.style.setProperty( '--whe-svg-yco', `${ wheSvgYco }px` );
+
+        // #endregion Set CSS Custom Properties
 
 
 
+        /** Set Wheel Animation Boolean = This custom state setter function is used to control the state of the wheel animations, indicating whether said animations are currently animating or not in order to prevent repeated button presses from accidentally triggering the animations multiple times. */
+        setWheAniBoo( true );
+
+
+
+        // #region Play Audio Effects
+
+        /** Wheel Sound Audio              = This custom variable stores a standard class instance of the HTMLAudioElement for the wheel-sound.mp3 file that will play the frozen donkey wheel sound effect from the TV show 'LOST'. */
+        const wheSouAud : HTMLAudioElement = new Audio( wheelSound );
+
+        /** Wheel Sound Audio = This standard Javascript Audio class instance method will play the frozen donkey wheel sound effect from the TV show 'LOST'. */
+        wheSouAud.play();
+
+        // #endregion Play Audio Effects
+
+
+
+        // #region Create HTML Elements and Add Animation Classes
+
+        /** Wheel Turn Rumble = This standard Javascript DOM API will add the custom .wheelTurnRumble class to the standard body element, which will trigger the custom whe-tur-rum CSS animation cuasing the entire page to shake. */
         document.body.classList.add( 'wheelTurnRumble' );
 
-
-        /** Snowfall Section Element  = This custom variable stores a newly created containing HTML section element to which all snowflake HTML div elements will be attached and whose dimensions will be used to update and contain each snowflake HTML div element's position. */
-        const yelGloOve : HTMLElement = document.createElement( 'div' );
-
-        document.body.appendChild( yelGloOve );
-
-        yelGloOve.classList.add( 'wheelGlowEffect' );
+        /** Wheel SVG Spin = This standard Javascript DOM API will add the custom .wheelSpin class to the wheel SVG element as long as it is not null, which will trigger the custom whe-svg-spi CSS animation causing the SVG wheel image to spin. */
+        if ( wheSvgEle !== null ) wheSvgEle.classList.add( 'wheelSVGSpin' );
 
 
-        wheSvgEle?.classList.add( 'wheelSpin' );
+        /** Glow Div Element          = This custom variable stores a newly created containing HTML div element, which will be attached to the body in order to overlay the entire viewport and create a glow effect via a custom CSS radial gradient animation that is centered on the wheel SVG element. */
+        const gloDivEle : HTMLElement = document.createElement( 'div' );
+
+        /** Glow Div Element = This standard Javascript DOM API will append the newly created glow div element to the body, allowing the custom .wheelGlowEffect selector to be applied to it and triggering the custom CSS radial gradient animation that will overlay the entire viewport. */
+        document.body.appendChild( gloDivEle );
+
+        /** Glow Div Element = This standard Javascript DOM API will add the custom .wheelGlowEffect class to the newly created glow div element, triggering the custom whe-glo-eff CSS radial gradient animation that will emanate from the center of the wheel SVG element and overlay the entire viewport. */
+        gloDivEle.classList.add( 'wheelGlowEffect' );
+
+        // #endregion Create HTML Elements and Add Animation Classes
 
 
+
+        // #region Set Timeout for Removing Elements and Classes
 
         setTimeout( () => {
 
 
-            setRumbling( false );
-
-
-
+            /** Wheel Turn Rumble = This standard Javascript DOM API will remove the custom .wheelTurnRumble class from the body element, stopping the custom whe-tur-rum CSS animation that causes the entire page to shake. */
             document.body.classList.remove( 'wheelTurnRumble' );
 
-            wheSvgEle?.classList.remove( 'wheelSpin' );
+            /** Wheel SVG Spin = This standard Javascript DOM API will remove the custom .wheelSpin class from the wheel SVG element as long as it is not null, stopping the custom whe-svg-spi CSS animation that causes the SVG wheel image to spin. */
+            if ( wheSvgEle !== null ) wheSvgEle.classList.remove( 'wheelSVGSpin' );
 
-            document.body.removeChild( yelGloOve );
+            /** Glow Div Element = This standard Javascript DOM API will remove the newly created glow div element from the body, stopping the custom whe-glo-eff CSS radial gradient animation that overlays the entire viewport. */
+            document.body.removeChild( gloDivEle );
 
-        }, 6854);
+
+
+            /** Set Wheel Animation Boolean = This custom state setter function is used to control the state of the wheel animations, indicating whether said animations are currently animating or not in order to prevent repeated button presses from accidentally triggering the animations multiple times. */
+            setWheAniBoo( false );
+
+
+        }, 6854); /** 6854 Milliseconds = This custom timeout duration is the same value used for all custom CSS animations that are not infinite, is equal to the golden ratio to the 4th power, and it defines how long the wheel animations will run before being stopped, cleaned up and then redirecting the user to a random page. */
+
+        // #endregion Set Timeout for Removing Elements and Classes
+
+
+
+        return; /** Return Statement = This standard Javascript return statement is used to exit the current function, ensuring that no further code is executed after the wheel animations have been handled. */
 
 
     };
 
 
-    // #endregion Component Scoped Variables
+    // #endregion handleWheCliFun
 
 
 
@@ -208,7 +325,7 @@ function FofPagCom ( props : FofPagComPro ) : React.ReactElement {
 
         // #region 404 Section Element
 
-        <  section id='fofSecEle' className={ `${ styles.notFoundSection } ${ rumbling ? styles.rumble : "" }` } > { /* 404 Section Element = This custom section element is the root HTML element and container for this component since React requires the JSX to return a single root element. */ }
+        <  section id='fofSecEle' className={ `${ styles.notFoundSection } ${ wheAniBoo ? styles.rumble : "" }` } > { /* 404 Section Element = This custom section element is the root HTML element and container for this component since React requires the JSX to return a single root element. */ }
 
 
             {/* Yellow glow overlay */}
@@ -252,7 +369,7 @@ function FofPagCom ( props : FofPagComPro ) : React.ReactElement {
 
                 { /** Start Wheel Button Element */ }
 
-                <  button id='wheButEle' className={ styles.wheelButton } onClick={ handleWheelClick } > { /* Wheel Button Element = This custom button element is the container for the wheel SVG and the span element. */ }
+                <  button id='wheButEle' className={ styles.wheelButton } onClick={ handleWheCliFun } > { /* Wheel Button Element = This custom button element is the container for the wheel SVG and the span element. */ }
 
 
                     { /** Start Wheel SVG Element */ }

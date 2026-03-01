@@ -922,7 +922,7 @@ fieldset { /** Fieldset = This standard selector contains only itself and is use
         /* #endregion Selector Scoped Custom Properties */
 
 
-        animation : whe-glo-eff var( --wge-ani-dur ) linear forwards; /** This value was chosen to be used to apply the custom Wheel Glow Effect animation using the specified selector scoped custom property. */
+        animation : whe-glo-eff var( --wge-ani-dur ) ease-in-out forwards; /** This value was chosen to be used to apply the custom Wheel Glow Effect animation using the specified selector scoped custom property. */
 
     }
 
@@ -973,13 +973,13 @@ fieldset { /** Fieldset = This standard selector contains only itself and is use
 @media ( prefers-reduced-motion : no-preference ) { /** Reduced Motion = This standard media query selector targets users who have not expressed a preference for reduced motion, with the idea behind this being that it will allow animations to run normally for said users. */
 
 
-    /* #region Wheel Button Wheel SVG */
+    /* #region Wheel SVG Spin */
 
-    .wheelSpin { /** Wheel Button Hover Wheel SVG = This custom selector contains the custom SVG image of the donkey wheel from the TV show 'LOST' and is the custom .wheelButton selector's first grid row, only grid column. */
+    .wheelSVGSpin { /** Wheel SVG Spin = This custom selector contains the controls for the custom whe-svg-spi keyframes that will be activated by Javascript when the 404PagCom's custom button containing the SVG image of the donkey wheel from the TV show 'LOST' is clicked. This class will be attached to the custom .wheSvg selector by Javascript when said button is clicked and then removed after a specified timeout. */
 
         /* #region Selector Scoped Custom Properties */
 
-        --wss-ani-dur : calc( pow( var( --golden-rati ), 4 ) * 1s ); /** ~= 17.944s = Wheel SVG Spin Animation Duration = This custom property stores the duration in seconds for the custom Wheel SVG Spin animation's total duration for a single complete 360 degree spin, with the idea behind this being to create a duration based on the golden ratio that is not too fast and not too slow. */
+        --wss-ani-dur : calc( pow( var( --golden-rati ), 4 ) * 1s ); /** ~= 6.854s = Wheel SVG Spin Animation Duration = This custom property stores the duration in seconds for the custom Wheel SVG Spin animation's total duration for a single complete 360 degree spin, with the idea behind this being to create a duration based on the golden ratio that matches the total duration of the Javascript's timeout before it redirects to a random page. */
 
         /* #endregion Selector Scoped Custom Properties */
 
@@ -988,7 +988,7 @@ fieldset { /** Fieldset = This standard selector contains only itself and is use
 
     }
 
-    /* #endregion Wheel Button Wheel SVG */
+    /* #endregion Wheel SVG Spin */
 
 
 }
