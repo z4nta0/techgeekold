@@ -25,7 +25,7 @@
 
 .impactFont { /** Impact Font = These custom selectors contain the shared styles for the custom span selectors that contain the word 'LOST' (and the 404 header) and are used inside of the custom .headerh1, .headerParagraph and .contentParagraph selectors. */
 
-    color          : var( --col-tex-col ); /** This value was chosen to be used according to the details of the specified global scoped prime custom property. */
+    color          : var( --rad-gra-col ); /** This value was chosen to be used according to the details of the specified global scoped prime custom property. */
     font-family    : 'Impact', sans-serif; /** This value was chosen to be used because this font was identified as being used by the TV show 'LOST', with the idea behind this being that the word 'LOST' (and the 404 header) should be styled in a way that is visually consistent with said show's branding. */
     font-weight    : 900;                  /** This value was chosen to be used because this font weight (thick, blocky) combined with the font family Impact was identified as being used by the TV show 'LOST', with the idea behind this being that the word 'LOST' (and the 404 header) should be styled in a way that is visually consistent with said show's branding. */
 

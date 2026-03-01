@@ -1,11 +1,13 @@
 
 // #region Imports
 
-import React, { useState }  from 'react';                  /** This import is the standard React core library, providing the core functionality for building React components and managing their lifecycle. */
-import styles from './404PagCom.module.css'; /** This import is the custom CSS file that contains all of the styling declarations for this component. */
+import React      from 'react';                        /** This import is the standard React core library, providing the core functionality for building React components and managing their lifecycle. */
+import styles     from './404PagCom.module.css';       /** This import is the custom CSS file that contains all of the styling declarations for this component. */
+import wheelSound from '../../assets/wheel-sound.mp3'; /** This import is the custom sound effect that is played when the wheel button is clicked. */
 
 
 import { useEffect } from 'react'; /** This import is the standard React hook that enables side effects for components. */
+import { useState  } from 'react'; /** This import is the standard React hook that enables state management in functional components. */
 
 // #endregion Imports
 
@@ -113,8 +115,12 @@ function FofPagCom ( props : FofPagComPro ) : React.ReactElement {
         setRumbling( true );
 
 
+        const audio = new Audio(wheelSound);
+        audio.play();
 
-        document.body.classList.add( 'rumble' );
+
+
+        document.body.classList.add( 'wheelTurnRumble' );
 
 
         /** Snowfall Section Element  = This custom variable stores a newly created containing HTML section element to which all snowflake HTML div elements will be attached and whose dimensions will be used to update and contain each snowflake HTML div element's position. */
@@ -122,7 +128,7 @@ function FofPagCom ( props : FofPagComPro ) : React.ReactElement {
 
         document.body.appendChild( yelGloOve );
 
-        yelGloOve.classList.add( 'yellowGlowOverlay' );
+        yelGloOve.classList.add( 'wheelGlowEffect' );
 
 
         wheSvgEle?.classList.add( 'wheelSpin' );
@@ -136,13 +142,13 @@ function FofPagCom ( props : FofPagComPro ) : React.ReactElement {
 
 
 
-            document.body.classList.remove( 'rumble' );
+            document.body.classList.remove( 'wheelTurnRumble' );
 
             wheSvgEle?.classList.remove( 'wheelSpin' );
 
             document.body.removeChild( yelGloOve );
 
-        }, 6000);
+        }, 6854);
 
 
     };
@@ -236,7 +242,7 @@ function FofPagCom ( props : FofPagComPro ) : React.ReactElement {
 
                 < p id='conParEle' className={ styles.contentParagraph } > { /* Content Paragraph Element = This custom paragraph element is the container for the text instructions on editing the code to test hot module replacement (HMR) functionality. */ }
 
-                    The { appNamStr }'s' scientists are hard at work on the problem and our best theory is that you have fallen into some sort of temporal anomaly. If you wish to leave, you will need to take your chances and turn the wheel below.
+                    The { appNamStr }'s' scientists are hard at work on the problem but our working theory is that you have fallen into some sort of temporal anomaly from either before or after the page originally existed. If you wish to escape this anomaly, you will need to take your chances and turn the wheel below.
 
                 </ p >
 

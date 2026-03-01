@@ -753,161 +753,198 @@ fieldset { /** Fieldset = This standard selector contains only itself and is use
 /* #endregion Root Div Element */
 
 
-body.rumble { /** Wheel Button Hover Wheel SVG = This custom selector contains the custom SVG image of the donkey wheel from the TV show 'LOST' and is the custom .wheelButton selector's first grid row, only grid column. */
 
-        /* #region Selector Scoped Custom Properties */
-
-        --wss-ani-dur : calc( pow( var( --golden-rati ), 2 ) * 1s ); /** ~= 17.944s = Wheel SVG Spin Animation Duration = This custom property stores the duration in seconds for the custom Wheel SVG Spin animation's total duration for a single complete 360 degree spin, with the idea behind this being to create a duration based on the golden ratio that is not too fast and not too slow. */
-
-        /* #endregion Selector Scoped Custom Properties */
+/* #region 404 Page Animations = These animations will not work inside of the 404 module CSS page when triggered by Javascript, they must be placed here in the index file for that particular use case. */
 
 
-        animation : rumble var( --wss-ani-dur ) linear infinite; /** This value was chosen to be used to apply the custom Wheel SVG Spin animation using the specified selector scoped custom property. */
-
-    }
-
-    /* #endregion Wheel Button Wheel SVG */
-
-@keyframes rumble {
-          0%   { transform: translate(0, 0) rotate(0deg); }
-          10%  { transform: translate(-6px, -4px) rotate(-0.5deg); }
-          20%  { transform: translate(6px, 4px) rotate(0.5deg); }
-          30%  { transform: translate(-8px, 3px) rotate(-0.3deg); }
-          40%  { transform: translate(8px, -5px) rotate(0.4deg); }
-          50%  { transform: translate(-5px, 6px) rotate(-0.5deg); }
-          60%  { transform: translate(7px, -3px) rotate(0.3deg); }
-          70%  { transform: translate(-6px, 5px) rotate(-0.4deg); }
-          80%  { transform: translate(5px, -6px) rotate(0.5deg); }
-          90%  { transform: translate(-4px, 4px) rotate(-0.2deg); }
-          100% { transform: translate(0, 0) rotate(0deg); }
-}
+/* #region Wheel Glow Effect Animation */
 
 
+/* #region Wheel Glow Effect Custom Properties */
 
-:root {
+:root { /** Root = This standard root selector contains the custom properties pertaining to the Wheel Glow Effect animation, some of which will be manipulated by Javascript and so must be placed inside of the :root selector. */
 
-    --whe-svg-xco : 0;
-    --whe-svg-yco : 0;
+
+    --whe-svg-xco : 0; /** Wheel SVG X Coordinate = This custom property stores the X coordinate for the center of the wheel SVG element, with the idea behind this being that it will be calculated and set by Javascript when the custom .wheelButton selector is clicked and then used inside of the Wheel Glow Effect animation. */
+    --whe-svg-yco : 0; /** Wheel SVG Y Coordinate = This custom property stores the Y coordinate for the center of the wheel SVG element, with the idea behind this being that it will be calculated and set by Javascript when the custom .wheelButton selector is clicked and then used inside of the Wheel Glow Effect animation. */
+
+    --glo-tra-000 : hsla( 46.979, 76.013%, 46.979%, 0.000 ); /** Glow Transparency   0.0% = This custom property stores the first color value (only the transparency value changes) for all five gradient values inside of the Wheel Glow Effect animation, with the idea behind this being to provide the initial color for the glow effect's transition from transparent to opaque. */
+    --glo-tra-016 : hsla( 46.979, 76.013%, 46.979%, 0.016 ); /** Glow Transparency   1.6% = This custom property stores the second color value (only the transparency value changes) for the fifth gradient value inside of the Wheel Glow Effect animation, with the idea behind this being to provide stacking step color values for the five different gradient values inside of the glow effect's transition from transparent to opaque. How this works is that the first gradient value will start at a higher value (11.013%) than the others (with the fifth value starting at 0.618%), after which each gradient value will then take up the previous gradient's value inside of the next step. */
+    --glo-tra-021 : hsla( 46.979, 76.013%, 46.979%, 0.021 ); /** Glow Transparency   2.1% = This custom property stores the second color value (only the transparency value changes) for the fourth gradient value inside of the Wheel Glow Effect animation, with the idea behind this being to provide stacking step color values for the five different gradient values inside of the glow effect's transition from transparent to opaque. How this works is that the first gradient value will start at a higher value (11.013%) than the others (with the fifth value starting at 0.618%), after which each gradient value will then take up the previous gradient's value inside of the next step. */
+    --glo-tra-042 : hsla( 46.979, 76.013%, 46.979%, 0.042 ); /** Glow Transparency   4.2% = This custom property stores the second color value (only the transparency value changes) for the third gradient value inside of the Wheel Glow Effect animation, with the idea behind this being to provide stacking step color values for the five different gradient values inside of the glow effect's transition from transparent to opaque. How this works is that the first gradient value will start at a higher value (11.013%) than the others (with the fifth value starting at 0.618%), after which each gradient value will then take up the previous gradient's value inside of the next step. */
+    --glo-tra-068 : hsla( 46.979, 76.013%, 46.979%, 0.068 ); /** Glow Transparency   6.8% = This custom property stores the second color value (only the transparency value changes) for the second gradient value inside of the Wheel Glow Effect animation, with the idea behind this being to provide stacking step color values for the five different gradient values inside of the glow effect's transition from transparent to opaque. How this works is that the first gradient value will start at a higher value (11.013%) than the others (with the fifth value starting at 0.618%), after which each gradient value will then take up the previous gradient's value inside of the next step. */
+    --glo-tra-110 : hsla( 46.979, 76.013%, 46.979%, 0.110 ); /** Glow Transparency  11.0% = This custom property stores the second color value (only the transparency value changes) for the first gradient value inside of the Wheel Glow Effect animation, with the idea behind this being to provide stacking step color values for the five different gradient values inside of the glow effect's transition from transparent to opaque. How this works is that the first gradient value will start at a higher value (11.013%) than the others (with the fifth value starting at 0.618%), after which each gradient value will then take up the previous gradient's value inside of the next step. */
+    --glo-tra-179 : hsla( 46.979, 76.013%, 46.979%, 0.179 ); /** Glow Transparency  17.9% = This custom property stores the third color value (only the transparency value changes) for the first gradient value inside of the Wheel Glow Effect animation, with the idea behind this being to provide stacking step color values for the five different gradient values inside of the glow effect's transition from transparent to opaque. How this works is that the first gradient value will start at a higher value (11.013%) than the others (with the fifth value starting at 0.618%), after which each gradient value will then take up the previous gradient's value inside of the next step. */
+    --glo-tra-290 : hsla( 46.979, 76.013%, 46.979%, 0.290 ); /** Glow Transparency  29.0% = This custom property stores the fourth color value (only the transparency value changes) for the first gradient value inside of the Wheel Glow Effect animation, with the idea behind this being to provide stacking step color values for the five different gradient values inside of the glow effect's transition from transparent to opaque. How this works is that the first gradient value will start at a higher value (11.013%) than the others (with the fifth value starting at 0.618%), after which each gradient value will then take up the previous gradient's value inside of the next step. */
+    --glo-tra-469 : hsla( 46.979, 76.013%, 46.979%, 0.469 ); /** Glow Transparency  46.9% = This custom property stores the fifth color value (only the transparency value changes) for the first gradient value inside of the Wheel Glow Effect animation, with the idea behind this being to provide stacking step color values for the five different gradient values inside of the glow effect's transition from transparent to opaque. How this works is that the first gradient value will start at a higher value (11.013%) than the others (with the fifth value starting at 0.618%), after which each gradient value will then take up the previous gradient's value inside of the next step. */
+    --glo-tra-760 : hsla( 46.979, 76.013%, 46.979%, 0.760 ); /** Glow Transparency  76.0% = This custom property stores the sixth color value (only the transparency value changes) for the first gradient value inside of the Wheel Glow Effect animation, with the idea behind this being to provide stacking step color values for the five different gradient values inside of the glow effect's transition from transparent to opaque. How this works is that the first gradient value will start at a higher value (11.013%) than the others (with the fifth value starting at 0.618%), after which each gradient value will then take up the previous gradient's value inside of the next step. */
+    --glo-tra-100 : hsla( 46.979, 76.013%, 46.979%, 1.000 ); /** Glow Transparency 100.0% = This custom property stores the seventh color value (only the transparency value changes) for the first gradient value inside of the Wheel Glow Effect animation, with the idea behind this being to provide stacking step color values for the five different gradient values inside of the glow effect's transition from transparent to opaque. How this works is that the first gradient value will start at a higher value (11.013%) than the others (with the fifth value starting at 0.618%), after which each gradient value will then take up the previous gradient's value inside of the next step. */
+
+    --glo-liy-col : hsla( 46.979, 76.013%,  76.013%, 1.000 ); /** Wheel Glow Light Yellow Color = This custom property stores the eighth colr value (light yellow color) for the first gradient value inside of the Wheel Glow Effect animation, with the idea behind this being to provide an intermediary color for the glow effect's transition from yellow to white. */
+    --glo-whi-col : hsla( 46.979, 76.013%, 100.000%, 1.000 ); /** Wheel Glow White Color        = This custom property stores the ninth and tenth color values (white color) for the first gradient value inside of the Wheel Glow Effect animation, with the idea behind this being to provide the final color for the glow effect's transition from yellow to white. */
+
 
 }
 
+/* #endregion Wheel Glow Effect Custom Properties */
 
 
-@keyframes glow {
+
+/* #region Wheel Glow Effect */
+
+.wheelGlowEffect { /** Wheel Glow Effect = This custom selector contains the controls for the custom whe-glo-eff keyframes that will be activated by Javascript when the 404PagCom's custom button containing the SVG image of the donkey wheel from the TV show 'LOST' is clicked. This class will be attached to a Javascript created element when said button is clicked and then removed after a specified timeout. */
+
+    height         : 100vh; /** This value was chosen to be used to set the height to 100% of the viewport height, with the idea behind this being that this selector is meant to cover the entire viewport. */
+    left           : 0;     /** This value was chosen to be used to position this selector in the very top left hand corner of the viewport, with the idea behind this being that this selector is meant to cover the entire viewport. */
+    pointer-events : none;  /** This value was chosen to be used to ensure that this selector does not interfere with any mouse interactions, with the idea behind this being that it is purely decorative and should not prevent the user from taking any normal actions. */
+    position       : fixed; /** This value was chosen to be used to maintain a fixed position for this selector, with the idea behind this being that this selector is meant to cover the entire viewport. */
+    top            : 0;     /** This value was chosen to be used to position this selector in the very top left hand corner of the viewport, with the idea behind this being that this selector is meant to cover the entire viewport. */
+    width          : 100vw; /** This value was chosen to be used to set the width to 100% of the viewport width, with the idea behind this being that this selector is meant to cover the entire viewport. */
+
+}
+
+/* #endregion Wheel Glow Effect */
 
 
-    0% {
 
-        background: radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), rgba( 199.005, 199.005, 2.618, 0.000 ) 20%, rgba( 199.005, 199.005, 2.618, 0.000 ) 40%, rgba( 199.005, 199.005, 2.618, 0.000 ) 60%, rgba( 199.005, 199.005, 2.618, 0.000 ) 80%, rgba( 199.005, 199.005, 2.618, 0.000 ) 100% );
+/* #region Wheel Glow Effect Keyframes */
+
+@keyframes whe-glo-eff { /** Wheel Glow Effect = This custom keyframes stores the animation for the custom .wheelGlowEffect selector that will be applied to a custom Javascript created element when the 404PagCom's custom .wheelButton containing the SVG image of the donkey wheel from the TV show 'LOST' is clicked, with the idea behind this being that it will create a radial gradient 'glow' that originates from the center of said SVG image then expands outward to cover the entire viewport while shifting from a transparent yellow to an opaque yellow to an opaue light yellow and finally to a fully opaque white until Javascript removes said custom element after a specified timeout. */
+
+
+    0% { /** Zero Percent = This standard selector defines the starting state of the animation. */
+
+        background : radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), var( --glo-tra-000 ) 20%, var( --glo-tra-000 ) 40%, var( --glo-tra-000 ) 60%, var( --glo-tra-000 ) 80%, var( --glo-tra-000 ) 100% ); /** This value was chosen to be used to start the animation from a completely transparent state. */
 
      }
 
 
 
-    10% {
+    10% { /** Ten Percent = This standard selector defines the state of the animation at ten percent of its duration. */
 
-        background: radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), rgba( 199.005, 199.005, 2.618, 0.110 ) 20%, rgba( 199.005, 199.005, 2.618, 0.685 ) 40%, rgba( 199.005, 199.005, 2.618, 0.423 ) 60%, rgba( 199.005, 199.005, 2.618, 0.261 ) 80%, rgba( 199.005, 199.005, 2.618, 0.161 ) 100% );
-
-    }
-
-
-
-    20% {
-
-        background: radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), rgba( 199.005, 199.005, 2.618, 0.179 ) 20%, rgba( 199.005, 199.005, 2.618, 0.110 ) 40%, rgba( 199.005, 199.005, 2.618, 0.685 ) 60%, rgba( 199.005, 199.005, 2.618, 0.423 ) 80%, rgba( 199.005, 199.005, 2.618, 0.261 ) 100% );
+        background : radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), var( --glo-tra-110 ) 20%, var( --glo-tra-068 ) 40%, var( --glo-tra-042 )60%, var( --glo-tra-021 ) 80%, var( --glo-tra-016 ) 100% ); /** This value was chosen to be used to transition the animation to a minimally transparent state (each subsequent value is slightly more transparent than the previous, starting at the very middle of the wheel SVG and fanning out to the edges of the viewport). */
 
     }
 
 
 
-    30% {
+    20% { /** Twenty Percent = This standard selector defines the state of the animation at twenty percent of its duration. */
 
-        background: radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), rgba( 199.005, 199.005, 2.618, 0.290 ) 20%, rgba( 199.005, 199.005, 2.618, 0.179 ) 40%, rgba( 199.005, 199.005, 2.618, 0.110 ) 60%, rgba( 199.005, 199.005, 2.618, 0.685 ) 80%, rgba( 199.005, 199.005, 2.618, 0.423 ) 100% );
-
-    }
-
-
-
-    40% {
-
-        background: radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), rgba( 199.005, 199.005, 2.618, 0.469 ) 20%, rgba( 199.005, 199.005, 2.618, 0.290 ) 40%, rgba( 199.005, 199.005, 2.618, 0.179 ) 60%, rgba( 199.005, 199.005, 2.618, 0.110 ) 80%, rgba( 199.005, 199.005, 2.618, 0.685 ) 100% );
+        background : radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), var( --glo-tra-179 ) 20%, var( --glo-tra-110 ) 40%, var( --glo-tra-068 ) 60%, var( --glo-tra-042 ) 80%, var( --glo-tra-021 ) 100% ); /** This value was chosen to be used to transition the animation to a slightly less transparent state (each subsequent value is slightly more transparent than the previous, starting at the very middle of the wheel SVG and fanning out to the edges of the viewport). */
 
     }
 
 
 
-    50% {
+    30% { /** Thirty Percent = This standard selector defines the state of the animation at thirty percent of its duration. */
 
-        background: radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), rgba( 199.005, 199.005, 2.618, 0.760 ) 20%, rgba( 199.005, 199.005, 2.618, 0.469 ) 40%, rgba( 199.005, 199.005, 2.618, 0.290 ) 60%, rgba( 199.005, 199.005, 2.618, 0.179 ) 80%, rgba( 199.005, 199.005, 2.618, 0.110 ) 100% );
-
-    }
-
-
-
-    60% {
-
-        background: radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), rgba( 199.005, 199.005, 2.618, 1.000 ) 20%, rgba( 199.005, 199.005, 2.618, 0.760 ) 40%, rgba( 199.005, 199.005, 2.618, 0.469 ) 60%, rgba( 199.005, 199.005, 2.618, 0.290 ) 80%, rgba( 199.005, 199.005, 2.618, 0.179 ) 100% );
+        background : radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), var( --glo-tra-290 ) 20%, var( --glo-tra-179 ) 40%, var( --glo-tra-110 ) 60%, var( --glo-tra-068 ) 80%, var( --glo-tra-042 ) 100% ); /** This value was chosen to be used to transition the animation to a slightly less transparent state (each subsequent value is slightly more transparent than the previous, starting at the very middle of the wheel SVG and fanning out to the edges of the viewport). */
 
     }
 
 
 
-    70% {
+    40% { /** Forty Percent = This standard selector defines the state of the animation at forty percent of its duration. */
 
-        background: radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), rgba( 199.005, 199.005, 2.618, 1.000 ) 20%, rgba( 199.005, 199.005, 2.618, 1.000 ) 40%, rgba( 199.005, 199.005, 2.618, 0.760 ) 60%, rgba( 199.005, 199.005, 2.618, 0.469 ) 80%, rgba( 199.005, 199.005, 2.618, 0.290 ) 100% );
-
-    }
-
-
-
-    80% {
-
-        background: radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), rgba( 199.005, 199.005, 2.618, 1.000 ) 20%, rgba( 199.005, 199.005, 2.618, 1.000 ) 40%, rgba( 199.005, 199.005, 2.618, 1.000 ) 60%, rgba( 199.005, 199.005, 2.618, 0.760 ) 80%, rgba( 199.005, 199.005, 2.618, 0.469 ) 100% );
+        background : radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), var( --glo-tra-469 ) 20%, var( --glo-tra-290 ) 40%, var( --glo-tra-179 ) 60%, var( --glo-tra-110 ) 80%, var( --glo-tra-068 ) 100% ); /** This value was chosen to be used to transition the animation to a slightly less transparent state (each subsequent value is slightly more transparent than the previous, starting at the very middle of the wheel SVG and fanning out to the edges of the viewport). */
 
     }
 
 
 
-    90% {
+    50% { /** Fifty Percent = This standard selector defines the midpoint state of the animation. */
 
-        background: radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), rgba( 199.005, 199.005, 2.618, 1.000 ) 20%, rgba( 199.005, 199.005, 2.618, 1.000 ) 40%, rgba( 199.005, 199.005, 2.618, 1.000 ) 60%, rgba( 199.005, 199.005, 2.618, 1.000) 80%, rgba( 199.005, 199.005, 2.618, 0.760 ) 100% );
+        background : radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), var( --glo-tra-760 ) 20%, var( --glo-tra-469 ) 40%, var( --glo-tra-290 ) 60%, var( --glo-tra-179 ) 80%, var( --glo-tra-110 ) 100% ); /** This value was chosen to be used to transition the animation to an almost opaque state (each subsequent value is slightly less opaque than the previous, starting at the very middle of the wheel SVG and fanning out to the edges of the viewport). */
 
     }
 
 
 
-    100% {
+    60% { /** Sixty Percent = This standard selector defines the state of the animation at sixty percent of its duration. */
 
-        background: radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), rgba( 199.005, 199.005, 2.618, 1.000 ) 20%, rgba( 199.005, 199.005, 2.618, 1.000 ) 40%, rgba( 199.005, 199.005, 2.618, 1.000 ) 60%, rgba( 199.005, 199.005, 2.618, 1.000 ) 80%, rgba( 199.005, 199.005, 2.618, 1.000 ) 100% );
+        background : radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), var( --glo-tra-100 ) 20%, var( --glo-tra-760 ) 40%, var( --glo-tra-469 ) 60%, var( --glo-tra-290 ) 80%, var( --glo-tra-179 ) 100% ); /** This value was chosen to be used to transition the animation to a completely opaque state (each subsequent value is slightly less opaque than the previous, starting at the very middle of the wheel SVG and fanning out to the edges of the viewport). */
+
+    }
+
+
+
+    70% { /** Seventy Percent = This standard selector defines the state of the animation at seventy percent of its duration. */
+
+        background : radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), var( --glo-liy-col ) 20%, var( --glo-tra-100 ) 40%, var( --glo-tra-760 ) 60%, var( --glo-tra-469 ) 80%, var( --glo-tra-290 ) 100% ); /** This value was chosen to be used to transition the animation to a slightly lighter yellow color (each subsequent value after the first is still lightly opaque, starting at the very middle of the wheel SVG and fanning out to the edges of the viewport). */
+
+    }
+
+
+
+    80% { /** Eighty Percent = This standard selector defines the state of the animation at eighty percent of its duration. */
+
+        background : radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), var( --glo-whi-col ) 20%, var( --glo-liy-col ) 40%, var( --glo-tra-100 ) 60%, var( --glo-tra-760 ) 80%, var( --glo-tra-469 ) 100% ); /** This value was chosen to be used to transition the animation to a white color (the second value should now be a lighter yellow and each subsequent value after it is still lightly opaque, starting at the very middle of the wheel SVG and fanning out to the edges of the viewport). */
+
+    }
+
+
+
+
+    90% { /** Ninety Percent = This standard selector defines the state of the animation at ninety percent of its duration. */
+
+        background : radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), var( --glo-whi-col)  20%, var( --glo-whi-col ) 40%, var( --glo-liy-col ) 60%, var( --glo-tra-100 ) 80%, var( --glo-tra-760 ) 100% ); /** This value was chosen to be used to transition the animation to a white color (the third value should now be a lighter yellow and each subsequent value after it is still lightly opaque, starting at the very middle of the wheel SVG and fanning out to the edges of the viewport). */
+
+    }
+
+
+
+    100% { /** One Hundred Percent = This standard selector defines the ending state of the animation. */
+
+        background : radial-gradient( circle at var( --whe-svg-xco ) var( --whe-svg-yco ), var( --glo-whi-col)  20%, var( --glo-whi-col ) 40%, var( --glo-whi-col ) 60%, var( --glo-whi-col ) 80%, var( --glo-whi-col ) 100% ); /** This value was chosen to be used to transition the animation for all values to a white, fully opaque color. */
 
     }
 
 
 }
 
+/* #endregion Wheel Glow Effect Keyframes */
 
-.yellowGlowOverlay {
 
-    pointer-events: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 10;
-    width: 100vw;
-    height: 100vh;
 
-    background: radial-gradient(circle at var( --whe-svg-xco ) var( --whe-svg-yco ), rgba(255,220,50,0) 0%, rgba(255,180,0,0) 0%, rgba(255,140,0,0) 0%, rgba(255,140,0,0) 0%);
-    animation: glow 6s ease-in-out forwards;
+/* #region Media Query for Reduced Motion */
+
+@media ( prefers-reduced-motion : no-preference ) { /** Reduced Motion = This standard media query selector targets users who have not expressed a preference for reduced motion, with the idea behind this being that it will allow animations to run normally for said users. */
+
+
+    /* #region Wheel Glow Effect */
+
+    .wheelGlowEffect { /** Wheel Glow Effect = This custom selector contains the controls for the custom whe-glo-eff keyframes that will be activated by Javascript when the 404PagCom's custom button containing the SVG image of the donkey wheel from the TV show 'LOST' is clicked. This class will be attached to a Javascript created element when said button is clicked and then removed after a specified timeout. */
+
+        /* #region Selector Scoped Custom Properties */
+
+        --wge-ani-dur : calc( pow( var( --golden-rati ), 4 ) * 1s ); /** ~= 6.854s = Wheel Glow Effect Animation Duration = This custom property stores the duration in seconds for the custom Wheel Glow Effect animation's total duration, with the idea behind this being to create a duration based on the golden ratio that matches the total duration of the Javascript's timeout before it redirects to a random page. */
+
+        /* #endregion Selector Scoped Custom Properties */
+
+
+        animation : whe-glo-eff var( --wge-ani-dur ) linear forwards; /** This value was chosen to be used to apply the custom Wheel Glow Effect animation using the specified selector scoped custom property. */
+
+    }
+
+
+    /* #endregion Wheel Glow Effect Animation */
+
 
 }
 
+/* #endregion Media Query for Reduced Motion */
 
 
-/* #region Wheel SVG Animation */
+/* #endregion Wheel Glow Effect Animation */
 
-@keyframes whe-svg-spi { /** Wheel SVG Spin = This custom keyframes stores the animation for the custom .wheelSVG selector, with the idea behind this being that it will continously spin the wheel SVG in a complete 360 degree rotation. */
+
+
+/* #region Wheel SVG Spin Animation */
+
+
+/* #region Wheel SVG Keyframes */
+
+@keyframes whe-svg-spi { /** Wheel SVG Spin = This custom keyframes stores the animation for the custom .wheelSVG selector that will be applied by Javascript when the 404PagCom's custom .wheelButton containing the SVG image of the donkey wheel from the TV show 'LOST' is clicked, with the idea behind this being that it will continously spin the wheel SVG in a complete 360 degree rotation until Javascript removes the selector after a specified timeout. */
 
 
     from { /** From = This standard selector defines the starting state of the animation. */
@@ -927,7 +964,7 @@ body.rumble { /** Wheel Button Hover Wheel SVG = This custom selector contains t
 
 }
 
-/* #endregion Wheel SVG Animation */
+/* #endregion Wheel SVG Keyframes */
 
 
 
@@ -957,5 +994,145 @@ body.rumble { /** Wheel Button Hover Wheel SVG = This custom selector contains t
 }
 
 /* #endregion Media Query for Reduced Motion */
+
+
+/* #endregion Wheel SVG Spin Animation */
+
+
+
+
+/* #region Wheel Turn Rumble Animation */
+
+
+/* #region Wheel Turn Rumble Keyframes */
+
+@keyframes whe-tur-rum { /** Wheel Turn Rumble = This custom keyframes stores the animation for the custom .wheelTurnRumble selector that will be applied to the standard body selector when the 404PagCom's custom .wheelButton containing the SVG image of the donkey wheel from the TV show 'LOST' is clicked, with the idea behind this being that it will continously 'shake' the screen until Javascript removes it after a specified timeout. */
+
+
+    0%   { /** Zero Percent = This standard selector defines the starting state of the animation. */
+
+        transform : translate( 0, 0 ) rotate( 0deg ); /** This value was chosen to be used to start the animation from a completely unmoved and unrotated state. */
+
+    }
+
+
+
+    10%  { /** Ten Percent = This standard selector defines the state of the animation at ten percent of its duration. */
+
+        transform : translate( -6.854px, -4.236px ) rotate( -0.618deg ); /** This value was chosen to be used to animate the element in a shaking motion up and to the left a small amount, with the idea behind this and the following keyframe being that they will create a quick shaking motion. */
+
+    }
+
+
+
+    20%  { /** Twenty Percent = This standard selector defines the state of the animation at twenty percent of its duration. */
+
+        transform : translate( 6.854px, 4.236px ) rotate( 0.618deg ); /** This value was chosen to be used to animate the element in a shaking motion down and to the right a small amount, with the idea behind this and the previous keyframe being that they will create a quick shaking motion. */
+
+    }
+
+
+
+    30%  { /** Thirty Percent = This standard selector defines the state of the animation at thirty percent of its duration. */
+
+        transform : translate( -11.090px, 2.618px ) rotate( -0.261deg ); /** This value was chosen to be used to animate the element in a shaking motion up and to the left a small amount, with the idea behind this and the following keyframe being that they will create a quick shaking motion. */
+
+    }
+
+
+
+    40%  { /** Forty Percent = This standard selector defines the state of the animation at forty percent of its duration. */
+
+        transform : translate( 11.090px, -4.236px ) rotate( 0.423deg ); /** This value was chosen to be used to animate the element in a shaking motion down and to the right a small amount, with the idea behind this and the previous keyframe being that they will create a quick shaking motion. */
+
+    }
+
+
+
+    50%  { /** Fifty Percent = This standard selector defines the midpoint state of the animation. */
+
+        transform : translate( -4.236px, 6.854px ) rotate( -0.423deg ); /** This value was chosen to be used to animate the element in a shaking motion up and to the left a small amount, with the idea behind this and the following keyframe being that they will create a quick shaking motion. */
+
+    }
+
+
+
+    60%  { /** Sixty Percent = This standard selector defines the state of the animation at sixty percent of its duration. */
+
+        transform : translate( 6.854px, -2.618px ) rotate( 0.261deg ); /** This value was chosen to be used to animate the element in a shaking motion down and to the right a small amount, with the idea behind this and the previous keyframe being that they will create a quick shaking motion. */
+
+    }
+
+
+
+    70%  { /** Seventy Percent = This standard selector defines the state of the animation at seventy percent of its duration. */
+
+        transform : translate( -6.854px, 4.236px ) rotate( -0.423deg ); /** This value was chosen to be used to animate the element in a shaking motion up and to the left a small amount, with the idea behind this and the following keyframe being that they will create a quick shaking motion. */
+
+    }
+
+
+
+    80%  { /** Eighty Percent = This standard selector defines the state of the animation at eighty percent of its duration. */
+
+        transform : translate( 4.236px, -6.854px ) rotate( 0.423deg ); /** This value was chosen to be used to animate the element in a shaking motion down and to the right a small amount, with the idea behind this and the previous keyframe being that they will create a quick shaking motion. */
+
+    }
+
+
+
+    90%  { /** Ninety Percent = This standard selector defines the state of the animation at ninety percent of its duration. */
+
+        transform : translate( -4.236px, 4.236px ) rotate( -0.261deg ); /** This value was chosen to be used to animate the element in a shaking motion up and to the left a small amount, with the idea behind this and the following keyframe being that they will create a quick shaking motion. */
+
+    }
+
+
+
+    100% { /** One Hundred Percent = This standard selector defines the ending state of the animation. */
+
+        transform : translate( 0, 0 ) rotate( 0deg ); /** This value was chosen to be used to end the animation at the same state as the starting state in order to create a seamless loop. */
+
+    }
+
+
+}
+
+/* #endregion Wheel Turn Rumble Keyframes */
+
+
+
+/* #region Media Query for Reduced Motion */
+
+@media ( prefers-reduced-motion : no-preference ) { /** Reduced Motion = This standard media query selector targets users who have not expressed a preference for reduced motion, with the idea behind this being that it will allow animations to run normally for said users. */
+
+
+    /* #region Wheel Turn Rumble Class */
+
+    body.wheelTurnRumble { /** Body Wheel Turn Rumble = This custom selector contains the controls for the custom whe-tur-rum keyframes that will be activated by Javascript when the 404PagCom's custom button containing the SVG image of the donkey wheel from the TV show 'LOST' is clicked. */
+
+        /* #region Selector Scoped Custom Properties */
+
+        --wtr-ani-dur : calc( pow( var( --golden-rati ), 2 ) * 1s ); /** ~= 2.618s = Wheel Turn Rumble Animation Duration = This custom property stores the duration in seconds for the custom Wheel Turn Rumble animation's total duration, with the idea behind this being to create a duration based on the golden ratio that is not too fast and not too slow. */
+
+        /* #endregion Selector Scoped Custom Properties */
+
+
+        animation : whe-tur-rum var( --wtr-ani-dur ) linear infinite; /** This value was chosen to be used to apply the custom Wheel Turn Rumble animation using the specified selector scoped custom property. */
+
+    }
+
+    /* #endregion Wheel Turn Rumble Class */
+
+
+}
+
+/* #endregion Media Query for Reduced Motion */
+
+
+/* #endregion Wheel Turn Rumble Animation */
+
+
+/* #endregion 404 Page Animations */
 
 
