@@ -25,7 +25,7 @@
 
 .impactFont { /** Impact Font = These custom selectors contain the shared styles for the custom span selectors that contain the word 'LOST' (and the 404 header) and are used inside of the custom .headerh1, .headerParagraph and .contentParagraph selectors. */
 
-    color          : var( --rad-gra-col ); /** This value was chosen to be used according to the details of the specified global scoped prime custom property. */
+    color          : var( --col-tex-col ); /** This value was chosen to be used according to the details of the specified global scoped prime custom property. */
     font-family    : 'Impact', sans-serif; /** This value was chosen to be used because this font was identified as being used by the TV show 'LOST', with the idea behind this being that the word 'LOST' (and the 404 header) should be styled in a way that is visually consistent with said show's branding. */
     font-weight    : 900;                  /** This value was chosen to be used because this font weight (thick, blocky) combined with the font family Impact was identified as being used by the TV show 'LOST', with the idea behind this being that the word 'LOST' (and the 404 header) should be styled in a way that is visually consistent with said show's branding. */
 
@@ -405,7 +405,7 @@
     padding               : 0;                    /** This value was chosen to be used to remove the custom styling on the standard button selector that was declared in the index.css file, with the idea behind this being that this is a specialty button and not a normal site/app button. */
     row-gap               : var( --row-gap-min ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property. */
     transition            : none;                 /** This value was chosen to be used to remove the custom styling on the standard button selector that was declared in the index.css file, with the idea behind this being that this is a specialty button and not a normal site/app button. */
-    width                 : var( --hor-rhy-max ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    width                 : 100%;                 /** This value was chosen to be used to fill all available horizontal space as defined by its parent, the custom .contentDiv selector. */
 
 }
 
@@ -452,12 +452,13 @@
 
     /* #endregion Selector Scoped Custom Properties */
 
-
-    color          : var( --nof-sec-col ); /** This value was chosen to be used according to the details of the specified component scoped custom property, with the idea behind this being that the property value 'inherit' does not work here. */
-    font-size      : var( --fon-siz-sma ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+font-family: monospace;
+margin-top : var( --mar-ver-bas );
+    color          : var( --col-tex-col ); /** This value was chosen to be used according to the details of the specified component scoped custom property, with the idea behind this being that the property value 'inherit' does not work here. */
+    font-size      : var( --fon-siz-bas ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
     grid-area      : wheelSpan;            /** This value was chosen to be used to place this selector within the custom .wheelButton selector grid area's second row, full width column. */
     letter-spacing : var( --whs-let-spa ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
-    line-height    : var( --fon-siz-sma ); /** This value was chosen to be used to set the line height equal to its corresponding font size, with the idea behind this being that it makes for better visual asthetics when used with short, one line text (headers especially). */
+    line-height    : var( --fon-siz-bas ); /** This value was chosen to be used to set the line height equal to its corresponding font size, with the idea behind this being that it makes for better visual asthetics when used with short, one line text (headers especially). */
     padding        : var( --whs-pad-pro ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
     text-transform : uppercase;            /** This value was chosen to be used to transform the text to uppercase, with the idea behind this being that it makes the text more visually prominent and is fairly common behavior for button text. */
 
