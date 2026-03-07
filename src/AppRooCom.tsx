@@ -8,6 +8,7 @@ import ChristmasCard from './components/DigCarCom/ChrCarCom/ChrCarCom.tsx'; /** 
 import FooBarCom     from './components/FooBarCom/FooBarCom.tsx';           /** This import is the custom component that will return the Footer Bar, which is rendered on every page and contains the copyright information. */
 import Home          from './components/HomPagCom/HomPagCom.tsx';           /** This import is the custom component that will return the Home page when navigated to by React Router. */
 import NavBarComCon  from './components/NavBarCom/NavBarComCon.tsx';        /** This import is the custom component that will return the Navigation Bar, which is rendered on every page and contains the links to navigate between pages. */
+import NotFound      from './components/404PagCom/404PagCom.tsx';           /** This import is the custom component that will return the 404 Not Found page, which is rendered by React Router when the address destination does not match any hard coded link paths. */
 import SidOneCom     from './components/SidOneCom/SidOneCom.tsx';           /** This import is the custom component that will return the Sidebar One, which is rendered on every page and contains the mock backend JSON data. */
 import SidTwoCom     from './components/SidTwoCom/SidTwoCom.tsx';           /** This import is the custom component that will return the Sidebar Two, which is rendered on every page and contains the mock backend JSON data. */
 import styles        from './AppRooCom.module.css';                         /** This import is the custom CSS file that contains all of the styling declarations for this component. */
@@ -120,11 +121,12 @@ function AppRooCom( props : AppRooComPro ) : React.ReactElement {
                 <  Routes > { /** Routes = This standard React Router element is the container for all of the Route elements, and it ensures only the first matching route is rendered based on the current URL path. */ }
 
 
-                    < Route path='/'                element={ < Home    namStr={ appNamStr } /> } /> { /** Route -> Home        = This standard React Router element will render the Home page component. */ }
-                    < Route path='/about'           element={ < About   namStr={ appNamStr } /> } /> { /** Route -> About       = This standard React Router element will render the About page component. */ }
-                    < Route path='/contact'         element={ < Contact namStr={ appNamStr } /> } /> { /** Route -> Contact     = This standard React Router element will render the Contact page component. */ }
-                    < Route path='/cards'           element={ < Cards   namStr={ appNamStr } /> } /> { /** Route -> Cards       = This standard React Router element will render the Cards page component. */ }
-                    < Route path='/cards/ChristmasCard' element={ < ChristmasCard                  /> } /> { /** Route -> DynamicCard = This standard React Router element will render the DynamicCard page component based on the cardName parameter. */ }
+                    < Route path='/'                    element={ < Home     namStr={ appNamStr } /> } /> { /** Route -> Home          = This standard React Router element will render the Home page component. */ }
+                    < Route path='/about'               element={ < About    namStr={ appNamStr } /> } /> { /** Route -> About         = This standard React Router element will render the About page component. */ }
+                    < Route path='/contact'             element={ < Contact  namStr={ appNamStr } /> } /> { /** Route -> Contact       = This standard React Router element will render the Contact page component. */ }
+                    < Route path='/cards'               element={ < Cards    namStr={ appNamStr } /> } /> { /** Route -> Cards         = This standard React Router element will render the Cards page component. */ }
+                    < Route path='/cards/ChristmasCard' element={ < ChristmasCard                 /> } /> { /** Route -> ChristmasCard = This standard React Router element will render the Christmas Card page component. */ }
+                    < Route path='*'                    element={ < NotFound namStr={ appNamStr } /> } /> { /** Route -> 404 Page      = This standard React Router element will render the 404 Not Found page component. */ }
 
 
                 </ Routes >
