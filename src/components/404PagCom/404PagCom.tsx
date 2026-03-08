@@ -924,7 +924,7 @@ function FofPagCom ( props : FofPagComPro ) : React.ReactElement {
 
 
         /** Return Statement = This standard Javascript return statement will return an anonymous function that will clear the above declared intervals. */
-        return () => {
+        return () : void => {
 
 
             /** Local Interval Identifier = This standa Javascript function will clear the interval for the custom {@link locTimFun} function. */

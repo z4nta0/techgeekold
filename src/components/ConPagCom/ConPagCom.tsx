@@ -223,6 +223,11 @@ function ConPagCom ( props : ConPagComPro ) : React.ReactElement {
         });
 
 
+
+        /** Return Statement = This standard Javascript return statement will explicitly return undefined, which is the expected return value for a function that does not return anything. */
+        return void 0;
+
+
     };
 
     // #endregion handleInpChaFun
@@ -290,6 +295,11 @@ function ConPagCom ( props : ConPagComPro ) : React.ReactElement {
 
         /** Set Form Data Object = This custom function executes the resetting the form fields by setting the state variable variable back to its initial state. For a real form this should still be done, even if the form is replaced with new HTML content. */
         setForDatObj( iniStaObj );
+
+
+
+        /** Return Statement = This standard Javascript return statement will explicitly return undefined, which is the expected return value for a function that does not return anything. */
+        return void 0;
 
 
     };
