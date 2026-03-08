@@ -452,13 +452,14 @@
 
     /* #endregion Selector Scoped Custom Properties */
 
-font-family: monospace;
-margin-top : var( --mar-ver-bas );
+
     color          : var( --col-tex-col ); /** This value was chosen to be used according to the details of the specified component scoped custom property, with the idea behind this being that the property value 'inherit' does not work here. */
+    font-family    : monospace;            /** This value was chosen to be used because this selector is a simple number display (clock), with the idea behind this being so that both clocks will align properly since all characters use the exact same width. */
     font-size      : var( --fon-siz-bas ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
     grid-area      : wheelSpan;            /** This value was chosen to be used to place this selector within the custom .wheelButton selector grid area's second row, full width column. */
     letter-spacing : var( --whs-let-spa ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
     line-height    : var( --fon-siz-bas ); /** This value was chosen to be used to set the line height equal to its corresponding font size, with the idea behind this being that it makes for better visual asthetics when used with short, one line text (headers especially). */
+    margin-top     : var( --mar-ver-bas ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
     padding        : var( --whs-pad-pro ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
     text-transform : uppercase;            /** This value was chosen to be used to transform the text to uppercase, with the idea behind this being that it makes the text more visually prominent and is fairly common behavior for button text. */
 
