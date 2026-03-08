@@ -8,7 +8,7 @@ import wheelSound from '../../assets/wheel-sound.mp3'; /** This import is the cu
 
 
 import { useEffect   } from 'react';            /** This import is the standard React hook that enables side effects for components. */
-import { useNavigate } from 'react-router-dom'; /** This is import is the standard React Router hook for handking a redirect after a user action. */
+import { useNavigate } from 'react-router-dom'; /** This is import is the standard React Router hook for handling a redirect after a user action. */
 import { useState    } from 'react';            /** This import is the standard React hook that enables state management in functional components. */
 
 // #endregion Imports
@@ -129,6 +129,7 @@ function FofPagCom ( props : FofPagComPro ) : React.ReactElement {
     // #endregion Type Definitions
 
 
+
     // #region State Initialization
 
 
@@ -166,9 +167,23 @@ function FofPagCom ( props : FofPagComPro ) : React.ReactElement {
 
     // #region locTimObj
 
-    /** Local Time Object             = This custom variable stores the object that is responsible for tracking the user's local time and date, which will be updated each second. */
-    /** Set Local Time Object         = This custom variable stores the custom state setter function returned by the standard React {@link useState} hook, and it is used to execute updates to the custom {@link locTimObj} state variable inside of the custom {@link locTimFun} function each second via an interval function. */
-    const [ locTimObj, setLocTimObj ] = useState< IniTimObj >( iniTimObj );
+
+    // #region Type Definitions
+
+    /** Local Time Object           = This custom type stores the type that will be used for the custom {@link locTimObj} state variable. */
+    type LocTimObj                  = IniTimObj;
+    /** Set Local Time Object       = This custom type stores the type that will be used for the custom {@link setLocTimObj} state setter function. */
+    type SetLocTimObj               = React.Dispatch< React.SetStateAction< LocTimObj > >;
+    /** Use State Function Return 1 = This custom type stores the types that will be returned from the standard React {@link useState} hook. */
+    type UseStaFunRe1               = [ LocTimObj, SetLocTimObj ];
+
+    // #endregion Type Definitions
+
+
+
+    /** Local Time Object                            = This custom variable stores the object that is responsible for tracking the user's local time and date, which will be updated each second. */
+    /** Set Local Time Object                        = This custom variable stores the custom state setter function returned by the standard React {@link useState} hook, and it is used to execute updates to the custom {@link locTimObj} state variable inside of the custom {@link locTimFun} function each second via an interval function. */
+    const [ locTimObj, setLocTimObj ] : UseStaFunRe1 = useState< LocTimObj >( iniTimObj );
 
     // #endregion locTimObj
 
@@ -176,9 +191,22 @@ function FofPagCom ( props : FofPagComPro ) : React.ReactElement {
 
     // #region pagTimObj
 
+
+    // #region Type Definitions
+
+    /** Page Time Object            = This custom type stores the type that will be used for the custom {@link pagTimObj} state variable. */
+    type PagTimObj                  = IniTimObj;
+    /** Set Page Time Object        = This custom type stores the type that will be used for the custom {@link setPagTimObj} state setter function. */
+    type SetPagTimObj               = React.Dispatch< React.SetStateAction< PagTimObj > >;
+    /** Use State Function Return 2 = This custom type stores the types that will be returned from the standard React {@link useState} hook. */
+    type UseStaFunRe2               = [ PagTimObj, SetPagTimObj ];
+
+    // #endregion Type Definitions
+
+
     /** Page Time Object              = This custom variable stores the object that is responsible for tracking the page's time and date, which will be updated each second and then each 100ms during the wheel animation cycle. */
     /** Set Page Time Object          = This custom variable stores the custom state setter function returned by the standard React {@link useState} hook, and it is used to execute updates to the custom {@link pagTimObj} state variable inside of the custom {@link pagTimFun} function each second (100ms for the wheel animation cycle) via an interval function. */
-    const [ pagTimObj, setPagTimObj ] = useState< IniTimObj >( iniTimObj );
+    const [ pagTimObj, setPagTimObj ] : UseStaFunRe2 = useState< PagTimObj >( iniTimObj );
 
     // #endregion pagTimObj
 
@@ -200,7 +228,7 @@ function FofPagCom ( props : FofPagComPro ) : React.ReactElement {
     /** Set Wheel Animation Boolean = This custom type stores the type that will be used for the custom {@link setWheAniBoo} state setter function. */
     type SetWheAniBoo               = React.Dispatch< React.SetStateAction< WheAniBoo > >;
     /** Use State Function Return   = This custom type stores the types that will be returned from the standard React {@link useState} hook. */
-    type UseStaFunRet               = [ WheAniBoo, SetWheAniBoo ];
+    type UseStaFunRe3               = [ WheAniBoo, SetWheAniBoo ];
 
     // #endregion Type Definitions
 
@@ -210,7 +238,7 @@ function FofPagCom ( props : FofPagComPro ) : React.ReactElement {
 
     /** Wheel Animation Boolean                      = This custom variable stores the boolean value that indicates whether the wheel animations are currently active. */
     /** Set Wheel Animation Boolean                  = This custom variable stores the custom state setter function returned by the standard React {@link useState} hook, and it is used to execute updates to the custom {@link wheAniBoo} state variable whenever the wheel animation state changes. */
-    const [ wheAniBoo, setWheAniBoo ] : UseStaFunRet = useState< WheAniBoo >( false );
+    const [ wheAniBoo, setWheAniBoo ] : UseStaFunRe3 = useState< WheAniBoo >( false );
 
     // #endregion State Initialization
 
@@ -811,16 +839,15 @@ function FofPagCom ( props : FofPagComPro ) : React.ReactElement {
 
             /** Redirect Link Array    = This custom variable stores an array of viable links for redirecting the user after the wheel animation cycle finishes. */
             const redLinArr : string[] = [ '/', '/about', '/contact', '/cards' ];
-
-
-
-            /** Random Index Number  = This custom variable stores a randomly generated number between 0 and the length of the custom {@link redLinArr} array, which will be used to determine which page tat the user will be redirected to after the wheel animation cycle finishes. */
-            const ranIndNum : number = ranNumFun( { minNum : 0, maxNum : redLinArr.length } );
+            /** Random Index Number    = This custom variable stores a randomly generated number between 0 and the length of the custom {@link redLinArr} array, which will be used to determine which page tat the user will be redirected to after the wheel animation cycle finishes. */
+            const ranIndNum : number   = ranNumFun( { minNum : 0, maxNum : redLinArr.length } );
+            /** Redirect Link String   = This custom variable stores the randomly selected link from the custom {@link redLinArr} array based on the randomly generated index number or a link for the Home page if it is undefined, which was done because there were times that the redirect was failing to occur. */
+            const redLinkStr : string  = redLinArr[ ranIndNum ] === undefined ? '/' : redLinArr[ ranIndNum ];
 
 
 
             /** Use Navigate Function = This standard React Router hook will redirect the user to a random page while not replacing the 404 not found page in the uers' browser history. */
-            useNavFun( redLinArr[ ranIndNum ], { replace: false } );
+            useNavFun( redLinkStr, { replace: false } );
 
             // #endregion Redirect to Random Page
 
@@ -857,17 +884,22 @@ function FofPagCom ( props : FofPagComPro ) : React.ReactElement {
      * components, such as data fetching, subscriptions or manual DOM
      * manipulation. Its main purpose is to synchronize a component with
      * external systems. The custom inner code block of this hook handles the
-     * fetching of the mock back end JSON data using the custom React hook that
-     * wraps the standard React Redux Toolkit useDispatch hook. The empty
-     * dependency array ensures that this only runs once when the component is
-     * first rendered.
+     * initialization of the local and page clocks that are shown inside of the
+     * custom wheButEle HTML element, which are set to update every second
+     * (except during the wheel animation cycle, when the page clock will be
+     * updated every 100ms). The intervals are then cleared inside of the
+     * function return so that multiple intervals are being run simultaneously.
+     * The custom {@link pagTimObj} state variable is included in the
+     * dependency array since its new state is calculated from its previous
+     * state, so including it was the only way I found to get this to work
+     * properly.
      *
      * @author React  <https://react.dev/reference/react/useEffect>
      * @author z4nta0 <https://github.com/z4nta0>
      *
      * @param void - This function takes no parameters.
      *
-     * @returns This function does not return anything.
+     * @returns This function returns a function that will clear the intervals.
      *
      * @example
      * ```ts
@@ -881,19 +913,33 @@ function FofPagCom ( props : FofPagComPro ) : React.ReactElement {
     useEffect(() => {
 
 
-        setInterval( locTimFun, 1000 );
+        /** Local Interval Identifier = This custom variable stores the identifier for the interval that updates the custom {@link locTimObj} state variable every second. */
+        const locIntIde               = setInterval( locTimFun, 1000 );
 
 
 
-        setInterval( pagTimFun, pagTimObj.setIntNum );
+        /** Page Interval Identifier = This custom variable stores the identifier for the interval that updates the custom {@link pagTimObj} state variable based on the custom {@link pagTimObj.setIntNum} property value. */
+        const pagIntIde              = setInterval( pagTimFun, pagTimObj.setIntNum );
 
 
 
-        /** Return Statement = This standard Javascript return statement will explicitly return undefined, which is the expected return value for a function that does not return anything. */
-        return void 0;
+        /** Return Statement = This standard Javascript return statement will return an anonymous function that will clear the above declared intervals. */
+        return () : void => {
 
 
-    }, [ pagTimObj ]); /** Empty Aray = This custom dependency array stores the values that define when useEffect should be run, with an empty dependency array ensuring that this hook will run only once when the component mounts. */
+            /** Local Interval Identifier = This standa Javascript function will clear the interval for the custom {@link locTimFun} function. */
+            clearInterval( locIntIde );
+
+
+
+            /** Page Interval Identifier = This standa Javascript function will clear the interval for the custom {@link pagTimFun} function. */
+            clearInterval( pagIntIde );
+
+
+        };
+
+
+    }, [ pagTimObj ]); /** Page Time Object = This custom state variable is updated every second (every 100ms during the wheel animation cycle), and unlike the custom {@link locTimObj} state variable it is dependent on its previous state so the UI needs to be refreshed and recalculated for every update. */
 
     // #endregion useEffect
 

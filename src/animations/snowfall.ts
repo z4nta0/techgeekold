@@ -470,6 +470,11 @@ const aniSnoFun : AniSnoFun = () => {
     setTimFun                = setTimeout( function () { aniSnoFun(); }, 16.7 );
 
 
+
+    /** Return Statement = This standard Javascript return statement will explicitly return undefined, which is the expected return value for a function that does not return anything. */
+    return void 0;
+
+
 };
 
 // #endregion aniSnoFun
@@ -654,6 +659,11 @@ const iniSnoFun : IniSnoFun = ( { conEle, setObj } ) => {
     aniSnoFun();
 
 
+
+    /** Return Statement = This standard Javascript return statement will explicitly return undefined, which is the expected return value for a function that does not return anything. */
+    return void 0;
+
+
 };
 
 // #endregion iniSnoFun
@@ -715,7 +725,8 @@ export const cleSnoFun : CleSnoFun = () => {
     if ( snoEleArr.length === 0 ) {
 
 
-        return;
+        /** Return Statement = This standard Javascript return statement will explicitly return undefined, which is the expected return value for a function that does not return anything. */
+        return void 0;
 
 
     };
@@ -745,6 +756,11 @@ export const cleSnoFun : CleSnoFun = () => {
     
     /** Clear Timeout = This standard JS function clears the setTimeout function that is stored in the custom file scoped {@link setTimFun} variable that is used for recursively calling the custom {@link aniSnoFun} function in order to update all snowflake HTML div elements' positions which creates the snowfall animation effect. */
     clearTimeout( setTimFun );
+
+
+
+    /** Return Statement = This standard Javascript return statement will explicitly return undefined, which is the expected return value for a function that does not return anything. */
+    return void 0;
 
 
 };

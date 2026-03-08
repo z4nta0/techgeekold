@@ -160,6 +160,11 @@ function NavBarComCon ( props : NavBarComConPro ) : React.ReactElement {
         console.log( `You clicked on the navbar link for the ${ appNamStr } About page ${ aboCouNum } times!` );
 
 
+
+        /** Return Statement = This standard Javascript return statement will explicitly return undefined, which is the expected return value for a function that does not return anything. */
+        return void 0;
+
+
     };
 
     // #endregion handleClickAboFun
@@ -223,6 +228,11 @@ function NavBarComCon ( props : NavBarComConPro ) : React.ReactElement {
 
         /** Console Log = This standard JS Web API function executes the logging of the number of times that the Contact page link has been clicked to the console in order to verify that the click count is being tracked correctly. */
         console.log( `You clicked on the navbar link for the ${ appNamStr } Contact page ${ conCouNum } times!` );
+
+
+
+        /** Return Statement = This standard Javascript return statement will explicitly return undefined, which is the expected return value for a function that does not return anything. */
+        return void 0;
 
 
     };
@@ -290,6 +300,11 @@ function NavBarComCon ( props : NavBarComConPro ) : React.ReactElement {
         console.log( `You clicked on the navbar link for the ${ appNamStr } Home page ${ homCouNum } times!` );
 
 
+
+        /** Return Statement = This standard Javascript return statement will explicitly return undefined, which is the expected return value for a function that does not return anything. */
+        return void 0;
+
+
     };
 
     // #endregion handleClickHomFun
@@ -353,6 +368,11 @@ function NavBarComCon ( props : NavBarComConPro ) : React.ReactElement {
 
         /** Console Log = This standard JS Web API function executes the logging of the number of times that the logo Home page link has been clicked to the console in order to verify that the click count is being tracked correctly. */
         console.log( `You clicked on the logo link for the ${ appNamStr } Home page ${ logCouNum } times!` );
+
+
+
+        /** Return Statement = This standard Javascript return statement will explicitly return undefined, which is the expected return value for a function that does not return anything. */
+        return void 0;
 
 
     };

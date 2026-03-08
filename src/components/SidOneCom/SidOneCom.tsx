@@ -163,6 +163,11 @@ function SidOneCom ( props : SidOneComPro ) : React.ReactElement {
         appThuFun( getMocDatJso() );
 
 
+
+        /** Return Statement = This standard Javascript return statement will explicitly return undefined, which is the expected return value for a function that does not return anything. */
+        return void 0;
+
+
     }, []); /** Empty Aray = This custom dependency array stores the values that define when useEffect should be run, with an empty dependency array ensuring that this hook will run only once when the component mounts. */
 
     // #endregion useEffect

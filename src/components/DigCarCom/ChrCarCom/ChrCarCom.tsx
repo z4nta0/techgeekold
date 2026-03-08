@@ -369,6 +369,11 @@ function ChrCarCom () : React.ReactElement {
         // #endregion 10th GSAP Animation - Snowfall Text Split Character Text Animation
 
 
+
+        /** Return Statement = This standard Javascript return statement will explicitly return undefined, which is the expected return value for a function that does not return anything. */
+        return void 0;
+
+
     }, [] ); /** Empty Aray = This custom dependency array stores the values that define when useGSAP should be run, with an empty dependency array ensuring that this hook will run only once when the component mounts. */
 
     // #endregion useGSAP
@@ -631,6 +636,11 @@ function ChrCarCom () : React.ReactElement {
 
 
         // #endregion Snowfall Animation Section
+
+
+
+        /** Return Statement = This standard Javascript return statement will explicitly return undefined, which is the expected return value for a function that does not return anything. */
+        return void 0;
 
 
     }, [ winHeiNum, winWidNum ] ); /** Window Height Number, Window Width Number = These custom state variables are updated every time the window's viewport dimensions change via the useWindowSize custom hook. */
