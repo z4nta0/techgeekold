@@ -1126,7 +1126,7 @@ function ChrCarCom () : React.ReactElement {
 
             { /* Start Hacked Section Element */ }
 
-            <  section id='hacSecEle'  className={ styles.hackedSection } > { /* Hacked Section Element = This custom section element is the container for the hacked h1 heading, the hacked paragraph and has a cartoony pirate skull and crossbones background image that will be shown after the initial pixelated transition effect animation has finished running, and it will then be hidden by another pixelated transition effect animation after which the snowfall section will be overlaid on top of it thereby hiding this section until the page is reloaded. */ }
+            <  section id='hacSecEle'  className={ styles.hackedSection } role='img' aria-label='Black background with a cartoony pirate skull wearing a black eyepatch and crossbones' > { /* Hacked Section Element = This custom section element is the container for the hacked h1 heading, the hacked paragraph and has a cartoony pirate skull and crossbones background image that will be shown after the initial pixelated transition effect animation has finished running, and it will then be hidden by another pixelated transition effect animation after which the snowfall section will be overlaid on top of it thereby hiding this section until the page is reloaded. */ }
 
 
                 <  header id='hacHeaEle'  className={ styles.hackedHeader } > { /* Hacked Header Element = This custom header element is a semantic container for the hacked h1 heading, the hacked paragraph. */ }
@@ -1150,7 +1150,7 @@ function ChrCarCom () : React.ReactElement {
 
             { /* Start Snowfall Section Element */ }
 
-            <  section id='snoSecEle'  className={ `${ styles.snowfallSection } snowfallSplitText` } > { /* Snowfall Section Element = This custom section element is the container for snowy h1 heading, snowman img, snowy paragraph and has a cartoony snowy cabin with evergreen trees background image that will be shown after the three pixelated transition effect animations have completed and after the hacked section animations have finished running. It will have a custom defined (i.e. not a GSAP animation) snowfall animation overlaid on top of it, and it will continue to be shown until the page is reloaded. */ }
+            <  section id='snoSecEle'  className={ `${ styles.snowfallSection } snowfallSplitText` } role='img' aria-label='Dark blue sky and snow covered ground with a cartoony snow covered cabin with lighted windows and a smokey chimney that is surrounded by snow covered evergreen trees' > { /* Snowfall Section Element = This custom section element is the container for snowy h1 heading, snowman img, snowy paragraph and has a cartoony snowy cabin with evergreen trees background image that will be shown after the three pixelated transition effect animations have completed and after the hacked section animations have finished running. It will have a custom defined (i.e. not a GSAP animation) snowfall animation overlaid on top of it, and it will continue to be shown until the page is reloaded. */ }
 
 
                 <  header id='snoHeaEle'  className={ styles.snowfallHeader } > { /* Snowfall Header Element = This custom header element is a semantic container for the snowy h1 heading, the snowman img, and the snowy paragraph. */ }
@@ -1160,7 +1160,7 @@ function ChrCarCom () : React.ReactElement {
 
 
 
-                    < img id='snoImgEle'  className={ styles.snowfallImg } src={ snowman } /> { /* Snowfall Image Element = This custom img element is the container for the cartoony image of the snowman that will be displayed in the lower left corner of this section. */ }
+                    < img id='snoImgEle'  className={ styles.snowfallImg } src={ snowman } alt='Cartoony snowman with two sticks upraised as arms with three fingers, wearing a tophat, coals for eyes and mouth, a carrot for nose, wearing a green with red strip scarf and two orange dots for buttons' /> { /* Snowfall Image Element = This custom img element is the container for the cartoony image of the snowman that will be displayed in the lower left corner of this section. */ }
 
 
 

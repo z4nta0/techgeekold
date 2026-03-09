@@ -965,7 +965,7 @@ function FofPagCom ( props : FofPagComPro ) : React.ReactElement {
             <  header id='fofHeaEle' className={ styles.notFoundHeader } > { /* 404 Header Element = This custom header element is the container for the h1 heading and the paragraph. */ }
 
 
-                < h1 id='heaHe1Ele' className={ styles.headerh1 } >< span id='he1SpaEle' className={ ` ${ styles.h1Span } ${ styles.impactFont }` } >404</ span ></ h1 > { /* Header H1 Element = This custom h1 element is the container for the title text of the page. H1 Span Element = This custom span element was added in order to make the CSS spinning and scaling animation work properly. */ }
+                < h1 id='heaHe1Ele' className={ styles.headerh1 } >< span id='he1SpaEle' className={ ` ${ styles.h1Span } ${ styles.impactFont }` } role='img' aria-label='The letters 404 slowly spinning in a complete three hundred and sixty degree rotation while also scaling up and down' >404</ span ></ h1 > { /* Header H1 Element = This custom h1 element is the container for the title text of the page. H1 Span Element = This custom span element was added in order to make the CSS spinning and scaling animation work properly. */ }
 
 
 
@@ -997,12 +997,12 @@ function FofPagCom ( props : FofPagComPro ) : React.ReactElement {
 
                 { /** Start Wheel Button Element */ }
 
-                <  button id='wheButEle' className={ styles.wheelButton } onClick={ handleWheCliFun } > { /* Wheel Button Element = This custom button element is the container for the wheel SVG and the span element. */ }
+                <  button id='wheButEle' className={ styles.wheelButton } onClick={ handleWheCliFun } aria-label='Begin animations that will shake the screen and begin a yellow to white glow that will envlop the entire screen before finally redirecting to a random page' > { /* Wheel Button Element = This custom button element is the container for the wheel SVG and the span element. */ }
 
 
                     { /** Start Wheel SVG Element */ }
 
-                    <  svg id='wheSvGEle' className={ styles.wheelSVG } width='110' height='110' viewBox='0 0 110 110' fill='none' xmlns='http://www.w3.org/2000/svg' > { /* Wheel SVG Element = This custom SVG element is the container for the wheel SVG code. */ }
+                    <  svg id='wheSvGEle' className={ styles.wheelSVG } width='110' height='110' viewBox='0 0 110 110' fill='none' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='An old wooden wheel with eight spokes and  knobs on the outermost circle for handles' > { /* Wheel SVG Element = This custom SVG element is the container for the wheel SVG code. */ }
 
 
                         { /** Start Outer Ring */ }

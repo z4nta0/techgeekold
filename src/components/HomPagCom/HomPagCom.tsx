@@ -126,7 +126,7 @@ function HomPagCom ( props : HomPagComPro ) : React.ReactElement {
                     <  a id='vitAncEle' className={ `${ styles.headerAnchors } ${ styles.viteAnchor }` } href='https://vite.dev' target='_blank' > { /* Vite Anchor Element = This custom anchor element is the container for the link to the Vite website and for the Vite logo image. */ }
 
 
-                        < img id='vitImgEle' className={ `${ styles.headerImgs } ${ styles.viteImg }` } src={ viteLogo } alt='Vite logo' /> { /* Vite Image Element = This custom img element is the container for the official Vite logo image. */ }
+                        < img id='vitImgEle' className={ `${ styles.headerImgs } ${ styles.viteImg }` } src={ viteLogo } alt='Official Vite logo of a purple downward facing triangle with a yellow lightning bolt down the middle used as a link to the official Vite documents webpage' /> { /* Vite Image Element = This custom img element is the container for the official Vite logo image. */ }
 
 
                     </ a >
@@ -139,7 +139,7 @@ function HomPagCom ( props : HomPagComPro ) : React.ReactElement {
                     <  a id='reaAncEle' className={ `${ styles.headerAnchors } ${ styles.reactAnchor }` } href='https://react.dev' target='_blank' > { /* React Anchor Element = This custom anchor element is the container for the link to the React website and for the React logo image. */ }
 
 
-                        < img id='reaImgEle' className={ `${ styles.headerImgs } ${ styles.reactImg }` } src={ reactLogo } alt='React logo' /> { /* React Image Element = This custom img element is the container for the official React logo image. */ }
+                        < img id='reaImgEle' className={ `${ styles.headerImgs } ${ styles.reactImg }` } src={ reactLogo } alt='Official React logo of a blue atom symbol with three electron orbits used as a link to the official React documentation webpage' /> { /* React Image Element = This custom img element is the container for the official React logo image. */ }
 
 
                     </ a >
@@ -170,7 +170,7 @@ function HomPagCom ( props : HomPagComPro ) : React.ReactElement {
 
                     { /** Start Increment Button Element */ }
 
-                    <  button id='incButEle' className={ `${ styles.contentButtons } ${ styles.incrementButton }` } onClick={ () => { appDisFun( incNumRed( 2 ) ) } } > { /* Increment Button Element = This custom button element is the container for the button that will dispatch an action to increment the counter state by 2 when clicked, as well as displaying the current value of the counter state in the button's text. */ }
+                    <  button id='incButEle' className={ `${ styles.contentButtons } ${ styles.incrementButton }` } onClick={ () => { appDisFun( incNumRed( 2 ) ) } } aria-role='Increment the count by 2' > { /* Increment Button Element = This custom button element is the container for the button that will dispatch an action to increment the counter state by 2 when clicked, as well as displaying the current value of the counter state in the button's text. */ }
 
                         Count = { useAppSel( ( state : RooStaObj ) => state.couStaNum ) }
 
@@ -182,7 +182,7 @@ function HomPagCom ( props : HomPagComPro ) : React.ReactElement {
 
                     { /** Start Decrement Button Element */ }
 
-                    <  button id='decButEle' className={ `${ styles.contentButtons } ${ styles.decrementButton }` } onClick={ () => { appDisFun( decNumRed( 3 ) ) } } > { /* Decrement Button Element = This custom button element is the container for the button that will dispatch an action to decrement the counter state by 3 when clicked, as well as displaying the current value of the counter state in the button's text. */ }
+                    <  button id='decButEle' className={ `${ styles.contentButtons } ${ styles.decrementButton }` } onClick={ () => { appDisFun( decNumRed( 3 ) ) } } aria-role='Decrement the count by 3' > { /* Decrement Button Element = This custom button element is the container for the button that will dispatch an action to decrement the counter state by 3 when clicked, as well as displaying the current value of the counter state in the button's text. */ }
 
                         Count = { useAppSel( ( state : RooStaObj ) => state.couStaNum ) }
 

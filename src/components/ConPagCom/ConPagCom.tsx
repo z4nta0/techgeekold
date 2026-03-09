@@ -439,7 +439,7 @@ function ConPagCom ( props : ConPagComPro ) : React.ReactElement {
                     <  div id='subDivEle' className={ styles.submitDiv } > { /* Submit Div Element = This custom div element is the container for the submit button. */ }
 
 
-                        < button id='subButEle' className={ styles.submitButton } type='submit' >Submit</ button > { /* Submit Button Element = This custom button element is the container for the submit button's text. */ }
+                        < button id='subButEle' className={ styles.submitButton } type='submit' aria-label='Submit the form' >Submit</ button > { /* Submit Button Element = This custom button element is the container for the submit button's text. */ }
 
 
                     </ div >
