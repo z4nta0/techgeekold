@@ -957,7 +957,7 @@ function FofPagCom ( props : FofPagComPro ) : React.ReactElement {
 
 
             {/* Yellow glow overlay */}
-        <div className={ styles.yellowGlowOverlay }/>
+            < div className={ styles.yellowGlowOverlay } aria-hidden='true' ></ div >
 
 
             { /** Start 404 Header Element */ }
