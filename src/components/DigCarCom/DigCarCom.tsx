@@ -87,6 +87,8 @@ function DigCarCom ( props : DigCarComPro ) : React.ReactElement {
         <  section id='dicSecEle' className={ styles.digitalCardsSection } > { /* Digital Cards Section Element = This custom section element is the root HTML element and container for this component since React requires the JSX to return a single root element. */ }
 
 
+            { /** Start Digital Cards Header Element */ }
+
             <  header id='dicHeaEle' className={ styles.digitalCardsHeader } > { /* Digital Cards Header Element = This custom header element is a semantic container and will define the root grid for this component. */ }
 
 
@@ -94,28 +96,44 @@ function DigCarCom ( props : DigCarComPro ) : React.ReactElement {
 
 
 
+                { /** Start Digital Cards Paragraph Element */ }
+
                 <  p id='dicParEle' className={ styles.digitalCardsParagraph } > { /* Digital Cards Paragraph Element = This custom paragraph element is the container for the paragraph text of the page. */ }
 
                     This is a list of all of the { appNamStr }'s digital cards. Click on any of the links below to view the corresponding digital card.
 
                 </ p >
 
+                { /** End Digital Cards Paragraph Element */ }
 
 
-                { /** Start Digital Cards Unordered List Element */ }
 
-                < ul id='dicUliEle' className={ styles.digitalCardsUl } > { /* Digital Cards Unordered List Element = This custom ul element is the container for the custom li and anchor elements for all of the digital cards. */ }
+                { /** Start Digital Cards Nav Element */ }
 
-
-                    < li id='chrLisEle' className={ `${ styles.navbarListItems } ${ styles.christmasCardLi }` } >< Link to='ChristmasCard' id='chcNalEle' className={ `${ styles.navbarNavLinks } ${ styles.christmasCardNavLink }` } >Christmas Card</ Link ></ li > { /* Christmas Card List Element & Christmas Card Link Element = These custom li and standard React Router Link elements are the containers for the Christmas Card page link. */ }
+                <  nav id='dicNavEle' className={ styles.digitalCardsNav } aria-label='Digital cards navigation' > { /* Digital Cards Nav Element = This custom nav element is a semantic container and contains the ul element with a list of links for the digital cards. */ }
 
 
-                </ ul >
+                    { /** Start Digital Cards Unordered List Element */ }
 
-                { /** End Digital Cards Unordered List Element */ }
+                    < ul id='dicUliEle' className={ styles.digitalCardsUl } > { /* Digital Cards Unordered List Element = This custom ul element is the container for the custom li and anchor elements for all of the digital cards. */ }
+
+
+                        < li id='chrLisEle' className={ `${ styles.navbarListItems } ${ styles.christmasCardLi }` } >< Link to='ChristmasCard' id='chcNalEle' className={ `${ styles.navbarNavLinks } ${ styles.christmasCardNavLink }` } >Christmas Card</ Link ></ li > { /* Christmas Card List Element & Christmas Card Link Element = These custom li and standard React Router Link elements are the containers for the Christmas Card page link. */ }
+
+
+                    </ ul >
+
+                    { /** End Digital Cards Unordered List Element */ }
+
+
+                </ nav >
+
+                { /** End Digital Cards Nav Element */ }
 
 
             </ header >
+
+            { /** End Digital Cards Header Element */ }
 
 
         </ section >

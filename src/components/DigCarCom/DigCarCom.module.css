@@ -73,17 +73,32 @@
 
 
 
-/* #region Digital Cards Unordered List */
+/* #region Digital Cards Nav */
 
-.digitalCardsUl { /** Digital Cards Unordered List = This custom selector contains the custom list items and standard React Links for all of the digital cards and is the custom .digitalCardsHeader selector's third grid row, only grid column. */
+.digitalCardsNav { /** Digital Cards Nav = This custom selector contains .digitalCardsUl selector and is the custom .digitalCardsHeader selector's third grid row, only grid column. */
 
-    grid-area   : digitalCardsUl;       /** This value was chosen to be used to place this selector within the custom .digitalCardsHeader selector grid area's third row, full width column. */
-    font-size   : var( --fon-siz-bas ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
-    line-height : var( --ver-rhy-bas ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    grid-area : digitalCardsUl; /** This value was chosen to be used to place this selector within the custom .digitalCardsHeader selector grid area's third row, full width column. */
+    height    : 100%;           /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .digitalCardsHeader selector. */
+    width     : 100%;           /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .digitalCardsHeader selector. */
 
 }
 
-/* #endregion Digital Cards Paragraph */
+/* #endregion Digital Cards Nav */
+
+
+
+/* #region Digital Cards Unordered List */
+
+.digitalCardsUl { /** Digital Cards Unordered List = This custom selector contains the custom list items and standard React Links for all of the digital cards and is the custom .digitalCardsNav selector's only child. */
+
+    font-size   : var( --fon-siz-bas ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    height      : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .digitalCardsNav selector. */
+    line-height : var( --ver-rhy-bas ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    width       : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .digitalCardsNav selector. */
+
+}
+
+/* #endregion Digital Cards Unordered List */
 
 
 /* #endregion Digital Cards Header */
