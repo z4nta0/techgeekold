@@ -170,7 +170,7 @@ function HomPagCom ( props : HomPagComPro ) : React.ReactElement {
 
                     { /** Start Increment Button Element */ }
 
-                    <  button id='incButEle' className={ `${ styles.contentButtons } ${ styles.incrementButton }` } onClick={ () => { appDisFun( incNumRed( 2 ) ) } } aria-role='Increment the count by 2' > { /* Increment Button Element = This custom button element is the container for the button that will dispatch an action to increment the counter state by 2 when clicked, as well as displaying the current value of the counter state in the button's text. */ }
+                    <  button id='incButEle' className={ `${ styles.contentButtons } ${ styles.incrementButton }` } onClick={ () => { appDisFun( incNumRed( 2 ) ) } } > { /* Increment Button Element = This custom button element is the container for the button that will dispatch an action to increment the counter state by 2 when clicked, as well as displaying the current value of the counter state in the button's text. */ }
 
                         Count = { useAppSel( ( state : RooStaObj ) => state.couStaNum ) }
 
@@ -182,7 +182,7 @@ function HomPagCom ( props : HomPagComPro ) : React.ReactElement {
 
                     { /** Start Decrement Button Element */ }
 
-                    <  button id='decButEle' className={ `${ styles.contentButtons } ${ styles.decrementButton }` } onClick={ () => { appDisFun( decNumRed( 3 ) ) } } aria-role='Decrement the count by 3' > { /* Decrement Button Element = This custom button element is the container for the button that will dispatch an action to decrement the counter state by 3 when clicked, as well as displaying the current value of the counter state in the button's text. */ }
+                    <  button id='decButEle' className={ `${ styles.contentButtons } ${ styles.decrementButton }` } onClick={ () => { appDisFun( decNumRed( 3 ) ) } } > { /* Decrement Button Element = This custom button element is the container for the button that will dispatch an action to decrement the counter state by 3 when clicked, as well as displaying the current value of the counter state in the button's text. */ }
 
                         Count = { useAppSel( ( state : RooStaObj ) => state.couStaNum ) }
 
