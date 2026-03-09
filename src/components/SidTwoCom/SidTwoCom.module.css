@@ -1,28 +1,28 @@
 
-/* #region Sidebar Two Div */
+/* #region Sidebar Two Aside */
 
-.sidebarTwoDiv { /** Sidebar Two Div = This custom selector contains the custom .sidebarTwoParagraph selector and is the custom #rooDivEle selector's second grid row, third grid column. */
+.sidebarTwoAside { /** Sidebar Two Aside = This custom selector contains the custom .sidebarTwoParagraph selector and is the custom #rooDivEle selector's second grid row, third grid column. */
 
     /* #region Selector Scoped Custom Properties */
 
-    --sid-two-gta :            /** Sidebar Two Div Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+    --sia-two-gta :            /** Sidebar Aside Two Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
         'sidebarTwoParagraph'; /** This value was chosen to be used to contain the custom .sidebarTwoParagraph selector within this selector grid's full height row, full width column. */
 
-    --sb2-par-row : 100%;                  /** Sidebar Two Paragraph Row           ~= 592.100px @1080px height = This custom property stores the height of the custom .sidebarTwoParagraph selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
-    --sid-two-gtr : var( --sb2-par-row );  /** Sidebar Two Div Grid Template Rows  ~= 592.100px @1080px height = This custom property stores the grid template rows value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+    --sb2-par-row : 100%;                  /** Sidebar Two Paragraph Row             ~= 592.100px @1080px height = This custom property stores the height of the custom .sidebarTwoParagraph selector's row within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template rows custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
+    --sia-two-gtr : var( --sb2-par-row );  /** Sidebar Aside Two Grid Template Rows  ~= 592.100px @1080px height = This custom property stores the grid template rows value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
 
-    --std-bor-pro : var( --bor-wid-min ) solid var( --col-nav-bac ); /** Sidebar Two Div Border Properties = This custom property stores all of the border properties using the specified global scoped derivative and global scoped prime custom properties, with the idea behind this being to create an extremely subtle separator between the sidebar and the main part of the page. */
+    --sat-bor-pro : var( --bor-wid-min ) solid var( --col-nav-bac ); /** Sidebar Aside Two Border Properties = This custom property stores all of the border properties using the specified global scoped derivative and global scoped prime custom properties, with the idea behind this being to create an extremely subtle separator between the sidebar and the main part of the page. */
 
     /* #endregion Selector Scoped Custom Properties */
 
 
     align-items           : center;               /** This value was chosen to be used to vertically center the custom .sidebarTwoParagraph selector within its grid area, with the idea behind this being that with so little content it is more aesthetically pleasing to be centered within its grid area. */
-    border-left           : var( --std-bor-pro ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    border-left           : var( --sat-bor-pro ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
     display               : grid;                 /** This value was chosen to be used as the preferred layout method, with the idea behind this being that it provides powerful element placement and sizing capabilities. */
     grid-area             : sidebar2;             /** This value was chosen to be used to place this selector within the custom #rooDivEle selector grid area's second row, third column. */
-    grid-template-areas   : var( --sid-two-gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-areas   : var( --sia-two-gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
     grid-template-columns : 100%;                 /** This value was chosen to be used to fill columns using all available horizontal space as defined by its parent, the custom #rooDivEle selector. */
-    grid-template-rows    : var( --sid-two-gtr ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-rows    : var( --sia-two-gtr ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
     height                : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom #rooDivEle selector. */
     justify-items         : center;               /** This value was chosen to be used to horizontally center the custom .sidebarTwoParagraph selector within its grid area, with the idea behind this being that with so little content it is more aesthetically pleasing to be centered within its grid area. */
     text-align            : center;               /** This value was chosen to be used to center the text for this selector, with the idea behind this being that with so little content it is more aesthetically pleasing to be centered. */

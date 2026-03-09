@@ -180,9 +180,9 @@ function SidOneCom ( props : SidOneComPro ) : React.ReactElement {
     const sidOneComJsx : React.ReactElement = (
 
 
-        // #region Sidebar One Div Element
+        // #region Sidebar One Aside Element
 
-        <  div id='sb1DivEle' className={ styles.sidebarOneDiv } > { /* Sidebar One Div Element = This custom section element is the root HTML element and container for this component since React requires the JSX to return a single root element. */ }
+        <  aside id='sb1AsiEle' className={ styles.sidebarOneAside } > { /* Sidebar One Aside Element = This custom section element is the root HTML element and container for this component since React requires the JSX to return a single root element. */ }
 
 
             { /** Start Sidebar One Paragraph Element */ }
@@ -196,9 +196,9 @@ function SidOneCom ( props : SidOneComPro ) : React.ReactElement {
             { /** End Sidebar One Paragraph Element */ }
 
 
-        </ div >
+        </ aside >
 
-        // #endregion Sidebar One Div Element
+        // #endregion Sidebar One Aside Element
 
 
     );
