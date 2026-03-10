@@ -1126,7 +1126,7 @@ function ChrCarCom () : React.ReactElement {
 
             { /* Start Hacked Section Element */ }
 
-            <  section id='hacSecEle'  className={ styles.hackedSection } role='img' aria-label='Black background with a cartoony pirate skull wearing a black eyepatch and crossbones' > { /* Hacked Section Element = This custom section element is the container for the hacked h1 heading, the hacked paragraph and has a cartoony pirate skull and crossbones background image that will be shown after the initial pixelated transition effect animation has finished running, and it will then be hidden by another pixelated transition effect animation after which the snowfall section will be overlaid on top of it thereby hiding this section until the page is reloaded. */ }
+            <  section id='hacSecEle'  className={ styles.hackedSection } > { /* Hacked Section Element = This custom section element is the container for the hacked h1 heading, the hacked paragraph and has a cartoony pirate skull and crossbones background image that will be shown after the initial pixelated transition effect animation has finished running, and it will then be hidden by another pixelated transition effect animation after which the snowfall section will be overlaid on top of it thereby hiding this section until the page is reloaded. */ }
 
 
                 <  header id='hacHeaEle'  className={ styles.hackedHeader } > { /* Hacked Header Element = This custom header element is a semantic container for the hacked h1 heading, the hacked paragraph. */ }
@@ -1136,7 +1136,7 @@ function ChrCarCom () : React.ReactElement {
 
 
 
-                    < p  id='hacParEle'  className={ ` ${ styles.hackedParagraph } hackedSplitText ` } >Just kidding! But it just goes to show you that you should never trust a QR code! Christmas present incoming...</ p > { /* Hacked Paragraph Element = This custom paragraph element is the container for text that will first have a standard GSAP split text animation applied to it, then a custom glitch text animation applied to it as defined inside of the standard GSAP useGSAP custom React hook. */ }
+                    < p  id='hacParEle'  className={ ` ${ styles.hackedParagraph } hackedSplitText ` } aria-hidden='true' >Just kidding! But it just goes to show you that you should never trust a QR code! Christmas present incoming...</ p > { /* Hacked Paragraph Element = This custom paragraph element is the container for text that will first have a standard GSAP split text animation applied to it, then a custom glitch text animation applied to it as defined inside of the standard GSAP useGSAP custom React hook. */ }
 
                 
                 </ header >

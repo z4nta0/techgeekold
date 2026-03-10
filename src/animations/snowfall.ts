@@ -288,10 +288,6 @@ const creSnoFun : CreSnoFun = ( creSnoFunPar ) => {
 
     /** Set Attribute = This standard JS DOM API sets a unique id attribute for each snowflake HTML div element by using the length of the custom {@link posSnoArr} array, which should equal the index number of this snowflake HTML div element's custom object that contains its own custom {@link posSnoFun} function that was pushed into said array. */
     snoSetObj.snoDivEle.setAttribute( 'id', `snowflake${ snoSetObj.snoIdeNum }` );
-    /** Set Attribute = This standard JS DOM API sets the aria label attribute for each snowflake HTML div element as an img, which will accompany the alt attribute for accessibility purposes. */
-    snoSetObj.snoDivEle.setAttribute('aria-label', 'img');
-    /** Set Attribute = This standard JS DOM API sets the alt attribute for each snowflake HTML div element, providing a textual description for accessibility purposes. */
-    snoSetObj.snoDivEle.setAttribute('alt', 'White snowflake gently falling downwards');
     /** Append Child  = This standard JS DOM API appends the snowflake HTML div element to the DOM. */
     conSecEle.appendChild( snoSetObj.snoDivEle );
 
