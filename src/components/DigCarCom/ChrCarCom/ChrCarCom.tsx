@@ -1132,7 +1132,7 @@ function ChrCarCom () : React.ReactElement {
                 <  header id='hacHeaEle'  className={ styles.hackedHeader } > { /* Hacked Header Element = This custom header element is a semantic container for the hacked h1 heading, the hacked paragraph. */ }
 
 
-                    < h1 id='hacHe1Ele'  className={ styles.hackedH1 } ></ h1 > { /* Hacked Header 1 Element = This custom h1 element is the container for the text that will first have a standard GSAP scramble text animation applied to it, then two more custom glitch text animations applied to it as defined inside of the standard GSAP useGSAP custom React hook. */ }
+                    < h1 id='hacHe1Ele'  className={ styles.hackedH1 } aria-label='Youve just been hacked!!' ></ h1 > { /* Hacked Header 1 Element = This custom h1 element is the container for the text that will first have a standard GSAP scramble text animation applied to it, then two more custom glitch text animations applied to it as defined inside of the standard GSAP useGSAP custom React hook. */ }
 
 
 
@@ -1160,7 +1160,7 @@ function ChrCarCom () : React.ReactElement {
 
 
 
-                    < img id='snoImgEle'  className={ styles.snowfallImg } src={ snowman } alt='Cartoony snowman with two sticks upraised as arms with three fingers, wearing a tophat, coals for eyes and mouth, a carrot for nose, wearing a green with red strip scarf and two orange dots for buttons' /> { /* Snowfall Image Element = This custom img element is the container for the cartoony image of the snowman that will be displayed in the lower left corner of this section. */ }
+                    < img id='snoImgEle'  className={ styles.snowfallImg } src={ snowman } alt='Cartoony snowman with two sticks as upraised arm' /> { /* Snowfall Image Element = This custom img element is the container for the cartoony image of the snowman that will be displayed in the lower left corner of this section. */ }
 
 
 

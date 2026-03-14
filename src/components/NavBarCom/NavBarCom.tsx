@@ -130,7 +130,7 @@ function NavBarCom ( props : NavBarComPro ) : React.ReactElement {
                 < Link to='/' id='logLinEle' className={ styles.logoLink } onClick={ onClickLog } > { /* Logo Link Element = This standard React Router element is the container for the logo image and text. */ }
 
 
-                    < img id='logImgEle_NavBarCom' className={ styles.logoImg } src={ reactLogo } alt='React logo' /> { /* Logo Image Element for Navigation Bar Component = This custom img element is the container for the official React logo image that acts as a link to the Home page. The id property uses a modifier in order to distinguish it from any other logo image elements that may be placed across the site/app, such as the one on the Home page. */ }
+                    < img id='logImgEle_NavBarCom' className={ styles.logoImg } src={ reactLogo } alt='React logo that is used as a link to the home page' /> { /* Logo Image Element for Navigation Bar Component = This custom img element is the container for the official React logo image that acts as a link to the Home page. The id property uses a modifier in order to distinguish it from any other logo image elements that may be placed across the site/app, such as the one on the Home page. */ }
 
 
 
