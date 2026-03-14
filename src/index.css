@@ -118,8 +118,13 @@
     --col-bor-hov : var( --col-bra-mai ); /** Color Border Hover  = This custom property stores the border color that occurs on hover, with the idea behind this being to highlight what is being hovered using the site/app's accent color. */
     --col-bor-sta : var( --col-bra-acc ); /** Color Border Static = This custom property stores the border color, with the idea behind this being to add just a touch of color to the UI where appropriate using the site/app's main color. */
 
-    --col-but-hov : var( --col-bra-acc ); /** Color Button Hover  = This custom property stores the button color that occurs on hover, with the idea behind this being to highlight that the button is being hovered using the site/app's accent color. */
+
+
+    --col-but-hov : var( --col-bra-acc ); /** Color Button Hover  = This custom property stores the button color that occurs on hover, with the idea behind this being to highlight that the button is being hovered using a modified version of the site/app's accent color. HINT: . */
     --col-but-sta : var( --col-bra-mai ); /** Color Button Static = This custom property stores the button color, with the idea behind this being to use the buttons' larger area to add some much needed color to the UI using the site/app's main color. */
+    --col-but-tex : var( --col-bac-col ); /** Color Button Text   = This custom property stores the button text color, with the idea behind this being to provide a strong contrast against the button's background color in order to pass accessibiliy guidelines. */
+
+
 
     --col-lin-act : var( --col-bra-acc ); /** Color Link Active = This custom property stores the link color when the .active class applied to it, with the idea behind this being to use the same site/app accent color as the links' hover state since the two states are adjacent (if a navbar link if clicked, it will become the same color) while also adding just a touch of persistent accent color (all other accent colors are hover state only) to the UI. The .active class style will be applied by React Router when the NavLink element's path matches the current page (this technique is typically only used in the navbar, not all site/app links). */
     --col-lin-hov : var( --col-bra-acc ); /** Color Link Hover  = This custom property stores the link color that occurs on hover, with the idea behind this being to highlight that the link is being hovered using the site/app's accent color. */
@@ -572,6 +577,7 @@ button { /** Button = This standard selector contains only itself and is used to
     border           : none;                 /** This value was chosen to be used to remove its defaults. */
     border-radius    : var( --bor-rad-lar ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
     box-shadow       : var( --but-box-sha ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    color            : var( --col-but-tex ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
     cursor           : pointer;              /** This value was chosen to be used as a common standard for changing the cursor to a pointer when hovering over buttons, with the idea behind this being to provide a visual cue to users that the selector is interactive and can be clicked. */
     font-family      : inherit;              /** This value was chosen to be used to inherit the site/app's font family, with the idea behind this being that buttons do not automatically inherit the font family from their parent elements. */
     font-size        : var( --fon-siz-bas ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */

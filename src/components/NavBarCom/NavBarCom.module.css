@@ -3,23 +3,12 @@
 
 .navbarHeader { /** Navbar Header = This custom selector contains the custom .navbarNav selector, is the custom #rooDivEle selector's first grid row, all three grid columns and is this component's root selector. */
 
-    grid-area : navbarNav; /** This value was chosen to be used to place this selector within the custom #rooDivEle selector grid area's first row, all three columns. */
-    height    : 100%;      /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom #rooDivEle selector. */
-
-}
-
-
-
-/* #region Navbar Nav */
-
-.navbarNav { /** Navbar Nav = This custom selector contains the custom .navbarDiv selector and is the custom .navbarHeader selector's only child. */
-
     /* #region Selector Scoped Custom Properties */
 
-    --nab-nav-gta :          /** Navbar Nav Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
-        '.   navbarDiv   .'; /** This value was chosen to be used to contain the custom .navbarDiv selector within this selector grid's full height row, full width column, with the idea behind this being that there are empty spaces on either side that will line up the element with the site/app's main grid and at smaller viewport widths those empty spaces will be removed. */
+    --nab-hea-gta :          /** Navbar Header Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+        '.   navbarNav   .'; /** This value was chosen to be used to contain the custom .navbarNav selector within this selector grid's full height row, full width column, with the idea behind this being that there are empty spaces on either side that will line up the element with the site/app's main grid and at smaller viewport widths those empty spaces will be removed. */
 
-    --nab-nav-gtc : var( --hol-gra-gtc ); /** Navbar Div Grid Template Columns = 1920.000px @1920px width = This custom property stores the grid template columns value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that these columns need to align precisely with the site/app's main grid columns. */
+    --nab-hea-gtc : var( --hol-gra-gtc ); /** Navbar Header Grid Template Columns = 1920.000px @1920px width = This custom property stores the grid template columns value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that these columns need to align precisely with the site/app's main grid columns. */
 
     /* #endregion Selector Scoped Custom Properties */
 
@@ -27,10 +16,11 @@
     background-color      : var( --col-nav-bac ); /** This value was chosen to be used according to the details of the specified global scoped prime custom property. */
     column-gap            : var( --col-gap-max ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property, with the idea behind this being that these gaps need to align precisely with the site/app's main grid column gaps. */
     display               : grid;                 /** This value was chosen to be used as the preferred layout method, with the idea behind this being that it provides powerful element placement and sizing capabilities. */
-    grid-template-areas   : var( --nab-nav-gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
-    grid-template-columns : var( --nab-nav-gtc ); /** This value was chosen to be used according to the details of the specified selector scoped custom property, with the idea behind this being that these columns need to align precisely with the site/app's main grid columns. */
-    grid-template-rows    : 100%;                 /** This value was chosen to be used to fill columns using all available vertical space as defined by its parent, the custom .navbarHeader selector. */
-    height                : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .navbarHeader selector. */
+    grid-area             : navbarNav;            /** This value was chosen to be used to place this selector within the custom #rooDivEle selector grid area's first row, all three columns. */
+    grid-template-areas   : var( --nab-hea-gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-columns : var( --nab-hea-gtc ); /** This value was chosen to be used according to the details of the specified selector scoped custom property, with the idea behind this being that these columns need to align precisely with the site/app's main grid columns. */
+    grid-template-rows    : 100%;                 /** This value was chosen to be used to fill columns using all available vertical space as defined by its parent, the custom #rooDivEle selector. */
+    height                : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom #rooDivEle selector. */
 
 }
 
@@ -41,15 +31,15 @@
 @media ( max-width : 842.999px ) { /** Golden Ratio to the 14th Power = This custom media query selector targets all viewport widths below 843.000px. */
 
 
-    .navbarNav { /** Navbar Nav = This custom selector contains the custom .navbarDiv selector, and is the custom .navbarHeader selector's only child. */
+    .navbarHeader { /** Navbar Header = This custom selector contains the custom .navbarNav selector, is the custom #rooDivEle selector's first grid row, all three grid columns and is this component's root selector. */
 
 
         /* #region Selector Scoped Custom Properties */
 
-        --nab-nav-gta :  /** Navbar Nav Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
-            'navbarDiv'; /** This value was chosen to be used to contain the custom .navbarDiv selector within this selector grid's full height row, full width column, with the idea behind this being to remove the empty spaces for smaller viewport widths and let the navbar take up all available horizontal space. */
+        --nab-hea-gta :  /** Navbar Header Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+            'navbarNav'; /** This value was chosen to be used to contain the custom .navbarNav selector within this selector grid's full height row, full width column, with the idea behind this being to remove the empty spaces for smaller viewport widths and let the navbar take up all available horizontal space. */
 
-        --nab-nav-gtc : 100%; /** Navbar Div Grid Template Columns = 1920.000px @1920px width = This custom property stores the grid template columns value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that at small viewport widths the navbar needs to take up all available horizontal space. */
+        --nab-hea-gtc : 100%; /** Navbar Header Grid Template Columns = 1920.000px @1920px width = This custom property stores the grid template columns value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that at small viewport widths the navbar needs to take up all available horizontal space. */
 
         /* #endregion Selector Scoped Custom Properties */
 
@@ -63,17 +53,17 @@
 
 
 
-/* #region Navbar Div */
+/* #region Navbar Nav */
 
-.navbarDiv { /** Navbar Div = This custom selector contains the custom .logoLink and .navbarUl selectors and is the custom .navbarNav selector's second grid column (the first and third columns are empty for spacing), only grid row. */
+.navbarNav { /** Navbar Nav = This custom selector contains the custom .navbarDiv selector and is the custom .navbarHeader selector's only child. */
 
     /* #region Selector Scoped Custom Properties */
 
-    --nav-div-gta :            /** Navbar Div Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+    --nav-nav-gta :            /** Navbar Nav Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
         'logoLink   navbarUl'; /** This value was chosen to be used to contain the custom .logoLink and .navbarUl selectors within this selector grid's full height row, two columns. */
 
     --log-lin-col : var( --gri-col-med );                                           /** Logo Link Column                 ~=  165.750px @1920px width = This custom property stores the width of the custom .logoLink selector's column within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template columns custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
-    --nav-div-gtc : var( --log-lin-col ) var( --nav-ul--col );                      /** Navbar Div Grid Template Columns ~= 1186.600px @1920px width = This custom property stores the grid template columns value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+    --nav-nav-gtc : var( --log-lin-col ) var( --nav-ul--col );                      /** Navbar Nav Grid Template Columns ~= 1186.600px @1920px width = This custom property stores the grid template columns value for this selector's grid using the specified selector scoped custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
     --nav-ul--col : calc( 100% - ( var( --log-lin-col ) + var( --col-gap-xla ) ) ); /** Navbar Ul Column                 ~=  904.217px @1920px width = This custom property stores the width of the custom .navbarUl selector's column within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template columns custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
 
     --nad-pad-pro : var( --pad-ver-sma ) var( --pad-hor-bas ); /** Navbar Div Padding Properties = This custom property stores all of the padding properties using the specified global scoped second derivative custom properties, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
@@ -84,11 +74,11 @@
     align-items           : center;               /** This value was chosen to be used to vertically center the custom .logoLink and .navbarUl selectors within their grid areas, with the idea behind this being that the navbar's content is more aesthetically balanced and pleasing with equal spacing above and below it. */
     column-gap            : var( --col-gap-xla ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property. */
     display               : grid;                 /** This value was chosen to be used as the preferred layout method, with the idea behind this being that it provides powerful element placement and sizing capabilities. */
-    grid-area             : navbarDiv;            /** This value was chosen to be used to place this selector within the custom .navbarNav selector grid area's full height row, second column. */
-    grid-template-areas   : var( --nav-div-gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
-    grid-template-columns : var( --nav-div-gtc ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
-    grid-template-rows    : 100%;                 /** This value was chosen to be used to fill columns using all available vertical space as defined by its parent, the custom .navbarNav selector. */
-    height                : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .navbarNav selector. */
+    grid-area             : navbarNav;            /** This value was chosen to be used to place this selector within the custom .navbarHeader selector grid area's full height row, second column. */
+    grid-template-areas   : var( --nav-nav-gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-columns : var( --nav-nav-gtc ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-template-rows    : 100%;                 /** This value was chosen to be used to fill columns using all available vertical space as defined by its parent, the custom .navbarHeader selector. */
+    height                : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .navbarHeader selector. */
     padding               : var( --nad-pad-pro ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
 
 }
@@ -97,11 +87,11 @@
 
 /* #region Logo Link */
 
-.logoLink { /** Logo Link = This custom selector contains the custom .logoImg and .logoParagraph selectors and is the custom .navbarDiv selector's first grid column, only grid row. */
+.logoLink { /** Logo Link = This custom selector contains the custom .logoImg and .logoParagraph selectors and is the custom .navbarNav selector's first grid column, only grid row. */
 
     /* #region Selector Scoped Custom Properties */
 
-    --nav-div-gta :                /** Logo Link Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
+    --log-lin-gta :                /** Logo Link Grid Template Areas = This custom property stores the grid template areas value for this selector's grid, with the idea behind this being that when there are multiple properties to set I find it clearer and easier to grok by setting property values using a custom property instead of setting the property directly. */
         'logoImg   logoParagraph'; /** This value was chosen to be used to contain the custom .logoImg and .logoParagraph selectors within this selector grid's full height row, two columns. */
 
     --log-img-col : var( --ver-rhy-bas );                                           /** Logo Image Column               ~=  25.250px @1920px width = This custom property stores the width of the custom .logoImg selector's column within this selector's grid, with the idea behind this being that by using a custom property to store this value it makes the grid template columns custom property easier to grok, makes its actual value clear to see and allows for better maintenance by making it easier to adjust its value. */
@@ -114,11 +104,11 @@
     align-items           : center;               /** This value was chosen to be used to vertically center the custom .logoImg and .logoParagraph selectors within their grid areas, with the idea behind this being that the navbar's content is more aesthetically balanced and pleasing with equal spacing above and below it. */
     column-gap            : var( --col-gap-sma ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property, with the idea behind this being that although this should be a large column gap (since its parent selector uses an extra large column gap) it doesn't make sense for these two columns to have such a large gap since they are very closely related (logo <-> site/app name). */
     display               : grid;                 /** This value was chosen to be used as the preferred layout method, with the idea behind this being that it provides powerful element placement and sizing capabilities. */
-    grid-area             : logoLink;             /** This value was chosen to be used to place this selector within the custom .navbarDiv selector grid area's full height row, first column. */
-    grid-template-areas   : var( --nav-div-gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
+    grid-area             : logoLink;             /** This value was chosen to be used to place this selector within the custom .navbarNav selector grid area's full height row, first column. */
+    grid-template-areas   : var( --log-lin-gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
     grid-template-columns : var( --log-lin-gtc ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
-    grid-template-rows    : 100%;                 /** This value was chosen to be used to fill columns using all available vertical space as defined by its parent, the custom .navbarDiv selector. */
-    height                : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .navbarDiv selector. */
+    grid-template-rows    : 100%;                 /** This value was chosen to be used to fill columns using all available vertical space as defined by its parent, the custom .navbarNav selector. */
+    height                : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .navbarNav selector. */
 
 }
 
@@ -157,7 +147,7 @@
 
 /* #region Navbar Ul */
 
-.navbarUl { /** Navbar Unordered List = This custom selector contains the custom .homeLi, .cardsLi, .aboutLi and .contactLi selectors and is the custom .navbarDiv selector's second grid column, only grid row. */
+.navbarUl { /** Navbar Unordered List = This custom selector contains the custom .homeLi, .cardsLi, .aboutLi and .contactLi selectors and is the custom .navbarNav selector's second grid column, only grid row. */
 
     /* #region Selector Scoped Custom Properties */
 
@@ -171,11 +161,11 @@
 
     column-gap            : var( --col-gap-lar ); /** This value was chosen to be used according to the details of the specified global scoped second derivative custom property. */
     display               : grid;                 /** This value was chosen to be used as the preferred layout method, with the idea behind this being that it provides powerful element placement and sizing capabilities. */
-    grid-area             : navbarUl;             /** This value was chosen to be used to place this selector within the custom .navbarDiv selector grid area's full height row, second column. */
+    grid-area             : navbarUl;             /** This value was chosen to be used to place this selector within the custom .navbarNav selector grid area's full height row, second column. */
     grid-template-areas   : var( --nav-ul--gta ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
     grid-template-columns : var( --nav-ul--gtc ); /** This value was chosen to be used according to the details of the specified selector scoped custom property. */
-    grid-template-rows    : 100%;                 /** This value was chosen to be used to fill columns using all available vertical space as defined by its parent, the custom .navbarDiv selector. */
-    height                : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .navbarDiv selector. */
+    grid-template-rows    : 100%;                 /** This value was chosen to be used to fill columns using all available vertical space as defined by its parent, the custom .navbarNav selector. */
+    height                : 100%;                 /** This value was chosen to be used to fill all available vertical space as defined by its parent, the custom .navbarNav selector. */
     justify-content       : end;                  /** This value was chosen to be used to horizontally align the custom .homeLi, .aboutLi and .contactLi selectors to the right side of their grid areas, with the idea behind this being to align them to the right side of the navbar and leave the navbar's biggest empty space between them and the site/app logo and name on the left side. */
 
 }

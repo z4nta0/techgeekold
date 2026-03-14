@@ -126,7 +126,7 @@ function HomPagCom ( props : HomPagComPro ) : React.ReactElement {
                     <  a id='vitAncEle' className={ `${ styles.headerAnchors } ${ styles.viteAnchor }` } href='https://vite.dev' target='_blank' > { /* Vite Anchor Element = This custom anchor element is the container for the link to the Vite website and for the Vite logo image. */ }
 
 
-                        < img id='vitImgEle' className={ `${ styles.headerImgs } ${ styles.viteImg }` } src={ viteLogo } alt='Vite logo' /> { /* Vite Image Element = This custom img element is the container for the official Vite logo image. */ }
+                        < img id='vitImgEle' className={ `${ styles.headerImgs } ${ styles.viteImg }` } src={ viteLogo } alt='Official Vite logo used as a link to the official Vite documents webpage' /> { /* Vite Image Element = This custom img element is the container for the official Vite logo image. */ }
 
 
                     </ a >
@@ -139,7 +139,7 @@ function HomPagCom ( props : HomPagComPro ) : React.ReactElement {
                     <  a id='reaAncEle' className={ `${ styles.headerAnchors } ${ styles.reactAnchor }` } href='https://react.dev' target='_blank' > { /* React Anchor Element = This custom anchor element is the container for the link to the React website and for the React logo image. */ }
 
 
-                        < img id='reaImgEle' className={ `${ styles.headerImgs } ${ styles.reactImg }` } src={ reactLogo } alt='React logo' /> { /* React Image Element = This custom img element is the container for the official React logo image. */ }
+                        < img id='reaImgEle' className={ `${ styles.headerImgs } ${ styles.reactImg }` } src={ reactLogo } alt='Official React logo used as a link to the official React documentation webpage' /> { /* React Image Element = This custom img element is the container for the official React logo image. */ }
 
 
                     </ a >

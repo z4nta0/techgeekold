@@ -60,7 +60,7 @@
 .footerParagraph { /** Footer Paragraph = This custom selector contains the custom text for the site/app name and copyright and is the custom .footerDiv selector's only grid row, full width column. */
 
     align-self   : center;               /** This value was chosen to be used to vertically center this selector within its grid area, with the idea behind this being that the footer's content is more aesthetically balanced and pleasing with equal spacing above and below it. */
-    font-size    : var( --fon-siz-sma ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
+    font-size    : var( --fon-siz-med ); /** This value was chosen to be used according to the details of the specified global scoped derivative custom property. */
     grid-area    : footerParagraph;      /** This value was chosen to be used to place this selector within the custom .footerDiv selector grid area's only row, only column. */
     justify-self : center;               /** This value was chosen to be used to horizontally center this selector within its grid area, with the idea behind this being that with so little content in the footer it is more aesthetically pleasing when horizontally centered to the middle of the viewport. */
     line-height  : var( --fon-siz-sma ); /** This value was chosen to be used to set the line height equal to its corresponding font size, with the idea behind this being that it makes for better visual asthetics when used with short, one line text (headers especially). */

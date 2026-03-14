@@ -180,9 +180,9 @@ function SidTwoCom ( props : SidTwoComPro ) : React.ReactElement {
     const sidTwoComJsx : React.ReactElement = (
 
 
-        // #region Sidebar Two Div Element
+        // #region Sidebar Two Aside Element
 
-        <  div id='sb2DivEle' className={ styles.sidebarTwoDiv } > { /* Sidebar Two Div Element = This custom section element is the root HTML element and container for this component since React requires the JSX to return a single root element. */ }
+        <  aside id='sb2DivEle' className={ styles.sidebarTwoAside } > { /* Sidebar Two Aside Element = This custom section element is the root HTML element and container for this component since React requires the JSX to return a single root element. */ }
 
 
             { /** Start Sidebar Two Paragraph Element */ }
@@ -196,9 +196,9 @@ function SidTwoCom ( props : SidTwoComPro ) : React.ReactElement {
             { /** End Sidebar Two Paragraph Element */ }
 
 
-        </ div >
+        </ aside >
 
-        // #endregion Sidebar Two Div Element
+        // #endregion Sidebar Two Aside Element
 
 
     );

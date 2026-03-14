@@ -662,7 +662,7 @@ function ChrCarCom () : React.ReactElement {
 
             { /** Start Pixels Container Div Element (Pixelated Transition Effect animation) */ }
 
-            <  div id='pcoDivEle' className={ styles.pixelsContainerDiv } > { /* Pixels Container Div Element = This custom div element is the container for the .pixelDivs div elements that are used for the pixelated transition animation that is defined inside of the standard GSAP useGSAP custom React hook, and its grid columns and rows properties are dynamically set inside of the standard React useEffect hook based on the window size and will be calculated whenever the component mounts and whenever the window is resized. */ }
+            <  div id='pcoDivEle' className={ styles.pixelsContainerDiv } aria-hidden='true' > { /* Pixels Container Div Element = This custom div element is the container for the .pixelDivs div elements that are used for the pixelated transition animation that is defined inside of the standard GSAP useGSAP custom React hook, and its grid columns and rows properties are dynamically set inside of the standard React useEffect hook based on the window size and will be calculated whenever the component mounts and whenever the window is resized. */ }
 
 
                 { /** Pixelated Transition Squares = These custom div elements combine to make up the grid that is dynamically sized based on the window dimensions inside of the standard React useEffect hook that is run when the component mounts and whenever the window is resized. Each div will be faded in or out in a random order inside of the standard GSAP useGSAP custom React hook in order to create a pixelated transition effect animation between window load -> show the hacked section -> hide the hacked section -> show the snowfall section. */ }
@@ -1132,11 +1132,11 @@ function ChrCarCom () : React.ReactElement {
                 <  header id='hacHeaEle'  className={ styles.hackedHeader } > { /* Hacked Header Element = This custom header element is a semantic container for the hacked h1 heading, the hacked paragraph. */ }
 
 
-                    < h1 id='hacHe1Ele'  className={ styles.hackedH1 } ></ h1 > { /* Hacked Header 1 Element = This custom h1 element is the container for the text that will first have a standard GSAP scramble text animation applied to it, then two more custom glitch text animations applied to it as defined inside of the standard GSAP useGSAP custom React hook. */ }
+                    < h1 id='hacHe1Ele'  className={ styles.hackedH1 } aria-label='Youve just been hacked!!' ></ h1 > { /* Hacked Header 1 Element = This custom h1 element is the container for the text that will first have a standard GSAP scramble text animation applied to it, then two more custom glitch text animations applied to it as defined inside of the standard GSAP useGSAP custom React hook. */ }
 
 
 
-                    < p  id='hacParEle'  className={ ` ${ styles.hackedParagraph } hackedSplitText ` } >Just kidding! But it just goes to show you that you should never trust a QR code! Christmas present incoming...</ p > { /* Hacked Paragraph Element = This custom paragraph element is the container for text that will first have a standard GSAP split text animation applied to it, then a custom glitch text animation applied to it as defined inside of the standard GSAP useGSAP custom React hook. */ }
+                    < p  id='hacParEle'  className={ ` ${ styles.hackedParagraph } hackedSplitText ` } aria-hidden='true' >Just kidding! But it just goes to show you that you should never trust a QR code! Christmas present incoming...</ p > { /* Hacked Paragraph Element = This custom paragraph element is the container for text that will first have a standard GSAP split text animation applied to it, then a custom glitch text animation applied to it as defined inside of the standard GSAP useGSAP custom React hook. */ }
 
                 
                 </ header >
@@ -1150,7 +1150,7 @@ function ChrCarCom () : React.ReactElement {
 
             { /* Start Snowfall Section Element */ }
 
-            <  section id='snoSecEle'  className={ `${ styles.snowfallSection } snowfallSplitText` } > { /* Snowfall Section Element = This custom section element is the container for snowy h1 heading, snowman img, snowy paragraph and has a cartoony snowy cabin with evergreen trees background image that will be shown after the three pixelated transition effect animations have completed and after the hacked section animations have finished running. It will have a custom defined (i.e. not a GSAP animation) snowfall animation overlaid on top of it, and it will continue to be shown until the page is reloaded. */ }
+            <  section id='snoSecEle'  className={ `${ styles.snowfallSection } snowfallSplitText` } role='img' aria-label='Dark blue sky and snow covered ground with a cartoony snow covered cabin with lighted windows and a smokey chimney that is surrounded by snow covered evergreen trees' > { /* Snowfall Section Element = This custom section element is the container for snowy h1 heading, snowman img, snowy paragraph and has a cartoony snowy cabin with evergreen trees background image that will be shown after the three pixelated transition effect animations have completed and after the hacked section animations have finished running. It will have a custom defined (i.e. not a GSAP animation) snowfall animation overlaid on top of it, and it will continue to be shown until the page is reloaded. */ }
 
 
                 <  header id='snoHeaEle'  className={ styles.snowfallHeader } > { /* Snowfall Header Element = This custom header element is a semantic container for the snowy h1 heading, the snowman img, and the snowy paragraph. */ }
@@ -1160,7 +1160,7 @@ function ChrCarCom () : React.ReactElement {
 
 
 
-                    < img id='snoImgEle'  className={ styles.snowfallImg } src={ snowman } /> { /* Snowfall Image Element = This custom img element is the container for the cartoony image of the snowman that will be displayed in the lower left corner of this section. */ }
+                    < img id='snoImgEle'  className={ styles.snowfallImg } src={ snowman } alt='Cartoony snowman with two sticks as upraised arm' /> { /* Snowfall Image Element = This custom img element is the container for the cartoony image of the snowman that will be displayed in the lower left corner of this section. */ }
 
 
 
